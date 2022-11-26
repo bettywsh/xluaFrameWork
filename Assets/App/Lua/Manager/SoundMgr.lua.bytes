@@ -1,0 +1,53 @@
+local SoundMgr = {}
+SoundMgr.soundDefine = {}
+
+function SoundMgr:PlayBackSound(moduleName, key)
+    local configSound = ConfigMgr:GetSoundsKey(key)
+    SoundManager.Instance:PlayBackSound(moduleName, configSound.FileName)
+end
+
+function SoundMgr:PlayEffectSound(moduleName, key)
+    moduleName = "Common"
+    local configSound = ConfigMgr:GetSoundsKey(key)
+	SoundManager.Instance:PlayEffectSound(moduleName, configSound.FileName)
+end
+
+function SoundMgr:SetBackVolume(volume)
+    SoundManager.Instance:SetBackGroundVolume(volume)
+end
+
+function SoundMgr:SetEffectVolume(volume)
+    SoundManager.Instance:SetEffectVolume(volume)
+end
+
+function SoundMgr:GetBackVolume()
+    return SoundManager.Instance:GetBackGroundVolume()
+end
+
+function SoundMgr:GetEffectVolume()
+    return SoundManager.Instance:GetEffectVolume()
+end
+
+function SoundMgr:StopBacksound()
+    SoundManager.Instance:StopBacksound()
+end
+
+function SoundMgr:StopEffectSound(name)
+    local configSound = ConfigMgr:GetSoundsKey(name).FileName
+    SoundManager.Instance:StopEffectSound(configSound)
+end
+
+function SoundMgr:EffectSoundIsOn(name)
+    local configSound = ConfigMgr:GetSoundsKey(name).FileName
+    SoundManager.Instance:StopEffectSound(configSound)
+end
+
+function SoundMgr:ClearEffectSound(moduleName)
+    SoundManager.Instance:ClearEffectSound(moduleName)
+end
+
+function SoundMgr:StopAllEffectSound()
+    SoundManager.Instance:StopAllEffectSound()
+end
+
+return SoundMgr

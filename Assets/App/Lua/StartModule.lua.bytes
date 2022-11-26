@@ -1,0 +1,75 @@
+----Common
+require("Common/Global")
+require("Common/GameDefine")
+require("Common/Class")
+require("Common/CSDefine")
+
+-- require("Common/Function")
+
+-- ShowPanel = require("Common/ShowPanel")
+-- CommPanel = require("Common/CommPanel")
+UIBase = require("Common/UIBase")
+SoundMgr = require("Manager/SoundMgr")
+ConfigMgr = require("Manager/ConfigMgr")
+
+-- LoginBroken = require("Common/LoginBroken")
+-- PopupMgr = require("Manager/PopupMgr")
+MessageMgr = require("Manager/MessageMgr")
+NetMgr = require("Manager/NetMgr")
+UIMgr = require("Manager/UIMgr")
+GameMgr = require("Manager/GameMgr")
+SceneMgr = require("Manager/SceneMgr")
+-- HttpMgr = require("Manager/HttpMgr")
+-- RedMgr = require("Manager/RedMgr")
+TextMgr = require("Manager/TextMgr")
+
+UIMgr:init()
+NetMgr:init()
+-- GameMgr:init()
+SceneMgr:init()
+-- HttpMgr:init()
+-- RedMgr:init()
+TextMgr:Init()
+
+-- 初始化数据
+-- PlayerModel = require("Model/PlayerModel")
+-- PropModel = require("Model/PropModel")
+-- TaskModel = require("Model/TaskModel")
+-- HorseModel = require("Model/HorseModel")
+-- BuildModel = require("Model/BuildModel")
+-- MailModel = require("Model/MailModel")
+-- MatchModel = require("Model/MatchModel")
+-- HorseMarketModel = require("Model/HorseMarketModel")
+-- LoginModel = require("Model/LoginModel")
+-- FriendModel = require("Model/FriendModel")
+-- HorseTrainModel = require("Model/HorseTrainModel");
+-- BuyingHorsesModel = require("Model/BuyingHorsesModel");
+-- RankModel=require("Model/RankModel");
+-- MallModel=require("Model/MallModel");
+
+
+-- ModuleName = "LoginModule"
+math.randomseed(math.floor(os.clock()*1E11))
+SceneMgr:LoadScene("Login", false, function()
+    UIMgr:Open("LoginPanel")
+end)
+
+--卸载依赖
+-- ResManager.Instance:UnLoadAssetBundle(ResType.Atlas, "CommonPanel")
+-- ResManager.Instance:UnLoadAssetBundle(ResType.FontAsset, "SourceHanSansCN-Normal SDF")
+-- ResManager.Instance:UnLoadAssetBundle(ResType.FontAsset, "SourceHanSerifCN-Bold SDF")
+
+-- --依赖资源加载
+-- ResManager.Instance:LoadFontAsync("SourceHanSansCN-Normal", nil)
+
+-- --依赖资源加载
+-- ResManager.Instance:LoadFontAsync("SourceHanSerifCN-Bold", nil)
+
+-- --依赖资源加载
+-- ResManager.Instance:LoadAssetAsync("SourceHanSansCN-Normal SDF", nil)
+
+-- --依赖资源加载
+-- ResManager.Instance:LoadAssetAsync("SourceHanSerifCN-Bold SDF", nil)
+
+--依赖资源加载
+-- ResManager.Instance:LoadAtlasAsync("CommonPanel", nil)

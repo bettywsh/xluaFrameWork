@@ -1,0 +1,108 @@
+local UIBase = {}
+UIBase.view = {}
+UIBase.gameObject = nil
+UIBase.args = nil
+UIBase.name = nil
+
+function UIBase:Open(transform, ...)
+	self.args =  ...
+    self.gameObject = transform.gameObject
+	self.name = self.gameObject.name
+    self:InitBinder()
+    RegisterLuaMessage(self)
+    RegisterNetCmd(self)
+    RegisterButtonOnClick(self)
+end
+
+function UIBase:InitBinder()
+	local VarType = CS.VarType
+	local prefabVar = self.gameObject:GetComponent('VarPrefab')
+	local varData = prefabVar:GetVarArray()
+	local iter = varData:GetEnumerator()
+	while iter:MoveNext() do
+		local varObj = iter.Current
+		if varObj ~= nil then
+			-- table.insert(self.view, varObj.name)
+			-- print(varObj.name)
+			if varObj.type == VarType.GameObject then
+				self.view[varObj.name] = varObj.objValue
+			elseif varObj.type == VarType.Transform then
+				self.view[varObj.name] = varObj.tranValue
+			elseif varObj.type == VarType.Image then
+				self.view[varObj.name] = varObj.imgValue
+			elseif varObj.type == VarType.TextMeshProUGUI then
+				self.view[varObj.name] = varObj.txtValue
+			elseif varObj.type == VarType.Button then
+				self.view[varObj.name] = varObj.btnValue
+			elseif varObj.type == VarType.TMP_InputField then
+				self.view[varObj.name] = varObj.inputValue
+			elseif varObj.type == VarType.Toggle then
+				self.view[varObj.name] = varObj.toggleValue
+			elseif varObj.type == VarType.Slider then
+				self.view[varObj.name] = varObj.sliderValue
+			elseif varObj.type == VarType.LoopHorizontalScrollRect then
+				self.view[varObj.name] = varObj.loopHorizontalValue
+			elseif varObj.type == VarType.LoopVerticalScrollRect then
+				self.view[varObj.name] = varObj.loopVerticalValue
+			elseif varObj.type == VarType.CanvasGroup then
+				self.view[varObj.name] = varObj.canvasValue
+			end
+		end
+	end
+end
+
+function UIBase:LoadSpriteAsync(spriteName, cb)
+    return ResManager.Instance:LoadSpriteAsync(spriteName, cb)
+end
+
+function UIBase:LoadAtlasSprite(atlasName, spriteName)
+    return self.view.transform:GetComponent("LuaClass"):GetSprite(atlasName, spriteName);
+end
+
+function UIBase:SetClickUpCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onUp = callback
+end
+
+function UIBase:SetClickDownCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onDown = callback
+end
+
+function UIBase:SetClickEnterCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onEnter = callback
+end
+
+function UIBase:SetClickExitCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onExit = callback
+end
+
+function UIBase:SetClickCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onClick = callback
+end
+
+function UIBase:SetBeginDragCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onBeginDrag = callback
+end
+
+function UIBase:SetDragCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onDrag = callback
+end
+
+function UIBase:SetEndDragCallback(go, callback)
+    local listener = EventTriggerListener.Get(go)
+    listener.onEndDrag = callback
+end
+
+function UIBase:Close()
+	UnRegisterNetCmd(self)
+    UnRegisterLuaMessage(self)
+    UnRequire("UI/"..self.name)
+    C_Object.DestroyImmediate(self.gameObject)
+end
+return UIBase

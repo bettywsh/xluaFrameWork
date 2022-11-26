@@ -1,0 +1,44 @@
+GameDefine = {
+    ServerAddress = {
+        -- 开发环境
+        Type = 1,
+        LoginSvrIp = '192.168.1.14', -- 网络连接IP地址
+        SvrResIp = "http://cdn.fasthorse.world/hotfix/clientTest/", -- 资源下载地址
+        SvrHttpIp = "http://120.55.101.231:8800/", -- sdk地址
+        QrIp = "http://120.55.101.231:8000/", -- 二维码地址
+        CodeIp = "http://120.55.101.231:30234/", -- 埋点地址
+        LogIp = "http://120.55.101.231:30235/", -- log地址
+        IsSkipVerificationCode = false -- 是否跳过验证码
+    },
+
+    LoginSvrPort = 21001,
+
+    GameSvrPort = 0,
+    -- 是否开启新手引导
+    IsGuidance = false,
+    -- 断线重连的标识
+    hasConnected = false,
+    -- 被顶号不触发重连
+    NoConnect = false,
+    -- 巡回赛
+    IsTourMatch = false,
+    -- 进入才能短线重连
+    isLoginBroken = false,
+    -- 比赛
+    RacingHorseInstanceId = 0,
+    RacingSpeed = 1,
+    RaceID = 0,
+    -- 网络连接标识
+    Connect_Login = "LoginSeverConnect",
+    Connect_Game = "GameSeverConnect",
+
+    isReConnect = 3,
+    -- 断线重连状态
+    g_ReconnectState = {
+        BEGIN = 1, -- 重连开始
+        RECONNECTED = 2, -- 重连上
+        END = 3 -- 重连结束
+    },
+
+ 
+}

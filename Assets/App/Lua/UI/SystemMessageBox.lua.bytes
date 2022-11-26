@@ -1,0 +1,114 @@
+local SystemMessageBoxCtrl = class("SystemMessageBoxCtrl", UIBase)
+SystemMessageBoxCtrl.view = {}
+SystemMessageBoxCtrl.anim = {}
+local BoxParams = {
+    Content = "",
+    txt_title = "",
+    txt_ok = "",
+    txt_cal = "",
+    okFun = nil,
+    calFun = nil,
+    type = 0
+}
+
+function SystemMessageBoxCtrl:Awake(transform, agrs)
+    local MessageView = require("UI/View/SystemMessageBoxView")
+    self.view = MessageView:Awake(transform)
+    self.agrs = agrs[0]
+    BoxParams.Content = self.agrs.Content
+    BoxParams.txt_ok = self.agrs.txt_ok
+    BoxParams.txt_cal = self.agrs.txt_cal
+    BoxParams.okFun = self.agrs.okFun
+    BoxParams.calFun = self.agrs.calFun
+    BoxParams.type = self.agrs.type
+    if self.agrs.order ~= nil then
+        transform:GetComponent("Canvas").sortingOrder = self.agrs.order
+    end
+    self.anim = self.view.Img_BoxBG.parent.transform:GetComponent("AnimationCallBack")
+end
+
+function SystemMessageBoxCtrl:Start()
+    SoundMgr:PlayEffectSound(ModuleName, "Effect_MsgBox")
+    -- self:SetText()
+    if BoxParams.Content ~= nil then
+        if BoxParams.type == 1 then
+            self.view.Tf_Message1:SetActive(true)
+            self.view.Txt_Message1.text = BoxParams.Content
+        elseif BoxParams.type == 2 then
+            self.view.Tf_Message2:SetActive(true)
+            self.view.Txt_Message2.text = BoxParams.Content
+        elseif BoxParams.type == 3 then
+            self.view.Tf_Message2:SetActive(true)
+            self.view.Txt_Message2.text = BoxParams.Content
+        else
+            self.view.Tf_Message2:SetActive(false)
+        end
+    end
+    if BoxParams.txt_ok ~= nil then
+        self.view.Txt_Ok.text = BoxParams.txt_ok
+    end
+    if BoxParams.txt_cal ~= nil then
+        self.view.Txt_Cancel.text = BoxParams.txt_cal
+    end
+
+    if BoxParams.type == 1 then
+        self.view.Btn_Ok.gameObject:SetActive(false)
+        self.view.Btn_Cancel.gameObject:SetActive(false)
+        self:SetClickCallback(self.view.Img_Mask.gameObject, self.MaskClick)
+    elseif BoxParams.type == 2 then
+        self.view.Btn_Ok.gameObject:SetActive(true)
+        self.view.Btn_Cancel.gameObject:SetActive(true)
+        self:SetClickCallback(self.view.Btn_Ok.gameObject, function()
+            SoundMgr:PlayEffectSound(ModuleName, "Button_OK")
+            if BoxParams.okFun == nil then
+                self:Destroy()
+            else
+                BoxParams.okFun()
+                self:Destroy()
+            end
+        end)
+        self:SetClickCallback(self.view.Btn_Cancel.gameObject, function()
+            SoundMgr:PlayEffectSound(ModuleName, "Button_Back")
+            if BoxParams.calFun == nil then
+                self:Destroy()
+            else
+                BoxParams.calFun()
+                self:Destroy()
+            end
+        end)
+    else
+        self.view.Btn_Ok.gameObject:SetActive(true)
+        self.view.Btn_Cancel.gameObject:SetActive(false)
+        self:SetClickCallback(self.view.Btn_Ok.gameObject, function()
+            SoundMgr:PlayEffectSound(ModuleName, "Button_OK")
+            if BoxParams.okFun == nil then
+                self:Destroy()
+            else
+                self:Destroy()
+                BoxParams.okFun()
+            end
+        end)
+    end
+end
+
+function SystemMessageBoxCtrl:SetText()
+    self.view.Txt_Ok.text = TextMgr:GetText("Common_Yes"); -- 确定
+    self.view.Txt_Cancel.text = TextMgr:GetText("Common_Cancel"); -- 取消
+    -- self.view.Txt_Message.text = TextMgr:GetText("Common_TextMessageContents");--弹窗内容
+end
+
+function SystemMessageBoxCtrl.MaskClick()
+    SystemMessageBoxCtrl:Destroy()
+    if BoxParams.okFun ~= nil then
+        BoxParams.okFun()
+    end
+end
+
+function SystemMessageBoxCtrl:Destroy()
+    -- self.anim:Play("End",function()
+    self:Hide(self.view.gameObject)
+    -- end)
+end
+
+return SystemMessageBoxCtrl
+

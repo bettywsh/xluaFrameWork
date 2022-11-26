@@ -1,0 +1,101 @@
+local MessageMgr = {}
+
+MessageMgr.MessageListern = {} --lua层事件的分发
+
+MessageMgr.NetMessageListern = {} --网络协议的存储
+
+
+--注册从C#层传输过来的事件，比如断线  重连 顶号  
+function MessageMgr:RegisterEventMessage(messagename,func)
+    CS.MessageManager.Instance:RegisterEventMessageHandler(messagename,func)
+end
+
+function MessageMgr:RemoveEventMessage(messagename)
+    CS.MessageManager.Instance:RemoveEventMessage(messagename)
+end
+
+--注册网络事件  lua层注册事件的内容
+function MessageMgr:RegisterNetMessage(cmdName,func)
+    local cmdID = NetMgr:GetPbIDFromCmdName(cmdName)
+	if not cmdID then 
+		print('===cmdName:', cmdName, "not register in pb")
+		return
+    end
+    self.NetMessageListern[cmdID] = func
+end
+
+--卸载注册的网络时间
+function MessageMgr:UnRegisterNetCmd(cmdName)
+	local cmdID = NetMgr:GetPbIDFromCmdName(cmdName)
+	if not cmdID then
+		print('===cmdName:', cmdName, "not register in pb")
+		return
+    end
+	self.NetMessageListern[cmdID] = nil
+end
+
+--lua层的消息分发协议
+function  MessageMgr:LuaRegisterMessage(messageName, ctrl, func)
+    local messageN = self.MessageListern[messageName]
+    if messageN == nil then
+        messageN = {}
+        self.MessageListern[messageName] = messageN
+    end
+    local  args = {
+        Ctrl = ctrl,
+        Func = func,
+    };
+    table.insert(messageN, args)
+end
+
+
+--lua层事件注册的删除
+function MessageMgr:LuaUnRegisterMessage(messageName, ctrl, func)
+    local messList = self.MessageListern[messageName]
+    if  messList then
+        for i = #messList, 1, -1 do
+            if ctrl == messList[i].Ctrl and messList[i].Func == func then
+				table.remove(messList, i)
+				break
+			end
+        end
+    end    
+end
+
+
+--lua层事件分发协议
+function MessageMgr:LuaMessageNotify(messageName, ...)
+    local messList = self.MessageListern[messageName]
+    if  messList then
+        for i = #messList, 1, -1 do
+            if messList[i] ~= nil then
+                messList[i].Func(messList[i].Ctrl, ...)
+            end
+        end
+        -- for index, func in ipairs(messList) do
+        --     error("判断钱"..index)
+        --     if func ~= nil then
+        --         error(index)
+        --         func.Func(func.Ctrl, args)
+        --     end
+        -- end
+    end
+end
+
+
+--清理所有的消息存储
+-- function MessageMgr:RemoveAllMessageKey(messageName)
+--     self.NetMessageListern = nil
+--     self.MessageListern = nil
+-- end
+
+function MessageMgr:NetMessageNotify(cmdID, msg)
+    local cb = self.NetMessageListern[cmdID]
+    if cb == nil then
+        warring("NO Lisern " .. cmdID .. ",cmd:" .. NetMgr:GetPbIDFromCmdName(cmdID))
+    else
+        cb(msg)
+    end
+end
+
+return  MessageMgr

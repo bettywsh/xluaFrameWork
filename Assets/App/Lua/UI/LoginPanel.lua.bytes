@@ -1,0 +1,29 @@
+local LoginPanel = class("LoginPanel", UIBase)
+
+function LoginPanel:OnOpen()
+
+end
+
+function LoginPanel:UI_btn_click_OnClick()
+	-- NetMgr:ConnectTo(GameDefine.Connect_Login, GameDefine.ServerAddress.LoginSvrIp, GameDefine.LoginSvrPort)
+
+	local CLLogin =
+	{
+		PacketId = "PACKET_LOGIN_LOGIN_CLLogin",
+		LoginType = "LT_ACCOUNT",
+		UserName = self.view.input_account.text,
+		PassWord = self.view.input_passWorld.text,
+		-- string    Token 	  = 5;
+		-- string	   ClientVersion = 6;
+		-- string    UserId = 7;
+		-- string    ChannelId = 8;
+		-- string    Mac = 9;
+	}
+	NetMgr:SendCmdNew("pbproto.CLLogin", CLLogin)
+end
+
+--隐藏UI
+function LoginPanel:OnClose()
+end
+
+return LoginPanel

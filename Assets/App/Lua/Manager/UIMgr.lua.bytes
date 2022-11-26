@@ -1,0 +1,78 @@
+local UIMgr = {}
+
+
+UIMgr.UILayer = {
+    SystemBox = 105
+}
+
+UIMgr.ctrls = {}
+UIMgr.canvasRoot = nil
+UIMgr.uiCamera = nil
+UIMgr.baseCanvas = nil
+
+function UIMgr:init()
+    self.canvasRoot = C_GameObject.Find("Canvas")
+    self.uiCamera = C_GameObject.Find("Canvas/UICamera").transform:GetComponent("Camera")
+    self.baseCanvas = C_GameObject.Find("Canvas/UICanvas/BaseCanvas").transform
+end
+
+function UIMgr:Open(prefabName, ...)
+    local args = ...
+    if self.ctrls[prefabName] == nil then
+        local ctrlURL = string.format("UI/%s", prefabName)
+        local ctrl = require(ctrlURL)
+        self.ctrls[prefabName] = ctrl
+        C_ResManager:LoadAssetAsync(prefabName, string.format("UI/%s", prefabName), typeof(C_GameObject), C_ResType.Prefab, nil, function(ugo)
+            local go = C_Object.Instantiate(ugo)
+            go.name = prefabName
+            go.transform:SetParent(self.baseCanvas, false)
+            go.transform.localScale = C_Vector3.one
+            go.transform.localPosition = C_Vector3.zero
+            local cv = go:AddComponent(typeof(C_Canvas))
+            cv.overrideSorting = true
+            go:AddComponent(typeof(C_GraphicRaycaster))
+            self:OrderCanvas(go)
+            ctrl:Open(go.transform, args)
+            ctrl:OnOpen()
+        end)
+    else
+        return self.ctrls[prefabName]
+    end
+end
+
+function UIMgr:OrderCanvas(go)
+    for i = 0, self.baseCanvas.childCount - 1 do
+        local tf = self.baseCanvas:GetChild(i)
+        local canvas = tf:GetComponent(typeof(C_Canvas))
+        if canvas.sortingOrder < 100 then
+            local order = i * 5
+            canvas.sortingOrder = order
+            local cs = tf:GetComponentsInChildren(typeof(C_Canvas))
+            for x = 0, cs.Length -1 do
+                cs[x].sortingOrder = order + cs[x].sortingOrder
+            end
+            local r = go:GetComponentsInChildren(typeof(C_Renderer))
+            for x = 0, r.Length -1 do
+                r[x].sortingOrder = order + r[x].sortingOrder
+            end
+        end
+    end
+end
+
+function UIMgr:Get(prefabName)
+    local ctrlName = string.format("%sCtrl", prefabName)
+    return self.ctrls[ctrlName]
+end
+
+function UIMgr:CloseSelf(me)
+    self:Close(me.__cname)
+end
+
+function UIMgr:Close(prefabName)
+    self.ctrls[prefabName]:OnClose()
+    self.ctrls[prefabName]:Close()
+    self.ctrls[prefabName] = nil
+    C_ResManager:UnLoadAssetBundle(prefabName)
+end
+
+return UIMgr

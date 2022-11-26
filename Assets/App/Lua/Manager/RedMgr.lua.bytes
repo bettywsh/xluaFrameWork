@@ -1,0 +1,134 @@
+local RedMgr = {}
+
+RedMgr.root = nil
+
+RedMgr.NodeName = {
+    Root = "Root"
+    Model1 = "Root|Model1"
+    Model1_Model1 = "Root|Model1|Model1"
+    Model2 = "Root|Model2"
+    Model2_Model2 = "Root|Model2|Model2"
+}
+
+function RedMgr:Init()
+    self.root = self:CreateNode("root")
+
+    for k, v in pairs(self.NodeName) then
+        self.InsertNode(v)
+    end
+end
+
+function RedMgr:CreateNode(name)
+    local node = {}
+    node.name = name
+    node.passCount = 0
+    node.endCount = 0
+    node.redPointCount = 0
+    node.chilren = {}
+    node.updateCb = {}
+    return node
+end
+
+-- 插入节点
+function RedMgr:InsertNode(name)
+    if name == "" then
+        return
+    end
+    if self.SearchNode(name) then
+        return
+    end
+    local node = self.root
+    node.passCount = node.passCount + 1
+    local pathList = string.split(name, "|")
+    for k, v in pairs(pathList) then
+        if node.chilren[v] == nil then
+            node.chilren[v] = self:CreateNode(v)
+        end
+        node = node.chilren[v]
+        node.passCount = node.passCount + 1
+    end
+    node.endCount = node.endCount + 1
+end
+
+-- 查询节点是否在树中并返回节点
+function RedMgr:SearchNode()
+    if name == "" then
+        return nil
+    end
+    local node = this.root
+    local pathList = string.split(name, "|")
+    for _, path in pairs(pathList) do
+        if nil == node.children[path] then
+            return nil
+        end
+        node = node.children[path]
+    end
+    if node.endCount > 0 then
+        return node
+    end
+    return nil
+end
+
+-- 删除某个节点
+function RedMgr.DeleteNode(name)
+    if nil == self:SearchNode(name) then
+        return
+    end
+    local node = this.root
+    node.passCount = node.passCount - 1
+    local pathList = string.split(name, '.')
+    for _, path in pairs(pathList) do
+        local childNode = node.children[path] 
+        childNode.passCount = childNode.passCount - 1
+        if 0 == childNode.passCount then
+            node.children[path] = nil
+            return
+        end
+        node = childNode
+    end
+    node.endCount = node.endCount - 1
+end
+
+-- 修改节点的红点数
+function RedpointTree.ChangeredPointCount(name, delta)
+    local targetNode = self:SearchNode(name)
+    if nil == targetNode then
+        return
+    end
+    -- 如果是减红点，并且红点数不够减了，则调整delta，使其不减为0
+    if delta < 0 and targetNode.redPointCount + delta < 0 then
+        delta = -targetNode.redPointCount
+    end
+
+    local node = self.root
+    local pathList = string.split(name, "|")
+    for _, path in pairs(pathList) do
+        local childNode = node.children[path]
+        childNode.redPointCount = childNode.redPointCount + delta
+        node = childNode
+        -- 调用回调函数
+        for _, cb in pairs(node.updateCb) do
+            cb(node.redPointCount)
+        end
+    end
+end
+
+-- 设置红点更新回调函数
+function RedpointTree.SetCallBack(name, key, cb)
+    local node = self:SearchNode(name)
+    if nil == node then
+        return
+    end
+    node.updateCb[key] = cb
+end
+
+-- 查询节点的红点数
+function RedpointTree.GetredPointCount(name)
+    local node = this.SearchNode(name)
+    if nil == node then
+        return 0
+    end
+    return node.redPointCount or 0
+end
+
+return RedMgr

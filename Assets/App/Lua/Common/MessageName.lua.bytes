@@ -1,0 +1,117 @@
+
+MessageName = {
+   -------------------------------------下面是事件-------------------------------------
+    -- 建筑更改
+    BuidingInfo = "BuidingInfo",
+
+    -- 查询注册赛马折扣系数
+    GoRetQueryDiscount = "GoRetQueryDiscount",
+
+    -- 删除主界面 
+    UIMainPanelDestroy = "UIMainPanelDestroy",
+    -- 隐藏主界面
+    UIMainPanelShow = "UIMainPanelShow",
+    -- 显示主界面
+    UIMainPanelHide = "UIMainPanelHide",
+    -- 隐藏好友拜访
+    FriendVisitHide = "FriendVisitHide",
+
+    -- 建筑物信息的变更刷新
+    BuildInfoChange = "BuildInfoChange",
+
+    GoHome = "GoHome",
+
+    ChangeHoreseMoney = "ChangeHoreseMoney", -- 玩家金币发生改变
+
+    ChangeMoney = "ChangeMoney", -- 玩家金币发生改变
+
+    PropModelChangeBagData = "PropModelChangeBagData", -- 仓库数据发生改变
+
+    UpdateMail = "UpdateMail", -- 更新邮件状态
+
+    UpdateTask = "UpdateTask", -- 有新的任务，更新任务列表及界面
+
+    HorseAttrListChange = "HorseAttrListChange", -- 马匹属性变化
+
+    TrainingHorsesChange = "TrainingHorsesChange", -- 训练界面通知外部训练马匹或者类型改变
+
+    PhonePanelHide = 'PhonePanelHide', -- 隐藏手机界面
+
+    GotoRacing = "GotoRacing",
+
+    MessagePanelCtrlDestroy = "MessagePanelCtrlDestroy", -- 销毁公告界面
+
+    LoginPanelCtrlOn = "LoginPanelCtrlOn", -- 公告按钮小红点开启
+
+    LoginPanelCtrlOff = "LoginPanelCtrlOff", -- 公告按钮小红点关闭
+
+    MessagePanelCtrlShow = "MessagePanelCtrlShow", -- 显示公告界面
+
+    MessagePanelCtrlShowMsg = "MessagePanelCtrlShowMsg", -- 显示服务条款 隐私协议
+
+    UserHeadIDchange = "UserHeadIDchange", -- 用户信息头像更换
+
+    RedPointChange = "RedPointChange", -- 红点变化刷新
+
+    LoginPanelChangeIsOn = "LoginPanelChangeIsOn", -- 同意条款
+
+    HorseNameChange = "HorseNameChange", -- 马匹修改名字
+
+    TrainChoosePanelCtrlLockBack = "TrainChoosePanelCtrlLockBack", -- 训练解锁槽回调
+
+    TrainTypeLevelUp = "TrainTypeLevelUp", -- 训练升级
+
+    BuyingHorsesSuccess = "BuyingHorsesSuccess",
+
+    GuidanceRefresh = "GuidanceRefresh", -- 通知新手引导刷新    
+
+    BackAnimRun = "BackAnimRun", -- 主界面进入动画
+
+    BuyCommonOk = "BuyCommonOk", -- 通用建筑升级物品购买
+
+    BuyCommonCancel = "BuyCommonCancel", -- 通用建筑升级物品购买取消
+
+    BuyHorsesUseDic = "BuyHorsesUseDic", -- 买马使用折扣卷
+
+    UserTitlechange = "UserTitlechange", -- 用户称号更换
+
+    UserTitleNoOne = "UserTitleNoOne", -- 用户无称号
+
+    UpdateMainHorse = "UpdateMainHorse", -- 刷新住界面马
+
+    HorseStateRefresh = "HorseStateRefresh", -- 马匹状态刷新
+
+    HorseFeedRefresh = "HorseFeedRefresh", -- 马匹喂养状态刷新
+
+    RunMsgIsIn = "RunMsgIsIn", -- 滚动条通知
+
+    DestroyRun = "DestroyRun", -- 滚动条销毁
+
+    BuyingHorsesDestory = "BuyingHorsesDestory", -- 通知删除展示界面
+    
+    BuyingHorsesCopMatAdd = "BuyingHorsesCopMatAdd", -- 添加复赛马匹
+
+    BuyingHorsesCopMatRemove = "BuyingHorsesCopMatRemove", -- 删除复赛马匹
+
+    GoMatchCustom = "GoMatchCustom",     -- 创房自定义比赛信息返回
+    
+    GoCustomRoom = "GoCustomRoom",       -- 创房自定义比赛信息列表返回
+    
+    RefreshMatchCustom = "RefreshMatchCustom",     -- 创房自定义比赛信息刷新
+
+    GoTourMatch = "GoTourMatch",     -- 巡回赛信息返回
+
+    RefreshTourMatch = "RefreshTourMatch",      -- 巡回赛报名信息返回刷新
+
+    RefreshTourMatchFee = "RefreshTourMatchFee",      -- 巡回赛快速入口刷新
+
+    isRefreshTourMatch = "isRefreshTourMatch",        -- 巡回赛失败重置
+
+    LotteryOnceAgain = "LotteryOnceAgain",  -- 抽卡在抽一次
+
+    LotteryPanelShow = "LotteryPanelShow",  -- 打开抽卡
+
+    RewardPanelHide = "RewardPanelHide",  -- 打开抽卡
+}
+
+return MessageName

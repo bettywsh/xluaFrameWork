@@ -1,0 +1,341 @@
+function log(info)
+    if GameDefine.ServerAddress.Type ~= 3 then
+        LogManage.Instance:Log(tostring(info))
+    end
+
+end
+
+function warring(info)
+    if GameDefine.ServerAddress.Type ~= 3 then
+        LogManage.Instance:Warring(tostring(info))
+    end
+end
+
+function error(info)
+    if GameDefine.ServerAddress.Type ~= 3 then
+        LogManage.Instance:Error(tostring(info))
+    end
+end
+
+function print(str)
+    log(str)
+end
+
+-- 创建对象
+function Newobject(prefab)
+    return GameObject.Instantiate(prefab);
+end
+
+-- 获得table中第一个数据
+function GetTabFirst(tab)
+    for k, v in pairs(tab) do
+        return v;
+    end
+end
+
+-- 查找Table k
+function TableK(tbl, key)
+    if tbl == nil then
+        return false
+    end
+    for k, v in pairs(tbl) do
+        if k == key then
+            return true
+        end
+    end
+    return false
+end
+
+-- 查找Table V
+function TableV(tbl, value)
+    if tbl == nil then
+        return false
+    end
+    for k, v in pairs(tbl) do
+        if v == value then
+            return true
+        end
+    end
+    return false
+end
+
+-- 查找时间表Table V
+function TableTimeV(tbl, value)
+    if tbl == nil then
+        return false
+    end
+    for k, v in pairs(tbl) do
+        if k == "Type" and v == value then
+            return true
+        end
+    end
+    return false
+end
+
+-- 查找表字段有就更改
+function TableChange(tbnew, tb)
+    for k, v in pairs(tbnew) do
+        if v ~= nil then
+            tb[k] = v
+        end
+    end
+end
+
+function TableMaxn(t, a)
+    local max = nil
+    for i, v in pairs(t) do
+        if max == nil or max < v[a] then
+            max = v[a]
+        end
+    end
+    return max
+end
+
+-- table打乱循序
+function TableShuffle(t)
+    if type(t)~="table" then
+        return
+    end
+    local tab={}
+    local index=1
+    while #t~=0 do
+        local n=math.random(0,#t)
+        if t[n]~=nil then
+            tab[index]=t[n]
+            table.remove(t,n)
+            index=index+1
+        end
+    end
+    return tab
+end
+
+
+function CheckOpenTime(type)
+    for i, v in ipairs(GetTableList(type)) do
+        local format = os.date("*t", TimerManager.Instance.ServerTimer)
+        -- showTable(format, "71Echo:")
+        if format.hour >= v.StartTime and format.hour < v.EndTime then
+            return true, v.ID;
+        end
+    end
+    return false;
+end
+
+function GetArrayTablel(tbl, arg, GroupId, Rank, ItenReward, arg1)
+    local arrayTab = {};
+    local arrayTablel = {};
+    if tbl == nil then
+        return false
+    end
+    for key, value in ipairs(tbl) do
+        if arg == value.GroupId and value.Rank == arg1 then
+            table.insert(arrayTab, value);
+        end
+    end
+    for key, value in ipairs(arrayTab) do
+        for k, v in ipairs(string.split(value.ItenReward, ";")) do
+            table.insert(arrayTablel, string.split(v, ":"));
+        end
+    end
+    return arrayTablel;
+end
+
+function GetRewardTablel(tbl, arg, args)
+    local arrayTab = {};
+    if tbl == nil then
+        return false
+    end
+    for key, value in ipairs(tbl) do
+        if arg == value.GroupId and value.Rank == args then
+            table.insert(arrayTab, value);
+        end
+    end
+    return arrayTab;
+end
+
+function GetLocalTime()
+    local loaclTimer = TimerManager.Instance.ServerTimer + os.difftime(os.time(), os.time(os.date("!*t", os.time())))
+    local format = os.date("!*t", loaclTimer)
+    return format
+end
+
+-- 时间格式
+function GetTimeFormat(t)
+    local format = os.date("!*t", t)
+    -- error(format)
+    return string.format("%02d:%02d:%02d", format.hour, format.min, format.sec)
+end
+
+function GetTime(t)
+    local format = os.date("!*t", t)
+    return string.format("%02d:%02d", format.hour, format.min)
+end
+
+function GetTimeAll(t, scmd)
+    local dongTime = t + os.difftime(os.time(), os.time(os.date("!*t", os.time())))
+    local format = os.date("!*t", dongTime)
+    if scmd == "yue" then
+        return string.format("%02d月%02d日%02d:%02d", format.month, format.day, format.hour, format.min)    
+    end
+    if scmd == "time" then
+        return format
+    end
+end
+
+function GetDateFormat(t)
+    local format = os.date("!*t", t)
+    return string.format("%02d:%02d:%02d", (format.day - 1) * 24 + format.hour, format.min, format.sec)
+end
+
+function GetTimeFormatAll(t)
+    local format = os.date("!*t", t)
+    if format.year > 1970 then
+        return string.format("%02d年%02d月%02d日%02d:%02d:%02d", format.year - 1970, format.month - 1, format.day - 1, format.hour, format.min, format.sec)
+    end
+    if format.month > 1 then
+        return string.format("%02d月%02d日%02d:%02d:%02d", format.month - 1, format.day - 1, format.hour, format.min, format.sec)
+    end
+    if format.day > 2 then
+        return string.format("%02d日%02d:%02d:%02d", format.day - 1, format.hour, format.min, format.sec)
+    end
+    return string.format("%02d:%02d:%02d", format.hour, format.min, format.sec)
+end
+
+--指定的时间+时间偏移量
+function GetNewDate(interval ,dateUnit)
+    local loaclTimer = TimerManager.Instance.ServerTimer + os.difftime(os.time(), os.time(os.date("!*t", os.time())))
+
+    --根据时间单位和偏移量得到具体的偏移数据
+    local ofset = 0
+
+    if dateUnit =='DAY' then
+        ofset = 60 * 60 * 24 * interval
+    elseif dateUnit == 'HOUR' then
+        ofset = 60 * 60 * interval
+    elseif dateUnit == 'MINUTE' then
+        ofset = 60 * interval
+    elseif dateUnit == 'SECOND' then
+        ofset = interval
+    end
+
+    local newTime = os.date("!*t", loaclTimer + tonumber(ofset))
+    return newTime
+end
+
+-- 错误码
+function ErrorCode(scmd)
+    if not TableK(TextMgr:GetAllText(), "ErrorCode_" .. scmd.Result) then
+        local fly = UIMgr:Open("Common", "TextFlyingPanel");
+        fly:Fly("未包含此错误码" .. "ErrorCode_" .. scmd.Result);
+        return
+    end
+    local fly = UIMgr:Open("Common", "TextFlyingPanel");
+    fly:Fly(TextMgr:GetText("ErrorCode_" .. scmd.Result));
+end
+
+-- 更好模型节点， 模型贴图文件，模型贴图文件序号
+function SetDiffTexture(tf, modelTexture, id)
+    tf:GetComponent("Renderer").material:SetTexture("", string.format("Horse/" .. modelTexture, id))
+end
+
+
+
+---如果小数位数为0，则只保留整数
+function FormatNumToInt(num_para)
+    local num = tonumber(num_para)
+    if num <= 0 then
+        return 0
+    else
+        local t1, t2 = math.modf(num)
+        ---小数如果为0，则去掉
+        if t2 > 0 then
+            return num
+        else
+            return t1
+        end
+    end
+end
+
+
+
+-- 数字拆分成字符串表
+function GetSplitInter(num)
+    local tb = {} --存放拆分的数字
+    repeat
+        table.insert(tb, 1, num % 10)
+        num = math.floor(num / 10)
+    until(num == 0)
+    local strLeng = ''
+    for i,v in ipairs(tb) do
+        strLeng = strLeng.."<sprite="..v..">"
+    end
+    return strLeng
+end
+
+-- table复制
+function table.clone(org)
+    return {table.unpack(org)}
+end
+
+--------------------------------------------------闭包-----------------------------------------------------------
+
+local unpack = unpack or table.unpack
+
+-- 解决原生pack的nil截断问题，SafePack与SafeUnpack要成对使用
+function SafePack(...)
+	local params = {...}
+	params.n = select('#', ...)
+	return params
+end
+
+-- 解决原生unpack的nil截断问题，SafePack与SafeUnpack要成对使用
+function SafeUnpack(safe_pack_tb)
+	return unpack(safe_pack_tb, 1, safe_pack_tb.n)
+end
+
+-- 对两个SafePack的表执行连接
+function ConcatSafePack(safe_pack_l, safe_pack_r)
+	local concat = {}
+	for i = 1,safe_pack_l.n do
+		concat[i] = safe_pack_l[i]
+	end
+	for i = 1,safe_pack_r.n do
+		concat[safe_pack_l.n + i] = safe_pack_r[i]
+	end
+	concat.n = safe_pack_l.n + safe_pack_r.n
+	return concat
+end
+
+-- 闭包绑定
+function Bind(self, func, ...)
+	assert(self == nil or type(self) == "table")
+	assert(func ~= nil and type(func) == "function")
+	local params = nil
+	if self == nil then
+		params = SafePack(...)
+	else
+		params = SafePack(self, ...)
+	end
+	return function(...)
+		local args = ConcatSafePack(params, SafePack(...))
+		func(SafeUnpack(args))
+	end
+end
+
+-- 回调绑定
+-- 重载形式：
+-- 1、成员函数、私有函数绑定：BindCallback(obj, callback, ...)
+-- 2、闭包绑定：BindCallback(callback, ...)
+function BindCallback(...)
+	local bindFunc = nil
+	local params = SafePack(...)
+	assert(params.n >= 1, "BindCallback : error params count!")
+	if type(params[1]) == "table" and type(params[2]) == "function" then
+		bindFunc = Bind(...)
+	elseif type(params[1]) == "function" then
+		bindFunc = Bind(nil, ...)
+	else
+		error("BindCallback : error params list!")
+	end
+	return bindFunc
+end

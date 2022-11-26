@@ -1,0 +1,21 @@
+C_ResManager = CS.ResManager.Instance
+C_UIManager = CS.UIManager.Instance
+C_GameObject = CS.UnityEngine.GameObject
+C_PlayerPrefs = CS.UnityEngine.PlayerPrefs
+C_DOTween = CS.DG.Tweening.DOTween
+C_Object = CS.UnityEngine.Object
+C_Vector3 = CS.UnityEngine.Vector3
+
+C_Canvas = CS.UnityEngine.Canvas
+C_GraphicRaycaster = CS.UnityEngine.UI.GraphicRaycaster
+C_Renderer = CS.UnityEngine.Renderer
+
+C_UpdateManager = CS.UpdateManager.Instance
+C_ResType = CS.ResType
+C_TextAsset = CS.UnityEngine.TextAsset
+C_Sprite = CS.UnityEngine.U2D.Sprite
+C_AudioClip = CS.AudioClip
+C_Scene = CS.Scene
+C_Font = CS.Font
+C_Material = CS.Material
+C_SpriteAtlas = CS.SpriteAtlas

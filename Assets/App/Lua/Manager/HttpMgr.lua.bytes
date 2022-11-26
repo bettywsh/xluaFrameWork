@@ -1,0 +1,219 @@
+local HttpMgr = {}
+
+HttpMgr.cjson = require "cjson"
+
+HttpMgr.IP = "127.0.0.1"
+HttpMgr.Positon = "CHANNEL"
+HttpMgr.DeviceID = "" --设备唯一标识符
+HttpMgr.GraphicsID = "" --显卡ID
+HttpMgr.deviceType = "" --设备类型<<<<<<<<<<<<<<<<<<<
+HttpMgr.OperatingSystem = "" --操作系统
+HttpMgr.graphicsDeviceName = "" --显卡名称
+HttpMgr.processorType = "" --处理器
+HttpMgr.IsInChina = 1 --是否是国内的玩家
+
+function HttpMgr:getDeviceID()--设备唯一标识符
+    self.DeviceID = tostring(UnityEngine.SystemInfo.deviceUniqueIdentifier)
+end
+
+function HttpMgr:getGraphicsDeviceName()--显卡名称
+    self.graphicsDeviceName = tostring(UnityEngine.SystemInfo.graphicsDeviceName)
+end
+
+function HttpMgr:getGraphicsID()--显卡ID
+    self.GraphicsID = tostring(UnityEngine.SystemInfo.graphicsDeviceID)
+end
+
+function HttpMgr:getDeviceType()--设备类型<<<<<<<<<<<<<<<<<<<<<
+    self.deviceType = tostring(UnityEngine.SystemInfo.deviceType) 
+end
+
+function HttpMgr:getOperatingSystem()--操作系统
+
+    self.OperatingSystem = tostring(UnityEngine.SystemInfo.operatingSystem) 
+end
+
+function HttpMgr:getProcessorType()--处理器
+    self.processorType = tostring(UnityEngine.SystemInfo.processorType)
+end
+
+function HttpMgr:init()
+    self:initIPAndPosition()
+    self:getDeviceID()--设备唯一标识符
+    self:getGraphicsID()--显卡ID
+    self:getDeviceType()--设备类型<<<<<<<<<<<<<<<<<<<<
+    self:getOperatingSystem()--操作系统
+    self:getGraphicsDeviceName()--显卡名称
+    self:getProcessorType()--处理器
+
+end
+
+function HttpMgr:initIPAndPosition()
+    HttpManager.Instance:GetRequest("http://pv.sohu.com/cityjson", "","", function(jsonStr)
+        log("获取内容  " .. jsonStr)
+        if jsonStr ~= "" then
+            local splitPos = string.split(jsonStr, '=');
+            local json_info = string.gsub(splitPos[2], ";", "")
+            local jsonStrForm = self.cjson.decode(json_info)
+            
+            self.IP = jsonStrForm["cip"]
+            self.Positon = jsonStrForm["cname"]
+        end
+    end)
+end
+
+function HttpMgr:HttpGetRequst(url, jsonTable, cb)
+    local httpUrl = GameDefine.ServerAddress.SvrHttpIp .. url
+    local conStr = ""
+    for key, value in pairs(jsonTable) do
+        conStr = conStr .. key .. "=" .. value .. "&"
+    end
+    HttpManager.Instance:GetRequest(httpUrl, conStr,LoginModel.LoginToken, function(jsonStr)
+        if cb ~= nil then
+            log("回消息" .. url)
+            log(jsonStr)
+            if jsonStr == nil or jsonStr == '' then
+                cb({})
+            else
+                cb(self.cjson.decode(jsonStr))
+            end
+        end
+    end)
+end
+
+function HttpMgr:HttpGetLogRequst(url, jsonTable, cb)
+    local httpUrl = GameDefine.ServerAddress.LogIp .. url
+    local conStr = ""
+    for key, value in pairs(jsonTable) do
+        conStr = conStr .. key .. "=" .. value .. "&"
+    end
+    HttpManager.Instance:GetRequest(httpUrl, conStr,LoginModel.LoginToken, function(jsonStr)
+        if cb ~= nil then
+            log("回消息" .. url)
+            log(jsonStr)
+            if jsonStr == nil or jsonStr == '' then
+                cb({})
+            else
+                cb(self.cjson.decode(jsonStr))
+            end
+        end
+    end)
+end
+
+function HttpMgr:HttpGetCodeRequst(url, jsonTable, cb)--埋点用
+    local httpUrl = GameDefine.ServerAddress.CodeIp .. url
+    local conStr = ""
+    for key, value in pairs(jsonTable) do
+        conStr = conStr .. key .. "=" .. value .. "&"
+    end
+    HttpManager.Instance:GetRequest(httpUrl, conStr,LoginModel.LoginToken, function(jsonStr)
+        if cb ~= nil then
+            log("回消息" .. url)
+            log(jsonStr)
+            if jsonStr == nil or jsonStr == ''then
+                cb({})
+            else
+                cb(self.cjson.decode(jsonStr))
+            end
+        end
+    end)
+end
+
+--埋点统计的方法
+function HttpMgr:SystemBuryingPoint(paramTable)
+    local SDKLog = {}
+    -- SDKLog.ModuleID = "10001" --模块
+    -- SDKLog.TypeID = "10003" --埋点
+	SDKLog.Time = os.time()--时间戳
+    SDKLog.EquipType = HttpMgr.deviceType--设备类型
+	SDKLog.GraphicsDeviceName = HttpMgr.graphicsDeviceName --显卡
+    SDKLog.GameID = math.floor(AppConst.GameID) --游戏id
+	SDKLog.ProcessorType = HttpMgr.processorType --处理器
+    SDKLog.OperatingSystem = HttpMgr.OperatingSystem --操作系统
+    SDKLog.Channel = GetChannelID()--渠道ID
+
+    if paramTable then
+        for key, value in pairs(paramTable) do
+            SDKLog[key] = value
+        end
+    end
+    
+    HttpMgr:HttpRequst("/index.php?r=log/sdk-static", SDKLog, function(content)
+    end)
+end
+
+function HttpMgr:UserBehavior(paramTable)
+    local SDKUser = {}
+	SDKUser.Time = os.time() --时间戳
+    SDKUser.EquipType = HttpMgr.deviceType--设备类型
+    SDKUser.Channel = GetChannelID()--渠道ID
+	SDKUser.GraphicsDeviceName = HttpMgr.graphicsDeviceName --显卡
+    SDKUser.GameID = math.floor(AppConst.GameID) --游戏id
+	SDKUser.ProcessorType = HttpMgr.processorType --处理器
+    SDKUser.OperatingSystem = HttpMgr.OperatingSystem --操作系统
+    SDKUser.Account = PlayerPrefs.GetString("LoginAccount", "")--账号
+    SDKUser.UserID = LoginModel.LoginInfo.UserID--用户ID
+    SDKUser.BundleID = ""--平台ID
+    SDKUser.Position = HttpMgr.Positon--位置
+    SDKUser.IP = HttpMgr.IP--IP
+    SDKUser.Version = AppConst.GameVersion
+    if paramTable then
+        for key, value in pairs(paramTable) do
+            SDKUser[key] = value
+        end
+    end
+
+    HttpMgr:HttpGetCodeRequst("/index.php?r=log/user-behaviors-static", SDKUser, function(content)
+    end)
+
+end
+
+function HttpMgr:HttpRequst(url, jsonTable, cb)
+    local httpUrl = GameDefine.ServerAddress.SvrHttpIp .. url
+    local jsonString = self.cjson.encode(jsonTable)
+    if jsonTable == nil then
+        return
+    end
+    
+    local conStr = ""
+    for key, value in pairs(jsonTable) do
+        conStr = conStr .. key .. "=" .. value .. "&"
+    end
+    
+    HttpManager.Instance:PostRequest(httpUrl, conStr,LoginModel.LoginToken, function(jsonStr)
+        if cb ~= nil then
+            log("回消息" .. httpUrl)
+            log(jsonStr)
+            if jsonStr == "" or jsonStr == nil then
+                warring(httpUrl.."   返回为空")
+                if cb then
+                    cb({})
+                end
+                return
+            end
+            local jsonObj = self.cjson.decode(jsonStr)
+            if not HttpMgr:Md5Version(jsonObj) then
+                log("MD5验证失败")
+                return
+            end
+            if cb then
+                cb(jsonObj)
+            end
+        end
+    end)
+end
+
+function HttpMgr:Md5Version(jsonStr)
+
+   --此处存在疑问考虑，需要考虑下这个怎么处理
+
+    return true
+end
+
+
+--判断网络状态
+function HttpMgr:JudgeNetState()
+    return HttpManager.Instance:JudgeNetState()
+end
+
+return HttpMgr

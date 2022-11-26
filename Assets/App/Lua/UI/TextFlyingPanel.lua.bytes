@@ -1,0 +1,50 @@
+local TextFlyingPanelCtrl = class("TextFlyingPanelCtrl", UIBase)
+TextFlyingPanelCtrl.view = {}
+TextFlyingPanelCtrl.agrs = {}
+
+function TextFlyingPanelCtrl:Awake(transform, agrs)
+	local TextFlyingPanelView = require("UI/View/TextFlyingPanelView")
+	self.view = TextFlyingPanelView:Awake(transform)
+	self:Fly(self.agrs[0])
+end
+
+--播放飘字动画 播放完成删除对应的gameObject
+function TextFlyingPanelCtrl:Fly(text)
+
+	local run = AddChildren(self.view.Go, self.view.img_bg.gameObject)
+	run.gameObject:SetActive(true)
+	--生成动画序列
+	local test = DG.Tweening.DOTween.Sequence()
+	-- seq:Insert(0, go:DOScale(2, 0.5))
+	-- seq:Append(go:DOScale(1, 1))
+	-- seq:AppendInterval(1)
+	test:Append(run:GetComponent("RectTransform"):DOAnchorPosY(125, 1):SetRelative())
+	test:Append(run:GetComponent("CanvasGroup"):DOFade(0 , 1))
+	test:AppendInterval(5)
+	--动画完成回调
+	test:AppendCallback(function() 
+		UnityEngine.GameObject.Destroy(run.gameObject);
+	end)
+
+	local go = AddChildren(self.view.Go, self.view.txtGo.gameObject)
+	go:GetComponent("TextMeshProUGUI").text = text
+	go.gameObject:SetActive(true)
+	--生成动画序列
+	local seq = DG.Tweening.DOTween.Sequence()
+	seq:Append(go:GetComponent("RectTransform"):DOAnchorPosY(125, 1):SetRelative())
+	seq:Append(go:GetComponent("CanvasGroup"):DOFade(0 , 1))
+	seq:AppendInterval(5)
+	--动画完成回调
+	seq:AppendCallback(function() 
+		--销毁飘字文本
+		UnityEngine.GameObject.Destroy(go.gameObject);
+	end)
+
+	
+end
+
+function TextFlyingPanelCtrl:Destroy()
+	self:Hide(self.view.gameObject)
+end
+
+return TextFlyingPanelCtrl

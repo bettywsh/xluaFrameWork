@@ -1,0 +1,7 @@
+local Data = {}
+
+function Data.Reset()
+    -- body
+end
+
+return Data

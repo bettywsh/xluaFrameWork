@@ -1,0 +1,23 @@
+{
+    "Lua.diagnostics.globals": [
+        "TimerManager",
+        "EventTriggerListener",
+        "UIManager",
+        "ResManager",
+        "Vector3",
+        "Input",
+        "UnityEngine"
+    ],
+
+    "files.exclude": {
+        "**/*.cs": true,
+        "**/*.meta": true,
+        "**/*.png": true,
+        "**/*.jpg": true,
+        "**/*.prefab": true
+        },
+        "files.associations": {
+        "*.lua.bytes": "lua"
+    },
+    "window.zoomLevel": 0,    
+}

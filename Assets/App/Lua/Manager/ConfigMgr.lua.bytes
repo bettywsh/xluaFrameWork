@@ -1,0 +1,8 @@
+local ConfigMgr = {}
+
+function ConfigMgr:GetConfig(config, id)
+    local config = require("Config/"..config)
+    return config[id].Value
+end
+
+return ConfigMgr

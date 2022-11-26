@@ -1,0 +1,208 @@
+local NetMgr = {}
+
+NetMgr.PB = require "pb"
+NetMgr.protoc = require "3rd/lua-protobuf/protoc"
+NetMgr._NetCmdNameRegistry = {}
+NetMgr._sendPingTime = 0
+NetMgr.hasConnected = false
+NetMgr.NetLog = false
+
+NetMgr.IP = ""
+NetMgr.Positon = ""
+NetMgr.disConnect = false
+
+NetMgr.pingnum = 0
+
+-- 初始化PB
+function NetMgr:init()
+    self:RegisterProto()
+    self:RegisterProtoFile()
+    self:InitHandleMessage()
+    self:RegisterGlobalProto()
+end
+
+function NetMgr:RegisterGlobalProto()
+    -- 服务器连接失去连接
+    MessageMgr:RegisterEventMessage(CS.MessageConst.MsgLostConnect, function(data)
+        if self.hasSendPing then
+            self.disConnect = true
+        end
+    end)
+    -- 服务器连接连接失败
+    MessageMgr:RegisterEventMessage(CS.MessageConst.MsgDisconnected, function(data)
+        if self.hasSendPing then
+            self.disConnect = true
+        end
+    end)
+end
+
+-- 断线回到登录界面
+function NetMgr:ResetLogin()
+    self.disConnect = false
+    self.hasSendPing = false
+    PropModel.isMatch=0
+    SoundMgr:StopBacksound()
+    SoundMgr:StopAllEffectSound()
+    ResetData();
+    UIManager.Instance:HideAllBaseUI()
+    SceneMgr:LoadScene("Main", true, function()
+        LoginModel.AutoLoginSuccess = true
+        LoginModel.LoginInfo.Sign = ""
+        UIMgr:Open(ModuleName, "LoginPanel")
+    end)
+end
+
+-- ping值协议返回
+function NetMgr:OnNetCmd_GCRetPing(msg)
+    self.pingnum = 0
+end
+
+function NetMgr:SendPing()
+    self.hasSendPing = true
+    self.pingnum = 0
+    -- 发送ping包
+    MessageMgr:RegisterNetMessage("GCRetPing", function(scmd)
+        self:OnNetCmd_GCRetPing(scmd)
+    end)
+end
+
+-- 注册网络协议的文件
+function NetMgr:RegisterProtoFile()
+    local protodefs = {"login_login"}
+    for _, v in ipairs(protodefs) do
+        local fn = C_ResManager:OnLoadAsset("Common", "Protobuf/"..v .. ".pc", typeof(C_TextAsset), C_ResType.Bytes)
+        fn = fn.text
+        local file, x = self.PB.load(fn)
+        if not file then
+            print("加载失败".. fn .. x)
+        end
+    end
+end
+
+-- 注册网络协议的ID内容
+function NetMgr:RegisterProto()
+    local fn = C_ResManager:OnLoadAsset("Common", "Protobuf/msgdef.proto", typeof(C_TextAsset), C_ResType.Txt)
+    print(fn)
+    fn = fn.text
+    local lines = string.split(fn, "\n")
+    for i = 1, #lines do
+        local le = string.match(lines[i], "%a+_%a+_%a+%s*=%s*%d+")
+        if le then
+            local a, b, c, d = string.match(le, "(%a+)_(%a+)_(%a+%s*)=(%s*%d+)")
+            local la = string.lower(a)
+            local lb = string.lower(b)
+            local mc = string.match(c, "%a+")
+            local md = string.match(d, "%d+")
+            local dd = tonumber(md)
+            if dd then
+                NetMgr._NetCmdNameRegistry[dd] = la .. "_" .. lb .. "." .. mc
+                NetMgr._NetCmdNameRegistry[mc] = dd
+            else
+                error("bad packet ID:" .. md)
+            end
+        end
+    end
+end
+
+-- new 表示为一个新的连接 此处区分了login服务器和game服务器
+function NetMgr:SendCmdNew(cmdName, cmd)
+    if self.NetLog and cmdName ~= "CGAskPing" then
+        showTable(cmd, "==>>Send:" .. cmdName, "lightblue")
+    end
+
+    print(cmdName.. ",".. os.time())
+    local bytes = self.PB.encode(cmdName, cmd)
+    local buffer = CS.ByteBuffer()
+    buffer:WriteBuffer(bytes)
+    local data2 = assert(self.PB.decode(cmdName, bytes))
+    print(require"3rd/lua-protobuf/serpent".block(data2))
+    local cmds = cmdName:split(".")
+    local cmdId = self._NetCmdNameRegistry[cmds[2]]
+    error(cmdId)
+    local serverName = GameDefine.Connect_Login
+    if cmdId < 150 then
+        serverName = GameDefine.Connect_Login
+    elseif cmdId >= 150 then
+        serverName = GameDefine.Connect_Game
+    end
+
+    NetManager.Instance:SendTo(serverName, cmdId, buffer)
+end
+
+function NetMgr:GetPbIDFromCmdName(cmdName)
+    return self._NetCmdNameRegistry[cmdName]
+end
+
+function NetMgr:ConnectTo(targetName, ip, port)
+    NetManager.Instance:ConnectTo(targetName, ip, port)
+end
+
+function NetMgr:DisConnectAll()
+    NetManager.Instance:DisConnectAll()
+end
+
+function NetMgr:Update()
+    -- 每段时间发一次ping值协议
+    if self.hasSendPing and Time.time - self._sendPingTime > 5 then
+        self._sendPingTime = Time.time
+        self:SendCmdNew("CGAskPing", {})
+        self.pingnum = self.pingnum + 1
+    end
+    if self.hasSendPing and self.pingnum >= 2 then
+        self.pingnum = 0
+        self:DisConnectAll()        
+        self.disConnect = true
+    end
+    if self.disConnect then
+        self.disConnect = false;
+        -- 如果是被顶号不提示重连
+        if not GameDefine.NoConnect and GameDefine.isLoginBroken then
+            -- LoginModel:Init(function()
+                LoginBroken:BrokenLogin()
+            -- end)
+        end
+        -- self:ResetLogin();
+    end
+if UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.A) and GameDefine.ServerAddress.Type == 1 then
+        local baseCanvas = UIManager.Instance.canvasRoot.transform:Find("UICanvas/BaseCanvas")
+        for i = 0, baseCanvas.childCount - 1 do
+            local tf = baseCanvas:GetChild(i)
+            local metaTable = baseCanvas:GetChild(i):GetComponent("LuaBehaviour").metaTable
+            if metaTable.Start ~= nil then
+                metaTable:Start()
+            end
+        end
+    end
+end
+
+
+function NetMgr:InitHandleMessage()
+    MessageMgr:RegisterEventMessage(CS.MessageConst.MsgNetData, function(datas)
+        local packetId = datas[0]
+        if datas[1] == nil then
+            print("on socket lua:" .. packetId)
+        end
+        local cmdData = datas[1]
+        local data = cmdData:ReadBuffer()
+        if not data then
+            error("NULL network data")
+        else
+            local cmdName = self._NetCmdNameRegistry[packetId]
+            local _, sCmdName = string.match(cmdName, "(%a+_%a+).(%a+)")
+            if sCmdName then
+                print(sCmdName..",".. os.time())
+                local cmd = self.PB.decode("pbproto."..sCmdName, data)
+                print(require"3rd/lua-protobuf/serpent".block(cmd))
+                if not cmd then
+                    warring("protobuf decode error:" .. sCmdName .. "." .. errstr)
+                else
+                    MessageMgr:NetMessageNotify(packetId, cmd)
+                end
+            else
+                error("no packetId defined:" + packetId)
+            end
+        end
+    end)
+end
+
+return NetMgr

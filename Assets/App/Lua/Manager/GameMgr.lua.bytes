@@ -1,0 +1,181 @@
+local GameMgr = {}
+GameMgr.Log = {}
+
+function GameMgr:init()
+    GameMgr:RegisterMessage()
+    GameMgr:BeatInit()
+end
+
+function GameMgr:RegisterMessage()
+    -- 注册c#过来的广播
+    MessageMgr:RegisterEventMessage("MsgOnApplicationQuit", function(scmd)
+        self:MessageLogout()
+    end)
+
+    MessageMgr:RegisterEventMessage("EventApplicationPause", function(scmd)
+        if scmd then
+            NetMgr._canRequestPing = false
+            -- 暂停
+            SDKBuryingPoint("10003", "10001")
+        else
+            NetMgr._canRequestPing = true
+            -- 获取服务器时间
+            NetMgr:SendCmdNew('CGRequireServerTime', {})
+            -- 运行
+            SDKBuryingPoint("10003", "10002")
+        end
+    end)
+
+    MessageMgr:RegisterEventMessage("MsgOnExceptionLogEvent", function(scmd)
+        if LoginModel.isDebug == 0 then
+            return
+        end
+        if self.Log[scmd[0]] == nil then
+            HttpMgr:HttpGetLogRequst("/index.php?r=log/game-debug-trace", { userid = PlayerModel.UserAccName, data = scmd[1] },nil)
+            self.Log[scmd[0]] = true
+        end
+    end)
+
+    RegisterNetCmd(self)
+end
+
+-- 接受服务器时间
+function GameMgr:OnNetCmd_GCServerTimeResponse(scmd)
+    CS.TimerManager.Instance:SetServerTimer(scmd.ServerTime);
+end
+
+function GameMgr:MessageLogout(scmd)
+    -- local cmd = {
+    --     Type = 'LOGIN_OUT_NORMAL_QUIT'
+    -- }
+    -- NetMgr:SendCmdNew('CGLoginOut', cmd)
+end
+
+-- function GameMgr:UpdateInfo()
+--     NetMgr:Update()
+-- end
+
+-- -- beat事件的注册
+-- function GameMgr:BeatInit()
+--     UpdateBeat:Add(self.UpdateInfo, self)
+-- end
+
+-- function GameMgr:OnNetCmd_GCCharMove(msg)
+--     log("OnNetCmd_GCCharMove协议接收")
+-- end
+
+function GameMgr:OnNetCmd_GCRetMoneyChange(msg)
+    -- showTable(msg,"elee")
+    if msg.MoneyType == "CURRENCY_MONEY" then
+        local count = msg.CurNum - PlayerModel.Money
+        PlayerModel.Money = msg.CurNum
+        if count > 0 and PropModel.isMatch == 0 then
+            local itemshow = UIMgr:Open("Common", "GetItemPanel")
+            itemshow:Add(string.format(TextMgr:GetText("GetItemPanel_txt"),
+                             TextMgr:GetText("ItemName00001") .. "x" .. count))
+        end
+    elseif msg.MoneyType == "CURRENCY_TOKENCOIN" and msg.ShowFlag ==true then
+        local count = msg.CurNum - PlayerModel.TokenCoin
+        PlayerModel.TokenCoin = msg.CurNum
+        if count > 0 and PropModel.isMatch == 0 then
+            local itemshow = UIMgr:Open("Common", "GetItemPanel")
+            itemshow:Add(string.format(TextMgr:GetText("GetItemPanel_txt"),
+                             TextMgr:GetText("ItemName00002") .. "x" .. count))
+        end
+    elseif msg.MoneyType == "CURRENCY_TOKENCOIN" and msg.ShowFlag == false then -- 第一次登录时请求钻石数量，不显示飘字
+        PlayerModel.TokenCoin = msg.CurNum
+    elseif msg.MoneyType == "CURRENCY_KEY" then
+        PlayerModel.MysteryKey = msg.CurNum
+        if msg.IsAdd==1 and PropModel.isMatch == 0 then
+            local itemshow = UIMgr:Open("Common", "GetItemPanel")
+            itemshow:Add(string.format(TextMgr:GetText("GetItemPanel_txt"),
+                             TextMgr:GetText("ItemName00116") .. "x" .. msg.ChangeNum))
+        end
+    end
+    MessageMgr:LuaMessageNotify(GameDefine.ChangeMoney)
+end
+
+-- 跨天
+function GameMgr:OnNetCmd_GCDailyReset(msg)
+    if msg.reset then
+        for key, value in pairs(msg.reset) do
+            if value == "DR_HORSEMARKET" then -- 马市刷新
+                BuyingHorsesModel:Reset();
+                NetMgr:SendCmdNew('CGAskNewMarketHorseList', {});
+            end
+        end
+    end
+end
+
+function GameMgr:OnNetCmd_GCDisconnect(msg)
+    --被顶号提示
+    error("断开链接"..msg.Reason)
+    if msg.Reason == 70 then
+        GameDefine.NoConnect = true
+        UIMgr:OpenMessageBox(TextMgr:GetText("TopNumber"), function()
+            GameDefine.NoConnect = false
+            NetMgr:ResetLogin()            
+        end, function()
+        end, 1, nil, nil, UIMgr.UILayer.SystemBox)
+        return
+    end
+end
+-- -- 副本开始协议
+-- function GameMgr:OnNetCmd_GCRetStartCopyScene(msg)
+
+-- end
+
+-- -- 同步创建物品  MMO的逻辑
+-- function GameMgr:OnNetCmd_GCNewObj(msg)
+
+-- end
+
+-- -- 同步删除某个模型
+-- function GameMgr:OnNetCmd_GCDelObject(msg)
+
+-- end
+
+-- 商城玩家操作数据返回
+-- function GameMgr:OnNetCmd_GCRetStoreBuyData(scmd)
+-- if rawget(scmd, "MoodValue") then
+-- 	MoodValue = scmd.MoodValue
+-- 	GameShopView.vars.Lab_MoodValue.text = scmd.MoodValue
+-- end
+
+-- if scmd.BoughtList ~= nil then
+-- 	for i,v in pairs(scmd.BoughtList) do
+-- 		if v.DailyBuyCount then
+-- 			shopDataList[StoreType[v.Type]][v.Index].DailyBuyCount = v.DailyBuyCount
+-- 		end
+-- 		if v.BirthBuyCount then
+-- 			shopDataList[StoreType[v.Type]][v.Index].BirthBuyCount = v.BirthBuyCount
+-- 		end
+-- 		if v.WeekBuyCount then
+-- 			shopDataList[StoreType[v.Type]][v.Index].WeekBuyCount = v.WeekBuyCount
+-- 		end
+-- 		if v.MonthBuyCount then
+-- 			shopDataList[StoreType[v.Type]][v.Index].MonthBuyCount = v.MonthBuyCount
+-- 		end
+-- 		if v.ServerBuyCount then
+-- 			shopDataList[StoreType[v.Type]][v.Index].ServerBuyCount = v.ServerBuyCount
+-- 		end
+-- 	end
+-- end
+-- MoodCD = scmd.LeftCDTime
+-- end
+
+function GameMgr:OnNetCmd_GCRetRelation(scmd)
+    if scmd.OpType == "RET_RELATION_OPERATION_BE_DELFRIEND" then
+        if GameDefine.FriendVisit then
+            UIManager.Instance:HideAllBaseUI()
+            GameDefine.FriendVisit = false
+            SceneMgr:LoadScene("Main", true)
+        end
+    end
+    local friendsPanel = UIManager.Instance:GetBaseUI("FriendsPanel")
+    if friendsPanel ~= nil then
+        friendsPanel:GCRetRelation(scmd)
+    end
+end
+
+return GameMgr
