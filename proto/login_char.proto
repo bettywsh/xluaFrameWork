@@ -1,0 +1,59 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+// Login与角色相关的操作.
+
+// 创建角色.
+message CLAskCreateChar
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_LOGIN_CHAR_CLAskCreateChar];
+	// 名字.
+	required string Name = 2;
+	// 账号.
+	required string Account = 3;
+	// GUID(客户端不需要上传).
+	optional sfixed64 CharGuid = 4;
+	// PlayerID(客户端不需要上传).
+	optional int32 PlayerId = 5;
+	// 性别.
+	required int32 Sex = 6;
+	// 模型.
+	required int32 Model = 7;
+	// 门派.
+	required int32 MenPai = 8;
+}
+
+// 创建角色返回.
+message LCRetCreateChar
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_LOGIN_CHAR_LCRetCreateChar];
+	// 创角返回结果.
+	required ASKCREATECHAR_RESULT Ret = 2;
+	// 账号.
+	required string Account = 3;
+	// CharGuid
+	//optional sfixed64 CharGuid = 4;
+	optional string CharGuid = 4;  //解决sfixed64 无法解析 先改为string
+}
+
+// 请求查询角色名是否重复.
+message CLAskIfNameUsed
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_LOGIN_CHAR_CLAskIfNameUsed];
+	// 名字.
+	required string Name = 2;
+	// 账号.
+	required string Account = 3;
+	// playerid(客户端不用发送).
+	optional int32 PlayerId =  4;
+}
+
+// 返回名字是否可用.
+message LCRetIfNameUsed
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_LOGIN_CHAR_LCRetIfNameUsed];
+	// 结果.
+	required ASKCREATECHAR_RESULT Result = 2;
+	// 账号.
+	required string Account = 3;
+}

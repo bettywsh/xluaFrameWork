@@ -1,0 +1,90 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+
+//请求时装列表
+message CGAskDressList
+{
+	optional PACKET_ID  PacketId = 1[default=PACKET_GAME_DRESS_CGAskDressList];
+}
+
+
+message DressInfo
+{
+	optional int32   DressId             = 1;  //时装的主键
+	optional int32   DressDataId         = 2;  //时装的数据id
+	optional int32   RemainEffectTime    = 3;  //时装剩余有效时间  如果是-1的话表示永久有效   其他大于0的数值表示剩余时间
+}
+
+
+//请求时装列表返回
+message GCRetDressList
+{
+	optional PACKET_ID       PacketId  = 1[default=PACKET_GAME_DRESS_GCRetDressList];
+	optional OPERATE_RESULT  Result    = 2;
+    repeated DressInfo       DressList = 3;
+}
+
+//请求时装购买
+message CGAskBuyDress
+{
+	optional PACKET_ID  PacketId     = 1[default=PACKET_GAME_DRESS_CGAskBuyDress];
+	optional int32      DressDataId  = 2;  //时装数据id
+	optional int32      TimeParam    = 3;  //时间参数
+}
+
+//请求穿戴时装
+message CGAskSwearDress
+{
+	optional PACKET_ID        PacketId = 1[default=PACKET_GAME_DRESS_CGAskSwearDress];
+	optional int32            DressId  = 2;  //前端请发我时装编号(不是时装数据id)
+}
+
+
+//请求穿戴时装返回
+message GCRetSwearDress
+{
+	optional PACKET_ID       PacketId  = 1[default=PACKET_GAME_DRESS_GCRetSwearDress];
+    optional OPERATE_RESULT  Result    = 2;
+	optional int32           DressId   = 3;
+}
+
+//请求脱掉时装
+message CGAskTakeOffDress
+{
+	optional PACKET_ID     PacketId  = 1[default=PACKET_GAME_DRESS_CGAskTakeOffDress];
+	optional int32         EquipPart = 2;
+}
+
+
+//请求脱掉时装
+message GCRetTakeOffDress
+{
+    optional PACKET_ID       PacketId  = 1[default=PACKET_GAME_DRESS_GCRetTakeOffDress];
+    optional OPERATE_RESULT  Result    = 2;
+}
+
+
+//通知客户端哪个时装失效
+message GCRetNoticeLostEffectDress
+{
+	optional PACKET_ID      PacketId    = 1[default=PACKET_GAME_DRESS_GCRetNoticeLostEffectDress];
+	optional int32          DressId     = 2;
+	optional int32          DressDataId = 3;
+}
+
+//通知客户端哪些时装已经自动激活(目前仅限江湖装)
+message GCRetDressActive
+{
+	optional PACKET_ID        PacketId          = 1[default=PACKET_GAME_DRESS_GCRetDressActive];
+	optional OPERATE_RESULT   Result            = 2;   //购买结果
+	optional int32            DressDataId       = 3;   //时装的数据id
+	optional int32            DressId           = 4;   //时装的编号id(作为主键)
+	optional int32            RemainEffectTime  = 5;   //时装剩余有效时间
+}
+
+
+
+
+
+

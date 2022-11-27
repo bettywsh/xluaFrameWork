@@ -1,0 +1,340 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+//请求背包相关数据
+message CGAskCharBagInfo
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_BAG_CGAskCharBagInfo];
+}
+
+message ItemData
+{
+	required int32 ItemId = 1;  //道具id
+	required int32 ItemCount = 2; //道具数量 
+}
+
+//背包容器信息
+message BagInfo
+{
+	required BAG_TYPE BagType  = 1 [default = BAG_NONE];
+	required int32    BagSize  = 2;  //背包容器的实际大小
+	repeated ItemInfo ItemInfoList = 3;
+}
+
+//请求背包数据返回
+message GCRetCharBagInfo
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_BAG_GCRetCharBagInfo];
+	repeated BagInfo BagInfoList = 2;
+}
+
+
+message GCRetCharItemInfo
+{
+	optional PACKET_ID PacketId = 1 [ default = PACKET_GAME_BAG_GCRetCharItemInfo];
+	optional OPERATE_RESULT Result   = 2;
+	optional int32 IsNull = 3;      //是否该格子上已经空了
+	optional int32 IsNew  = 4 [default = 0];      //是否是新获得
+	optional ItemInfo ItemInfo = 5;  
+}
+
+//穿装备请求
+message CGEquipItem
+{
+	optional PACKET_ID PacketId = 1 [ default = PACKET_GAME_BAG_CGEquipItem];
+	required sfixed64 ItemGUID = 2;  //物品的guid
+	required int32 EquipPart   = 3;  //装备部位
+	required int32 BagType     = 4;  //背包类型
+}
+
+//穿装备返回
+message GCRetEquipItem
+{
+	optional PACKET_ID PacketId      = 1 [ default = PACKET_GAME_BAG_GCRetEquipItem];
+	required sfixed64 ItemGUID       = 2;  //物品的guid
+	required int32 EquipPart         = 3;  //装备部位
+	required int32 BagType           = 4;  //背包类型
+	optional ItemInfo ItemInfo       = 5;  //物品信息
+	repeated HoleGemInfo  HoleInfo   = 6;  //装备部位上的孔位信息 
+}
+
+//脱装备请求
+message CGUnEquipItem
+{
+	optional PACKET_ID PacketId = 1 [ default = PACKET_GAME_BAG_CGUnEquipItem];
+	required int32 EquipPart    = 2;  //装备部位
+	required int32 BagType      = 3;  //背包类型
+}
+
+//脱装备返回
+message GCRetUnEquipItem
+{
+	optional PACKET_ID PacketId = 1 [ default = PACKET_GAME_BAG_GCRetUnEquipItem];
+	optional OPERATE_RESULT Result   = 2;
+	required int32 EquipPart         = 3;  //装备部位
+	required int32 BagType           = 4;  //背包类型
+	optional sfixed64 ItemGUID       = 5;  //物品的guid
+	
+}
+
+
+//请求装备信息
+message CGAskEquipList
+{
+	optional PACKET_ID PacketId = 1 [ default = PACKET_GAME_BAG_CGAskEquipList];
+}
+
+//请求装备信息返回( 按照部位信息来发送，即使该部位没有装备，也要发送相关信息)
+message GCRetEquipList
+{
+	optional PACKET_ID PacketId = 1 [ default = PACKET_GAME_BAG_GCRetEquipList];
+	repeated EquipData EquipList = 2; //装备列表
+}
+
+//请求背包格子解锁( 背包空间可用空间变大)
+message CGAskCharUnLockBag
+{
+	optional PACKET_ID PacketId   = 1 [default = PACKET_GAME_BAG_CGAskCharUnLockBag];
+	optional BAG_TYPE  BagType    = 2;  //背包类型
+	optional int32     UnLockSize = 3;  //要解锁的格子数量
+}
+
+//请求背包格子解锁返回
+message GCRetCharUnLockBag
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_BAG_GCRetCharUnLockBag];
+	optional OPERATE_RESULT Result   = 2;
+	optional BagInfo        BagInfo  = 3;  //背包信息(我只发这个背包的类型和背包的大小)
+}
+
+//随身商店物品购买		
+message CGAskBagShopBuy
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_BAG_CGAskBagShopBuy];
+	required int32          SellId   = 2;    //出售编号
+	required int32          BuyNum   = 3;    //购买数量
+}
+
+message GCRetBagShopBuy
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_BAG_GCRetBagShopBuy];
+	optional OPERATE_RESULT Result   = 2;   //结果
+}
+
+//装备强化
+message CGAskUpGradeEquip
+{
+	optional PACKET_ID     PacketId   = 1 [ default = PACKET_GAME_BAG_CGAskUpGradeEquip];
+	required int32         EquipPart  = 2;  //装备部位
+	required int32         IsOneKey   = 3;  //是否是一键强化
+}
+
+message GCRetUpGradeEquip
+{
+	optional PACKET_ID     PacketId   = 1 [ default = PACKET_GAME_BAG_GCRetUpGradeEquip];
+	required int32         EquipPart  = 2;  //装备部位
+	required int32         IsOneKey   = 3;  //是否一键强化
+	required OPERATE_RESULT Result    = 4;  //强化结果
+	optional int32         EquipPartLevel = 5;  //装备部位的等级 
+}
+
+
+
+//装备升星
+message CGAskUpStarEquip
+{
+	optional PACKET_ID     PacketId   = 1 [ default = PACKET_GAME_BAG_CGAskUpStarEquip];
+	required int32         EquipPart  = 2;  //装备部位
+	required sfixed64      EquipGUID  = 3;  //装备GUID
+	required int32         IsProtect  = 4;  //是否使用保护符进行等级保护
+}
+
+//装备升星返回
+message GCRetUpStarEquip
+{
+	optional PACKET_ID     PacketId   = 1 [ default = PACKET_GAME_BAG_GCRetUpStarEquip];
+	required int32         EquipPart  = 2;  //装备部位
+	required sfixed64      EquipGUID  = 3;  //装备GUID
+	required int32         IsProtect  = 4;  //是否使用保护符进行等级保护
+	required OPERATE_RESULT Result    = 5;  //强化结果
+	optional int32         EquipStar  = 6;  //装备升星后星级
+}
+   
+//请求装备星级转移
+message CGAskTransEquipStar
+{
+	optional PACKET_ID     PacketId  = 1[default=PACKET_GAME_BAG_CGAskTransEquipStar];
+	required int32         EquipPart  = 2;  //要转移的装备部位
+	required sfixed64      EquipGUID  = 3;  //装备GUID
+}
+
+//请求装备星级转移返回
+message GCRetTransEquipStar
+{
+	optional PACKET_ID       PacketId   = 1[default=PACKET_GAME_BAG_GCRetTransEquipStar];
+	required OPERATE_RESULT  Result     = 2;  //装备星级转移结果
+}
+
+
+//物品使用		
+message CGAskUseItem
+{
+	optional PACKET_ID    PacketId = 1[default=PACKET_GAME_BAG_CGAskUseItem];
+	required BAG_TYPE     BagType  = 2;
+	optional sfixed64     ItemGUID = 3; //要使用的物品的guid
+	optional int32        ItemNum  = 4; //数量 
+}
+
+//物品使用返回
+message GCRetUseItem
+{
+	optional PACKET_ID      PacketId = 1[default=PACKET_GAME_BAG_GCRetUseItem];
+	required OPERATE_RESULT Result    = 2;  //物品使用结果
+}
+
+//物品出售
+message CGAskSellItem
+{
+	optional PACKET_ID    PacketId   = 1[default=PACKET_GAME_BAG_CGAskSellItem];
+	required sfixed64     ItemGUID   = 2;   //物品的数量
+    required sint32	      ItemId     = 3;   //物品的模板id
+}
+
+//物品出售返回
+message GCRetSellItem
+{
+	optional PACKET_ID      PacketId  = 1[default=PACKET_GAME_BAG_GCRetSellItem];
+	required OPERATE_RESULT Result    = 2;  //物品出售结果
+	optional int32          MoneyNum  = 3;  //获得金币的数量
+}
+		
+//请求装备部位宝石镶嵌
+message CGAskHoleGem
+{
+	optional PACKET_ID     PacketId   = 1[default=PACKET_GAME_EQUIP_CGAskHoleGem];
+	optional int32         EquipPart  = 2;  //装备部位
+    optional int32         ItemId     = 3;  //要装备宝石的itemid
+    optional int32         HoleId     = 4;	//孔位
+}
+
+//装备镶嵌宝石返回
+message GCRetHoleGem
+{
+	optional PACKET_ID      PacketId   = 1[default=PACKET_GAME_EQUIP_GCRetHoleGem];
+    required OPERATE_RESULT Result    = 2;  //镶嵌结果
+	optional int32          EquipPart  = 3;  //装备部位
+	optional int32          HoleId     = 4;  //孔位
+	optional int32          GemId      = 5;  //宝石id
+
+}
+
+//请求卸掉装备部位镶嵌的宝石
+message CGAskRemoveHoleGem
+{
+    optional PACKET_ID     PacketId   = 1[default=PACKET_GAME_EQUIP_CGAskRemoveHoleGem];
+	optional int32         EquipPart  = 2;  //装备部位
+	optional int32         HoleId     = 3;  //孔位
+}
+
+//请求装备部位卸载镶嵌宝石返回
+message GCRetRemoveHoleGem
+{
+	optional PACKET_ID      PacketId   = 1[default=PACKET_GAME_EQUIP_GCRetRemoveHoleGem];
+	required OPERATE_RESULT Result     = 2;  //去除镶嵌结果
+	optional int32          EquipPart  = 3;  //装备部位
+	optional int32          HoleId     = 4;  //孔位
+	
+}
+   
+//请求宝石合成
+message CGAskGemCompound
+{
+	optional PACKET_ID     PacketId   = 1[default=PACKET_GAME_EQUIP_CGAskGemCompound];
+	optional int32         ItemId     = 2; //Itemid 为-1时表示 表示对装备部位上的宝石进行升级
+	optional int32         EquipPart  = 3;
+	optional int32         HoleId     = 4;   
+}
+
+
+//请求宝石合成返回
+message GCRetGemCompound
+{
+    optional PACKET_ID      PacketId    = 1[default=PACKET_GAME_EQUIP_GCRetGemCompound];
+	required OPERATE_RESULT Result      = 2;  //宝石合成结果
+	optional int32          EquipPart   = 3;  //装备部位
+	optional int32          HoleId      = 4;  //孔位
+	optional int32          GemId       = 5;  //合成的宝石id
+}
+
+
+message PartOpenedHole
+{
+	optional int32       EquipPart = 1;   //装备部位
+	repeated HoleGemInfo HoleInfo  = 2;   //孔位信息
+}
+
+//当条件满足时  通知客户端哪些部位上面的开孔的数据
+message GCRetOpenHole
+{
+    optional PACKET_ID          PacketId         = 1[default=PACKET_GAME_EQUIP_GCRetOpenHole];
+	repeated PartOpenedHole     PartOpenHoleInfo = 2;
+}
+
+//请求装备属性洗练
+message CGAskEquipAttrRefine
+{
+	optional PACKET_ID         PacketId   = 1[default=PACKET_GAME_EQUIP_CGAskEquipAttrRefine];
+	optional int32             EquipPart  = 2;   //装备部位编号  如果是-1表示背包里面的装备
+	optional sfixed64          EquipGUID  = 3;   //装备的GUID
+}
+
+
+//请求装备属性洗练返回
+message GCRetEquipAttrRefine
+{
+	optional PACKET_ID         PacketId     = 1[default=PACKET_GAME_EQUIP_GCRetEquipAttrRefine];
+	optional OPERATE_RESULT    Result       = 2;   //洗练结果
+	optional int32             EquipPart    = 3;   //装备部位编号  如果是-1表示背包里面的装备
+	optional sfixed64          EquipGUID    = 4;   //装备的GUID
+	repeated EquipAttr         RefinedAttr  = 5;   //洗练之后附加属性值(未保存的时候的属性)
+}
+
+//请求保存装备洗练属性
+message CGAskSaveEquipRefinedAttr
+{
+	optional PACKET_ID         PacketId   = 1[default=PACKET_GAME_EQUIP_CGAskSaveEquipRefinedAttr];
+	optional int32             EquipPart  = 2;   //装备部位编号  如果是-1表示背包里面的装备
+	optional sfixed64          EquipGUID  = 3;   //装备的GUID
+}
+
+//请求保存装备洗练属性返回
+message GCRetSaveEquipRefinedAttr
+{
+	optional PACKET_ID        PacketId    = 1[default=PACKET_GAME_EQUIP_GCRetSaveEquipRefinedAttr];
+	optional OPERATE_RESULT   Result      = 2;  //保存的结果
+	optional int32            EquipPart   = 3;  //装备部位  -1表示背包里面的物品
+	optional sfixed64         EquipGUID   = 4;  //装备的GUID
+    repeated EquipAttr        ExtAttr     = 5;  //装备的额外属性
+}   
+
+//请求锁定装备额外属性
+message CGAskLockEquipExtAttr
+{
+	optional PACKET_ID        PacketId   = 1[default=PACKET_GAME_EQUIP_CGAskLockEquipExtAttr];
+    optional int32            EquipPart  = 2;   //装备部位编号  如果是-1表示背包里面的装备
+	optional sfixed64         EquipGUID  = 3;   //装备的GUID
+	optional int32            AttrIndex  = 4;   //额外属性下标
+}
+
+//请求锁定装备额外属性返回
+message GCRetLockEquipExtAttr
+{
+    optional PACKET_ID        PacketId   = 1[default=PACKET_GAME_EQUIP_GCRetLockEquipExtAttr];
+	optional OPERATE_RESULT   Result     = 2;
+    optional int32            EquipPart  = 3;   //装备部位编号  如果是-1表示背包里面的装备
+	optional sfixed64         EquipGUID  = 4;   //装备的GUID
+	optional int32            AttrIndex  = 5;   //额外属性下标
+
+}
+
+

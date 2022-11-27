@@ -1,0 +1,468 @@
+import "msgdef.proto";
+
+//玩家同步相关的协议
+//
+//
+
+option optimize_for=LITE_RUNTIME;
+
+
+
+//------------------Obj的创建和销毁---------------------------------------
+//服务器通知客户端创建新对象(玩家，怪物，宠物，设施等等).
+message NewChar
+{
+	//ObjID,客户端需要判断当前Obj是否存在。如果不存在就创建一个.
+	required int32 ObjID = 1;
+	//当前的位置.
+	required AAAWORLDPOS PosCurrent = 2;
+	//面朝的方向 围绕Y轴（范围：0~2PI）.
+										//
+										//    z轴正方向（0或者2PI） 
+										//         \   |   /
+										// 		     \ | /
+										// 3/2PI  ----   ----  x轴正方向 (1/2PI)
+										//           / | \
+										//         /   |   \
+										//             PI .
+	optional float Dir = 3;
+	//装备版本号(只针对玩家).
+	optional int32 EquipVer = 4;
+	//移动速度.
+	optional float MoveSpeed = 5;
+	//对象类型(区分玩家，怪物，设施等).
+	required int32 ObjType = 6;
+	//模板ID(针对操作平台等不需要GCCharBase的).
+	optional int32 TemplateID = 7;
+	//参数(针对客户端的创建角色太慢的BUG，需要在New包里面加参数表示对象外观).
+	optional int32 Parameter = 8;	
+}
+
+
+//服务器通知客户端创建新对象(移动)(玩家，怪物，宠物，设施等等).
+message NewCharMove
+{
+	//角色的ObjID,客户端需要判断当前Obj是否存在。如果不存在就创建一个.
+	required int32 ObjID = 1;
+	//当前的位置.
+	required AAAWORLDPOS PosCurrent = 2;
+	//面朝的方向 围绕Y轴（范围：0~2PI）.
+										//
+										//    z轴正方向（0或者2PI） 
+										//         \   |   /
+										// 		     \ | /
+										// 3/2PI  ----   ----  x轴正方向 (1/2PI)
+										//           / | \
+										//         /   |   \
+										//             PI .
+	required float Dir = 3;
+	//装备版本号(玩家).
+	optional int32 EquipVer = 4;
+	//移动速度.
+	required float MoveSpeed = 5;
+    //移动的目标位置.
+	required AAAWORLDPOS PosTarget = 6;
+	//对象类型(区分玩家，怪物，设施等).
+	required int32 ObjType = 7;
+	//参数(针对客户端的创建角色太慢的BUG，需要在New包里面加参数表示对象外观).
+	optional int32 Parameter = 8;
+}
+
+//服务器通知客户端创建新对象(死亡)(玩家，怪物，宠物，设施等等).
+message NewCharDeath
+{
+	//角色的ObjID,客户端需要判断当前Obj是否存在。如果不存在就创建一个.
+	required int32 ObjID = 1;
+	//当前的位置.
+	required AAAWORLDPOS PosCurrent = 2;
+	//面朝的方向 围绕Y轴（范围：0~2PI）.
+										//
+										//    z轴正方向（0或者2PI） 
+										//         \   |   /
+										// 		     \ | /
+										// 3/2PI  ----   ----  x轴正方向 (1/2PI)
+										//           / | \
+										//         /   |   \
+										//             PI .
+	required float Dir = 3;
+	
+	//装备版本号(玩家).
+	optional int32 EquipVer = 4;
+	//对象类型(区分玩家，怪物，设施等).
+	required int32 ObjType = 5;
+	//参数(针对客户端的创建角色太慢的BUG，需要在New包里面加参数表示对象外观).
+	optional int32 Parameter = 6;
+}
+
+//服务器通知客户端创建新对象(玩家，怪物，宠物，设施等等).
+message GCNewObj
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCNewObj];
+	
+	repeated NewChar  		newchar 		= 2;
+	repeated NewCharMove  	newcharmove 	= 3;
+	repeated NewCharDeath  	newchardeath 	= 4;
+}
+message DelObject
+{
+	required int32 ObjID = 1;
+
+	required int32 SceneID =2;
+	
+	optional DelObjReason Reason = 3;
+	
+}
+
+message GCDelObject
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCDelObject]; 
+
+	repeated DelObject delobject = 2;
+}
+
+//---------------------------------移动的同步----------------------------------
+
+//设置玩家朝向.
+message CGCharDir
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_CGCharDir];
+	//角色的ObjID，暂无其他用途用作校验使用，或者有操控多个Obj的情况.
+	required int32 ObjID = 2;
+	//服务器当前Obj的逻辑计数器.用于客户端判断是否需要立刻显示还是压栈处理，流畅情况下是用不到的.
+	required int32 LogicCount = 3;
+	//当前Obj的朝向
+	required float fDir = 4;
+}
+
+//广播玩家朝向.
+message GCCharDir
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCCharDir];
+	//角色的ObjID，客户端用作判断属于那个Obj的。客户端需要依据此ID查找出对应的Obj，用于移动
+	//如果找不到Obj，这种情况理论上是不应该发生的.
+	required int32 ObjID = 2;
+	//服务器当前Obj的逻辑计数器.用于客户端判断是否需要立刻显示还是压栈处理，流畅情况下是用不到的.
+	required int32 LogicCount = 3;
+	//obj新朝向.
+	required float fDir = 4;
+	//移动开始时间(发送时的服务器时间).
+	optional int32 StartTime = 5;
+}
+
+//玩家发起角色移动.
+message CGCharMove
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_CGCharMove];
+	//角色的ObjID，暂无其他用途用作校验使用，或者有操控多个Obj的情况.
+	required int32 ObjID = 2;
+	//服务器当前Obj的逻辑计数器.用于客户端判断是否需要立刻显示还是压栈处理，流畅情况下是用不到的.
+	required int32 LogicCount = 3;
+	//当前Obj的位置.
+	required AAAWORLDPOS PosCurrent = 4;
+	//目标位置，线段的连接点
+	//  A----B\
+	//         \
+	//		     C\----D
+	//A到D点，会发送B点,C点,D点坐标.
+	repeated AAAWORLDPOS PosTarget = 5;
+}
+
+
+//服务器通知其他客户端，有一个Obj开始移动.
+message GCCharMove
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCCharMove];
+	//角色的ObjID，客户端用作判断属于那个Obj的。客户端需要依据此ID查找出对应的Obj，用于移动
+	//如果找不到Obj，这种情况理论上是不应该发生的.
+	required int32 ObjID = 2;
+	//移动开始时间(发送时的服务器时间).
+	required int32 StartTime = 3;
+	//服务器当前Obj的逻辑计数器.用于客户端判断是否需要立刻显示还是压栈处理，流畅情况下是用不到的.
+	required int32 LogicCount = 4;
+	//移动的目标位置.
+	required AAAWORLDPOS PosTarget = 5;
+	
+	//(以下内容当服务器的当前角色正在进行上次移动的时候存在)使整条协议相当于一个停止移动协议和一个开始移动协议.
+	
+	//是否需要停止当前的移动.
+	optional bool IsStopMove = 6 [default=false];
+	//停止的逻辑计数器.
+	optional int32 StopLogicCount = 7 ;
+	//停下来的坐标，如果不一致一定要有拉人逻辑，不然会导致人物的的移动轨迹偏差越来越大.
+	optional AAAWORLDPOS PosStop = 8;
+	
+}
+
+// 瞬拉.
+message GCTeleport
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCTeleport];
+	// id
+	required int32 ObjID = 2;
+	// 坐标
+	required AAAWORLDPOS PosStop = 3;
+}
+
+
+//服务器通知到达。起因可能是该Obj主动发送了Skill,Stop,Idle中断,或者因为角色死亡。中了技能等等情况引起的被动中断.
+message GCArrive
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCArrive];
+	//角色的ObjID，客户端用作判断属于那个Obj的。客户端需要依据此ID查找出对应的Obj.
+	//如果找不到Obj，这种情况理论上是不应该发生的.
+	required int32 ObjID = 2;
+	//停下来的位置.
+	required AAAWORLDPOS PosStop = 3;
+}
+
+//服务器对客户端移动请求的响应结果。可能原因第一是障碍格问题出错，第二是没有出错只是路径截短下发服务器计算的路径点.
+message GCCharMoveResult
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCCharMoveResult];
+	//服务器当前Obj的逻辑计数器.用于客户端判断是否需要立刻显示还是压栈处理，流畅情况下是用不到的.
+	required int32 LogicCount = 2;
+	// 操作错误编号.
+	required int32 Result = 3;
+	// 服务器计算的路径点.
+	repeated AAAWORLDPOS PosTarget = 4;
+}
+//CGCharPositionWarp GCObjTeleport
+//客户端发现与服务器端的位置不同步，发起的交换.
+//服务器端能容忍的交换偏差   DEF_SERVER_ADJUST_POS_WARP_DIST 5.f.
+//当大于DEF_SERVER_ADJUST_POS_WARP_DIST * 0.02f ，使用服务器端的位置，当小于使用位置交换.
+
+
+// 停止当前动作(动作时间到或者被其他动作打断).
+message GCCharStopAction
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCCharStopAction];
+	// 动作主角的ID.
+	required int32 ObjID = 2;
+	// 动作主角的逻辑记数.
+	required int32 LogicCount = 3;
+	// 当前技能id
+	required int32 SkillID = 4;
+	
+}
+
+// 广播技能动作(一般用于瞬发或者吟唱技能吟唱结束后的动作).
+message GCCharSkillSend
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCCharSkillSend];
+	// 施法者ID.
+	required int32 ObjID = 2;
+	// 施法者逻辑记数.
+	required int32 LogicCount = 3;
+	// 技能ID.
+	required int32 SkillID = 4;
+	// 施法者坐标.
+	required AAAWORLDPOS posCaster = 5;
+	// 技能目标ID.
+	required int32 targetObjID = 6;
+	// 技能目标坐标.
+	required AAAWORLDPOS posTarget = 7;
+	// 技能目标方向.
+	optional float Dir = 8;
+	// 技能动作时间.
+	optional int32 ActionTime = 9;
+	// 技能等级.
+	optional int32 SkillLv = 10;
+}
+
+
+// 治疗和伤害血量变化.
+message GCDetailHealsAndDamages
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCDetailHealsAndDamages];
+	// 目标ID.
+	required int32 ReceiverID = 2;
+	// 施法者ID.
+	required int32 SenderID = 3;
+	// 施法者逻辑记数.
+	required int32 LogicCount = 4;
+	// 血量.
+	required int32 HpModify = 5;
+	// 是否暴击伤害.
+	optional int32 IsCritical = 6;
+	// 伤害来源技能ID.
+	optional int32 SkillID	= 7;
+	// 伤害来源技能ID等级.
+	optional int32 SkillLv = 8;
+	// 是否为Miss
+	optional int32 IsMiss = 9;
+}
+
+// 死亡通知.
+message GCCharDie
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCCharDie];
+	// 目标ID.
+	required int32 ObjID = 2;
+	// 攻击者ID.
+	required int32 KillerID = 3;
+}
+
+// 复活.
+message CGAskRelive
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_CGAskRelive]; 
+	required ReliveType Type = 2; // 复活类型
+}
+
+// 复活成功响应
+message GCReliveResponse
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCReliveResponse]; 
+	required OPERATE_RESULT Result = 2;
+	optional int32 ObjID = 3;
+}
+
+// 校验位移坐标.
+message CGVerifyCharDriftPos
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_CGVerifyCharDriftPos];
+	// 当前位置.
+	required AAAWORLDPOS CurPos = 2;
+}
+
+// 纠正客户端坐标位置.
+message GCCorrectCharPos
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCCorrectCharPos];
+	// 目标ID.
+	required int32 ObjID = 2;
+	// 当前位置.
+	required AAAWORLDPOS CurPos = 3;
+}
+
+//------------------------------------以下为状态同步------------------------------------------------------
+//客户端发送给服务器，Obj处于Idle状态.
+message CGCharIdle
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_CGCharIdle];
+	//角色的ObjID，客户端用作判断属于那个Obj的。客户端需要依据此ID查找出对应的Obj
+	//如果找不到Obj，这种情况理论上是不应该发生的.
+	required int32 ObjID = 2;
+	//客户端认为的停下来的位置，服务器需要中断该玩家当前的所有动作.
+	required AAAWORLDPOS PosCurrent = 3;
+}
+//-------------------------------跳转点切换场景---------------------------------------------------
+message CGAskTransmit
+{
+	optional PACKET_ID              PacketId       = 1 [default=PACKET_GAME_SYN_CGAskTransmit]; 
+	required int32 	                TransmitId     = 2;         //Transmit == -1 时 表示进入地图,不走传送点流程 前段发送地图id
+	
+	//进入副本需要发该字段
+	optional int32                  DestMapId      = 3;   
+	optional AAAWORLDPOS            DestPos        = 4;
+	optional float                  Dir            = 5;
+	optional COPYSCENE_ENTER_TYPE   EnterType      = 6[default=PERSONAL_ENTER_TYPE];  //进入副本的形式
+}
+
+message GCRetTransmit
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_GCRetTransmit];
+	required TransmitResult	Result = 2;
+	required int32 Key = 3;
+	required int32 TransmitId = 4;
+	required bool ChangeScene = 5; //是否需要切场景
+	// 以下字段为切换到不同Server的场景时使用.
+	// 服务器IP.
+	optional string IP = 6;
+	// 服务器端口.
+	optional int32 Port = 7;
+	
+}
+
+message CGLockedTarget
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_SYN_CGLockedTarget]; 
+	required int32 ObjID = 2;
+}
+//-----------------------------副本相关------------------------------
+message GCRetSetCopySceneDynamicBlock
+{
+	optional PACKET_ID      PacketId            = 1 [default=PACKET_GAME_SYN_GCRetSetCopySceneDynamicBlock];
+	required OPERATE_RESULT Result              = 2;  //返回的结果
+	required sfixed64       SceneId             = 3;  //做验证
+	required int32          DynamicObsId        = 4;  //动态障碍格的id
+	required int32          IsSetDynamicBlockId = 5;  // 0 放置障碍格  1 取消障碍格
+}
+
+message GCRetCopySceneStagInfo
+{
+	optional PACKET_ID PacketId        = 1 [default = PACKET_GAME_SYN_GCRetCopySceneStagInfo ];
+	required sfixed64  SceneId         = 2;     //场景id
+	required int32     StagId          = 3;     //阶段id
+	optional int32     TotalMonsterNum = 4;     // 副本当前怪物总数
+	optional int32     KillMonsterNum  = 5;     // 当前击杀数量
+	required int32     CopySceneId     = 6;     // 副本id
+}
+
+
+message GCRetPassCopyScene
+{
+	optional PACKET_ID      PacketId        = 1 [default = PACKET_GAME_SYN_GCRetPassCopyScene ];
+	required sfixed64       SceneId         = 2;       //场景id
+	required OPERATE_RESULT Result          = 3;       //通关副本结果
+	required int32          PassTime        = 4;       //通关所用时间
+	required int32          Star            = 5;       //通关星级
+	required int32          MaxBatter       = 6;       //最大连击
+	repeated ItemInfo       Rewards         = 7;       //副本奖励
+	required int32          CopySceneId     = 8;       //副本id
+}
+
+
+
+message CGAskExitCopyScene
+{
+	optional PACKET_ID     PacketId = 1 [ default = PACKET_GAME_SYN_CGAskExitCopyScene];
+	required sfixed64      SceneId  = 2 ; //场景id  做验证
+}
+
+message GCRetExitCopyScene
+{
+	optional PACKET_ID     PacketId = 1 [ default = PACKET_GAME_SYN_GCRetExitCopyScene];
+	required sfixed64      SceneId  = 2 ;  //副本场景id  做验证
+	required OPERATE_RESULT Result  = 3;   //退出副本结果
+}
+
+
+//------------------------------分线相关-----------------------
+// 请求当前场景分线状态.
+message CGAskSceneThreadStatus
+{
+	optional PACKET_ID		PacketId = 1 [default=PACKET_GAME_SYN_CGAskSceneThreadStatus];
+}
+
+// 返回场景分线状态.
+message GCRetSceneThreadStatus
+{
+	optional PACKET_ID				PacketId=1 [default=PACKET_GAME_SYN_GCRetSceneThreadStatus];
+	repeated SCENE_THREAD_STATUS	Status=2;	// 该场景各个分线的状态.
+}
+//----------------------PING----------------------------
+//PING
+message CGAskPing
+{
+	optional PACKET_ID		PacketId=1 [default=PACKET_GAME_SYN_CGAskPing];
+}
+message GCRetPing
+{
+	optional PACKET_ID		PacketId=1 [default=PACKET_GAME_SYN_GCRetPing];
+}
+//--------------------通知客户端断线--------------------
+message GCDisconnect
+{
+	optional PACKET_ID		PacketId=1 [default=PACKET_GAME_SYN_GCDisconnect];
+	required DISCONNECT_REASON_TYPE Reason=2;	//断线原因.
+}
+
+//---------------------通知客户端BOSS出生-----------------
+message GCNotifyBossBirth
+{
+	optional PACKET_ID		PacketId=1 [default=PACKET_GAME_SYN_GCNotifyBossBirth];
+	//BOSS的dataid，对应怪物表ID
+	required int32 DataId = 2; 
+	optional int32 PlotId = 3;
+}

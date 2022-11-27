@@ -1,0 +1,172 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+//活动信息请求
+message CGAskActivityData
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_CGAskActivityData]; 
+}
+//活动具体信息
+message ActivityData
+{
+	optional int32 ActivityID = 1;  //活动ID
+	optional int32 ActivityOpenStauts = 2; //活动开启状态
+	optional int32 ActivityJoinStatus = 3; //活动参与状态
+	repeated int32 ActivityProgress = 4;  //活动进度
+	optional int32 ActivityFinishStatus = 5; //活动完成状态
+}
+//活动信息返回
+message GCRetActivityData
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCRetActivityData]; 
+	repeated ActivityData ActivityList = 2; //活动列表
+}
+//活动参与请求
+message CGAskJoinActivity
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_CGAskJoinActivity]; 
+	optional int32 ActivityId  = 2; //活动ID
+}
+//活动参与响应
+message GCRetJoinActivity
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCRetJoinActivity]; 
+	optional int32 ActivityId = 2;
+	optional int32 RetCode = 3; //错误返回码
+}
+
+//活动进度更新请求
+message CGRefreshActivityProgress
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_CGRefreshActivityProgress];
+	optional int32 ProgressId = 2; //进度ID
+}
+
+//活动进度更新响应
+message GCRetRefreshActivityProgress
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCRetRefreshActivityProgress];
+	optional int32 RetCode = 2; //错误返回码
+}
+
+//请求参与怪物攻城活动
+message CGAskEnterSiegeActivity
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_CGAskEnterSiegeActivity]; 
+	required int32 ActivityId = 2;
+}
+
+//怪物攻城活动响应
+message GCRetEnterSiegeActivity
+{
+	optional PACKET_ID	PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCRetEnterSiegeActivity];
+	required OPERATE_RESULT Result = 2;
+	optional int32 MonsterDeaths = 3;  
+	optional int32 Score = 4;
+    optional int32 ActivityStage = 5;	
+	optional int32 ActivityId = 6;
+	optional int32 StageTarget = 7;
+	optional string StageName = 8;
+	optional int32 TimeRemaining = 9;   //阶段剩余时间秒数
+	optional int32 IsBoss = 10;         //1:Boss，0:小怪
+	optional int32 BossObjID = 11;    //boss  ObjID
+}
+
+//更新怪物攻城活动信息
+message GCUpdateSiegeActivityInfo
+{
+   optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCUpdateSiegeActivityInfo];
+   optional int32 MonsterDeaths = 2;   //死亡怪物总数
+   optional int32 Score = 3;           //玩家积分
+   optional int32 ActivityStage = 4;   //活动阶段
+   optional int32 StageTarget = 5;   //阶段杀怪目标数量
+   required int32 ActivityId = 6;
+   optional string StageName = 7;       //活动阶段名称  
+   optional int32 TimeRemaining = 8;   //阶段剩余时间秒数
+   optional int32 IsBoss = 9;         //1:Boss，0:小怪
+   optional int32 BossObjID = 10;     //boss  ObjID
+}
+
+//活动即将开启
+message GCActivityOpenInSeveralMinute
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCActivityOpenInSeveralMinute];
+	optional int32 ActivityId = 2;
+	optional int32 Minutes = 3;
+	
+}
+//活动正开启
+message GCActivityIsOpening
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCActivityIsOpening];
+	optional int32 ActivityId = 2;
+	optional int32 Minutes = 3;
+	
+}
+
+//怪物攻城活动排名信息
+message GCSendSiegeRankInfo
+{
+   optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ACTIVITY_GCSendSiegeRankInfo];
+   optional int32 Score = 2;             //玩家本人积分
+   optional int32 Rank = 3;              //本人排名
+   optional string KillerName = 4;       //击杀Boss的玩家Name
+   optional int32 KillerLevel = 5;       //击杀Boss的玩家等级
+   optional int32 KillerMenPai = 6;      //击杀Boss的玩家职业
+   optional string FirstName = 7;        //第一名玩家
+   optional string SecondName = 8;       //第二名玩家
+   optional string ThirdName = 9;        //第三名玩家
+   required int32 ActivityId = 10;
+}
+
+
+//请求活动列表
+message GWAskGetActivities
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_ACTIVITY_GWAskGetActivities];
+	optional int32 playerId = 2;
+}
+//响应活动列表
+message WGRetGetActivities
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_ACTIVITY_WGRetGetActivities];
+	repeated ActivityData ActivityList = 2; //活动列表
+	optional int32 playerId = 3;
+}
+message GWAskJoinActivity
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_ACTIVITY_GWAskJoinActivity];
+	optional int32 ActivityId = 2; //活动Id
+	optional sfixed64 Guid = 4;
+}
+message WGRetJoinActivity
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_ACTIVITY_WGRetJoinActivity];
+	optional int32 RetCode = 2;
+	optional int32 playerId = 3;
+	optional int32 ActivityId = 4;
+}
+message WGNotifyActivityStatus
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_ACTIVITY_WGNotifyActivityStatus];
+	optional int32 AcitivityId = 2;  //活动ID
+	optional int32 Status = 3;       //活动状态，即将开启0、已经开启1、活动奖励2
+	optional int32 Time = 4;         //剩余时间
+}
+message GWUpdateProgress
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_ACTIVITY_GWUpdateProgress];
+	optional int32 ActivityId = 2;
+	optional int32 Score = 3;
+	optional int32 Param1 = 4;
+	optional int32 Param2 = 5;
+	optional int32 Param3 = 6;
+}
+
+//PACKET_WG_ACTIVITY_GWAskGetActivities          = 40400; //请求活动列表
+//PACKET_WG_ACTIVITY_WGRetGetActivities          = 40401; //响应活动列表
+//PACKET_WG_ACTIVITY_GWAskJoinActivity              = 40402; //请求参与活动
+//PACKET_WG_ACTIVITY_WGRetJoinActivity              = 40403; //响应参与活动
+//PACKET_WG_ACTIVITY_WGNotifyActivityStatus         = 40404; //活动结束时广播活动奖励
+//PACKET_WG_ACTIVITY_GWUpdateProgress               = 40405; //刷新活动进度
+//PACKET_WG_ACTIVITY_WGRetUpdateProgress            = 40406; //刷新活动进展

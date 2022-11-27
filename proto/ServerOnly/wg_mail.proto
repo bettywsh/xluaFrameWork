@@ -1,0 +1,95 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+//请求邮件列表
+message	GWAskMailList
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_GWAskMailList];
+	// PlayerID.
+	required int32 PlayerId = 2;
+	// CharGuid.
+	required sfixed64 CharGuid = 3;
+	required QUERY_MAIL_TYPE Type = 4;
+}
+
+//响应邮件列表
+message WGRetMailList
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_WGRetMailList];
+	// PlayerID.
+	required int32 PlayerId = 2;
+	// CharGuid.
+	required sfixed64 CharGuid = 3; 
+	// Return.
+	required int32 Result = 4;
+	repeated MailInfo MailList = 5;
+	required QUERY_MAIL_TYPE Type = 6;
+}
+
+//请求读邮件
+message	GWAskReadMail
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_GWAskReadMail];
+	// PlayerID.
+	required int32 PlayerId = 2;
+	// CharGuid.
+	required sfixed64 CharGuid = 3;
+	
+	required int32 MailIndex = 4;
+	
+	required string Receiviewer = 5;
+}
+//响应读邮件
+message	WGRetReadMail
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_WGRetReadMail];
+	// PlayerID.
+	required int32 PlayerId = 2;
+	// CharGuid.
+	required sfixed64 CharGuid = 3;
+	
+	// Return.
+	required int32 Result = 4;
+	// one mail to be read
+	optional  MailInfo OneMail = 5;
+}
+//请求发送邮件
+message GWSendMail
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_GWSendMail];
+	// one mail to be sent
+	required  MailInfo OneMail = 2;
+}
+//响应发送邮件
+message WGRetSendMail
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_WGRetSendMail];
+	// PlayerID.
+	required int32 PlayerId = 2;
+	// CharGuid.
+	required sfixed64 CharGuid = 3;
+	// Return.
+	required int32 Result = 4;
+	// one mail to be sent
+	optional  MailInfo OneMail = 5;
+}
+//请求发送批量或全服邮件
+message GWBatchSendMail
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_GWBatchSendMail];
+	required int32 Type = 2;// 对应MAIL_SEND_TYPE
+	// one mail to be sent
+	required MailInfo OneMail = 3;
+	repeated string ReceiverList = 4; //收件人列表
+}
+//响应删除邮件
+message WGRetDelMail
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_MAIL_WGRetDelMail];
+	// PlayerID.
+	required int32 PlayerId = 2;
+	// CharGuid.
+	required sfixed64 CharGuid = 3;
+	// MailIndex.
+	required int32 MailIndex = 4;
+}

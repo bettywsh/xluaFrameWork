@@ -1,0 +1,93 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+//WG之间的登陆消息.
+
+// 请求FULLUSERDATA.
+message GWAskUserData
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_LOGIN_GWAskUserData];
+	// PlayerID.
+	required int32 PlayerId = 2;
+	//guid.
+	required sfixed64 CharGuid = 3;
+	//key.
+	required int32 Key = 4;
+	// 用户id.
+	required string UserId = 5;
+}
+
+
+// 请求FULLUSERDATA的返回消息.
+message WGRetUserData
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_LOGIN_WGRetUserData];
+	// 返回结果.
+	required UDRETURN Ret = 2;
+	// PlayerID.
+	required int32 PlayerId = 3;
+	// age.
+	optional int32 Age = 4;
+	// FullUserData
+	optional bytes FullUserData = 5;
+}
+
+// 玩家状态异常通知.
+message GWNotifyUser
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_LOGIN_GWNotifyUser];
+	// CharGuid.
+	required sfixed64 CharGuid = 2;
+	// PlayerID.
+	required int32 PlayerId = 3;
+	// User Status.
+	required NOTIFY_USER_STATUS UserStatus = 4;
+}
+
+// 玩家异常状态处理.
+message WGNotifyUser
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_LOGIN_WGNotifyUser];
+	// UserStatus.
+	required NOTIFY_USER_STATUS UserStatus = 2;
+	// CharGuid.
+	optional sfixed64 CharGuid = 3;
+	// 是否需要通知客户端
+	optional int32 NotifyClient = 4;
+}
+
+// server把角色fulluserdata同步给world.
+message GWRetUserData
+{
+	optional PACKET_ID PacketId = 1[default=PACKET_WG_LOGIN_GWRetUserData];
+	// PlayerID.
+	required int32 PlayerId 	= 2;
+	//guid.
+	required sfixed64 CharGuid 	= 3;
+	// FullUserData
+	optional bytes FullUserData = 4;
+}
+
+// 请求起名
+message GWAskGiveName
+{
+	optional PACKET_ID	PacketId = 1 [default=PACKET_WG_LOGIN_GWAskGiveName];
+	// PlayerID.
+	required int32 PlayerId 	= 2;
+	// guid
+	required sfixed64 CharGuid 	= 3;
+	// Name
+	required string CharName = 4;
+}
+
+// 响应起名，反馈结果
+message WGAskGiveNameResponse
+{
+	optional PACKET_ID	PacketId = 1 [default=PACKET_WG_LOGIN_WGAskGiveNameResponse];
+	// PlayerID.
+	required int32 PlayerId 	= 2;
+	// 
+	required ASKCREATECHAR_RESULT Result = 3;
+	// Name
+	optional string CharName = 4;
+}

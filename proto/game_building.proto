@@ -1,0 +1,58 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+		
+message CGAskBuildingInfo
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_BUILDING_CGAskBuildingInfo]; 
+}
+
+message BuildInfo
+{
+	optional int32 BuildingConfigId = 1;  //建筑物配置id
+	optional int32 BuildingPosId    = 2;  //建筑物位置id
+	optional int32 BuildingLevel    = 3;  //建筑物等级
+	optional int32 BuildStatus      = 4;  //建筑物状态  0 空闲中  1 升级中
+	repeated int32 HorseInstanceIdList = 5;  //放在在该建筑物的马匹列表
+}
+
+message GCRetBuildingInfo
+{
+	optional PACKET_ID  PacketId 		= 1 [default=PACKET_GAME_BUILDING_GCRetBuildingInfo]; 
+	optional int32      ZoneId  	    = 2;     //马场ID
+	repeated BuildInfo  BuildingList    = 3;   //建筑列表       
+}
+
+
+message CGAskLevelUpBuilding
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_BUILDING_CGAskLevelUpBuilding]; 
+	optional int32     PosId    = 2;  //位置id
+}
+
+message GCRetLevelUpBuilding
+{
+	optional PACKET_ID 		PacketId 	= 1 [default=PACKET_GAME_BUILDING_GCRetLevelUpBuilding];
+	optional OPERATE_RESULT Result   	= 2;  //结果
+	optional BuildInfo      BuildInfo   = 3;  //建筑物信息
+}
+
+
+		
+message CGAskLayUpHorse
+{
+	optional PACKET_ID 		PacketId 		= 1 [default=PACKET_GAME_BUILDING_CGAskLayUpHorse];
+	optional int32          BuildingPosId   = 2;   //建筑物位置id
+	optional int32          HorseInstanceId = 3;   //马匹instanceID
+}
+
+
+message CGRetLayUpHorse
+{
+	optional PACKET_ID 			PacketId 			= 1 [default=PACKET_GAME_BUILDING_CGRetLayUpHorse];
+	optional OPERATE_RESULT 	Result   			= 2;  //结果
+	optional BuildInfo      	BuildInfo           = 3;  //建筑物信息
+}
+
+
+
+

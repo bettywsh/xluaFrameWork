@@ -1,0 +1,64 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+//request config of autofight
+message AutoFightConfigInfo
+{
+	optional int32 MinBloodRatio 	= 1;
+	optional float Radius 			= 2;
+	optional int32 Quality 			= 3;
+	optional int32 AcceptCreateTeam = 4;
+	optional int32 AcceptJoinTeam 	= 5;
+	optional int32 IgnoreBoss 		= 6;
+	optional int32 UseHighSkill 	= 7;
+	optional int32 AutoBuyItems 	= 8;
+	optional int32 CounterAttack 	= 9;
+}
+
+message CGRequestAutoFightConfig
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_AUTOFIGHT_CGRequestAutoFightConfig];
+}
+
+message GCAutoFightConfig
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_AUTOFIGHT_GCAutoFightConfig];
+	required AutoFightConfigInfo Info = 2;
+}
+
+message CGSetAutoFightConfig
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_AUTOFIGHT_CGSetAutoFightConfig];
+	required AutoFightConfigInfo Info = 2;
+}
+
+// 自动战斗开关设置属性.
+enum AutoFightState
+{
+	AFS_OPEN	= 0;	// 开启
+	AFS_CLOSE	= 1;	// 关闭
+	AFS_PAUSE	= 2;	// 暂停
+}
+
+message CGSetAutoFightState
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_AUTOFIGHT_CGSetAutoFightState];
+	required AutoFightState State = 2;
+}
+
+message GCSetAutoFightState
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_AUTOFIGHT_GCSetAutoFightState];
+	//0:ok, others:errors
+	required AutoFightError Error = 2;
+	optional AutoFightState State = 3;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+require("Common/GameDefine")
+require("Common/Global")
+require("Common/Class")
+require("Common/CSDefine")
+
+MessageMgr = require("Manager/MessageMgr")
+ResMgr = require("Manager/ResMgr")
+UIMgr = require("Manager/UIMgr")
+UIBase = require("Common/UIBase")
+UIMgr:init()
+
+SoundMgr = require("Manager/SoundMgr")
+ConfigMgr = require("Manager/ConfigMgr")
+SceneMgr = require("Manager/SceneMgr")
+
+--初始化多语言
+TextMgr = require("Manager/TextMgr")
+TextMgr:Init()
+SceneMgr:init()
+
+local function StartModule()
+	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateNo)
+	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateBigVersion)
+	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateSmallVersion)
+	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateLostConnect)
+	UnRequire("Common/GameDefine")
+	UnRequire("Common/Global")
+	UnRequire("Manager/MessageMgr")
+	UnRequire("Manager/UIMgr")
+	UnRequire("Common/UIBase")
+	UnRequire("Manager/SoundMgr")
+	UnRequire("Manager/TextMgr")
+	UnRequire("Common/Global")
+	UnRequire("Manager/SceneMgr")
+	UnRequire("Manager/ConfigMgr")
+	UnRequire("Common/CSDefine")
+	UnRequire("Common/ResMgr")
+end
+
+local UpdatePanel
+-- 更新
+MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateFristCopy, function()
+	UpdatePanel = UIMgr:Open("UpdatePanel", StartModule)
+	UpdatePanel:InitCopyFile()
+end)
+-- 更新
+MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateYes, function()
+	UpdatePanel = UIMgr:Open("UpdatePanel", StartModule)
+	UpdatePanel:InitRefreshShowInfoText()
+end)
+--不更新
+MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateNo, function()
+	StartModule()
+	CS.UnityEngine.GameObject.Find("Launch"):GetComponent("Launch"):StartGame()
+end)
+--大版本更新
+MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateBigVersion, function(url)
+	UIMgr:OpenMessageBox(string.format(TextMgr:GetText("UpdatePanel_BigVersion"), url[0]),function()
+		C_UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
+    end,nil,2)
+end)
+--小版本更新
+MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateSmallVersion, function(scmd)
+	UpdatePanel:RefreshShowInfoText()
+	UIMgr:OpenMessageBox(string.format(TextMgr:GetText("UpdatePanel_NeedUpdateCount"),scmd[0]), function()
+		UpdatePanel:DownLoadFiles()
+	end, function()
+		Application.Quit()
+	end, 3);
+end)
+--服务器连接失败
+MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateLostConnect, function()
+	UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_ServerFail"),function()
+		C_UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
+    end,nil,2)
+end)
+
+UIMgr:Open("SplashPanel")
+
+--依赖资源加载
+--ResManager.Instance:LoadAssetAsync("SourceHanSansCN-Normal SDF", nil)
+
+--依赖资源加载
+--ResManager.Instance:LoadAssetAsync("SourceHanSerifCN-Bold SDF", nil)
+
+--依赖资源加载
+--ResManager.Instance:LoadAtlasAsync("CommonPanel", nil)

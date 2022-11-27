@@ -1,0 +1,131 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+message StoreItem
+{
+	required int32 SellId = 1;              //出售ID
+	required StoreType Type = 2;            //所属商城类型
+	required int32 Index = 3;			    //序号
+	required string Name = 4;               //商品名称
+	required int32  ItemId = 5;             //商品ID
+	optional string Desc = 6;               //商品描述
+	optional CurrencyType  BuyType = 7;     //购买货币类型
+	optional int32  OriginCost = 8;         //原价
+	optional int32  CurCost = 9;       		//现价
+	optional bool   IsNew = 10;             //是否新商品
+	optional bool   IsHot = 11;             //是否人气
+	optional bool   IsDiscount = 12;        //是否折扣
+	optional bool   IsLimitDate = 13;       //是否限时
+	optional int32  LimitBirthTimes = 14;   //限制次数
+	optional int32  LimitDailyTimes = 15;   //限日次数
+	optional int32  LimitWeekTimes = 16;    //限周次数
+	optional int32  LimitMonthTimes = 17;   //限月次数
+	optional int32  LeftStartTime = 18;        //限时开始剩余时间
+	optional int32  LeftEndTime = 19;         //限时结束剩余时间
+	optional int32  LimitLevel = 20;        //购买限制等级
+	optional int32  LimitVIP = 21;          //购买限制VIP等级
+	optional int32  LimitServerTimes = 22;   //限全服次数
+}
+
+message StoreBuyData
+{	
+	optional int32 ItemId = 1;		  //已购物品ID
+	optional int32 DailyBuyCount = 2; //今日已购数量
+	optional int32 BirthBuyCount = 3; //出生后已购数量
+	optional int32 WeekBuyCount = 4;  //本周已购数量
+	optional int32 MonthBuyCount = 5; //本月已购数量
+	optional int32 SellId = 6; 		  //出售ID
+	optional StoreType Type = 7;      //所属商城类型
+	optional int32 Index = 8;		  //序号
+	optional int32 ServerBuyCount = 9; //全服已购数量
+}
+
+//商城类型查询
+message CGAskStoreType
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_CGAskStoreType];
+	required int32          Version = 2;       //商城版本号
+}
+message GCRetStoreType
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_GCRetStoreType];
+	required OPERATE_RESULT Result   = 2;   	//结果
+	repeated StoreType      TypeList   = 3;     //商城类型
+}
+
+//商城列表查询
+message CGAskStoreList
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_CGAskStoreList];
+	required StoreType      Type   = 2;    //商城类型
+	required int32          Version = 3;   //商城版本号
+}
+message GCRetStoreList
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_GCRetStoreList];
+	required OPERATE_RESULT Result   = 2;   //结果
+	repeated StoreItem		StoreList= 3;   //商城物品列表
+	optional int32          NewVersion = 4;    //商城版本号
+}
+
+//商城购买		
+message CGAskStoreBuy
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_CGAskStoreBuy];
+	required int32          SellId   = 2;    //出售编号
+	required int32          BuyNum   = 3;    //购买数量
+	required int32          Version =  4;    //商城版本号
+}
+
+message GCRetStoreBuy
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_GCRetStoreBuy];
+	required OPERATE_RESULT Result   = 2;   //结果
+	optional int32 DailyBuyCount = 3; 		//剩余今日已购数量
+	optional int32 BirthBuyCount = 4; 		//剩余出生后已购数量
+	optional int32 WeekBuyCount = 5;        //本周已购数量
+	optional int32 MonthBuyCount = 6; 		//本月已购数量
+	optional int32 ServerBuyCount = 7;     //全服已购次数
+	repeated AdditionItem   PresentList = 8; //购买该物品获得赠送列表
+}
+
+//玩家商城数据查询
+message CGAskStoreBuyData
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_CGAskStoreBuyData];
+}
+message GCRetStoreBuyData
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_GCRetStoreBuyData];
+	required OPERATE_RESULT Result   = 2;   //结果
+	//玩家已购买数据
+	repeated StoreBuyData BoughtList = 3;
+	//看板妹心情值
+	optional int32 MoodValue = 4;
+	optional int32 LeftCDTime = 5; //CD剩余时间（秒）
+	
+}
+//心情值增加
+message CGAskAddStoreGirlMood
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_CGAskAddStoreGirlMood];
+}
+message GCRetAddStoreGirlMood
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_GCRetAddStoreGirlMood];
+	required OPERATE_RESULT Result   = 2;   //结果
+	repeated AdditionItem   RewardList = 3; //获得奖励列表
+	optional int32 LeftCDTime = 4;          //CD剩余时间（秒）
+	optional int32 MoodValue = 5;           //当前心情值
+}
+//全服限购数据查询(客户端打开对应商城类型界面一分钟查询一次)
+message CGAskServerLimitBuyData
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_CGAskServerLimitBuyData];
+}
+message GCRetAskServerLimitBuyData
+{
+	optional PACKET_ID      PacketId = 1 [default = PACKET_GAME_STORE_GCRetAskServerLimitBuyData];
+	required OPERATE_RESULT Result   = 2;   //结果
+	repeated StoreBuyData   ServerBuyList = 3; //各商城中的全服限购数据列表
+}

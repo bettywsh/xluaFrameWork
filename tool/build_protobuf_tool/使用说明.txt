@@ -1,0 +1,17 @@
+这是protobuf2.6.1版本 定义好数据后同时生成 C++ lua 格式
+
+1.在data\proto\protocol 里定义你的数据文件后缀 .proto 文件
+2.返回到Build_protobuf_tool目录下运行 buildproto.bat 文件 会出现类似dos窗口
+3.文件生成 data\cpp 里是c++文件 后端使用
+4.文件生成 data\lua 里是lua文件 前端使用
+
+
+MMO框架开发组 2015.12.18 (注意需要安装pythen2.7)
+
+升级说明根据后端需求现在只需要在指定目录定义好 .proto文件 运行 buildproto.bat 即可
+
+MMO框架开发组 2015.12.25
+
+升级说明：由于服务器端有只用于自己内部传输的消息，将服务器和客户端的批处理修改了！
+
+MMO框架开发组 2016.01.26

@@ -1,0 +1,170 @@
+import "msgdef.proto";
+
+option optimize_for=LITE_RUNTIME;
+
+message CGAskCharBaseAttrib
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_CHARATTR_CGAskCharBaseAttrib]; 
+	required int32	ObjID 		= 2;	// objid
+	optional int32  LastFreshTime = 3;  // 上一次下发的时间或者缓存的时间，如果没有就设置为0.
+}
+
+message CGAskCharDetailAttib
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_CHARATTR_CGAskCharDetailAttib]; 
+	required int32	ObjID 		= 2;	// objid
+}
+
+// 通用base信息
+message GCCharBaseAttrib
+{
+	optional PACKET_ID PacketId      = 1 [default=PACKET_GAME_CHARATTR_GCCharBaseAttrib]; 
+	optional int32	ObjID 		     = 2;	// objid
+	optional int32  DataID 		     = 3;	// 资源ID，如果是角色表示性别
+	optional string Name		     = 4;	// 名称
+	optional int32	Level		     = 5;	// 等级
+	optional int32  ModelID		     = 6;	// 模型
+	optional int32	MenPai		     = 7;	// 门派
+	optional float	MoveSpeed	     = 8;	// 移动速度
+    optional int32  Hp			     = 9;	// 当前血量 
+	optional int32  MaxHp		     = 10;	// 最大血量
+	optional int32	OwnerID		     = 11;	// 主人ID
+	optional AAAWORLDPOS PosCurrent  = 12;  // 坐标
+	optional int32  CharState        = 13;  // 状态
+	optional int32	FullData	     = 14;	// 完整数据包
+	repeated int64  EquipModel       = 15;  // 装备模型
+	optional int32  CurMountId       = 16;  // 当前坐骑id
+	optional int32	MonsterStarLv    = 17;	// 怪物的星级
+	optional MOUNT_STATE MountState  = 18;  //坐骑状态
+	optional int32 TeamId            = 19;  //对象队伍ID，-1表示无队伍
+	optional bool IsTeamLeader       = 20;  //对象是否为队长	
+	optional bool IsTeamFull         = 21;  //对象所在队伍是否满
+	optional int32	PKValue          = 22;	// 杀戮值
+	optional int32	PetObjID         = 23;	// 出战宠物objid 
+	optional int32 FreshTime		 = 24;	// 更新时间
+}
+
+// 该消息只有发给自己
+message GCCharDetailAttrib
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_CHARATTR_GCCharDetailAttrib]; 
+	optional int32 	GMRight	                 = 2;	// gm等级
+	optional int32	Exp		                 = 3;
+	optional int32	Vip		                 = 4;	// vip等级
+	optional int32	Money	                 = 5;
+	optional int32	RMBMoney                 = 6;
+	optional int32	ShengWang                = 7;
+	optional int32  Attack	                 = 8;	// 攻击力
+	optional int32  Defence	                 = 9;	// 防御力
+	optional int32  CritLv	                 = 10;	// 暴击等级
+	optional int32  CritRate	             = 11;	// 暴击率
+	optional int32  CritHarm	             = 12;	// 暴击伤害
+	optional int32  TenacityLv	             = 13;	// 韧性等级
+	optional int32  DefCritRate	             = 14;
+	optional int32  MissLv	                 = 15;
+	optional int32  MissRate	             = 16;
+	optional int32  Hitlv	                 = 17;
+	optional int32  HitRate	                 = 18;
+	optional int32  ArmorBreak	             = 19;	//	破防
+	optional int32  DefArmorBreak	         = 20;
+	optional int32  IncDamage	             = 21;
+	optional int32  DecDamage	             = 22;
+	optional int32  ShenfaLv	             = 23;
+	optional int32  Icehinder	             = 24;
+	optional int32  Firehinder	             = 25;
+	optional int32  Windhinder	             = 26;
+	optional int32  Thunderhinder	         = 27;
+	optional int32  CharBoolMark             = 28;
+	optional int32  BindYuanBao              = 29;
+	optional int32  YuanBao                  = 30;
+	optional int32  OriginalReliveTimes      = 31;
+	repeated int32  OwnMounts                = 32; //当前拥有的坐骑
+	optional int32  LianzhanLianjiMark       = 33;
+	optional int32  LianzhanCount	         = 34;
+	optional int32  LianjiCount		         = 35;
+	optional int32	Physical		         = 36;  // 体力
+	optional PKMODEL_TYPE PkModel 	         = 37;  // pk模式
+	optional int32  PKCDDelayTime	         = 38;  // PKCD剩余时间
+	optional int32	StorageHp		         = 39;  // 血槽存储血量
+	optional int32	StorageHpCDTime          = 40;  // 血槽CD剩余时间
+	optional int32  CurBodyPower             = 41;  // 当前体力值
+	optional int32  StorageBodyPowerCDTime   = 42;  // 体力cd值
+	optional int32  RestBodyPowerBuyCount    = 43;  // 剩余体力购买次数
+	optional int32	KillTimes                = 44;	// 今日主动击杀次数
+	optional int32	BeKilledTimes            = 45;	// 今日被他人击杀次数
+	optional int32	OnlineTimes				 = 46;  // 在线时长(分钟)
+	optional int32  OnlineDays				 = 47;  // 在线天数
+	optional int32  CharRage				 = 48;  // 怒气
+	optional int32  MaxHp                    = 49;  // 最大血量
+	optional int32  CurMountStage    		 = 50;  // 当前坐骑系统的阶数
+	optional int32  CurMountStar     		 = 51;  // 当前坐骑系统的星级
+	optional int32  CurMountExp      		 = 52;  // 当前坐骑系统的经验
+	optional bool   IsAdoptedHorse           = 53;  // 是否已完成马匹收养 1 一收养 0 反之
+	optional int32  NewbieGuideID            = 54;  // 新手引导id
+}
+
+//玩家升级结果（只发给自己）
+message GCRetCharLevelUpResult
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_CHARATTR_GCRetCharLevelUpResult];
+	optional int32 IsSuccess = 2;
+	optional int32 CurrentExp = 3;
+	optional int32 CurLevel = 4;
+	
+}
+
+//通知其他的玩家该角色升级
+message GCRetLevelUp
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_CHARATTR_GCRetLevelUp];
+	optional int32  ObjId = 2;
+	optional int32  Level = 3;
+}
+
+//通知客户端货币有改变
+message GCRetMoneyChange
+{
+	optional PACKET_ID PacketId     = 1 [default = PACKET_GAME_CHARATTR_GCRetMoneyChange];
+	optional CurrencyType MoneyType = 2;      //1金币，2钻石，3元宝
+	optional int32 IsAdd            = 3;      //1 加  0 减
+	optional int32 ChangeNum        = 4;      //减或者加的数量
+	optional int32 CurNum           = 5;      //当前货币的数量(变化之后的)
+}
+
+//更改PK模式
+message CGCharModifyPKModel
+{
+	optional PACKET_ID PacketId = 1 [default = PACKET_GAME_CHARATTR_CGCharModifyPKModel];
+	required PKMODEL_TYPE PkModel = 2;
+}
+
+// 更改PK模式返回码
+enum PKModifyResult
+{
+	PKMR_OK		 = 0;	// 更改成功
+	PKMR_PROTECT = 1;	// 新手保护
+	PKMR_CD		 = 2;   // CD中
+}
+//变更PK模式响应
+message GCCharModifyPKModelResponse
+{
+	optional PACKET_ID PacketId = 1 [default = PACKET_GAME_CHARATTR_GCCharModifyPKModelResponse];
+	required PKModifyResult Result = 2;
+	optional PKMODEL_TYPE PkModel = 3;
+}
+
+// 事件类型
+enum TriggerEvent_Type
+{
+	TET_PLAYCARTOON	= 0; // 播放动画
+	TET_MAX = 1;	   	 // 事件类型最大数量
+}
+// 通知客户端事件触发
+message GCNotifyTriggerEvent
+{
+	optional PACKET_ID PacketId = 1 [default = PACKET_GAME_CHARATTR_GCNotifyTriggerEvent];
+	required TriggerEvent_Type EventType = 2;	
+	optional int32	Param0 	  = 3;	// 不同类型下对应的ID或其他参数
+	optional int32  Param1	  = 4;	// 参数
+	optional int32  Param2	  = 5;	// 参数
+}

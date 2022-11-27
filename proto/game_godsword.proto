@@ -1,0 +1,92 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+// 客户端请求神兵信息
+message CGAskGodSwordList
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_GODSWORD_CGAskGodSwordList];
+}
+
+// 神兵信息
+message GodSwordInfo
+{
+	required int32	GodSwordID = 1;
+	repeated int32	RuneID = 2;
+}
+
+// 响应神兵信息
+message GCGodSwordList
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_GODSWORD_GCGodSwordList];
+	required int32	CurrGodSwordID = 2;
+	repeated GodSwordInfo GodSwordList = 3;
+}
+
+// 新增激活神兵
+message GCAddNewGodSword
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_GODSWORD_GCAddNewGodSword];
+	required int32	GodSwordID = 2;
+}
+
+// 请求神兵出战
+message CGAskCallUpGodSword
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_GODSWORD_CGAskCallUpGodSword];
+	required int32 GodSwordID = 2;
+}
+
+// 神兵出战错误码
+enum CALLUPGODSWORD_RESULT
+{
+	CUGSR_EEROR			= -1;
+	CUGSR_OK			= 0;
+	CUGSR_NOT_ACTIVE	= 1;
+	CUGSR_HAVE_CALLUP	= 2;
+}
+
+// 响应神兵出战
+message GCCallUpGodSwordResponse
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_GODSWORD_GCCallUpGodSwordResponse];
+	required int32 GodSwordID = 2;
+	required CALLUPGODSWORD_RESULT Result = 3;
+}
+
+// 激活符文错误码
+enum ACTIVEGODSWORDRUNE_RESULT
+{
+	AGSRR_ERROR			 = -1;
+	AGSRR_OK			 = 0;
+	AGSRR_ITEM_LACK		 = 1;
+	AGSRR_NOT_GODSWORD	 = 2;
+	AGSRR_PRE_NOT_ACTIVE = 3;
+	AGSRR_HAS_ACTIVE	 = 4;
+}
+
+// 激活符文
+message CGAskActiveGodSwordRune
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_GODSWORD_CGAskActiveGodSwordRune];
+	required int32 GodSwordID = 2;
+	required int32 RuneID	  = 3;
+}
+
+// 激活符文响应
+message GCActiveGodSwordRuneResponse
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_GODSWORD_GCActiveGodSwordRuneResponse];
+	required int32 GodSwordID = 2;
+	required ACTIVEGODSWORDRUNE_RESULT Result = 3;
+	required int32 RuneID	  = 4;
+}
+
+	
+
+
+
+
+
+
+
+

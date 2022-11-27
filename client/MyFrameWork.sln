@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{34170D80-E8DF-3A80-A12E-6A80807F9835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopScrollRect.Runtime", "LoopScrollRect.Runtime.csproj", "{1DF3CADE-E17C-8D8C-4D7A-009128CFD887}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{849CE491-54FD-17C1-0BEA-A9A731A886A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34170D80-E8DF-3A80-A12E-6A80807F9835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34170D80-E8DF-3A80-A12E-6A80807F9835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34170D80-E8DF-3A80-A12E-6A80807F9835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34170D80-E8DF-3A80-A12E-6A80807F9835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF3CADE-E17C-8D8C-4D7A-009128CFD887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF3CADE-E17C-8D8C-4D7A-009128CFD887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF3CADE-E17C-8D8C-4D7A-009128CFD887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF3CADE-E17C-8D8C-4D7A-009128CFD887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{849CE491-54FD-17C1-0BEA-A9A731A886A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849CE491-54FD-17C1-0BEA-A9A731A886A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849CE491-54FD-17C1-0BEA-A9A731A886A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849CE491-54FD-17C1-0BEA-A9A731A886A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

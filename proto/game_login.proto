@@ -1,0 +1,107 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+message CGConnect
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_LOGIN_CGConnect]; 
+	//required sfixed64   GUID = 2;    //临时由sfixed64 改为string 需之后改回来
+	required string   GUID = 2;
+	required string  ClientVersion = 3;
+	required int32 	 Key = 4;
+	required int32   ServerID = 5;
+	required string  UserID = 6;
+}
+
+message GCConnect
+{
+	optional PACKET_ID	PacketId = 1 [default=PACKET_GAME_LOGIN_GCConnect];
+	required RET_CODE	Result = 2;
+	required int32  ServerID = 3;
+	required sfixed64  SceneID = 4;
+	optional AAAWORLDPOS  Position = 5;
+}
+
+message CGEnterScene
+{
+	optional PACKET_ID  PacketId = 1 [default=PACKET_GAME_LOGIN_CGEnterScene];
+	// 进入场景ID.
+	required sfixed64	SceneID = 2;
+	// 进入场景坐标.
+	required AAAWORLDPOS EnterPos = 3;
+}
+
+message GCEnterScene
+{
+	optional PACKET_ID   PacketId = 1 [default=PACKET_GAME_LOGIN_GCEnterScene];
+	// 进入结果.
+	required ENTERSCENE_RET_CODE	Ret = 2;
+	// 进入场景ID.
+	optional sfixed64	SceneID = 3;
+	// 场景类型 
+	optional SCENE_TYPE SceneType = 4;
+	// 进入场景坐标.
+	optional AAAWORLDPOS EnterPos = 5;
+	//obj新朝向.
+	optional float fDir = 6;
+	// 玩家ObjID.
+	optional int32 ObjID = 7;
+	// 开启的障碍格id
+	repeated int32 OpenedDynamicBlock = 8;
+	// 副本已开始多少时间
+	optional int32 CopySceneOpenTime = 9;
+	// 该场景是否已经预览(多次预览的场景不会发送)
+	optional int32 IsHaveView = 10;
+	
+	//场景ID
+	optional int32 PlotId = 11;
+}
+
+
+
+message CGAskChangeScene
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_LOGIN_CGAskChangeScene];
+	// 角色目标场景.
+	required int32 DestMapID = 2;
+	// 分线ID.
+	optional int32 ThreadIndex=3;
+}
+
+message GCRetChangeScene
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_LOGIN_GCRetChangeScene];
+	// 结果.
+	required CHANGESCENERETURN Ret = 2;
+	// 校验Key.
+	optional int32 Key = 3;
+	// AAAWORLDPOS.
+	optional AAAWORLDPOS Pos = 4;
+	optional sfixed64 DestSceneID = 5;
+	// 以下字段为切换到不同Server的场景时使用.
+	// 服务器IP.
+	optional string IP = 6;
+	// 服务器端口.
+	optional int32 Port = 7;
+}
+
+message CGLoginOut
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_LOGIN_CGLoginOut];
+	// 下线类型.
+	required LOGIN_OUT_TYPE Type = 2 [default=LOGIN_OUT_NONE]; 
+}
+
+// 请求起名
+message CGAskGiveName
+{
+	optional PACKET_ID	PacketId = 1 [default=PACKET_GAME_LOGIN_CGAskGiveName];
+	required string CharName = 2;
+}
+
+// 回应起名
+message GCGiveNameResponse
+{
+	optional PACKET_ID	PacketId = 1 [default=PACKET_GAME_LOGIN_GCGiveNameResponse];
+	required ASKCREATECHAR_RESULT Result = 2;
+	optional string CharName = 3;
+}

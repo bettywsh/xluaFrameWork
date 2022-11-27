@@ -1,0 +1,43 @@
+import "msgdef.proto";
+option optimize_for=LITE_RUNTIME;
+
+// 物品信息
+message DropItem
+{
+	optional int32 ItemId = 1;		   //物品的模板id
+	optional int32 ItemCount = 2;  	   //物品的数量
+	optional int32 IndexID = 3;		   //标识
+}
+
+// 请求角色技能数据.
+message CGAskItemBoxContent
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ITEMBOX_CGAskItemBoxContent];
+	required int32	objID = 2;	// objdID
+}
+
+// .
+message GCItemBoxContent
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ITEMBOX_GCItemBoxContent];
+	required int32	objID = 2;		// objdID
+	repeated DropItem Items = 3;	// itembox中包含的物品信息
+	optional int32 OwnerId = 4;    //拥有者ID
+	optional int32 IsPlayer = 5;       //原主人是否是玩家
+}
+
+// 请求拾取物品
+message CGAskPickBoxItem
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ITEMBOX_CGAskPickBoxItem];
+	required int32	objID = 2;	// objdID
+}
+
+// 请求拾取失败.
+message GCPickBoxItemResult
+{
+	optional PACKET_ID PacketId = 1 [default=PACKET_GAME_ITEMBOX_GCPickBoxItemResult];
+	optional PickBoxItemError Result = 2;
+	required int32 objID = 3;		// objdID
+	repeated int32 IndexID = 4;		// 拾取失败后，返回那几个拾取成功了
+}

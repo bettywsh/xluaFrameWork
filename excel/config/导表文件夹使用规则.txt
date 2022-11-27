@@ -1,0 +1,19 @@
+
+导表注意规则：
+
+1、废弃的，不想导表的文件采用 _表明开头，即不会进行导表操作
+2、该工具支持文件夹中递归的导表方式，也就是可以再该文件夹下创建文件
+3、表内部不需要的列可以使用  _列名来进行屏蔽，其不会打入表中
+4、该功能会自动处理名称的大小写，级  p_Annn(string)  和p_annn(string)再导入lua后均是Annn
+5、该表中可以出现回车符号，控制文字的换行等内容
+6、int  float类型的数字不能位空，如果位空会造成该列在对应的表中不存在
+7、支持联合ID  也就是同时2列或者多列数据可以确定一行的数据，需要在需要联合的字段添加_union  例如p_ID_union(int32)和p_Level_union(int32)
+进行列的合并作为联合主键
+8、该工具支持打开excel进行导表
+9、导表工具自己制定相关的导出导入目录：
+EXPORT_CLIENT = True  开启客户端打包
+EXPORT_SERVER = True  开启服务器打包
+
+dir_src = r'D:\work\SS\Program\demo\excel'  excel存储的文件夹
+	dir_dst_client = r'E:\work\SS\Program\demo\tool\lua'  客户端需要导出的指定文件夹
+	dir_dst_server = r'E:\work\SS\Program\demo\tool\lua'   服务器指定的文件夹
