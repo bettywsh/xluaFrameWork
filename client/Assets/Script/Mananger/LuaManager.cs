@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XLua;
 
-public class LuaManager : Singleton<LuaManager>
+public class LuaManager : MonoSingleton<LuaManager>
 {
     LuaEnv luaenv = null;
 
@@ -65,6 +65,8 @@ public class LuaManager : Singleton<LuaManager>
         {
             luaenv.Tick();
         }
+        Debug.Log(2);
+        CallFunction("GameUpdate", "Update", null);
     }
 
     public void Destroy()

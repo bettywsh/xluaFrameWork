@@ -5,7 +5,7 @@ C_PlayerPrefs = CS.UnityEngine.PlayerPrefs
 C_DOTween = CS.DG.Tweening.DOTween
 C_Object = CS.UnityEngine.Object
 C_Vector3 = CS.UnityEngine.Vector3
-
+C_Time = CS.UnityEngine.Time
 C_Canvas = CS.UnityEngine.Canvas
 C_GraphicRaycaster = CS.UnityEngine.UI.GraphicRaycaster
 C_Renderer = CS.UnityEngine.Renderer

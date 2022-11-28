@@ -1,0 +1,7 @@
+local DataMgr = {}
+
+function DataMgr.Reset()
+    -- body
+end
+
+return DataMgr

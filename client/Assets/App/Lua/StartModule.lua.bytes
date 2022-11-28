@@ -1,8 +1,10 @@
+
 ----Common
 require("Common/Global")
 require("Common/GameDefine")
 require("Common/Class")
 require("Common/CSDefine")
+require("Common/GameUpdate")
 
 -- require("Common/Function")
 

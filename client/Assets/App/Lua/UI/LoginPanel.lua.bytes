@@ -1,7 +1,11 @@
 local LoginPanel = class("LoginPanel", UIBase)
 
 function LoginPanel:OnOpen()
+    GameUpdate.AddUpdate(self,self.OnUpdate)
+end
 
+function LoginPanel:OnUpdate(delta)
+	print(delta)
 end
 
 function LoginPanel:UI_btn_click_OnClick()

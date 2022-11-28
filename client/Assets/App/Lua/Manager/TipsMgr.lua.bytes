@@ -1,0 +1,9 @@
+local TipsMgr = {}
+
+-- function ResMgr:init()
+-- end
+TipsMgr.queue = {}
+
+
+
+return TipsMgr

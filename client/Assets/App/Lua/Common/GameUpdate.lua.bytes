@@ -1,0 +1,83 @@
+GameUpdate = {}
+
+local m_updateList = {};
+local m_fixedUpdateList = {};
+local m_lateUpdateList = {};
+
+function GameUpdate.AddUpdate(ins, func)
+    local add = {};
+    add.ins = ins;
+    add.func = func;
+    table.insert(m_updateList, add);
+end
+function GameUpdate.RemoveUpdate( ins, func)
+    for i, v in pairs(m_updateList) do
+        if v.ins == ins and v.func == func then
+            table.remove(m_updateList, i);
+        end
+    end
+end
+
+function GameUpdate.AddFixedUpdate(ins, func)
+    local add = {};
+    add.ins = ins;
+    add.func = func;
+    table.insert(m_fixedUpdateList, add);
+end
+function GameUpdate.RemoveFixedUpdate( ins, func)
+    for i, v in pairs(m_fixedUpdateList) do
+        if v.ins == ins and v.func == func then
+            table.remove(m_fixedUpdateList, i);
+        end
+    end
+end
+
+function GameUpdate.AddLateUpdate(ins, func)
+    local add = {};
+    add.ins = ins;
+    add.func = func;
+    table.insert(m_lateUpdateList, add);
+end
+function GameUpdate.RemoveLateUpdate( ins, func)
+    for i, v in pairs(m_lateUpdateList) do
+        if v.ins == ins and v.func == func then
+            table.remove(m_lateUpdateList, i);
+        end
+    end
+end
+
+function GameUpdate.Update()
+    print(11111)
+    local deltaTime = C_Time.deltaTime;
+    for i, v in pairs(m_updateList) do
+        if v.ins ~= nil then
+            v.func(v.ins, deltaTime);
+        else
+            v.func(deltaTime);
+        end
+    end
+end
+
+function GameUpdate.FixedUpdate()
+    local fixedDeltaTime = C_Time.fixedDeltaTime;
+    for i, v in pairs(m_fixedUpdateList) do
+        if v.ins ~= nil then
+            v.func(v.ins,fixedDeltaTime);
+        else
+            v.func(fixedDeltaTime);
+        end
+    end
+end
+
+function GameUpdate:LateUpdate()
+    local deltaTime = C_Time.deltaTime;
+    for i, v in pairs(m_lateUpdateList) do
+        if v.ins ~= nil then
+            v.func(v.ins,deltaTime);
+        else
+            v.func(deltaTime);
+        end
+    end
+end
+
+return GameUpdate
