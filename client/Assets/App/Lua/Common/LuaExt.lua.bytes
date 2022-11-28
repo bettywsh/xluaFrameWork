@@ -1,0 +1,119 @@
+
+
+function table.nums(t)
+    if not t then
+        return 0
+    end
+    local count = 0
+    for k, v in pairs(t) do
+        count = count + 1
+    end
+    return count
+end
+
+function string.split(input, delimiter)
+    input = tostring(input)
+    delimiter = tostring(delimiter)
+    if (delimiter == "") then return false end
+    local pos, arr = 0, {}
+    for st, sp in function() return string.find(input, delimiter, pos, true) end do
+        table.insert(arr, string.sub(input, pos, st - 1))
+        pos = sp + 1
+    end
+    table.insert(arr, string.sub(input, pos))
+    return arr
+end
+
+function Shallow_clone(org)
+    if type(org) == "table" then
+        local copy = {}
+        for i, v in pairs(org) do
+            copy[i] = v
+        end
+        return copy
+    else
+        return org
+    end
+end
+
+function Deep_clone(org)
+    if type(org) == "table" then
+        local copy = {}
+        for i, v in next, org, nil do
+            copy[Deep_clone(i)] = Deep_clone(v)
+        end
+        setmetatable(copy, Deep_clone(getmetatable(org)))
+        return copy
+    else
+        return org
+    end
+end
+
+-- 显示table表内容,show(t,"====我的表====")
+function showTable(t, logTip, color)
+    if not t then
+        return print((logTip and logTip or "") .. ":\n nil")
+    end
+    local d_type = ""
+    local lua_str = ""
+    -- 将table转换为json结构化字符串
+    local function getJsonStrFromTable(t)
+        -- 将添加指定数量的\t
+        local function space_str(num)
+            lua_str = ""
+            for i = 1, num do
+                lua_str = lua_str .. "    "
+            end
+            return lua_str
+        end
+
+        -- 将table转换为结构化的json字符串 @param data 数据对象 @param layer 节点层级数
+        local function table_to_json_str(data, layer)
+            layer = layer or 0
+            local quot = "\""
+            d_type = type(data)
+            if d_type == "string" then
+                return quot .. data .. quot
+            elseif d_type == "number" then
+                return tostring(data)
+            elseif d_type == "boolean" then
+                return tostring(data)
+            elseif d_type == "userdata" then
+                return tostring(data)
+            elseif d_type == "table" then
+                lua_str = ""
+                lua_str = lua_str .. "{\n"
+                local dataSize = table.nums(data)
+                local i = 1
+                for k, v in pairs(data) do
+                    if k == "__index" and tostring(v) == tostring(data) then
+                    elseif type(k) == 'function' then
+                    else
+                        lua_str = lua_str .. space_str(layer + 1)
+                        if v == nil then
+                            lua_str = lua_str .. quot .. tostring(k) .. quot .. " : " ..
+                                          table_to_json_str("", layer + 1)
+                        else
+                            lua_str = lua_str .. quot .. tostring(k) .. quot .. " : " .. table_to_json_str(v, layer + 1)
+                        end
+                        if i < dataSize then
+                            lua_str = lua_str .. ",\n"
+                        end
+                    end
+                    i = i + 1
+                end
+                lua_str = lua_str .. "\n" .. space_str(layer) .. "}"
+                return lua_str
+            elseif d_type == "function" then
+                return tostring(data)
+            else
+                return ""
+            end
+        end
+        local jsonStr = table_to_json_str(t, 0)
+        return jsonStr
+    end
+    local jsonStr = getJsonStrFromTable(t)
+    print((color and ("<color=" .. color .. ">") or "<color=green>") .. (logTip and logTip or "==>>showTable") ..
+            ":\n</color>" .. jsonStr)
+end

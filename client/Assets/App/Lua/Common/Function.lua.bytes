@@ -1,19 +1,19 @@
 function log(info)
     if GameDefine.ServerAddress.Type ~= 3 then
-        LogManage.Instance:Log(tostring(info))
+        C_Debug.Log(tostring(info))
     end
 
 end
 
 function warring(info)
     if GameDefine.ServerAddress.Type ~= 3 then
-        LogManage.Instance:Warring(tostring(info))
+        C_Debug.LogWarning(tostring(info))
     end
 end
 
 function error(info)
     if GameDefine.ServerAddress.Type ~= 3 then
-        LogManage.Instance:Error(tostring(info))
+        C_Debug.LogError(tostring(info))
     end
 end
 
@@ -21,42 +21,12 @@ function print(str)
     log(str)
 end
 
--- 创建对象
-function Newobject(prefab)
-    return GameObject.Instantiate(prefab);
-end
 
 -- 获得table中第一个数据
 function GetTabFirst(tab)
     for k, v in pairs(tab) do
         return v;
     end
-end
-
--- 查找Table k
-function TableK(tbl, key)
-    if tbl == nil then
-        return false
-    end
-    for k, v in pairs(tbl) do
-        if k == key then
-            return true
-        end
-    end
-    return false
-end
-
--- 查找Table V
-function TableV(tbl, value)
-    if tbl == nil then
-        return false
-    end
-    for k, v in pairs(tbl) do
-        if v == value then
-            return true
-        end
-    end
-    return false
 end
 
 -- 查找时间表Table V
@@ -256,8 +226,6 @@ function FormatNumToInt(num_para)
     end
 end
 
-
-
 -- 数字拆分成字符串表
 function GetSplitInter(num)
     local tb = {} --存放拆分的数字
@@ -277,6 +245,24 @@ function table.clone(org)
     return {table.unpack(org)}
 end
 
+-- 创建对象
+function NewObject(prefab)
+    return C_GameObject.Instantiate(prefab)
+end
+
+function AddChildren(parent, children)
+    local go = NewObject(children).transform
+    SetParent(parent, go)
+    return go
+end
+
+function SetParent(parent, go)
+    go:SetParent(parent.transform, false)
+    go.localPosition = C_Vector3.zero
+    go.localScale = C_Vector3.one
+    go.localEulerAngles = C_Vector3.zero
+    return go
+end
 --------------------------------------------------闭包-----------------------------------------------------------
 
 local unpack = unpack or table.unpack

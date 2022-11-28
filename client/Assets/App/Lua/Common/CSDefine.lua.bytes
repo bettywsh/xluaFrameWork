@@ -20,6 +20,8 @@ C_Slider = CS.UnityEngine.UI.Slider
 C_CanvasGroup = CS.UnityEngine.CanvasGroup
 C_TextMeshProUGUI = CS.TMPro.TextMeshProUGUI
 C_TMP_InputField = CS.TMPro.TMP_InputField
+C_Debug = CS.UnityEngine.Debug
+C_Sequence = CS.DG.Tweening.DOTween.Sequence
 
 C_AudioClip = CS.AudioClip
 C_Scene = CS.Scene

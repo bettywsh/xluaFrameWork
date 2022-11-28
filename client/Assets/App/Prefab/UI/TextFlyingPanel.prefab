@@ -67,8 +67,12 @@ MonoBehaviour:
   varData:
   - objName: transform
     objValue: {fileID: 1570265937634121433}
-  - objName: img,text_bg
+  - objName: img_Bg
     objValue: {fileID: 2548184640373765942}
+  - objName: txt_TextMesh
+    objValue: {fileID: 6375129374618941286}
+  - objName: obj_Content
+    objValue: {fileID: 3401820680761395042}
 --- !u!1 &2548184640373765942
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,12 +86,12 @@ GameObject:
   - component: {fileID: 1692696327486867143}
   - component: {fileID: 349060237259688693}
   m_Layer: 5
-  m_Name: '#img,text_bg'
+  m_Name: '#img_Bg'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5632218624492939837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -166,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5309031600279883059}
   m_Layer: 5
-  m_Name: Content
+  m_Name: '#obj_Content'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +208,7 @@ GameObject:
   - component: {fileID: 6375129374618941288}
   - component: {fileID: 2458037912204603943}
   m_Layer: 5
-  m_Name: TextMesh
+  m_Name: '#txt_TextMesh'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

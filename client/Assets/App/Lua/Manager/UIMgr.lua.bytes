@@ -17,7 +17,7 @@ function UIMgr:init()
 end
 
 function UIMgr:Open(prefabName, ...)
-    local args = ...
+    local args = {...}
     if self.ctrls[prefabName] == nil then
         local ctrlURL = string.format("UI/%s", prefabName)
         local ctrl = require(ctrlURL)
@@ -102,9 +102,6 @@ function UIMgr:AutoBind(transform)
             else
                 local types = string.split(names[1], ",")
                 for i = 1, #types do
-                    print(types[i])
-                    print(names[2])
-                    print(types[i]..names[2])
                     view[types[i]..names[2]] = self.AutoBindDict[types[i]](varObj.objValue)
                 end
             end

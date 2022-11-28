@@ -1,4 +1,5 @@
 require("Common/GameDefine")
+require("Common/LuaExt")
 require("Common/Global")
 require("Common/Class")
 require("Common/CSDefine")
@@ -35,6 +36,7 @@ local function StartModule()
 	UnRequire("Manager/ConfigMgr")
 	UnRequire("Common/CSDefine")
 	UnRequire("Common/ResMgr")
+	UnRequire("Common/LuaExt")
 end
 
 local UpdatePanel

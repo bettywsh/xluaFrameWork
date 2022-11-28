@@ -10,6 +10,7 @@ function SplashPanel:OnOpen()
 	seq:AppendCallback(function()
 		UIMgr:CloseSelf(self)
 	end)
+	-- UIMgr:CloseSelf(self)
 end
 
 function SplashPanel:OnClose()
