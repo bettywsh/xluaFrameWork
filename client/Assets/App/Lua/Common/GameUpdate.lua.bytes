@@ -47,7 +47,6 @@ function GameUpdate.RemoveLateUpdate( ins, func)
 end
 
 function GameUpdate.Update()
-    print(11111)
     local deltaTime = C_Time.deltaTime;
     for i, v in pairs(m_updateList) do
         if v.ins ~= nil then

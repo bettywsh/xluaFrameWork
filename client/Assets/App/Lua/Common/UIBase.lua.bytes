@@ -8,7 +8,8 @@ function UIBase:Open(transform, ...)
 	self.args =  ...
     self.gameObject = transform.gameObject
 	self.name = self.gameObject.name
-    self:InitBinder()
+    -- self:InitBinder()
+	self.view = UIMgr:AutoBind(transform)
     RegisterLuaMessage(self)
     RegisterNetCmd(self)
     RegisterButtonOnClick(self)

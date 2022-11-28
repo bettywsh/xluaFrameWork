@@ -51,19 +51,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_selectedIndex: -1
   varData:
-  - name: cngBG
-    type: 10
-    objValue: {fileID: 0}
-    tranValue: {fileID: 0}
-    imgValue: {fileID: 0}
-    txtValue: {fileID: 0}
-    btnValue: {fileID: 0}
-    toggleValue: {fileID: 0}
-    sliderValue: {fileID: 0}
-    inputValue: {fileID: 0}
-    loopHorizontalValue: {fileID: 0}
-    loopVerticalValue: {fileID: 0}
-    canvasValue: {fileID: 923992444825279941}
+  - objName: transform
+    objValue: {fileID: 1580175990009733700}
+  - objName: cng_BG
+    objValue: {fileID: 1665525621283328797}
 --- !u!1 &1665525621283328797
 GameObject:
   m_ObjectHideFlags: 0

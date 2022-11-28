@@ -49,8 +49,11 @@ public class LuaManager : MonoSingleton<LuaManager>
     public void CallFunction(string classname, string funcName, params object[] args)
     {
         LuaTable metatable = luaenv.Global.Get<LuaTable>(classname);
-        LuaFunction lnew = (LuaFunction)metatable[funcName];
-        lnew.Call(metatable, args);
+        LuaFunction lnew = null;
+        if (metatable != null)
+            lnew = (LuaFunction)metatable[funcName];
+        if(lnew != null)
+            lnew.Call(metatable, args);
     }
 
     public void LuaGC()
@@ -65,7 +68,6 @@ public class LuaManager : MonoSingleton<LuaManager>
         {
             luaenv.Tick();
         }
-        Debug.Log(2);
         CallFunction("GameUpdate", "Update", null);
     }
 

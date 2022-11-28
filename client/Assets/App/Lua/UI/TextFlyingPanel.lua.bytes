@@ -1,10 +1,7 @@
 local TextFlyingPanelCtrl = class("TextFlyingPanelCtrl", UIBase)
-TextFlyingPanelCtrl.view = {}
-TextFlyingPanelCtrl.agrs = {}
 
-function TextFlyingPanelCtrl:Awake(transform, agrs)
-	local TextFlyingPanelView = require("UI/View/TextFlyingPanelView")
-	self.view = TextFlyingPanelView:Awake(transform)
+function TextFlyingPanelCtrl:Open()
+	transform:GetComponent("Canvas").sortingOrder = UIMgr.UILayer.TextFlying
 	self:Fly(self.agrs[0])
 end
 
@@ -14,7 +11,7 @@ function TextFlyingPanelCtrl:Fly(text)
 	local run = AddChildren(self.view.Go, self.view.img_bg.gameObject)
 	run.gameObject:SetActive(true)
 	--生成动画序列
-	local test = DG.Tweening.DOTween.Sequence()
+	local test = C_Sequence()
 	-- seq:Insert(0, go:DOScale(2, 0.5))
 	-- seq:Append(go:DOScale(1, 1))
 	-- seq:AppendInterval(1)
@@ -30,7 +27,7 @@ function TextFlyingPanelCtrl:Fly(text)
 	go:GetComponent("TextMeshProUGUI").text = text
 	go.gameObject:SetActive(true)
 	--生成动画序列
-	local seq = DG.Tweening.DOTween.Sequence()
+	local seq = C_Sequence()
 	seq:Append(go:GetComponent("RectTransform"):DOAnchorPosY(125, 1):SetRelative())
 	seq:Append(go:GetComponent("CanvasGroup"):DOFade(0 , 1))
 	seq:AppendInterval(5)
@@ -43,8 +40,9 @@ function TextFlyingPanelCtrl:Fly(text)
 	
 end
 
-function TextFlyingPanelCtrl:Destroy()
-	self:Hide(self.view.gameObject)
+--隐藏UI
+function LoginPanel:OnClose()
 end
+
 
 return TextFlyingPanelCtrl

@@ -9,11 +9,18 @@ C_Time = CS.UnityEngine.Time
 C_Canvas = CS.UnityEngine.Canvas
 C_GraphicRaycaster = CS.UnityEngine.UI.GraphicRaycaster
 C_Renderer = CS.UnityEngine.Renderer
-
 C_UpdateManager = CS.UpdateManager.Instance
 C_ResType = CS.ResType
 C_TextAsset = CS.UnityEngine.TextAsset
 C_Sprite = CS.UnityEngine.U2D.Sprite
+C_Image = CS.UnityEngine.UI.Image
+C_Button = CS.UnityEngine.UI.Button
+C_Toggle = CS.UnityEngine.UI.Toggle
+C_Slider = CS.UnityEngine.UI.Slider
+C_CanvasGroup = CS.UnityEngine.CanvasGroup
+C_TextMeshProUGUI = CS.TMPro.TextMeshProUGUI
+C_TMP_InputField = CS.TMPro.TMP_InputField
+
 C_AudioClip = CS.AudioClip
 C_Scene = CS.Scene
 C_Font = CS.Font

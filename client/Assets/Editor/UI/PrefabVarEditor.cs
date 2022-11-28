@@ -56,7 +56,7 @@ public class PrefabVarEditor : BaseEditor
             list.serializedProperty.arraySize++;
             list.index = index;
             var element = list.serializedProperty.GetArrayElementAtIndex(index);
-            element.FindPropertyRelative("name").stringValue = string.Empty;
+            element.FindPropertyRelative("objName").stringValue = string.Empty;
             // element.FindPropertyRelative("type").enumValueIndex = 0;
             // element.FindPropertyRelative("lastType").enumValueIndex = 0;
             element.FindPropertyRelative("objValue").objectReferenceValue = null;
@@ -96,13 +96,16 @@ public class PrefabVarEditor : BaseEditor
             rect.y += 2;
 
             EditorGUI.PropertyField(new Rect(rect.x, rect.y, 160, EditorGUIUtility.singleLineHeight),
-                e.FindPropertyRelative("name"), GUIContent.none);
+                e.FindPropertyRelative("objName"), GUIContent.none);
+
+            EditorGUI.PropertyField(new Rect(rect.x + 160, rect.y, 160, EditorGUIUtility.singleLineHeight),
+                e.FindPropertyRelative("objValue"), GUIContent.none);
 
             // EditorGUI.PropertyField(new Rect(rect.x + 160, rect.y, 160, EditorGUIUtility.singleLineHeight), 
             //     e.FindPropertyRelative("type"), GUIContent.none);
 
             // var varTypes = mPrefabVar.varTypes;
-            var typeid = e.FindPropertyRelative("type").enumValueIndex;
+            //var typeid = e.FindPropertyRelative("type").enumValueIndex;
             // var lastTypeid = e.FindPropertyRelative("lastType").enumValueIndex;
             // if (typeid != lastTypeid)
             // {
@@ -112,9 +115,9 @@ public class PrefabVarEditor : BaseEditor
             //         e.FindPropertyRelative(str).objectReferenceValue = null;
             //     }
             // }
-            var varName = mPrefabVar.GetVarNameByType((VarType)typeid);
-            EditorGUI.PropertyField(new Rect(rect.x + 160, rect.y, rect.width - 160, EditorGUIUtility.singleLineHeight),
-                e.FindPropertyRelative(varName), GUIContent.none);
+            //var varName = mPrefabVar.GetVarNameByType((VarType)typeid);
+            //EditorGUI.PropertyField(new Rect(rect.x + 160, rect.y, rect.width - 160, EditorGUIUtility.singleLineHeight),
+            //    e.FindPropertyRelative(varName), GUIContent.none);
         };
         return reordList;
     }

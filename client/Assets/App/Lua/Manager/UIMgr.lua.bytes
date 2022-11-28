@@ -75,4 +75,42 @@ function UIMgr:Close(prefabName)
     C_ResManager:UnLoadAssetBundle(prefabName)
 end
 
+UIMgr.AutoBindDict = {
+    ["obj"] = function(go) return go end,
+    ["tsf"] = function(go) return go.transform end,
+    ["img"] = function(go) return go:GetComponent(typeof(C_Image)) end,
+    ["txt"] = function(go) return go:GetComponent(typeof(C_TextMeshProUGUI)) end,
+    ["btn"] = function(go) return go:GetComponent(typeof(C_Button)) end,
+    ["tgl"] = function(go) return go:GetComponent(typeof(C_Toggle)) end,
+    ["sld"] = function(go) return go:GetComponent(typeof(C_Slider)) end,
+    ["ipt"] = function(go) return go:GetComponent(typeof(C_TMP_InputField)) end,
+    ["cng"] = function(go) return go:GetComponent(typeof(C_CanvasGroup)) end,
+    ["ulv"] = function(go) return go:GetComponent(typeof(C_ListView)) end
+}
+
+function UIMgr:AutoBind(transform)
+    local view = {}
+	local prefabVar = transform.gameObject:GetComponent('VarPrefab')
+	local varData = prefabVar:GetVarArray()
+	local iter = varData:GetEnumerator()
+	while iter:MoveNext() do
+		local varObj = iter.Current
+		if varObj ~= nil then
+            local names = string.split(varObj.objName, "_")
+            if names[2] == nil then
+                view[names[1]] = varObj.objValue
+            else
+                local types = string.split(names[1], ",")
+                for i = 1, #types do
+                    print(types[i])
+                    print(names[2])
+                    print(types[i]..names[2])
+                    view[types[i]..names[2]] = self.AutoBindDict[types[i]](varObj.objValue)
+                end
+            end
+		end
+	end
+    return view
+end
+
 return UIMgr
