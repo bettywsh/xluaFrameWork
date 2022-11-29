@@ -35,9 +35,8 @@ function UIMgr:Open(prefabName, ...)
             ctrl:Open(go.transform, args)
             ctrl:OnOpen()
         end)
-    else
-        return self.ctrls[prefabName]
     end
+    return self.ctrls[prefabName]
 end
 
 function UIMgr:OrderCanvas(go)

@@ -26,6 +26,7 @@ SceneMgr = require("Manager/SceneMgr")
 -- HttpMgr = require("Manager/HttpMgr")
 -- RedMgr = require("Manager/RedMgr")
 TextMgr = require("Manager/TextMgr")
+DialogMgr = require("Manager/DialogMgr")
 
 UIMgr:init()
 NetMgr:init()
