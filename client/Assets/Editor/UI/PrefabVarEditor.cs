@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
+using System.IO;
+using System.Text;
 
 [CustomEditor(typeof(VarPrefab))]
 public class PrefabVarEditor : BaseEditor
@@ -43,7 +45,23 @@ public class PrefabVarEditor : BaseEditor
         if (GUILayout.Button("Create Lua"))
         {
              var fullFilePath =
-                EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + "/App/Lua/UI", mPrefabVar.gameObject.name, "lua.bytes");
+                EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + "/App/Lua/UI", mPrefabVar.gameObject.name, "lua");
+            fullFilePath = fullFilePath + ".bytes";
+            if (fullFilePath.StartsWith(".."))
+            {
+                EditorUtility.DisplayDialog("错误", "当前指定路径并不在任何一个lua根目录下!!!", "知道了");
+                return;
+            }
+            if (!File.Exists(fullFilePath))
+            {
+                string templua = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Editor/UI/TempLua.lua.bytes").text;
+                templua = templua.Replace("#SCRIPTNAME#", mPrefabVar.gameObject.name);
+                byte[] buffer1 = Encoding.Default.GetBytes(templua.ToString() );
+                byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
+                File.WriteAllBytes(fullFilePath, buffer2);
+                AssetDatabase.Refresh();
+                EditorUtility.DisplayDialog("成功", "创建lua成功!!!", "知道了");
+            }
         }
         serializedObject.ApplyModifiedProperties();
     }
