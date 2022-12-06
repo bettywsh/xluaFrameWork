@@ -131,7 +131,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         if (assetObj != null)
         {
             //var RefCount = assetBundleLoading[path];
-            var bundleInfo = new AssetBundleInfo(assetObj, 0);
+            var bundleInfo = new AssetBundleInfo(assetObj, 1);
             loadedAssetBundles.Add(abName, bundleInfo);
         }
         assetBundleLoading.Remove(path);
@@ -143,11 +143,12 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         request.assetNames = assetName;
         request.sharpFunc = sharpFunc;
         request.luaFunc = luaFunc;
-
+        request.isFrist = false;
         List<LoadUObjectAsyncRequest> requests = null;
         if (!uobjectAsyncList.TryGetValue(assetName, out requests))
         {
             requests = new List<LoadUObjectAsyncRequest>();
+            request.isFrist = false;
             requests.Add(request);
             uobjectAsyncList.Add(abName, requests);       
         }
@@ -205,7 +206,8 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
                 requests[i].luaFunc.Dispose();
                 requests[i].luaFunc = null;
             }
-            bundleInfo.referencedCount++;
+            if (!requests[i].isFrist)
+                bundleInfo.referencedCount++;
         }
         uobjectAsyncList.Remove(abName);        
     }
@@ -318,4 +320,5 @@ public class LoadUObjectAsyncRequest
     public Action<UObject> sharpFunc;
     public LuaFunction luaFunc;
     public Type assetType;
+    public bool isFrist;
 }
