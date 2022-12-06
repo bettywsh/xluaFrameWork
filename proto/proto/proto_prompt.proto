@@ -1,0 +1,22 @@
+package com.bochsler.protocol;
+
+//新项目所有信息提示推送都用这个协议，包括报错，跑马灯，之类的。
+message SCPrompt {
+  required PromptStyle style = 1; //类型
+  optional int32 reqId = 2; //客户端请求的ID
+  required string prompt = 3; //提示
+  optional string args = 4; //提示参数，如果有
+}
+
+// 提示类型
+enum PromptStyle {
+  BLOCK = 0; //阻断提示
+  ERROR = 1; //错误异常
+}
+
+message SCNotify {
+  required string key = 1;
+  repeated string args = 2; //提示参数，如果有
+}
+
+//LOGIN_FAILED 登陆失败 

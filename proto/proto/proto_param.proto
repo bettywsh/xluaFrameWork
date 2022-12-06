@@ -1,0 +1,56 @@
+package com.bochsler.protocol;
+
+//玩家个人属性
+message ParamDisplay {
+	required int32 paramId = 1; //ID
+	required int64 paramValue = 2; //参数值
+	optional ParamOrigin origin = 3;	//来源详情
+}
+
+//上线推送 ParamDisplay中不包含ParamOrigin
+message SCPlayerParamInfo {
+	repeated ParamDisplay params = 1;
+}
+
+//部分属性更新时的推送
+message SCPlayerParamInfoUpdate {
+	repeated ParamDisplay params = 1;
+}
+
+message PlayerParamRequest {
+	repeated int32 paramId = 1; //客户端请求的属性
+}
+
+message PlayerParamResponse {
+	repeated ParamDisplay params = 1; //参数列表
+}
+
+message ParamOriginValue {
+	required ParamOriginType type = 1;
+	required int64 value = 2;
+}
+
+message ParamOrigin {
+	required int32 paramId = 1;
+	repeated ParamOriginValue paramList = 2;
+}
+
+// 属性来源请求
+message ParamOriginRequest {
+	repeated int32 paramId = 1;
+}
+
+message ParamOriginResponse {
+	repeated ParamOrigin originList = 1;
+}
+
+enum ParamOriginType {
+	PLAYER_INIT = 1; // 初始值
+	BUFF = 2; // buff加成
+	INNER_CITY = 3; // 建筑加成
+	HERO = 4; // 英雄加成
+	PLAYER_VIP = 5; // Vip加成
+	TECH = 6; //科技
+	ALLIANCE_TECH = 7;   //联盟科技
+}
+

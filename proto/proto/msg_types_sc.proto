@@ -1,0 +1,30 @@
+package com.bochsler.protocol;
+
+//option optimize_for = LITE_RUNTIME;
+
+// 所有服务器->客户端的消息类型	LUA端为20000以上 C#端为20000以下
+enum SCMessageEnum {
+  SC_LoginResponse = 10001;
+  SC_PingResponse = 10002;
+  SC_ReconnectResponse = 10003; //断线重连
+  SC_SCChannelExpired = 10004;
+  SC_SCServerClosed = 10005;
+  SC_SCServerVersion = 10006;
+  SC_SCPrompt = 10007;
+  SC_SCNotify = 10008;
+  SC_GmOrderResponse = 10009;
+  SC_LoginSuccResp = 10010;
+  SC_CreateRoleResponse = 10011; //创建角色
+  SC_RoleListResponse = 10012; //角色列表
+  SC_RoleLoginResponse = 10013; //角色登陆游戏
+  SC_RoleLogoutResponse = 10014; //角色登出游戏
+  
+  
+  SC_ChatResponse = 10101;//聊天
+  SC_FaceResponse = 10102;//表情
+  
+  /**************** 10601 - 10699 星球,世界相关协议*********************/
+  SC_WorldPlayerAdd = 10601;		//玩家进入星球
+  SC_WorldPlayerRemove = 10602;		//玩家退出星球
+  SC_WorldPlayerMove = 10603;		//玩家在星球上移动
+}

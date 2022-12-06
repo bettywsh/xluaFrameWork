@@ -1,0 +1,24 @@
+package com.bochsler.protocol;
+
+//option optimize_for = LITE_RUNTIME;
+
+// 所有客户端->服务器的消息类型 LUA端为10000以上 C#端为10000以下
+enum CSMessageEnum {
+  CS_LoginRequest = 10001;
+  CS_PingRequest = 10002;
+  CS_ReconnectRequest = 10003; // 断线重连
+  CS_GmOrderRequest = 10009;
+  CS_LoginSuccReq = 10010;
+  CS_CreateRoleRequest = 10011; //创建角色
+  CS_RoleListRequest = 10012; //角色列表
+  CS_RoleLoginRequest = 10013; //角色登陆游戏
+  CS_RoleLogoutRequest = 10014; //角色登出游戏
+  CS_ChatRequest = 10101;//聊天
+  CS_FaceRequest = 10102;//表情
+  
+  
+  
+  /**************** 10501 - 10599 星球,世界相关协议*********************/
+  CS_WorldPlayerMove = 10501;		//玩家移动
+  
+}

@@ -1,0 +1,26 @@
+package com.bochsler.protocol;
+
+
+//聊天协议
+message ChatRequest {
+	required string playerId = 1;					//玩家ID
+	required string name = 2;					//玩家名
+	required string content = 3;					//玩家聊天内容
+}
+
+message ChatResponse {
+	required string playerId = 1;					//玩家ID
+	required string name = 2;					//玩家名
+	required string content = 3;					//玩家聊天内容
+}
+
+//表情协议
+message FaceRequest {
+	required string playerId = 1;					//玩家ID
+	required string icon = 2;					//表情名
+}
+
+message FaceResponse {
+	required string playerId = 1;					//玩家ID
+	required string icon = 2;					//表情名
+}

@@ -1,0 +1,76 @@
+package com.bochsler.protocol;
+
+//import "proto_player.proto";
+
+//发送测试命令
+message TestCmdRequest {
+  required string cmd = 1; //命令
+}
+
+//显示财产类型
+enum DisplayAssetType {
+  RESOURCE = 1; //资源
+  ITEM = 2; //道具
+  SOLDIER = 3; //士兵
+  COMMANDER = 4; //英雄（指挥官）
+  EQUIPMENT = 5; // 装备
+  SKILL_CARD = 6; //技能卡
+  CAR = 7; //豪车
+}
+
+//通用财产显示数据
+message DisplayAsset {
+  required DisplayAssetType type = 1; //类型
+  required string id = 2; //id
+  required int64 num = 3; //数量 小于int52就行
+}
+
+//财产包显示数据
+message DisplayAssetPackage {
+  repeated DisplayAsset asset = 1; //财产
+}
+
+//特殊的财产包显示数据,需要显示唯一id
+message SpecialDisplayAsset {
+  required DisplayAssetType type = 1; //类型
+  required int32 uid = 2;             //唯一id
+  required string id = 3;             //id
+  required int64 num = 4;             //数量
+}
+
+//特殊的财产包显示数据
+message SpecialDisplayAssetPackage {
+  repeated SpecialDisplayAsset specialAsset = 1; //财产
+}
+
+// 玩家角色标识，按序号存库，不要修改顺序
+enum PlayerMark {
+  NORMAL_PLAYER = 1; // 普通玩家
+  GUIDE_PLAYER = 2; // 指导员
+  GM = 3; // GM
+  TEST_PLAYER = 4; // 测试号，福利号
+  GUEST = 6; //游客
+}
+
+// 表示操作成功
+message OkResponse {
+}
+
+// int 类型的键值对
+message IntPair {
+  required int32 key = 1; //键
+  required int32 value = 2; //值
+}
+
+//内城相关操作类型
+enum OperateType {
+  NORMALLY = 0; //正常操作
+  IMMEDIATELY = 1; //立即完成
+}
+
+//坐标
+message Vector3{
+	required float x = 1;
+	required float y = 2;
+	required float z = 3;
+}

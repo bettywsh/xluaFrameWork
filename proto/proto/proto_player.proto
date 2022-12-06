@@ -1,0 +1,36 @@
+package com.bochsler.protocol;
+
+message PlayerInfoRequest {
+	required string playerId = 1;
+}
+
+message PlayerInfoResponse {
+	required string playerId = 1;
+	required string nickname = 2; //昵称
+	optional int32 vip = 3; //vip等级
+	optional string allianceId = 4; //联盟id
+	optional string allianceName = 5; //联盟名称
+	optional string allianceCode = 6; //联盟代码
+	optional string playerIcon = 7; //玩家头像
+}
+
+message SCPlayerLevelInfo {
+	required int32 level = 1; // 等级
+	required int64 exp = 2; // 经验
+}
+
+message ChangeLanguageRequest {
+	required int32 languageId = 1; // 语言id
+}
+
+message ChangeLanguageResponse {
+}
+
+message KillCount {
+	required int64 sum = 1;      // 击杀总数
+	required int64 I = 2;        // 一级单位总数
+	required int64 II = 3;       // 二级单位总数
+	required int64 III = 4;      // 三级单位总数
+	required int64 IV = 5;       // 四级单位总数
+	required int64 V = 6;        // 五级单位总数
+}

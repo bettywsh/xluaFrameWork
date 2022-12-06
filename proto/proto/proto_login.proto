@@ -1,0 +1,189 @@
+package com.bochsler.protocol;
+
+//import "proto_role.proto";
+
+enum LoginResult {
+  LOGIN_SUCCESS = 1;
+  VERSION_ERROR = 2; //版本对比错误，客户版本需要更新
+  NOT_IN_WHITELIST = 3; //登录IP或帐号不在白名单内
+  SDK_TIMESTAMP_ERROR = 4; //SDK时间戳过期(3分钟内)
+  SDK_SIGN_ERROR = 5; //SDK签名错误
+  PARAM_IP_ERROR = 6; //参数错误：登录IP为空/黑名单中
+  PARAM_ACCOUNT_ERROR = 7; //参数错误：登录帐号没有角色信息(一般为GM登录玩家帐号)
+  PARAM_ROLE_ERROR = 8; //参数错误：未找到对应角色
+  PARAM_WORLD_ERROR = 9; //参数错误：服务器未开放
+  ROLE_BE_BANNED = 10; //登录角色被禁
+  ROLE_COUNT_MAX = 11; //该服创角数量达到上限
+  ROLE_CREATE_ERROR = 12; //创角错误
+  ACCOUNT_IS_LOGGING = 13; //帐号正在登录中(短时间内连续登录)
+  INTERNAL_ERROR = 14; //服务器内部错误
+  LOGIN_SIGN_ERROR = 15; //登录签名错误
+  RECONNECT_ERROR = 16;
+  PARAM_DEVICE_ERROR = 17;//参数错误：登录设置不一致(重连)
+  PARAM_TIMESTAMP_ERROR = 18;//参数错误：时间戳不对(重连)
+  PARAM_NOTNULL_ERROR = 19; //参数错误：不能传空
+}
+
+//登录类型
+enum LoginType {
+  LOGIN_SDK = 0;          //SDK登录
+  LOGIN_GM = 1;           //GM登录
+  LOGIN_DEV = 2;          //开发环境登录
+}
+
+// 登陆请求
+message LoginRequest {
+  // required LoginType loginType = 1; //登录类型
+  // optional SuperSdkInfo sdkInfo = 2;
+  // optional ClientInfo clientInfo = 3;
+  required string username = 1;
+  required string password = 2;
+}
+
+message SuperSdkInfo {
+  optional string sdkTicket = 1; //SDK参数，Base64编码
+  required string opId = 2;
+  required string opGameId = 3;
+}
+
+message ClientInfo {
+  required string pubKey = 1;
+  required string deviceId = 2;
+  required string clientVersion = 3;
+  required int64 worldId = 4;
+  required int64 roleId = 5;
+  optional string operationSystem = 6;
+  optional string platform = 7;
+  optional string resVersion = 8;
+  optional string country = 9;
+  optional string model = 10;
+  optional string bundleId = 11;
+  optional int32 languageId = 12;
+  optional string clientTimeZone = 13;  //客户端时区
+}
+
+// 登陆响应
+message LoginResponse {
+  optional PlayerInfo playerInfo = 1; // 玩家角色信息
+  optional int32 timeZone = 2; // 服务器时区
+  optional int64 servertime = 3;
+  optional LoginResult result = 4; // 登陆结果
+  optional string serverkey = 5; //    临时密钥
+  optional int32 resetTime = 6;  //重连重置时间（秒）
+  optional bool isNewRole = 7; // 是否是新注册角色
+  optional LoginExtraData data = 8; //额外参数
+  optional string opGameId = 9;//opgameid
+  optional string opId = 10;//opId
+  required LoginType loginType = 11; // 登录类型
+}
+
+// 重连请求
+message ReconnectRequest {
+  required LoginType loginType = 1; //登录类型
+  required SuperSdkInfo sdkInfo = 2;
+  required ClientInfo clientInfo = 3;
+  required int32 reconnectType = 4;//重连类型 1.缓存 2.全数据
+  required int32 msgIndex = 5; //消息索引
+  required ReconnectParam reconnectParam = 6; // 重连所需的参数
+}
+
+message ReconnectParam {
+  optional string clientIp = 1; // 重连时ip 不使用sdkTicket的ip
+  required int64 time = 2; // 重连时的客户端时间(单位s) 不使用sdkTicket的time 用于与Gate启动时间比较
+}
+
+// 重连响应
+message ReconnectResponse {
+  required LoginResult result = 1;
+  optional string playerId = 2;
+  optional int32 timeZone = 3; // 服务器时区
+  optional int64 servertime = 4;
+  optional string serverkey = 5; //    临时密钥
+  optional PlayerInfo playerInfo = 6; // 玩家角色信息
+  optional int64 allianceId = 7; // 所属联盟
+  optional int64 allianceWorldId = 8; //联盟所属服
+  optional int32 msgIndex = 9; //消息索引
+  optional string opGameId = 10;//opgameid
+  optional string opId = 11;//opId
+}
+
+// 角色信息
+message PlayerInfo {
+  optional string csid = 1; // 当前(合服后)服务器id
+  optional string nickname = 2; // 昵称
+  optional string icon = 3; // 头像
+  optional int32 sex = 4; //性别   1:男 2:女
+  optional int32 level = 5; // 等级
+  optional int32 exp = 6; // 经验
+  optional bool isVipActive = 7;
+  optional int32 vipLevel = 8; // vip等级
+  optional int32 vipExp = 9; // vip经验
+  required string playerId = 10; //   玩家ID
+  optional string allianceId = 11; // 所属联盟
+  optional string power = 12; //战斗力
+  optional int64 createTime = 13; //创建时间
+  optional string onlineAddictionTime = 14; // 防沉迷累计在线时间
+  optional int32 antiAddicationFlag = 15; //防沉迷标记
+}
+
+message LoginExtraData {
+    /** 是否为版署服 */
+    optional bool banshu = 1;
+    /** 账户 */
+    optional string account = 2;
+    /** 玩家国家 */
+    optional string country = 3;
+    /** 语言 */
+    optional string lang = 4;
+    /** api url */
+    optional string apiUrl = 5;
+    /** cdn url */
+    optional string cdnUrl = 6;
+    /** battleRecord路径 */
+    optional string battleRecordPath = 7;
+    /** 登录IP */
+    optional string clientIp = 8;
+}
+
+message LoginSuccReq {
+
+}
+
+message LoginSuccResp {
+
+}
+
+message ReconnectMsgIndex {
+  required int32 msgType = 1;   //消息类型 1.home 2.world 3.rtsWorld 4.gate
+  required int32 sendSN = 2;
+  required int32 recvSN = 3;
+  required int32 pushSN = 4;
+  required int32 broadcastSN = 5;
+}
+
+// 客户端更新通知
+message ClientVersion {
+  required string opGameId = 1;
+  required string opId = 2;
+  required string clientVersion = 3;
+  required string extraVersion = 4;
+  required string resLimitVersion = 5;
+  required string resLatestVersion = 6;
+  required string forceUpdateUrl = 7;
+  repeated string cdnArray = 8;
+}
+
+// 客户端更新通知
+message SCClientVersionList {
+  required ClientVersion version = 1;
+}
+
+// 获取客户端版本预更新的请求
+message ClientVersionPreUpdateRequest {
+  required string platform = 1;
+  required string clientChannel = 2;
+}
+
+message ClientVersionPreUpdateResponse {
+  required ClientVersion clientVersion = 1;
+}
