@@ -66,7 +66,6 @@ function RegisterButtonOnClick(cls)
         if string.sub(k, 1, 3) == 'UI_' and string.sub(k, #k - 7, #k) == '_OnClick' then
             local go = cls.view[string.sub(k, 4, #k - 8)]
             if go then
-                local listener = CS.EventTriggerListener.Get(go.gameObject)
                 go.onClick:AddListener(function(go)
                     v(cls)
                 end)

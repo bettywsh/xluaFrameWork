@@ -23,6 +23,12 @@ function UIBase:LoadAtlasSprite(atlasName, spriteName)
     return self.view.transform:GetComponent("LuaClass"):GetSprite(atlasName, spriteName);
 end
 
+function UIBase:SetClickCallback(go, me, callback)
+    go.onClick:AddListener(function(go)
+        callback(me)
+    end)
+end
+
 function UIBase:SetClickUpCallback(go, callback)
     local listener = EventTriggerListener.Get(go)
     listener.onUp = callback
@@ -43,11 +49,6 @@ function UIBase:SetClickExitCallback(go, callback)
     listener.onExit = callback
 end
 
-function UIBase:SetClickCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onClick = callback
-end
-
 function UIBase:SetBeginDragCallback(go, callback)
     local listener = EventTriggerListener.Get(go)
     listener.onBeginDrag = callback
@@ -62,6 +63,8 @@ function UIBase:SetEndDragCallback(go, callback)
     local listener = EventTriggerListener.Get(go)
     listener.onEndDrag = callback
 end
+
+
 
 function UIBase:Close()
 	UnRegisterNetCmd(self)
