@@ -7,8 +7,8 @@ end
 
 function LoginPanel:UI_btnclick_OnClick()
 	-- NetMgr:ConnectTo(GameDefine.Connect_Login, GameDefine.ServerAddress.LoginSvrIp, GameDefine.LoginSvrPort)
-	
-	DialogMgr:ShowTextFlying("1111")
+	DialogMgr:ShowDialog1("111", "2", function() print(3333)end)
+	-- DialogMgr:ShowTextFlying("1111")
 	-- local CLLogin =
 	-- {
 	-- 	PacketId = "PACKET_LOGIN_LOGIN_CLLogin",

@@ -11,4 +11,24 @@ function DialogMgr:ShowTextFlying(value)
     self.TextFlyingCtrl:Fly(value)
 end
 
+function DialogMgr:ShowDialog1(txtMsg, txtOk, okCb)
+    UIMgr:Open("DialogPanel", {
+        txtMsg = txtMsg,
+        txtOk = txtOk,
+        okFun = okCb,
+        type = 1
+    })
+end
+
+function DialogMgr:ShowDialog2(txtMsg, txtOk, txt_cal, okFun, calFun)
+    UIMgr:Open("DialogPanel", {
+        txtMsg = txtMsg,
+        txtOk = txtOk,
+        txtCal = txt_cal,
+        okFun = okFun,
+        calFun = calFun,
+        type = 2
+    })
+end
+
 return DialogMgr

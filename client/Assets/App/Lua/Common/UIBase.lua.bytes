@@ -6,8 +6,6 @@ UIBase.name = nil
 
 function UIBase:Open(transform, args)
 	self.args = args
-	print(self.args[1])
-	print(self.args[2])
     self.gameObject = transform.gameObject
 	self.name = self.gameObject.name
     -- self:InitBinder()

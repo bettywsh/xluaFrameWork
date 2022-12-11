@@ -1,0 +1,46 @@
+local DialogPanel = class("DialogPanel", UIBase)
+
+function DialogPanel:OnOpen()
+    self.args = self.args[1]
+    self.view.txtMsg.text = self.args.txtMsg
+    if self.args.txtOk ~= nil then
+        self.view.txtOk.text = self.args.txtOk
+    end
+    if self.args.txtCal ~= nil then
+        self.view.txtCancel.text = self.args.txtCSal
+    end
+
+    print(self.args.type)
+    if self.args.type == 0 then
+        self.view.btnOk.gameObject:SetActive(false)
+        self.view.btnCancel.gameObject:SetActive(false)
+    elseif self.args.type == 1 then
+     
+        self.view.btnOk.gameObject:SetActive(true)
+        self.view.btnCancel.gameObject:SetActive(false)
+    elseif self.args.type == 2 then
+        self.view.btnOk.gameObject:SetActive(true)
+        self.view.btnCancel.gameObject:SetActive(true)
+    end
+end
+
+function DialogPanel:UI_btnOk_OnClick()
+    if self.args.okFun ~= nil then
+        self.args.okFun()
+    end
+    UIMgr:CloseSelf(self)
+end
+
+function DialogPanel:UI_btnCancel_OnClick()
+    if self.args.calFun ~= nil then
+        self.args.calFun()
+    end
+    UIMgr:CloseSelf(self)
+end
+
+function DialogPanel:OnClose()
+    
+end
+
+return DialogPanel
+
