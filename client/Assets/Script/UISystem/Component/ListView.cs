@@ -1,13 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
+using XLua;
+
 
 [RequireComponent(typeof(UnityEngine.UI.LoopScrollRect))]
 [DisallowMultipleComponent]
 public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSource
 {
     public GameObject item;
-    public int totalCount = -1;
+    public Transform selected;
+
+    public Action<LuaTable, int> provideData;
+    
+    private int  mtotalCount= -1;
+    public int totalCount
+    {
+        get
+        {
+            return mtotalCount;
+        }
+        set
+        {
+            mtotalCount = value;
+            var ls = GetComponent<LoopScrollRect>();
+            ls.prefabSource = this;
+            ls.dataSource = this;
+            ls.totalCount = mtotalCount;
+            ls.RefillCells();
+        }
+    }
 
     // Implement your own Cache Pool here. The following is just for example.
     Stack<Transform> pool = new Stack<Transform>();
@@ -33,15 +56,14 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
 
     public void ProvideData(Transform transform, int idx)
     {
-        transform.SendMessage("ScrollCellIndex", idx);
-    }
+        LuaTable luaTable = transform.GetComponent<ListViewItem>().luaTable;
+        if (luaTable == null)
+        {
+            // LuaManager.Instance.DoFile();
+        }
 
-    void Start()
-    {
-        var ls = GetComponent<LoopScrollRect>();
-        ls.prefabSource = this;
-        ls.dataSource = this;
-        ls.totalCount = totalCount;
-        ls.RefillCells();
+        provideData(luaTable, idx);
+        // transform.SendMessage("ScrollCellIndex", idx);
     }
+    
 }
