@@ -1,18 +1,10 @@
-local LoadingPanelCtrl = class("LoadingPanelCtrl", UIBase)
-LoadingPanelCtrl.view = {}
-LoadingPanelCtrl.finishCb = {}
-LoadingPanelCtrl.sceneFinish = false
-LoadingPanelCtrl.loadingFinish = false
+local LoadingPanel = class("LoadingPanel", UIBase)
+LoadingPanel.sceneFinish = false
+LoadingPanel.loadingFinish = false
 
-function LoadingPanelCtrl:Awake(transform, args)
-	local loadingPanelView = require("UI/View/LoadingPanelView")
-	self.view = loadingPanelView:Awake(transform)
-	self.finishCb = args[0]
+function LoadingPanel:OnOpen()
 	self.loadingFinish = false
 	self.sceneFinish = false
-end
-
-function LoadingPanelCtrl:Start()
 	self.view.progressValue.fillAmount = 0
 	self.view.txt_Value.text = string.format(TextMgr:GetText("Loading_Value"), 0)
 	self.view.loading:DOLocalRotate(Vector3(0, 0, -360), 1, DG.Tweening.RotateMode.FastBeyond360):SetLoops(-1, DG.Tweening.LoopType.Restart):SetEase(DG.Tweening.Ease.Linear)
@@ -26,33 +18,29 @@ function LoadingPanelCtrl:Start()
 	
 end
 
--- function LoadingPanelCtrl:SetText()
+-- function LoadingPanel:SetText()
 -- 	self.view.Text.text = ConfigMgr.GetChineseText("Common_Loading");--当前正在加载中
 -- end
 
-function LoadingPanelCtrl:LoadingFinish()
+function LoadingPanel:LoadingFinish()
 	self.loadingFinish = true
 	print("LoadingFinish"..tostring(self.sceneFinish)..","..tostring(self.loadingFinish))
 	if self.sceneFinish and self.loadingFinish then
-		self:Destroy()
+		UIMgr:CloseSelf(self)
 	end
 end
 
-function LoadingPanelCtrl:SceneFinish()
+function LoadingPanel:SceneFinish()
 	self.sceneFinish = true
 	print("SceneFinish")
 	if self.sceneFinish and self.loadingFinish then
-		self:Destroy()
+		UIMgr:CloseSelf(self)
 	end
 end
 
-
-function LoadingPanelCtrl:Destroy()
-	if self.finishCb then
-		self.finishCb()
-	end
-	self:Hide(self.view.gameObject)
+function LoadingPanel:OnClose()
+	
 end
 
 
-return LoadingPanelCtrl
+return LoadingPanel

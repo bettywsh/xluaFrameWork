@@ -15,7 +15,6 @@ function DialogPanel:OnOpen()
         self.view.btnOk.gameObject:SetActive(false)
         self.view.btnCancel.gameObject:SetActive(false)
     elseif self.args.type == 1 then
-     
         self.view.btnOk.gameObject:SetActive(true)
         self.view.btnCancel.gameObject:SetActive(false)
     elseif self.args.type == 2 then

@@ -77,14 +77,14 @@ end
 UIMgr.AutoBindDict = {
     ["obj"] = function(go) return go end,
     ["tsf"] = function(go) return go.transform end,
-    ["img"] = function(go) return go:GetComponent(typeof(C_Image)) end,
-    ["txt"] = function(go) return go:GetComponent(typeof(C_TextMeshProUGUI)) end,
-    ["btn"] = function(go) return go:GetComponent(typeof(C_Button)) end,
-    ["tgl"] = function(go) return go:GetComponent(typeof(C_Toggle)) end,
-    ["sld"] = function(go) return go:GetComponent(typeof(C_Slider)) end,
-    ["ipt"] = function(go) return go:GetComponent(typeof(C_TMP_InputField)) end,
-    ["cng"] = function(go) return go:GetComponent(typeof(C_CanvasGroup)) end,
-    ["ulv"] = function(go) return go:GetComponent(typeof(C_ListView)) end
+    ["img"] = function(go) return assert(go:GetComponent(typeof(C_Image)), go.name) end,
+    ["txt"] = function(go) return assert(go:GetComponent(typeof(C_TextMeshProUGUI)), go.name) end,
+    ["btn"] = function(go) return assert(go:GetComponent(typeof(C_Button)), go.name) end,
+    ["tgl"] = function(go) return assert(go:GetComponent(typeof(C_Toggle)), go.name) end,
+    ["sld"] = function(go) return assert(go:GetComponent(typeof(C_Slider)), go.name) end,
+    ["ipt"] = function(go) return assert(go:GetComponent(typeof(C_TMP_InputField)), go.name) end,
+    ["cng"] = function(go) return assert(go:GetComponent(typeof(C_CanvasGroup)), go.name) end,
+    ["ulv"] = function(go) return assert(go:GetComponent(typeof(C_ListView)), go.name) end
 }
 
 function UIMgr:AutoBind(transform)

@@ -1,0 +1,23 @@
+local UICellBase = {}
+UICellBase.view = {}
+UICellBase.gameObject = nil
+UICellBase.args = nil
+UICellBase.name = nil
+
+function UICellBase:Open(transform, args)
+	self.args = args
+    self.gameObject = transform.gameObject
+	self.name = self.gameObject.name
+	self.view = UIMgr:AutoBind(transform)
+    -- RegisterLuaMessage(self)
+    -- RegisterNetCmd(self)
+    -- RegisterButtonOnClick(self)
+end
+
+function UICellBase:Close()
+	-- UnRegisterNetCmd(self)
+    -- UnRegisterLuaMessage(self)
+    UnRequire("UI/"..self.name)
+    C_Object.DestroyImmediate(self.gameObject)
+end
+return UICellBase

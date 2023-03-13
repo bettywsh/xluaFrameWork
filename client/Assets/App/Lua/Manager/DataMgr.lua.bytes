@@ -1,6 +1,6 @@
 local DataMgr = {}
 
-function DataMgr.Reset()
+function DataMgr.Init()
     -- body
 end
 

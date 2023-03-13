@@ -13,38 +13,42 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     // 加载进度
     float loadPro = 0;
     bool isfinish = false;
-    string cutName = "";
-    string lastName = "";
     // 用以接受异步加载的返回值
     AsyncOperation AsyncOp = null;
 
     public void LoadScene(string name, LuaFunction func)
     {
-        ResManager.Instance.LoadAssetAsync(name, name, ResType.Scene, null, func);
+        loadPro = 0;
+        AsyncOp = null;
+        ResManager.Instance.LoadAssetAsync(name, name, ResType.Scene, (objt) =>
+        {
+            AsyncOp = null;
+            ResManager.Instance.DestroyCache();
+            AsyncOp = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
+            AsyncOp.allowSceneActivation = false;
+            AsyncOp.completed += (AsyncOperation ao) => {
+                AsyncOp.allowSceneActivation = true;       
+                GC();
+                LuaManager.Instance.CallFunction("SceneMgr", "FinishScene");
+            };
+        }, func);
     }
 
     public void ChangeScene(string name)
     {
-        isfinish = false;
-        cutName = name;
-
         ResManager.Instance.DestroyCache();
-
+    
         AsyncOp = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
         AsyncOp.allowSceneActivation = false;
         AsyncOp.completed += (AsyncOperation ao) => {
             AsyncOp.allowSceneActivation = true;       
             GC();
-            LuaManager.Instance.CallFunction("SceneMgr", "FinishScene");
+            LuaManager.Instance.CallFunction("SceneMgr", "SceneFinish");
         };
-        //});
-
     }
 
     private void Update()
     {
-        if (isfinish)
-            return;
         if (AsyncOp != null)//如果已经开始加载
         {
             loadPro = AsyncOp.progress; //获取加载进度,此处特别注意:加载场景的progress值最大为0.9!!!
@@ -53,6 +57,7 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
         {
             AsyncOp.allowSceneActivation = true;
         }
+        LuaManager.Instance.CallFunction("SceneMgr", "UpdateProcess", loadPro);
         
     }
 

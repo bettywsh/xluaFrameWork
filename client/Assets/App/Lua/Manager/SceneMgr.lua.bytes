@@ -1,27 +1,32 @@
 local SceneMgr = {}
 SceneMgr.name = ""
-SceneMgr.LoadingPanel = {}
-SceneMgr.finishCb = {}
+SceneMgr.LoadingPanel = nil
+SceneMgr.finishCb = nil
 SceneMgr.loading = false
 SceneMgr.oldName = ""
+SceneMgr.scene = nil
 
 function SceneMgr:init()
 	-- MessageMgr:LuaRegisterMessage(GameDefine.BuildInfoChange, self.BuildChangeInfo())
 end
 
 function SceneMgr:LoadScene(sceneName, loading, cb)
-	ModuleName = sceneName
 	self.name = sceneName
-	self.finishCb = cb	
+	if self.scene ~= nil then
+		self.scene:UnLoadScene()
+	end
+	
+	self.finishCb = cb
 	self.loading = loading
-	if loading then		
+	if loading then
 		self.LoadingPanel = UIMgr:Open("LoadingPanel", cb)
 	end
 	if self.oldName ~= ""  then
 		C_ResManager:UnLoadAssetBundle(ResType.Scene, self.oldName)
 	end
-	CS.LoadSceneManager.Instance:LoadScene(sceneName, function() 
-		CS.LoadSceneManager.Instance:ChangeScene(sceneName)		
+	C_LoadSceneManager.Instance:LoadScene(sceneName, function()
+		self.scene = require("Scene/"..sceneName.."Scene")
+		self.scene:LoadScene()
 		self.oldName = sceneName
 	end)
 end
@@ -31,35 +36,23 @@ function SceneMgr.BuildChangeInfo()
 end
 
 
--- function SceneMgr:UpdateProcess(args)
--- 	if self.loading then
--- 		self.LoadingPanel:UpdateProcess(args[0])
--- 	end
--- end
+function SceneMgr:UpdateProcess(args)
+	if self.loading then
+		self.LoadingPanel:UpdateProcess(args[0])
+	end
+end
 
 function SceneMgr:CurScene()
     return self.name
 end
 
-function SceneMgr:FinishScene()	
-
-	if  not self.afterFinishCb then
-		SceneMgr:CloseScene()
-	else
-		self.afterFinishCb(function ()
-			SceneMgr:CloseScene()
-		end)
-	end
-end
-
-function SceneMgr:CloseScene()
+function SceneMgr:SceneFinish()
 	--没有loading的情况下进行回调
-	if not self.loading then		
-		if self.finishCb then
-			self.finishCb()
-		end
-	else
+	if self.loading then
 		self.LoadingPanel:SceneFinish()
+	end
+	if self.finishCb then
+		self.finishCb()
 	end
 end
 

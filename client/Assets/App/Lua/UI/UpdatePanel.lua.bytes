@@ -49,7 +49,6 @@ function UpdatePanelCtrl:RegisterEvent()
 			self.view.progressValue.fillAmount = value[1]
 			self.currentValue = value[1]
 		end
-		
 	end)
 
 	MessageMgr:RegisterEventMessage(MessageConst.MsgUpdateDownLoadComplete, function()

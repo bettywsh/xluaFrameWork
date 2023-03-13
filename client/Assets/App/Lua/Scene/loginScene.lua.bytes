@@ -1,0 +1,11 @@
+local loginScene = {}
+
+function loginScene:LoadScene()
+
+end
+
+function loginScene:UnLoadScene()
+    
+end
+
+return loginScene
