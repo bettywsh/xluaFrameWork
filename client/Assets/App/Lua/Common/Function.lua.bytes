@@ -1,19 +1,19 @@
 function log(info)
     if GameDefine.ServerAddress.Type ~= 3 then
-        C_Debug.Log(tostring(info))
+        CSDefine.Debug.Log(tostring(info))
     end
 
 end
 
 function warring(info)
     if GameDefine.ServerAddress.Type ~= 3 then
-        C_Debug.LogWarning(tostring(info))
+        CSDefine.Debug.LogWarning(tostring(info))
     end
 end
 
 function error(info)
     if GameDefine.ServerAddress.Type ~= 3 then
-        C_Debug.LogError(tostring(info))
+        CSDefine.Debug.LogError(tostring(info))
     end
 end
 
@@ -247,7 +247,7 @@ end
 
 -- 创建对象
 function NewObject(prefab)
-    return C_GameObject.Instantiate(prefab)
+    return CSDefine.GameObject.Instantiate(prefab)
 end
 
 function AddChildren(parent, children)
@@ -258,8 +258,8 @@ end
 
 function SetParent(parent, go)
     go:SetParent(parent.transform, false)
-    go.localPosition = C_Vector3.zero
-    go.localScale = C_Vector3.one
-    go.localEulerAngles = C_Vector3.zero
+    go.localPosition = CSDefine.Vector3.zero
+    go.localScale = CSDefine.Vector3.one
+    go.localEulerAngles = CSDefine.Vector3.zero
     return go
 end

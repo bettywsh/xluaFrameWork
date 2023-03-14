@@ -41,7 +41,7 @@ end
 
 -- 接受服务器时间
 function GameMgr:OnNetCmd_GCServerTimeResponse(scmd)
-    CS.TimerManager.Instance:SetServerTimer(scmd.ServerTime);
+    CSDefine.TimerManager.Instance:SetServerTimer(scmd.ServerTime);
 end
 
 function GameMgr:MessageLogout(scmd)

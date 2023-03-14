@@ -1,9 +1,5 @@
 local DialogMgr = {}
 
--- function ResMgr:init()
--- end
-DialogMgr.queue = {}
-
 function DialogMgr:ShowTextFlying(value)
     if self.TextFlyingCtrl == nil then
         self.TextFlyingCtrl = UIMgr:Open("TextFlyingPanel", value)

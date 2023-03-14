@@ -15,7 +15,7 @@ end
 function UpdatePanelCtrl:DownLoadFiles()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_StartDownLoad")
 	self.view.progressValue.fillAmount = 0
-	C_UpdateManager:DownLoadFiles()
+	CSDefine.UpdateManager:DownLoadFiles()
 end
 
 function UpdatePanelCtrl:InitCopyFile()
@@ -66,7 +66,7 @@ function UpdatePanelCtrl:RegisterEvent()
 
 	MessageMgr:RegisterEventMessage(MessageConst.MsgUpdateDownLoadError, function()
 		UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_DownLoadError"), function()
-			C_UpdateManager:DownLoadFiles()
+			CSDefine.UpdateManager:DownLoadFiles()
 		end)
 	end)
 end

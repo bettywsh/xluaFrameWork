@@ -58,7 +58,7 @@ end)
 --大版本更新
 MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateBigVersion, function(url)
 	UIMgr:OpenMessageBox(string.format(TextMgr:GetText("UpdatePanel_BigVersion"), url[0]),function()
-		C_UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
+		CSDefine.UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
     end,nil,2)
 end)
 --小版本更新
@@ -73,7 +73,7 @@ end)
 --服务器连接失败
 MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateLostConnect, function()
 	UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_ServerFail"),function()
-		C_UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
+		CSDefine.UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
     end,nil,2)
 end)
 

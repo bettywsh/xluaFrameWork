@@ -13,7 +13,7 @@ function TextFlyingPanel:Fly(text)
 	local run = AddChildren(self.view.objContent, self.view.imgBg.gameObject)
 	run.gameObject:SetActive(true)
 	--生成动画序列
-	local seq = C_Sequence()
+	local seq = CSDefine.Sequence()
 	-- seq:Insert(0, go:DOScale(2, 0.5))
 	-- seq:Append(go:DOScale(1, 1))
 	-- seq:AppendInterval(1)
@@ -22,7 +22,7 @@ function TextFlyingPanel:Fly(text)
 	seq:AppendInterval(5)
 	--动画完成回调
 	seq:AppendCallback(function()
-		C_GameObject.Destroy(run.gameObject)
+		CSDefine.GameObject.Destroy(run.gameObject)
 		-- UIMgr.CloseSelf(self)
 	end)
 end

@@ -55,9 +55,7 @@ TextMgr:Init()
 
 -- ModuleName = "LoginModule"
 math.randomseed(math.floor(os.clock()*1E11))
-SceneMgr:LoadScene("Login", false, function()
-    UIMgr:Open("LoginPanel")
-end)
+SceneMgr:LoadScene("Login", false)
 
 --卸载依赖
 -- ResManager.Instance:UnLoadAssetBundle(ResType.Atlas, "CommonPanel")

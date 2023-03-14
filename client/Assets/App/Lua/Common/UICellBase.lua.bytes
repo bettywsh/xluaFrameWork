@@ -18,6 +18,6 @@ function UICellBase:Close()
 	-- UnRegisterNetCmd(self)
     -- UnRegisterLuaMessage(self)
     UnRequire("UI/"..self.name)
-    C_Object.DestroyImmediate(self.gameObject)
+    CSDefine.Object.DestroyImmediate(self.gameObject)
 end
 return UICellBase

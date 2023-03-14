@@ -2,7 +2,7 @@ local SplashPanel = class("SplashPanel", UIBase)
 
 function SplashPanel:OnOpen()
 	self.view.cngBG.alpha = 0
-	local seq = C_DOTween.Sequence()
+	local seq = CSDefine.DOTween.Sequence()
 	seq:Append(self.view.cngBG:DOFade(1, 1))
 	seq:AppendInterval(1)
 	seq:Append(self.view.cngBG:DOFade(0, 1))
@@ -14,7 +14,7 @@ function SplashPanel:OnOpen()
 end
 
 function SplashPanel:OnClose()
-	C_UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
+	CSDefine.UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
 end
 
 return SplashPanel

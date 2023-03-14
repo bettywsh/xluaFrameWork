@@ -5,7 +5,7 @@ TextMgr.textDefine = {}
 
 -- 初始化语言
 function TextMgr:Init()
-    local startLanguage = C_PlayerPrefs.GetString("language", "")
+    local startLanguage = CSDefine.PlayerPrefs.GetString("language", "")
     if startLanguage == "" then
         startLanguage = "Chinese"
         TextMgr.language = startLanguage
@@ -19,7 +19,7 @@ end
 -- 更改语言
 function TextMgr:ChangeLanguage(LanguageName)
     if LanguageName ~= self.language then
-        C_PlayerPrefs.SetString("language", LanguageName)
+        CSDefine.PlayerPrefs.SetString("language", LanguageName)
         self.language = LanguageName
         return true
     else

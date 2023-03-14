@@ -15,8 +15,8 @@ NetMgr.pingnum = 0
 
 -- 初始化PB
 function NetMgr:init()
-    self:RegisterProto()
-    self:RegisterProtoFile()
+    -- self:RegisterProto()
+    -- self:RegisterProtoFile()
     self:InitHandleMessage()
     self:RegisterGlobalProto()
 end
@@ -70,7 +70,7 @@ end
 function NetMgr:RegisterProtoFile()
     local protodefs = {"login_login"}
     for _, v in ipairs(protodefs) do
-        local fn = ResMgr:OnLoadAsset("Common", "Protobuf/"..v .. ".pc", C_ResType.Bytes)
+        local fn = ResMgr:OnLoadAsset("Common", "Protobuf/"..v .. ".pc", CSDefine.ResType.Bytes)
         fn = fn.text
         local file, x = self.PB.load(fn)
         if not file then
@@ -81,7 +81,7 @@ end
 
 -- 注册网络协议的ID内容
 function NetMgr:RegisterProto()
-    local fn = ResMgr:OnLoadAsset("Common", "Protobuf/msgdef.proto", C_ResType.Txt)
+    local fn = ResMgr:OnLoadAsset("Common", "Protobuf/msgdef.proto", CSDefine.ResType.Txt)
     -- print(fn.text)
     fn = fn.text
     local lines = string.split(fn, "\n")

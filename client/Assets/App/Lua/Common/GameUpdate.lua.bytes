@@ -47,7 +47,7 @@ function GameUpdate.RemoveLateUpdate( ins, func)
 end
 
 function GameUpdate.Update()
-    local deltaTime = C_Time.deltaTime;
+    local deltaTime = CSDefine.Time.deltaTime;
     for i, v in pairs(m_updateList) do
         if v.ins ~= nil then
             v.func(v.ins, deltaTime);
@@ -58,7 +58,7 @@ function GameUpdate.Update()
 end
 
 function GameUpdate.FixedUpdate()
-    local fixedDeltaTime = C_Time.fixedDeltaTime;
+    local fixedDeltaTime = CSDefine.Time.fixedDeltaTime;
     for i, v in pairs(m_fixedUpdateList) do
         if v.ins ~= nil then
             v.func(v.ins,fixedDeltaTime);
@@ -69,7 +69,7 @@ function GameUpdate.FixedUpdate()
 end
 
 function GameUpdate:LateUpdate()
-    local deltaTime = C_Time.deltaTime;
+    local deltaTime = CSDefine.Time.deltaTime;
     for i, v in pairs(m_lateUpdateList) do
         if v.ins ~= nil then
             v.func(v.ins,deltaTime);

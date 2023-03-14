@@ -4,11 +4,11 @@ local ResMgr = {}
 -- end
 
 function ResMgr:OnLoadAsset(resName, relativePath, resType)
-    return C_ResManager:OnLoadAsset(resName, relativePath, resType)
+    return CSDefine.ResManager:OnLoadAsset(resName, relativePath, resType)
 end
 
 function ResMgr:LoadAssetAsync(resName, relativePath, resType, func)
-    C_ResManager:LoadAssetAsync(resName, relativePath, resType, nil, func)
+    CSDefine.ResManager:LoadAssetAsync(resName, relativePath, resType, nil, func)
 end
 
 return ResMgr

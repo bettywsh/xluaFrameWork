@@ -20,14 +20,8 @@ GameDefine = {
     hasConnected = false,
     -- 被顶号不触发重连
     NoConnect = false,
-    -- 巡回赛
-    IsTourMatch = false,
     -- 进入才能短线重连
     isLoginBroken = false,
-    -- 比赛
-    RacingHorseInstanceId = 0,
-    RacingSpeed = 1,
-    RaceID = 0,
     -- 网络连接标识
     Connect_Login = "LoginSeverConnect",
     Connect_Game = "GameSeverConnect",
@@ -40,5 +34,5 @@ GameDefine = {
         END = 3 -- 重连结束
     },
 
- 
+    
 }
