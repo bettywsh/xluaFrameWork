@@ -95,11 +95,11 @@ function UIMgr:AutoBind(transform)
 	while iter:MoveNext() do
 		local varObj = iter.Current
 		if varObj ~= nil then
-            local names = string.split(varObj.objName, "_")
+            local names = Function:Split(varObj.objName, "_")
             if names[2] == nil then
                 view[names[1]] = varObj.objValue
             else
-                local types = string.split(names[1], ",")
+                local types = Function:Split(names[1], ",")
                 for i = 1, #types do
                     view[types[i]..names[2]] = self.AutoBindDict[types[i]](varObj.objValue)
                 end

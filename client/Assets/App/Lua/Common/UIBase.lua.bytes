@@ -10,9 +10,9 @@ function UIBase:Open(transform, args)
 	self.name = self.gameObject.name
     -- self:InitBinder()
 	self.view = UIMgr:AutoBind(transform)
-    RegisterLuaMessage(self)
-    RegisterNetCmd(self)
-    RegisterButtonOnClick(self)
+    Function:RegisterLuaMessage(self)
+    Function:RegisterNetCmd(self)
+    Function:RegisterButtonOnClick(self)
 end
 
 function UIBase:LoadSpriteAsync(spriteName, cb)
@@ -67,9 +67,9 @@ end
 
 
 function UIBase:Close()
-	UnRegisterNetCmd(self)
-    UnRegisterLuaMessage(self)
-    UnRequire("UI/"..self.name)
+	Function:UnRegisterNetCmd(self)
+    Function:UnRegisterLuaMessage(self)
+    Function:UnRequire("UI/"..self.name)
     CSDefine.Object.DestroyImmediate(self.gameObject)
 end
 return UIBase

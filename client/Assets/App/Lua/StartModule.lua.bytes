@@ -6,16 +6,10 @@ LuaClass = require("Common/LuaClass")
 CSDefine = require("Common/CSDefine")
 GameUpdate = require("Common/GameUpdate")
 Function = require("Common/Function")
--- require("Common/Function")
 
--- ShowPanel = require("Common/ShowPanel")
--- CommPanel = require("Common/CommPanel")
 UIBase = require("Common/UIBase")
 SoundMgr = require("Manager/SoundMgr")
 ConfigMgr = require("Manager/ConfigMgr")
-
--- LoginBroken = require("Common/LoginBroken")
--- PopupMgr = require("Manager/PopupMgr")
 ResMgr = require("Manager/ResMgr")
 MessageMgr = require("Manager/MessageMgr")
 NetMgr = require("Manager/NetMgr")
@@ -26,6 +20,7 @@ SceneMgr = require("Manager/SceneMgr")
 -- RedMgr = require("Manager/RedMgr")
 TextMgr = require("Manager/TextMgr")
 DialogMgr = require("Manager/DialogMgr")
+DataMgr = require("Manager/DataMgr")
 
 UIMgr:init()
 NetMgr:init()
@@ -34,26 +29,10 @@ SceneMgr:init()
 -- HttpMgr:init()
 -- RedMgr:init()
 TextMgr:Init()
+DataMgr:Init()
 
--- 初始化数据
--- PlayerModel = require("Model/PlayerModel")
--- PropModel = require("Model/PropModel")
--- TaskModel = require("Model/TaskModel")
--- HorseModel = require("Model/HorseModel")
--- BuildModel = require("Model/BuildModel")
--- MailModel = require("Model/MailModel")
--- MatchModel = require("Model/MatchModel")
--- HorseMarketModel = require("Model/HorseMarketModel")
--- LoginModel = require("Model/LoginModel")
--- FriendModel = require("Model/FriendModel")
--- HorseTrainModel = require("Model/HorseTrainModel");
--- BuyingHorsesModel = require("Model/BuyingHorsesModel");
--- RankModel=require("Model/RankModel");
--- MallModel=require("Model/MallModel");
-
-
--- ModuleName = "LoginModule"
 math.randomseed(math.floor(os.clock()*1E11))
+
 SceneMgr:LoadScene("Login", false)
 
 --卸载依赖

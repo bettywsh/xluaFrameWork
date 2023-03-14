@@ -1,15 +1,16 @@
+Function = {}
 
-function UnRequire(name)
+function Function:UnRequire(name)
     package.loaded[name] = nil
     package.preload[name] = nil
-    local lastName = string.split(name, "/")
+    local lastName = self:split(name, "/")
     _G[lastName[#lastName]] = nil
 end
 
 -- 注册网络消息回调函数
-function RegisterNetCmd(cls)
+function Function:RegisterNetCmd(cls)
     for k, v in pairs(cls) do
-        local strArr = string.split(k, '_')
+        local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnNetCmd' then
             MessageMgr:RegisterNetMessage(strArr[2], function(scmd)
                 v(cls, scmd)
@@ -19,16 +20,16 @@ function RegisterNetCmd(cls)
 end
 
 -- 删除对象中注册的网络协议
-function UnRegisterNetCmd(cls)
+function Function:UnRegisterNetCmd(cls)
     for k, v in pairs(cls) do
-        local strArr = string.split(k, '_')
+        local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnNetCmd' then
             MessageMgr:UnRegisterNetCmd(strArr[2])
         end
     end
 end
 
-function RegisterLuaMessage(cls)
+function Function:RegisterLuaMessage(cls)
     for k, v in pairs(cls) do
         if string.sub(k, 1, 12) == 'OnLuaNotify_' then
             MessageMgr:LuaRegisterMessage(string.gsub(string.sub(k, 13, #k), '_', '.'), cls, v)
@@ -36,16 +37,16 @@ function RegisterLuaMessage(cls)
     end
 end
 
-function UnRegisterLuaMessage(cls)
+function Function:UnRegisterLuaMessage(cls)
     for k, v in pairs(cls) do
-        local strArr = string.split(k, '_')
+        local strArr = self:Split(k, '_')
         if string.sub(k, 1, 12) == 'OnLuaNotify_' then
             MessageMgr:LuaUnRegisterMessage(string.gsub(string.sub(k, 13, #k), '_', '.'), cls, v)
         end
     end
 end
 
-function RegisterButtonOnClick(cls)
+function Function:RegisterButtonOnClick(cls)
     if not cls.view then
         return
     end
@@ -61,31 +62,26 @@ function RegisterButtonOnClick(cls)
     end
 end
 
-function log(info)
+function Function:Log(info)
     if GameDefine.ServerAddress.Type ~= 3 then
         CSDefine.Debug.Log(tostring(info))
     end
 
 end
 
-function warring(info)
+function Function:Warring(info)
     if GameDefine.ServerAddress.Type ~= 3 then
         CSDefine.Debug.LogWarning(tostring(info))
     end
 end
 
-function error(info)
+function Function:Error(info)
     if GameDefine.ServerAddress.Type ~= 3 then
         CSDefine.Debug.LogError(tostring(info))
     end
 end
 
-function print(str)
-    log(str)
-end
-
-
-function table.nums(t)
+function Function:Nums(t)
     if not t then
         return 0
     end
@@ -96,7 +92,7 @@ function table.nums(t)
     return count
 end
 
-function string.split(input, delimiter)
+function Function:Split(input, delimiter)
     input = tostring(input)
     delimiter = tostring(delimiter)
     if (delimiter == "") then return false end
@@ -109,7 +105,7 @@ function string.split(input, delimiter)
     return arr
 end
 
-function Shallow_clone(org)
+function Function:Shallow_clone(org)
     if type(org) == "table" then
         local copy = {}
         for i, v in pairs(org) do
@@ -121,13 +117,13 @@ function Shallow_clone(org)
     end
 end
 
-function Deep_clone(org)
+function Function:Deep_clone(org)
     if type(org) == "table" then
         local copy = {}
         for i, v in next, org, nil do
-            copy[Deep_clone(i)] = Deep_clone(v)
+            copy[self:Deep_clone(i)] = self:Deep_clone(v)
         end
-        setmetatable(copy, Deep_clone(getmetatable(org)))
+        setmetatable(copy, self:Deep_clone(getmetatable(org)))
         return copy
     else
         return org
@@ -135,7 +131,7 @@ function Deep_clone(org)
 end
 
 -- 显示table表内容,show(t,"====我的表====")
-function showTable(t, logTip, color)
+function Function:ShowTable(t, logTip, color)
     if not t then
         return print((logTip and logTip or "") .. ":\n nil")
     end
@@ -203,41 +199,8 @@ function showTable(t, logTip, color)
             ":\n</color>" .. jsonStr)
 end
 
-
--- 查找时间表Table V
-function TableTimeV(tbl, value)
-    if tbl == nil then
-        return false
-    end
-    for k, v in pairs(tbl) do
-        if k == "Type" and v == value then
-            return true
-        end
-    end
-    return false
-end
-
--- 查找表字段有就更改
-function TableChange(tbnew, tb)
-    for k, v in pairs(tbnew) do
-        if v ~= nil then
-            tb[k] = v
-        end
-    end
-end
-
-function TableMaxn(t, a)
-    local max = nil
-    for i, v in pairs(t) do
-        if max == nil or max < v[a] then
-            max = v[a]
-        end
-    end
-    return max
-end
-
 -- table打乱循序
-function TableShuffle(t)
+function Function:TableShuffle(t)
     if type(t)~="table" then
         return
     end
@@ -254,25 +217,25 @@ function TableShuffle(t)
     return tab
 end
 
-function GetLocalTime()
+function Function:GetLocalTime()
     local loaclTimer = TimerManager.Instance.ServerTimer + os.difftime(os.time(), os.time(os.date("!*t", os.time())))
     local format = os.date("!*t", loaclTimer)
     return format
 end
 
 -- 时间格式
-function GetTimeFormat(t)
+function Function:GetTimeFormat(t)
     local format = os.date("!*t", t)
     -- error(format)
     return string.format("%02d:%02d:%02d", format.hour, format.min, format.sec)
 end
 
-function GetTime(t)
+function Function:GetTime(t)
     local format = os.date("!*t", t)
     return string.format("%02d:%02d", format.hour, format.min)
 end
 
-function GetTimeAll(t, scmd)
+function Function:GetTimeAll(t, scmd)
     local dongTime = t + os.difftime(os.time(), os.time(os.date("!*t", os.time())))
     local format = os.date("!*t", dongTime)
     if scmd == "yue" then
@@ -283,12 +246,12 @@ function GetTimeAll(t, scmd)
     end
 end
 
-function GetDateFormat(t)
+function Function:GetDateFormat(t)
     local format = os.date("!*t", t)
     return string.format("%02d:%02d:%02d", (format.day - 1) * 24 + format.hour, format.min, format.sec)
 end
 
-function GetTimeFormatAll(t)
+function Function:GetTimeFormatAll(t)
     local format = os.date("!*t", t)
     if format.year > 1970 then
         return string.format("%02d年%02d月%02d日%02d:%02d:%02d", format.year - 1970, format.month - 1, format.day - 1, format.hour, format.min, format.sec)
@@ -303,7 +266,7 @@ function GetTimeFormatAll(t)
 end
 
 --指定的时间+时间偏移量
-function GetNewDate(interval ,dateUnit)
+function Function:GetNewDate(interval ,dateUnit)
     local loaclTimer = TimerManager.Instance.ServerTimer + os.difftime(os.time(), os.time(os.date("!*t", os.time())))
 
     --根据时间单位和偏移量得到具体的偏移数据
@@ -324,7 +287,7 @@ function GetNewDate(interval ,dateUnit)
 end
 
 -- 错误码
-function ErrorCode(scmd)
+function Function:ErrorCode(scmd)
     if not TableK(TextMgr:GetAllText(), "ErrorCode_" .. scmd.Result) then
         local fly = UIMgr:Open("Common", "TextFlyingPanel");
         fly:Fly("未包含此错误码" .. "ErrorCode_" .. scmd.Result);
@@ -335,7 +298,7 @@ function ErrorCode(scmd)
 end
 
 ---如果小数位数为0，则只保留整数
-function FormatNumToInt(num_para)
+function Function:FormatNumToInt(num_para)
     local num = tonumber(num_para)
     if num <= 0 then
         return 0
@@ -351,7 +314,7 @@ function FormatNumToInt(num_para)
 end
 
 -- 数字拆分成字符串表
-function GetSplitInter(num)
+function Function:GetSplitInter(num)
     local tb = {} --存放拆分的数字
     repeat
         table.insert(tb, 1, num % 10)
@@ -364,23 +327,18 @@ function GetSplitInter(num)
     return strLeng
 end
 
--- table复制
-function table.clone(org)
-    return {table.unpack(org)}
-end
-
 -- 创建对象
-function NewObject(prefab)
+function Function:NewObject(prefab)
     return CSDefine.GameObject.Instantiate(prefab)
 end
 
-function AddChildren(parent, children)
+function Function:AddChildren(parent, children)
     local go = NewObject(children).transform
     SetParent(parent, go)
     return go
 end
 
-function SetParent(parent, go)
+function Function:SetParent(parent, go)
     go:SetParent(parent.transform, false)
     go.localPosition = CSDefine.Vector3.zero
     go.localScale = CSDefine.Vector3.one
@@ -389,7 +347,7 @@ function SetParent(parent, go)
 end
 
 -- 显示文本转美术字
-function GetArtTxt(str)
+function Function:GetArtTxt(str)
     local artStr = ""
     local strLen = string.len(str)
     for i = 1, strLen do
@@ -401,3 +359,5 @@ function GetArtTxt(str)
     end
     return artStr
 end
+
+return Function

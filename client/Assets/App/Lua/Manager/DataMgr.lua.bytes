@@ -1,7 +1,21 @@
 local DataMgr = {}
 
 function DataMgr.Init()
-    -- body
+    -- 初始化数据
+    -- PlayerModel = require("Model/PlayerModel")
+    -- PropModel = require("Model/PropModel")
+    -- TaskModel = require("Model/TaskModel")
+    -- HorseModel = require("Model/HorseModel")
+    -- BuildModel = require("Model/BuildModel")
+    -- MailModel = require("Model/MailModel")
+    -- MatchModel = require("Model/MatchModel")
+    -- HorseMarketModel = require("Model/HorseMarketModel")
+    -- LoginModel = require("Model/LoginModel")
+    -- FriendModel = require("Model/FriendModel")
+    -- HorseTrainModel = require("Model/HorseTrainModel");
+    -- BuyingHorsesModel = require("Model/BuyingHorsesModel");
+    -- RankModel=require("Model/RankModel");
+    -- MallModel=require("Model/MallModel");
 end
 
 return DataMgr

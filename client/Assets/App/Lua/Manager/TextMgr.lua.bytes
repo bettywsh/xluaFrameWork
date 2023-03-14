@@ -13,7 +13,7 @@ function TextMgr:Init()
     else
         TextMgr.language = startLanguage
     end
-    UnRequire("Config.".. self.LanguageTable[self.language].LanguageTable)
+    -- UnRequire("Config.".. self.LanguageTable[self.language].LanguageTable)
 end
 
 -- 更改语言
