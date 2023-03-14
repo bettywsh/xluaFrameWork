@@ -1,6 +1,4 @@
-Define = {}
-
-DialogType = {
+local DialogType = {
     OneButton,
     TwoButton,
 }

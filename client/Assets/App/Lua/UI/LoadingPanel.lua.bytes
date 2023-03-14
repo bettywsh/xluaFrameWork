@@ -1,4 +1,4 @@
-local LoadingPanel = class("LoadingPanel", UIBase)
+local LoadingPanel = LuaClass:Class("LoadingPanel", UIBase)
 LoadingPanel.sceneFinish = false
 LoadingPanel.loadingFinish = false
 

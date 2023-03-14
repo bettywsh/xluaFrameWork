@@ -1,12 +1,11 @@
 
 ----Common
-require("Common/LuaExt")
-require("Common/Global")
-require("Common/GameDefine")
-require("Common/Class")
-require("Common/CSDefine")
-require("Common/GameUpdate")
-require("Common/Function")
+LuaExt = require("Common/LuaExt")
+GameDefine = require("Common/GameDefine")
+LuaClass = require("Common/LuaClass")
+CSDefine = require("Common/CSDefine")
+GameUpdate = require("Common/GameUpdate")
+Function = require("Common/Function")
 -- require("Common/Function")
 
 -- ShowPanel = require("Common/ShowPanel")

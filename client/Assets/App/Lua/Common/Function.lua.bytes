@@ -1,3 +1,66 @@
+
+function UnRequire(name)
+    package.loaded[name] = nil
+    package.preload[name] = nil
+    local lastName = string.split(name, "/")
+    _G[lastName[#lastName]] = nil
+end
+
+-- 注册网络消息回调函数
+function RegisterNetCmd(cls)
+    for k, v in pairs(cls) do
+        local strArr = string.split(k, '_')
+        if strArr and #strArr == 2 and strArr[1] == 'OnNetCmd' then
+            MessageMgr:RegisterNetMessage(strArr[2], function(scmd)
+                v(cls, scmd)
+            end)
+        end
+    end
+end
+
+-- 删除对象中注册的网络协议
+function UnRegisterNetCmd(cls)
+    for k, v in pairs(cls) do
+        local strArr = string.split(k, '_')
+        if strArr and #strArr == 2 and strArr[1] == 'OnNetCmd' then
+            MessageMgr:UnRegisterNetCmd(strArr[2])
+        end
+    end
+end
+
+function RegisterLuaMessage(cls)
+    for k, v in pairs(cls) do
+        if string.sub(k, 1, 12) == 'OnLuaNotify_' then
+            MessageMgr:LuaRegisterMessage(string.gsub(string.sub(k, 13, #k), '_', '.'), cls, v)
+        end
+    end
+end
+
+function UnRegisterLuaMessage(cls)
+    for k, v in pairs(cls) do
+        local strArr = string.split(k, '_')
+        if string.sub(k, 1, 12) == 'OnLuaNotify_' then
+            MessageMgr:LuaUnRegisterMessage(string.gsub(string.sub(k, 13, #k), '_', '.'), cls, v)
+        end
+    end
+end
+
+function RegisterButtonOnClick(cls)
+    if not cls.view then
+        return
+    end
+    for k, v in pairs(cls) do
+        if string.sub(k, 1, 3) == 'UI_' and string.sub(k, #k - 7, #k) == '_OnClick' then
+            local go = cls.view[string.sub(k, 4, #k - 8)]
+            if go then
+                go.onClick:AddListener(function(go)
+                    v(cls)
+                end)
+            end
+        end
+    end
+end
+
 function log(info)
     if GameDefine.ServerAddress.Type ~= 3 then
         CSDefine.Debug.Log(tostring(info))
@@ -22,12 +85,124 @@ function print(str)
 end
 
 
--- 获得table中第一个数据
-function GetTabFirst(tab)
-    for k, v in pairs(tab) do
-        return v;
+function table.nums(t)
+    if not t then
+        return 0
+    end
+    local count = 0
+    for k, v in pairs(t) do
+        count = count + 1
+    end
+    return count
+end
+
+function string.split(input, delimiter)
+    input = tostring(input)
+    delimiter = tostring(delimiter)
+    if (delimiter == "") then return false end
+    local pos, arr = 0, {}
+    for st, sp in function() return string.find(input, delimiter, pos, true) end do
+        table.insert(arr, string.sub(input, pos, st - 1))
+        pos = sp + 1
+    end
+    table.insert(arr, string.sub(input, pos))
+    return arr
+end
+
+function Shallow_clone(org)
+    if type(org) == "table" then
+        local copy = {}
+        for i, v in pairs(org) do
+            copy[i] = v
+        end
+        return copy
+    else
+        return org
     end
 end
+
+function Deep_clone(org)
+    if type(org) == "table" then
+        local copy = {}
+        for i, v in next, org, nil do
+            copy[Deep_clone(i)] = Deep_clone(v)
+        end
+        setmetatable(copy, Deep_clone(getmetatable(org)))
+        return copy
+    else
+        return org
+    end
+end
+
+-- 显示table表内容,show(t,"====我的表====")
+function showTable(t, logTip, color)
+    if not t then
+        return print((logTip and logTip or "") .. ":\n nil")
+    end
+    local d_type = ""
+    local lua_str = ""
+    -- 将table转换为json结构化字符串
+    local function getJsonStrFromTable(t)
+        -- 将添加指定数量的\t
+        local function space_str(num)
+            lua_str = ""
+            for i = 1, num do
+                lua_str = lua_str .. "    "
+            end
+            return lua_str
+        end
+
+        -- 将table转换为结构化的json字符串 @param data 数据对象 @param layer 节点层级数
+        local function table_to_json_str(data, layer)
+            layer = layer or 0
+            local quot = "\""
+            d_type = type(data)
+            if d_type == "string" then
+                return quot .. data .. quot
+            elseif d_type == "number" then
+                return tostring(data)
+            elseif d_type == "boolean" then
+                return tostring(data)
+            elseif d_type == "userdata" then
+                return tostring(data)
+            elseif d_type == "table" then
+                lua_str = ""
+                lua_str = lua_str .. "{\n"
+                local dataSize = table.nums(data)
+                local i = 1
+                for k, v in pairs(data) do
+                    if k == "__index" and tostring(v) == tostring(data) then
+                    elseif type(k) == 'function' then
+                    else
+                        lua_str = lua_str .. space_str(layer + 1)
+                        if v == nil then
+                            lua_str = lua_str .. quot .. tostring(k) .. quot .. " : " ..
+                                          table_to_json_str("", layer + 1)
+                        else
+                            lua_str = lua_str .. quot .. tostring(k) .. quot .. " : " .. table_to_json_str(v, layer + 1)
+                        end
+                        if i < dataSize then
+                            lua_str = lua_str .. ",\n"
+                        end
+                    end
+                    i = i + 1
+                end
+                lua_str = lua_str .. "\n" .. space_str(layer) .. "}"
+                return lua_str
+            elseif d_type == "function" then
+                return tostring(data)
+            else
+                return ""
+            end
+        end
+        local jsonStr = table_to_json_str(t, 0)
+        return jsonStr
+    end
+    local jsonStr = getJsonStrFromTable(t)
+    print((color and ("<color=" .. color .. ">") or "<color=green>") .. (logTip and logTip or "==>>showTable") ..
+            ":\n</color>" .. jsonStr)
+end
+
 
 -- 查找时间表Table V
 function TableTimeV(tbl, value)
@@ -77,50 +252,6 @@ function TableShuffle(t)
         end
     end
     return tab
-end
-
-
-function CheckOpenTime(type)
-    for i, v in ipairs(GetTableList(type)) do
-        local format = os.date("*t", TimerManager.Instance.ServerTimer)
-        -- showTable(format, "71Echo:")
-        if format.hour >= v.StartTime and format.hour < v.EndTime then
-            return true, v.ID;
-        end
-    end
-    return false;
-end
-
-function GetArrayTablel(tbl, arg, GroupId, Rank, ItenReward, arg1)
-    local arrayTab = {};
-    local arrayTablel = {};
-    if tbl == nil then
-        return false
-    end
-    for key, value in ipairs(tbl) do
-        if arg == value.GroupId and value.Rank == arg1 then
-            table.insert(arrayTab, value);
-        end
-    end
-    for key, value in ipairs(arrayTab) do
-        for k, v in ipairs(string.split(value.ItenReward, ";")) do
-            table.insert(arrayTablel, string.split(v, ":"));
-        end
-    end
-    return arrayTablel;
-end
-
-function GetRewardTablel(tbl, arg, args)
-    local arrayTab = {};
-    if tbl == nil then
-        return false
-    end
-    for key, value in ipairs(tbl) do
-        if arg == value.GroupId and value.Rank == args then
-            table.insert(arrayTab, value);
-        end
-    end
-    return arrayTab;
 end
 
 function GetLocalTime()
@@ -203,13 +334,6 @@ function ErrorCode(scmd)
     fly:Fly(TextMgr:GetText("ErrorCode_" .. scmd.Result));
 end
 
--- 更好模型节点， 模型贴图文件，模型贴图文件序号
-function SetDiffTexture(tf, modelTexture, id)
-    tf:GetComponent("Renderer").material:SetTexture("", string.format("Horse/" .. modelTexture, id))
-end
-
-
-
 ---如果小数位数为0，则只保留整数
 function FormatNumToInt(num_para)
     local num = tonumber(num_para)
@@ -262,4 +386,18 @@ function SetParent(parent, go)
     go.localScale = CSDefine.Vector3.one
     go.localEulerAngles = CSDefine.Vector3.zero
     return go
+end
+
+-- 显示文本转美术字
+function GetArtTxt(str)
+    local artStr = ""
+    local strLen = string.len(str)
+    for i = 1, strLen do
+        local tempByte = string.sub(str, i, i)
+        if tempByte == "+" then
+            tempByte = "10"
+        end
+        artStr = artStr .. "<sprite=" .. tempByte .. ">"
+    end
+    return artStr
 end

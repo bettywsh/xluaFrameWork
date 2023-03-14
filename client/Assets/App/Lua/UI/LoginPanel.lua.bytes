@@ -1,4 +1,4 @@
-local LoginPanel = class("LoginPanel", UIBase)
+local LoginPanel = LuaClass:Class("LoginPanel", UIBase)
 
 function LoginPanel:OnOpen()
     -- GameUpdate.AddUpdate(self,self.OnUpdate)

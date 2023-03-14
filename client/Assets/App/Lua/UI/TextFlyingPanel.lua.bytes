@@ -1,4 +1,4 @@
-local TextFlyingPanel = class("TextFlyingPanel", UIBase)
+local TextFlyingPanel = LuaClass:Class("TextFlyingPanel", UIBase)
 
 function TextFlyingPanel:OnOpen()
 	self.view.transform:GetComponent("Canvas").sortingOrder = UIMgr.UILayer.TextFlying

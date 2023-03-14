@@ -1,5 +1,6 @@
+local LuaClass = {}
 --Create an class.
-function class(classname, super)
+function LuaClass:Class(classname, super)
     local superType = type(super)
     local cls
 
@@ -57,3 +58,5 @@ function class(classname, super)
 
     return cls
 end
+
+return LuaClass

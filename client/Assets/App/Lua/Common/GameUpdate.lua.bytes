@@ -1,54 +1,55 @@
-GameUpdate = {}
+local GameUpdate = {}
 
-local m_updateList = {};
-local m_fixedUpdateList = {};
-local m_lateUpdateList = {};
+GameUpdate.m_updateList = {};
+GameUpdate.m_fixedUpdateList = {};
+GameUpdate.m_lateUpdateList = {};
 
-function GameUpdate.AddUpdate(ins, func)
+function GameUpdate:AddUpdate(ins, func)
     local add = {};
     add.ins = ins;
     add.func = func;
-    table.insert(m_updateList, add);
+    table.insert(self.m_updateList, add);
 end
-function GameUpdate.RemoveUpdate( ins, func)
-    for i, v in pairs(m_updateList) do
+function GameUpdate:RemoveUpdate( ins, func)
+    for i, v in pairs(self.m_updateList) do
         if v.ins == ins and v.func == func then
-            table.remove(m_updateList, i);
+            table.remove(self.m_updateList, i);
         end
     end
 end
 
-function GameUpdate.AddFixedUpdate(ins, func)
+function GameUpdate:AddFixedUpdate(ins, func)
     local add = {};
     add.ins = ins;
     add.func = func;
-    table.insert(m_fixedUpdateList, add);
+    table.insert(self.m_fixedUpdateList, add);
 end
-function GameUpdate.RemoveFixedUpdate( ins, func)
+function GameUpdate:RemoveFixedUpdate( ins, func)
     for i, v in pairs(m_fixedUpdateList) do
         if v.ins == ins and v.func == func then
-            table.remove(m_fixedUpdateList, i);
+            table.remove(self.m_fixedUpdateList, i);
         end
     end
 end
 
-function GameUpdate.AddLateUpdate(ins, func)
+function GameUpdate:AddLateUpdate(ins, func)
     local add = {};
     add.ins = ins;
     add.func = func;
-    table.insert(m_lateUpdateList, add);
+    table.insert(self.m_lateUpdateList, add);
 end
-function GameUpdate.RemoveLateUpdate( ins, func)
-    for i, v in pairs(m_lateUpdateList) do
+
+function GameUpdate:RemoveLateUpdate( ins, func)
+    for i, v in pairs(self.m_lateUpdateList) do
         if v.ins == ins and v.func == func then
-            table.remove(m_lateUpdateList, i);
+            table.remove(self.m_lateUpdateList, i);
         end
     end
 end
 
-function GameUpdate.Update()
+function GameUpdate:Update()
     local deltaTime = CSDefine.Time.deltaTime;
-    for i, v in pairs(m_updateList) do
+    for i, v in pairs(self.m_updateList) do
         if v.ins ~= nil then
             v.func(v.ins, deltaTime);
         else
@@ -57,9 +58,9 @@ function GameUpdate.Update()
     end
 end
 
-function GameUpdate.FixedUpdate()
+function GameUpdate:FixedUpdate()
     local fixedDeltaTime = CSDefine.Time.fixedDeltaTime;
-    for i, v in pairs(m_fixedUpdateList) do
+    for i, v in pairs(self.m_fixedUpdateList) do
         if v.ins ~= nil then
             v.func(v.ins,fixedDeltaTime);
         else
@@ -70,7 +71,7 @@ end
 
 function GameUpdate:LateUpdate()
     local deltaTime = CSDefine.Time.deltaTime;
-    for i, v in pairs(m_lateUpdateList) do
+    for i, v in pairs(self.m_lateUpdateList) do
         if v.ins ~= nil then
             v.func(v.ins,deltaTime);
         else

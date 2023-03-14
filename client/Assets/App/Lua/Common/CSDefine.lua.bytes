@@ -1,4 +1,4 @@
-CSDefine = {
+local CSDefine = {
     ResManager = CS.ResManager.Instance,
     UIManager = CS.UIManager.Instance,
     GameObject = CS.UnityEngine.GameObject,
@@ -30,3 +30,4 @@ CSDefine = {
     SpriteAtlas = CS.SpriteAtlas,
     TextAsset = CS.UnityEngine.TextAsset,
 }
+return CSDefine

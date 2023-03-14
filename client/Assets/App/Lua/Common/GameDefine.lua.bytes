@@ -1,4 +1,4 @@
-GameDefine = {
+local GameDefine = {
     ServerAddress = {
         -- 开发环境
         Type = 1,
@@ -33,6 +33,5 @@ GameDefine = {
         RECONNECTED = 2, -- 重连上
         END = 3 -- 重连结束
     },
-
-    
 }
+return GameDefine

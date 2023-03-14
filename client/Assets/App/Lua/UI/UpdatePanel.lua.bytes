@@ -1,4 +1,4 @@
-local UpdatePanelCtrl = class("LoadingPanelCtrl")
+local UpdatePanelCtrl = LuaClass:Class("LoadingPanelCtrl")
 UpdatePanelCtrl.time = 0
 UpdatePanelCtrl.currentValue = 0
 

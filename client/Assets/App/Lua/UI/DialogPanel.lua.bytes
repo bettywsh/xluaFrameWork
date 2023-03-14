@@ -1,4 +1,4 @@
-local DialogPanel = class("DialogPanel", UIBase)
+local DialogPanel = LuaClass:Class("DialogPanel", UIBase)
 
 function DialogPanel:OnOpen()
     self.args = self.args[1]

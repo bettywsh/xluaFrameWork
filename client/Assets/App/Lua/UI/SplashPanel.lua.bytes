@@ -1,4 +1,4 @@
-local SplashPanel = class("SplashPanel", UIBase)
+local SplashPanel = LuaClass:Class("SplashPanel", UIBase)
 
 function SplashPanel:OnOpen()
 	self.view.cngBG.alpha = 0
