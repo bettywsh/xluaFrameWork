@@ -9,13 +9,13 @@ using XLua;
 [DisallowMultipleComponent]
 public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSource
 {
-    public GameObject item;
-    public Transform selected;
+    public GameObject Item;
+    public Transform Selected;
 
     public Action<LuaTable, int> provideData;
     
     private int  mtotalCount= -1;
-    public int totalCount
+    public int TotalCount
     {
         get
         {
@@ -38,7 +38,7 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
     {
         if (pool.Count == 0)
         {
-            return Instantiate(item);
+            return Instantiate(Item);
         }
         Transform candidate = pool.Pop();
         candidate.gameObject.SetActive(true);

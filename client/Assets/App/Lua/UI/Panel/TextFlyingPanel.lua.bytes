@@ -2,8 +2,7 @@ local TextFlyingPanel = LuaClass:Class("TextFlyingPanel", UIBase)
 
 function TextFlyingPanel:OnOpen()
 	self.view.transform:GetComponent("Canvas").sortingOrder = UIMgr.UILayer.TextFlying
-	showTable(self.view)
-	-- self:Fly(self.args[1])
+	self:Fly(self.args[1])
 end
 
 --播放飘字动画 播放完成删除对应的gameObject

@@ -1,11 +1,11 @@
 local loginScene = {}
 
 function loginScene:LoadScene()
-    UIMgr:Open("LoginPanel")
+    UIMgr:Open("MainPanel")
 end
 
 function loginScene:UnLoadScene()
-    UIMgr:Close("LoginPanel")
+    
 end
 
 return loginScene

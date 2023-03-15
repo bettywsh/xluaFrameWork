@@ -1,0 +1,14 @@
+local #SCRIPTNAME# = LuaClass:Class("#SCRIPTNAME#", UICellBase)
+
+--打开UI
+function #SCRIPTNAME#:OnOpen()
+
+end
+
+
+--关闭UI
+function #SCRIPTNAME#:OnClose()
+
+end
+
+return #SCRIPTNAME#

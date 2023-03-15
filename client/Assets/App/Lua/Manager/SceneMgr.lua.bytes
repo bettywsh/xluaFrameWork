@@ -21,9 +21,9 @@ function SceneMgr:LoadScene(sceneName, loading, cb)
 	if loading then
 		self.LoadingPanel = UIMgr:Open("LoadingPanel", cb)
 	end
-	if self.oldName ~= ""  then
-		CSDefine.ResManager:UnLoadAssetBundle(ResType.Scene, self.oldName)
-	end
+	-- if self.oldName ~= ""  then
+	-- 	CSDefine.ResManager:UnLoadAssetBundle(CSDefine.ResType.Scene, self.oldName)
+	-- end
 	CSDefine.LoadSceneManager.Instance:LoadScene(sceneName, function()
 		self.scene = require("Scene/"..sceneName.."Scene")
 		self.scene:LoadScene()

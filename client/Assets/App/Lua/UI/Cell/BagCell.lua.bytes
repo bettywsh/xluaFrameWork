@@ -1,0 +1,14 @@
+local BagPanel = class("BagPanel", UICellBase)
+
+--打开UI
+function BagPanel:OnOpen()
+
+end
+
+
+--关闭UI
+function BagPanel:OnClose()
+
+end
+
+return BagPanel

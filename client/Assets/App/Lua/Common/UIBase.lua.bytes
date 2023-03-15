@@ -64,12 +64,11 @@ function UIBase:SetEndDragCallback(go, callback)
     listener.onEndDrag = callback
 end
 
-
-
 function UIBase:Close()
 	Function:UnRegisterNetCmd(self)
     Function:UnRegisterLuaMessage(self)
     Function:UnRequire("UI/"..self.name)
     CSDefine.Object.DestroyImmediate(self.gameObject)
 end
+
 return UIBase

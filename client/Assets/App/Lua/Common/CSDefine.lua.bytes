@@ -29,5 +29,6 @@ local CSDefine = {
     Material = CS.Material,
     SpriteAtlas = CS.SpriteAtlas,
     TextAsset = CS.UnityEngine.TextAsset,
+    ListView = CS.ListView,
 }
 return CSDefine

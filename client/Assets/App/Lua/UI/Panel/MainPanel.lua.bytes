@@ -1,0 +1,31 @@
+local MainPanel = LuaClass:Class("MainPanel", UIBase)
+
+--打开UI
+function MainPanel:OnOpen()
+
+end
+
+function MainPanel:UI_btnBag_OnClick()
+    UIMgr:Open("BagPanel")
+end
+
+function MainPanel:UI_btnDialogOne_OnClick()
+
+end
+
+function MainPanel:UI_btnDialogTwo_OnClick()
+
+end
+
+function MainPanel:UI_btnFlyingText_OnClick()
+    DialogMgr:ShowTextFlying("1111")
+    -- UIMgr:Open("")
+end
+
+
+--关闭UI
+function MainPanel:OnClose()
+
+end
+
+return MainPanel

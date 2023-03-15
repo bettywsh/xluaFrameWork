@@ -84,7 +84,7 @@ UIMgr.AutoBindDict = {
     ["sld"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Slider)), go.name) end,
     ["ipt"] = function(go) return assert(go:GetComponent(typeof(CSDefine.TMP_InputField)), go.name) end,
     ["cng"] = function(go) return assert(go:GetComponent(typeof(CSDefine.CanvasGroup)), go.name) end,
-    ["ulv"] = function(go) return assert(go:GetComponent(typeof(C_ListView)), go.name) end
+    ["lsv"] = function(go) return assert(go:GetComponent(typeof(CSDefine.ListView)), go.name) end
 }
 
 function UIMgr:AutoBind(transform)
@@ -101,6 +101,10 @@ function UIMgr:AutoBind(transform)
             else
                 local types = Function:Split(names[1], ",")
                 for i = 1, #types do
+                    if self.AutoBindDict[types[i]] == nil then
+                        Function:Warring(types[i].."未定义")
+                    end
+                
                     view[types[i]..names[2]] = self.AutoBindDict[types[i]](varObj.objValue)
                 end
             end

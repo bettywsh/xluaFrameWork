@@ -1,4 +1,4 @@
-local #SCRIPTNAME# = class("#SCRIPTNAME#", UIBase)
+local #SCRIPTNAME# = LuaClass:Class("#SCRIPTNAME#", UIBase)
 
 --打开UI
 function #SCRIPTNAME#:OnOpen()
