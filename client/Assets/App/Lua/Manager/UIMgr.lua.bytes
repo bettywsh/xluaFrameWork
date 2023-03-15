@@ -19,7 +19,7 @@ end
 function UIMgr:Open(prefabName, ...)
     local args = {...}
     if self.ctrls[prefabName] == nil then
-        local ctrlURL = string.format("UI/%s", prefabName)
+        local ctrlURL = string.format("UI/Panel/%s", prefabName)
         local ctrl = require(ctrlURL)
         self.ctrls[prefabName] = ctrl
         ResMgr:LoadAssetAsync(prefabName, string.format("UI/%s", prefabName), CSDefine.ResType.Prefab, function(ugo)

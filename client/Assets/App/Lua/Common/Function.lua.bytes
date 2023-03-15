@@ -3,7 +3,7 @@ Function = {}
 function Function:UnRequire(name)
     package.loaded[name] = nil
     package.preload[name] = nil
-    local lastName = self:split(name, "/")
+    local lastName = self:Split(name, "/")
     _G[lastName[#lastName]] = nil
 end
 
