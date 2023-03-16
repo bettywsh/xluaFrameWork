@@ -26,12 +26,16 @@ public class VarPrefab : MonoBehaviour
     {
         return varData.ToArray();
     }
-    
-        
+
+    public string BindLuaPath;
     [SerializeField]
     [HideInInspector]
     public List<VarData> varData;
 
+    public void SetLuaPath(string path)
+    {
+        BindLuaPath = path;
+    }
 
     public void AutoBind()
     {

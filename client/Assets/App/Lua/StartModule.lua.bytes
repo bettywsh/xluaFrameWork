@@ -6,8 +6,9 @@ LuaClass = require("Common/LuaClass")
 CSDefine = require("Common/CSDefine")
 GameUpdate = require("Common/GameUpdate")
 Function = require("Common/Function")
-
 UIBase = require("Common/UIBase")
+UICellBase = require("Common/UICellBase")
+
 SoundMgr = require("Manager/SoundMgr")
 ConfigMgr = require("Manager/ConfigMgr")
 ResMgr = require("Manager/ResMgr")

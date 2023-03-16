@@ -1,14 +1,14 @@
-local BagPanel = class("BagPanel", UICellBase)
+local BagCell = LuaClass:Class("BagCell", UICellBase)
 
 --打开UI
-function BagPanel:OnOpen()
+function BagCell:OnOpen()
 
 end
 
 
 --关闭UI
-function BagPanel:OnClose()
+function BagCell:OnClose()
 
 end
 
-return BagPanel
+return BagCell

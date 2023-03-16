@@ -22,7 +22,7 @@ function UIMgr:Open(prefabName, ...)
         local ctrlURL = string.format("UI/Panel/%s", prefabName)
         local ctrl = require(ctrlURL)
         self.ctrls[prefabName] = ctrl
-        ResMgr:LoadAssetAsync(prefabName, string.format("UI/%s", prefabName), CSDefine.ResType.Prefab, function(ugo)
+        ResMgr:LoadAssetAsync(prefabName, string.format("UI/Panel/%s", prefabName), CSDefine.ResType.Prefab, function(ugo)
             local go = CSDefine.Object.Instantiate(ugo)
             go.name = prefabName
             go.transform:SetParent(self.baseCanvas, false)
@@ -111,6 +111,13 @@ function UIMgr:AutoBind(transform)
 		end
 	end
     return view
+end
+
+function UIMgr:CreateCell(args)
+    local cell = require(args[1])
+    cell:Open(args[0])
+    cell:OnOpen()
+    return cell
 end
 
 return UIMgr

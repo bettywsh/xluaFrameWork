@@ -1,11 +1,9 @@
 local UICellBase = {}
 UICellBase.view = {}
 UICellBase.gameObject = nil
-UICellBase.args = nil
 UICellBase.name = nil
 
-function UICellBase:Open(transform, args)
-	self.args = args
+function UICellBase:Open(transform)
     self.gameObject = transform.gameObject
 	self.name = self.gameObject.name
 	self.view = UIMgr:AutoBind(transform)
@@ -17,7 +15,7 @@ end
 function UICellBase:Close()
 	-- UnRegisterNetCmd(self)
     -- UnRegisterLuaMessage(self)
-    Function:UnRequire("UI/"..self.name)
-    CSDefine.Object.DestroyImmediate(self.gameObject)
+    -- Function:UnRequire("UI/"..self.name)
+    -- CSDefine.Object.DestroyImmediate(self.gameObject)
 end
 return UICellBase

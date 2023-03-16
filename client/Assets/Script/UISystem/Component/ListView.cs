@@ -10,9 +10,6 @@ using XLua;
 public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSource
 {
     public GameObject Item;
-    public Transform Selected;
-
-    public Action<LuaTable, int> provideData;
     
     private int  mtotalCount= -1;
     public int TotalCount
@@ -55,15 +52,22 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
     }
 
     public void ProvideData(Transform transform, int idx)
-    {
-        LuaTable luaTable = transform.GetComponent<ListViewItem>().luaTable;
+    {        
+        ListViewItem listViewItem = transform.GetComponent<ListViewItem>();
+        VarPrefab vp = transform.GetComponent<VarPrefab>();
+        LuaTable luaTable = listViewItem.luaTable;
         if (luaTable == null)
         {
-            // LuaManager.Instance.DoFile();
-        }
+            luaTable = LuaManager.Instance.CallFunction("UIMgr", "CreateCell", transform, vp.BindLuaPath)[0] as LuaTable;
 
-        provideData(luaTable, idx);
-        // transform.SendMessage("ScrollCellIndex", idx);
+        }
+        else
+        {
+            LuaFunction lf;
+            luaTable.Get("OnOpen", out lf);
+            lf.Call(idx);
+        }
+        transform.SendMessage("ScrollCellIndex", idx);
     }
     
 }

@@ -52,16 +52,15 @@ public class PrefabVarEditor : BaseEditor
                 EditorUtility.DisplayDialog("错误", "当前指定路径并不在任何一个lua根目录下!!!", "知道了");
                 return;
             }
-            if (!File.Exists(fullFilePath))
-            {
-                string templua = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Editor/UI/TempLuaPanel.lua.bytes").text;
-                templua = templua.Replace("#SCRIPTNAME#", mPrefabVar.gameObject.name);
-                byte[] buffer1 = Encoding.Default.GetBytes(templua.ToString() );
-                byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
-                File.WriteAllBytes(fullFilePath, buffer2);
-                AssetDatabase.Refresh();
-                EditorUtility.DisplayDialog("成功", "创建lua成功!!!", "知道了");
-            }
+       
+            mPrefabVar.SetLuaPath("UI/Panel/" + mPrefabVar.gameObject.name);
+            string templua = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Editor/UI/TempLuaPanel.lua.bytes").text;
+            templua = templua.Replace("#SCRIPTNAME#", mPrefabVar.gameObject.name);
+            byte[] buffer1 = Encoding.Default.GetBytes(templua.ToString() );
+            byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
+            File.WriteAllBytes(fullFilePath, buffer2);
+            AssetDatabase.Refresh();
+            EditorUtility.DisplayDialog("成功", "创建lua成功!!!", "知道了");
         }
         
         if (GUILayout.Button("Create Lua Cell"))
@@ -74,16 +73,14 @@ public class PrefabVarEditor : BaseEditor
                 EditorUtility.DisplayDialog("错误", "当前指定路径并不在任何一个lua根目录下!!!", "知道了");
                 return;
             }
-            if (!File.Exists(fullFilePath))
-            {
-                string templua = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Editor/UI/TempLuaCell.lua.bytes").text;
-                templua = templua.Replace("#SCRIPTNAME#", mPrefabVar.gameObject.name);
-                byte[] buffer1 = Encoding.Default.GetBytes(templua.ToString() );
-                byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
-                File.WriteAllBytes(fullFilePath, buffer2);
-                AssetDatabase.Refresh();
-                EditorUtility.DisplayDialog("成功", "创建lua成功!!!", "知道了");
-            }
+            mPrefabVar.SetLuaPath("UI/Cell/" + mPrefabVar.gameObject.name);
+            string templua = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Editor/UI/TempLuaCell.lua.bytes").text;
+            templua = templua.Replace("#SCRIPTNAME#", mPrefabVar.gameObject.name);
+            byte[] buffer1 = Encoding.Default.GetBytes(templua.ToString() );
+            byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
+            File.WriteAllBytes(fullFilePath, buffer2);
+            AssetDatabase.Refresh();
+            EditorUtility.DisplayDialog("成功", "创建lua成功!!!", "知道了");    
         }
         serializedObject.ApplyModifiedProperties();
     }

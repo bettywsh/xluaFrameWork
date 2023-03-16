@@ -46,14 +46,33 @@ public class LuaManager : MonoSingleton<LuaManager>
     }
 
 
-    public void CallFunction(string classname, string funcName, params object[] args)
+    public object[] CallFunction(string classname, string funcName, params object[] args)
     {
         LuaTable metatable = luaenv.Global.Get<LuaTable>(classname);
         LuaFunction lnew = null;
         if (metatable != null)
             lnew = (LuaFunction)metatable[funcName];
         if(lnew != null)
-            lnew.Call(metatable, args);
+        {
+            return lnew.Call(metatable, args);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public object[] CallFunction(string funcName, params object[] args)
+    {
+        LuaFunction lf = luaenv.Global.Get<LuaFunction>(funcName);
+        if(lf != null)
+        {
+            return lf.Call(args);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public void LuaGC()

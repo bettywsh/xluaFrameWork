@@ -256,6 +256,9 @@ public static class ExampleConfig
     #if UNITY_WEBGL
                 new List<string>(){"UnityEngine.WWW", "threadPriority"},
     #endif
+        new List<string>(){"UnityEngine.Light", "shadowRadius"},
+        new List<string>(){"UnityEngine.Light", "shadowAngle"},
+        new List<string>(){"UnityEngine.Light", "SetLightDirty"},
                 new List<string>(){"UnityEngine.Texture2D", "alphaIsTransparency"},
                 new List<string>(){"UnityEngine.Security", "GetChainOfTrustValue"},
                 new List<string>(){"UnityEngine.CanvasRenderer", "onRequestRebuild"},
