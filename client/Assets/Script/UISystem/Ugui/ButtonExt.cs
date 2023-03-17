@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using UTools;
 
 public class ButtonExt : Button
 {

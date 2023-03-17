@@ -25,7 +25,7 @@ function DialogMgr:ShowDialogTwo(txtTitle, txtMsg, okFun, calFun, params)
         okFun = okFun,
         calFun = calFun,
         txtOk = params.txtOk,
-        txtCancel = params.txtCancel,
+        txtCal = params.txtCal,
     })
 end
 

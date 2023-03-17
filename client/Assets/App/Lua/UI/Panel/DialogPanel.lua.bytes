@@ -3,18 +3,20 @@ local DialogPanel = LuaClass:Class("DialogPanel", UIBase)
 function DialogPanel:OnOpen()
     self.args = self.args[1]
     self.view.txt_Msg.text = self.args.txtMsg
+
     if self.args.txtOk ~= nil then
         self.view.txt_Ok.text = self.args.txtOk
     else
         -- body
     end
+
     if self.args.txtCal ~= nil then
-        self.view.txt_Cancel.text = self.args.txtCancel
+        self.view.txt_Cancel.text = self.args.txtCal
     else
         -- body
     end
 
-    if self.args.okCb ~= nil then
+    if self.args.okFun ~= nil then
         self.view.btn_Ok.gameObject:SetActive(true)
     end
     if self.args.calFun ~= nil then
@@ -22,14 +24,14 @@ function DialogPanel:OnOpen()
     end
 end
 
-function DialogPanel:UI_btnOk_OnClick()
+function DialogPanel:UI_btn_Ok_OnClick()
     if self.args.okFun ~= nil then
         self.args.okFun()
     end
     UIMgr:CloseSelf(self)
 end
 
-function DialogPanel:UI_btnCancel_OnClick()
+function DialogPanel:UI_btn_Cancel_OnClick()
     if self.args.calFun ~= nil then
         self.args.calFun()
     end
