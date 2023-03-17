@@ -2,6 +2,7 @@ local ResMgr = {}
 
 -- function ResMgr:init()
 -- end
+self.resLoader = CSDefine.ResManager:CreateResLoader()
 
 function ResMgr:OnLoadAsset(resName, relativePath, resType)
     return CSDefine.ResManager:OnLoadAsset(resName, relativePath, resType)
@@ -9,6 +10,18 @@ end
 
 function ResMgr:LoadAssetAsync(resName, relativePath, resType, func)
     CSDefine.ResManager:LoadAssetAsync(resName, relativePath, resType, nil, func)
+end
+
+function ResMgr:GloabLoadAssetAsync(relativePath, resType, func)
+    CSDefine.ResManager:LoadAssetAsync(self.resLoader, relativePath, resType, nil, func)
+end
+
+function ResMgr:SceneLoadAssetAsync(relativePath, resType, func)
+    CSDefine.ResManager:LoadAssetAsync(SceneMgr.resLoader, relativePath, resType, nil, func)
+end
+
+function ResMgr:PageLoadAssetAsync(resLoader, relativePath, resType, func)
+    CSDefine.ResManager:LoadAssetAsync(resLoader, relativePath, resType, nil, func)
 end
 
 return ResMgr

@@ -19,6 +19,10 @@ public class ResManager : Singleton<ResManager>
 
     Dictionary<string, List<string>> ResLoaders = new Dictionary<string, List<string>>();
 
+    public ResLoader CreateResLoader()
+    {
+        return new ResLoader();
+    }
 
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
     public UObject OnLoadAsset(string resName, string relativePath, ResType resType)
@@ -55,6 +59,24 @@ public class ResManager : Singleton<ResManager>
             string abName = ResPath.GetAssetBunldeName(relativePath, resType);
             AddReloader(resName, abName);
             AssetBundleManager.Instance.LoadAssetBundleUObjectAsync(resName, abName, assetName, sharpFunc, luaFunc);
+        }
+    }
+    
+    //resLoader 资源加载器加载资源，所有加载的资源的ID都会放在里面
+    public void LoadAssetAsync(ResLoader resLoader, string relativePath, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
+    {
+
+        if (AppConst.DebugMode)
+        {
+            string assetName = ResPath.GetEditorAssetName(relativePath, resType);
+            ResLocalManager.Instance.LoadLocalUObjectAsync(relativePath, resType, sharpFunc, luaFunc);
+        }
+        else
+        {
+            string assetName = ResPath.GetAssetName(relativePath, resType);
+            string abName = ResPath.GetAssetBunldeName(relativePath, resType);
+            resLoader.AddABName(abName);
+            AssetBundleManager.Instance.LoadAssetBundleUObjectAsync("", abName, assetName, sharpFunc, luaFunc);
         }
     }
 

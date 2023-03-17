@@ -74,6 +74,12 @@ function UIMgr:Close(prefabName)
     CSDefine.ResManager:UnLoadAssetBundle(prefabName)
 end
 
+function UIMgr:CloseAll()
+    for key, value in pairs(self.ctrls) do
+        self:Close(key)
+    end
+end
+
 UIMgr.AutoBindDict = {
     ["obj"] = function(go) return go end,
     ["tsf"] = function(go) return go.transform end,
