@@ -164,7 +164,7 @@ function Function:ShowTable(t, logTip, color)
             elseif d_type == "table" then
                 lua_str = ""
                 lua_str = lua_str .. "{\n"
-                local dataSize = table.nums(data)
+                local dataSize = self:Nums(data)
                 local i = 1
                 for k, v in pairs(data) do
                     if k == "__index" and tostring(v) == tostring(data) then
@@ -333,8 +333,8 @@ function Function:NewObject(prefab)
 end
 
 function Function:AddChildren(parent, children)
-    local go = NewObject(children).transform
-    SetParent(parent, go)
+    local go = self:NewObject(children).transform
+    self:SetParent(parent, go)
     return go
 end
 

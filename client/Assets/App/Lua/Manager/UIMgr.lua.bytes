@@ -105,7 +105,7 @@ function UIMgr:AutoBind(transform)
                         Function:Warring(types[i].."未定义")
                     end
                 
-                    view[types[i]..names[2]] = self.AutoBindDict[types[i]](varObj.objValue)
+                    view[types[i].."_"..names[2]] = self.AutoBindDict[types[i]](varObj.objValue)
                 end
             end
 		end

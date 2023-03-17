@@ -11,7 +11,7 @@ function BagPanel:OnOpen()
         {icon = "horse_10005", name = 1},
     }
     -- Function:ShowTable(self.view)
-    self.view.lsvListView.TotalCount = #bags
+    self.view.lsv_ListView.TotalCount = #bags
 end
 
 

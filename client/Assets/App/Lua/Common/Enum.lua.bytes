@@ -1,0 +1,10 @@
+local Enum = {}
+
+Enum.UILayout = {
+    TextFlying = 100,
+    Dialog = 101,
+    Guid = 102,
+    SystemDialog = 103,
+}
+
+return Enum

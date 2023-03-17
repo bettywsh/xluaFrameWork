@@ -10,9 +10,7 @@ local GameDefine = {
         LogIp = "http://120.55.101.231:30235/", -- log地址
         IsSkipVerificationCode = false -- 是否跳过验证码
     },
-
     LoginSvrPort = 21001,
-
     GameSvrPort = 0,
     -- 是否开启新手引导
     IsGuidance = false,

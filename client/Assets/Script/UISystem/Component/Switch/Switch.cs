@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using System;
 
 public class Switch : MonoBehaviour {
-    #region ×Ö¶Î
+    #region å­—æ®µ
     public List<Transform> m_tChildrens;
     /// <summary>
-    /// ¸ÃSwitchËùÊôµÄ×é Í¬Ò»×éÖ»ÓĞÒ»¸ö¿ÉÒÔ±»Ñ¡ÖĞ
+    /// è¯¥Switchæ‰€å±çš„ç»„ åŒä¸€ç»„åªæœ‰ä¸€ä¸ªå¯ä»¥è¢«é€‰ä¸­
     /// </summary>
     public SwitchGroup m_sGroup;
     [SerializeField]
@@ -16,17 +16,17 @@ public class Switch : MonoBehaviour {
     [SerializeField]
     private int m_iValue = -9;
     /// <summary>
-    /// ±êÊ¶Ò»¸ö×´Ì¬ »Øµ÷Ê±»Ø´« ÔİÊ±ÓÃÓÚ½â¾ö ¸Ã×é¼şÉùÒôÍ³Ò»´¦ÀíµÄÊ±ºò Èç¹û×Ô¶¯Ñ¡ÔñµÄ»°ÉùÒôÒ²»á²¥·Å
+    /// æ ‡è¯†ä¸€ä¸ªçŠ¶æ€ å›è°ƒæ—¶å›ä¼  æš‚æ—¶ç”¨äºè§£å†³ è¯¥ç»„ä»¶å£°éŸ³ç»Ÿä¸€å¤„ç†çš„æ—¶å€™ å¦‚æœè‡ªåŠ¨é€‰æ‹©çš„è¯å£°éŸ³ä¹Ÿä¼šæ’­æ”¾
     /// </summary>
     [HideInInspector]
     public int m_iStatus = 0;
     /// <summary>
-    /// ÊÇ·ñÔÊĞí¶ÔÍ¬Ò»¸ö¶ÔÏó¶à´ÎÑ¡ÖĞ²¢ÏìÓ¦ÊÂ¼ş
+    /// æ˜¯å¦å…è®¸å¯¹åŒä¸€ä¸ªå¯¹è±¡å¤šæ¬¡é€‰ä¸­å¹¶å“åº”äº‹ä»¶
     /// </summary>
     public bool m_bAllowSelectSameOne;
     #endregion
 
-    #region  ÊôĞÔ
+    #region  å±æ€§
     public int Index
     {
         get
@@ -53,8 +53,8 @@ public class Switch : MonoBehaviour {
         {
             if (m_iValue == value)
             {
-                //Ñ¡ÖĞÊÇÅĞ¶Ï Èç¹ûÊÇÍ¬Ò»¸ö¶ÔÏó ÔòÔÚÅĞ¶¨ÊÇ·ñÔÊĞíÑ¡ÖĞÍ¬Ò»¸ö
-                //ÔÊĞíÔòµ÷ÓÃÑ¡ÖĞÊÂ¼ş
+                //é€‰ä¸­æ˜¯åˆ¤æ–­ å¦‚æœæ˜¯åŒä¸€ä¸ªå¯¹è±¡ åˆ™åœ¨åˆ¤å®šæ˜¯å¦å…è®¸é€‰ä¸­åŒä¸€ä¸ª
+                //å…è®¸åˆ™è°ƒç”¨é€‰ä¸­äº‹ä»¶
                 if (m_bAllowSelectSameOne)
                 {
                     InvokeValueChange();
@@ -74,17 +74,17 @@ public class Switch : MonoBehaviour {
         set
         {
             m_iValue = value;
-            //Òş²ØËùÓĞµÄ×Ó¶ÔÏó
+            //éšè—æ‰€æœ‰çš„å­å¯¹è±¡
             foreach (Transform tf in m_tChildrens)
             {
                 tf.SetActive(false);
             }
 
-            //ÏŞ¶¨·¶Î§ ²»ÄÜ³¬³ö
+            //é™å®šèŒƒå›´ ä¸èƒ½è¶…å‡º
             if (m_iValue >= m_tChildrens.Count)
                 m_iValue = m_tChildrens.Count - 1;
 
-            //ÏÔÊ¾Ñ¡ÖĞµÄ×Ó¶ÔÏó
+            //æ˜¾ç¤ºé€‰ä¸­çš„å­å¯¹è±¡
             if (m_iValue >= 0 && m_iValue < m_tChildrens.Count)
             {
                 m_tChildrens[m_iValue].SetActive(true);
@@ -102,15 +102,15 @@ public class Switch : MonoBehaviour {
         {
             m_sGroup.AddItem(this);
         }
-        //Ìí¼Óµã»÷ÊÂ¼ş µã»÷ºóÖÃÎªÑ¡ÖĞ×´Ì¬
+        //æ·»åŠ ç‚¹å‡»äº‹ä»¶ ç‚¹å‡»åç½®ä¸ºé€‰ä¸­çŠ¶æ€
         if (m_tChildrens != null)
         {
             Transform transform;
             for (int i = 0; i < m_tChildrens.Count; ++i)
             {
                 transform = m_tChildrens[i];
-                //Èç¹û×Ó¶ÔÏóÊÇ°´Å¥ ÔòÎªÃ¿¸ö°´Å¥Ìí¼Óµã»÷ÊÂ¼ş 
-                //µ±°´Å¥µã»÷Ê±»áÉèÖÃµ±Ç°µã»÷°´Å¥µÄË³ĞòÖµË÷Òı
+                //å¦‚æœå­å¯¹è±¡æ˜¯æŒ‰é’® åˆ™ä¸ºæ¯ä¸ªæŒ‰é’®æ·»åŠ ç‚¹å‡»äº‹ä»¶ 
+                //å½“æŒ‰é’®ç‚¹å‡»æ—¶ä¼šè®¾ç½®å½“å‰ç‚¹å‡»æŒ‰é’®çš„é¡ºåºå€¼ç´¢å¼•
                 if (transform.GetButton() != null)
                 {
                     int index = i;
@@ -124,7 +124,7 @@ public class Switch : MonoBehaviour {
     
     public void SetValue(int value, int status = 0)
     {
-        //±êÊ¶×´Ì¬ »Øµ÷Ê±»Ø´«
+        //æ ‡è¯†çŠ¶æ€ å›è°ƒæ—¶å›ä¼ 
         this.m_iStatus = status;
 
         if (m_sGroup != null)
@@ -139,7 +139,7 @@ public class Switch : MonoBehaviour {
 
     public void SetValue2(int value, int status = 0)
     {
-        //±êÊ¶×´Ì¬ »Øµ÷Ê±»Ø´«
+        //æ ‡è¯†çŠ¶æ€ å›è°ƒæ—¶å›ä¼ 
         this.m_iStatus = status;
 
         if (m_sGroup != null)
@@ -154,24 +154,24 @@ public class Switch : MonoBehaviour {
 
     public void InvokeValueChange()
     {
-        //ÏìÓ¦»Øµ÷
+        //å“åº”å›è°ƒ
         if (OnValueChange != null) OnValueChange(m_iValue, m_iStatus);
     }
 
 
     /// <summary>
-    /// Òş²ØËùÓĞµÄÏÔÊ¾¶ÔÏó
+    /// éšè—æ‰€æœ‰çš„æ˜¾ç¤ºå¯¹è±¡
     /// </summary>
     public void HideChildren()
     {
-        //Òş²ØËùÓĞµÄ×Ó¶ÔÏó
+        //éšè—æ‰€æœ‰çš„å­å¯¹è±¡
         foreach (Transform tf in m_tChildrens)
         {
             tf.SetActive(false);
         }
     }
     /// <summary>
-    /// Òş²ØÖ¸¶¨µÄÏÔÊ¾¶ÔÏó
+    /// éšè—æŒ‡å®šçš„æ˜¾ç¤ºå¯¹è±¡
     /// </summary>
     public void HideChild(int index = -1)
     {
@@ -179,14 +179,14 @@ public class Switch : MonoBehaviour {
         {
             index = m_iValue;
         }
-        //Òş²ØÑ¡ÖĞµÄ×Ó¶ÔÏó
+        //éšè—é€‰ä¸­çš„å­å¯¹è±¡
         if (index >= 0 && index < m_tChildrens.Count)
         {
             m_tChildrens[index].SetActive(false);
         }
     }
     /// <summary>
-    /// ÏÔÊ¾Ö¸¶¨µÄÏÔÊ¾¶ÔÏó
+    /// æ˜¾ç¤ºæŒ‡å®šçš„æ˜¾ç¤ºå¯¹è±¡
     /// </summary>
     public void ShowChild(int index = -1)
     {
@@ -194,7 +194,7 @@ public class Switch : MonoBehaviour {
         {
             index = m_iValue;
         }
-        //ÏÔÊ¾Ñ¡ÖĞµÄ×Ó¶ÔÏó
+        //æ˜¾ç¤ºé€‰ä¸­çš„å­å¯¹è±¡
         if (index >= 0 && index < m_tChildrens.Count)
         {
             m_tChildrens[index].SetActive(true);
@@ -202,23 +202,23 @@ public class Switch : MonoBehaviour {
     }
 
     /// <summary>
-    /// Ö±½ÓÇĞ»»Ñ¡ÖĞ×´Ì¬ ²»·¢ÉúÊÂ¼ş
+    /// ç›´æ¥åˆ‡æ¢é€‰ä¸­çŠ¶æ€ ä¸å‘ç”Ÿäº‹ä»¶
     /// </summary>
     /// <param name="value"></param>
     public void IsOn(int value)
     {
         m_iValue = value;
-        //Òş²ØËùÓĞµÄ×Ó¶ÔÏó
+        //éšè—æ‰€æœ‰çš„å­å¯¹è±¡
         foreach (Transform tf in m_tChildrens)
         {
             tf.SetActive(false);
         }
 
-        //ÏŞ¶¨·¶Î§ ²»ÄÜ³¬³ö
+        //é™å®šèŒƒå›´ ä¸èƒ½è¶…å‡º
         if (m_iValue >= m_tChildrens.Count)
             m_iValue = m_tChildrens.Count - 1;
 
-        //ÏÔÊ¾Ñ¡ÖĞµÄ×Ó¶ÔÏó
+        //æ˜¾ç¤ºé€‰ä¸­çš„å­å¯¹è±¡
         if (m_iValue >= 0 && m_iValue < m_tChildrens.Count)
         {
             m_tChildrens[m_iValue].SetActive(true);
@@ -226,7 +226,7 @@ public class Switch : MonoBehaviour {
     }
 
     /// <summary>
-    /// ¶ÔÏóÏú»ÙÊ±´¦Àí
+    /// å¯¹è±¡é”€æ¯æ—¶å¤„ç†
     /// </summary>
     void OnDestroy()
     {

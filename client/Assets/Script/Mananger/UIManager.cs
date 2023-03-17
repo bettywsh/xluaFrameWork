@@ -28,8 +28,8 @@ public class UIManager : MonoSingleton<UIManager>
     
     public void PreLoad()
     {
-        //var seq = DG.Tweening.DOTween.Sequence();
-        //seq.Kill(true)
+        // var seq = DG.Tweening.DOTween.Sequence();
+        // seq.IsPlaying(true)
     }
 
     public LuaTable GetBaseUI(string prefabName)

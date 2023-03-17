@@ -1,5 +1,7 @@
 local DialogMgr = {}
 
+DialogMgr.TextFlyingList = nil
+
 function DialogMgr:ShowTextFlying(value)
     if self.TextFlyingCtrl == nil then
         self.TextFlyingCtrl = UIMgr:Open("TextFlyingPanel", value)
@@ -7,23 +9,23 @@ function DialogMgr:ShowTextFlying(value)
     self.TextFlyingCtrl:Fly(value)
 end
 
-function DialogMgr:ShowDialog1(txtMsg, txtOk, okCb)
+function DialogMgr:ShowDialogOne(txtTitle, txtMsg, okCb, params)
     UIMgr:Open("DialogPanel", {
+        txtTitle = txtTitle,
         txtMsg = txtMsg,
-        txtOk = txtOk,
         okFun = okCb,
-        type = 1
+        txtOk = params.txtOk,
     })
 end
 
-function DialogMgr:ShowDialog2(txtMsg, txtOk, txt_cal, okFun, calFun)
+function DialogMgr:ShowDialogTwo(txtTitle, txtMsg, okFun, calFun, params)
     UIMgr:Open("DialogPanel", {
+        txtTitle = txtTitle,
         txtMsg = txtMsg,
-        txtOk = txtOk,
-        txtCal = txt_cal,
         okFun = okFun,
         calFun = calFun,
-        type = 2
+        txtOk = params.txtOk,
+        txtCancel = params.txtCancel,
     })
 end
 

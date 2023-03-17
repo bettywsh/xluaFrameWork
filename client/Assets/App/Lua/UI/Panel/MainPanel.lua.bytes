@@ -5,21 +5,29 @@ function MainPanel:OnOpen()
 
 end
 
-function MainPanel:UI_btnBag_OnClick()
+function MainPanel:UI_btn_Bag_OnClick()
     UIMgr:Open("BagPanel")
 end
 
-function MainPanel:UI_btnDialogOne_OnClick()
-
+function MainPanel:UI_btn_DialogOne_OnClick()
+    DialogMgr:ShowDialogOne("", "一个按钮", function()
+        print("确定")
+    end, {})
 end
 
-function MainPanel:UI_btnDialogTwo_OnClick()
-
+function MainPanel:UI_btn_DialogTwo_OnClick()
+    DialogMgr:ShowDialogTwo("", "两个按钮", function()
+        print("确定")
+    end, function()
+        print("取消")
+    end, {})
 end
 
-function MainPanel:UI_btnFlyingText_OnClick()
-    DialogMgr:ShowTextFlying("1111")
-    -- UIMgr:Open("")
+function MainPanel:UI_btn_FlyingText_OnClick()
+    DialogMgr:ShowTextFlying("漂字1")
+    DialogMgr:ShowTextFlying("漂字2")
+    DialogMgr:ShowTextFlying("漂字3")
+    DialogMgr:ShowTextFlying("漂字4")
 end
 
 

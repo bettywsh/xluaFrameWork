@@ -8,6 +8,8 @@ GameUpdate = require("Common/GameUpdate")
 Function = require("Common/Function")
 UIBase = require("Common/UIBase")
 UICellBase = require("Common/UICellBase")
+Enum = require("Common/Enum")
+LuaList = require("Common/LuaList")
 
 SoundMgr = require("Manager/SoundMgr")
 ConfigMgr = require("Manager/ConfigMgr")

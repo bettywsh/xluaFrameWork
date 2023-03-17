@@ -1,8 +1,8 @@
 local BagCell = LuaClass:Class("BagCell", UICellBase)
 
 --打开UI
-function BagCell:OnOpen()
-
+function BagCell:OnOpen(idx)
+    self.view.txt_Title.text = idx
 end
 
 

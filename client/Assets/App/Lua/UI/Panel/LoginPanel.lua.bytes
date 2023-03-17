@@ -5,7 +5,7 @@ function LoginPanel:OnOpen()
 end
 
 
-function LoginPanel:UI_btnclick_OnClick()
+function LoginPanel:UI_btn_click_OnClick()
 	-- NetMgr:ConnectTo(GameDefine.Connect_Login, GameDefine.ServerAddress.LoginSvrIp, GameDefine.LoginSvrPort)
 	-- DialogMgr:ShowDialog1("111", "2", function() print(3333)end)
 	-- DialogMgr:ShowTextFlying("1111")

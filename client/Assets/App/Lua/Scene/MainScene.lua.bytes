@@ -5,7 +5,7 @@ function loginScene:LoadScene()
 end
 
 function loginScene:UnLoadScene()
-    
+    UIMgr:Close("MainPanel")
 end
 
 return loginScene
