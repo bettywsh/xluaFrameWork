@@ -12,14 +12,12 @@ public class NetManager : MonoSingleton<NetManager>
     List<KeyValuePair<int, object>> tmpEvents = new List<KeyValuePair<int, object>>();
     Queue sEvents = new Queue();
     NetworkInfo _netWorkInfo;
-    IPacketIDParser _packetIdParser;
 
     public void Init() {
         //SocketClient.OnRegister();
 
         _netWorkInfo = new NetworkInfo();
 
-        _packetIdParser = new PacketIDParser();
         
     }
 
@@ -142,7 +140,7 @@ public class NetManager : MonoSingleton<NetManager>
         IConnect con = null;
         if (!connects.TryGetValue(targetName, out con))
         {
-            con = new SimpleConnect();
+            con = new TcpConnect();
             con.name = targetName;
             con.onConnected = OnConnected;
             con.onLostConnect = OnLostConnect;

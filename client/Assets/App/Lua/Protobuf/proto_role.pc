@@ -1,0 +1,21 @@
+
+Ý
+proto_role.protocom.bochsler.protocol"F
+RoleInfo
+id (	Rid
+roleId (RroleId
+name (	Rname"
+RoleListRequest"O
+RoleListResponse;
+roleList (2.com.bochsler.protocol.RoleInfoRroleList"?
+CreateRoleRequest
+roleId (RroleId
+name (	Rname"Q
+CreateRoleResponse;
+roleList (2.com.bochsler.protocol.RoleInfoRroleList""
+RoleLoginRequest
+id (	Rid"
+RoleLoginResponse"#
+RoleLogoutRequest
+id (	Rid"
+RoleLogoutResponse

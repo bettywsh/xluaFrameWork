@@ -1,0 +1,22 @@
+
+Â
+proto_world.protocom.bochsler.protocolproto_common.proto"ª
+WorldPlayerAddF
+
+playerInfo (2&.com.bochsler.protocol.WorldPlayerInfoR
+playerInfo:
+position (2.com.bochsler.protocol.Vector3Rposition
+angle (Rangle"/
+WorldPlayerRemove
+playerId (	RplayerId"•
+WorldPlayerMove
+playerId (	RplayerId:
+position (2.com.bochsler.protocol.Vector3Rposition
+speed (Rspeed
+angle (Rangle"‹
+WorldPlayerInfo
+playerId (	RplayerId
+nickname (	Rnickname
+icon (	Ricon
+sex (Rsex
+avatarId (RavatarId

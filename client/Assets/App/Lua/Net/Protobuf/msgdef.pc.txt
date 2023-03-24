@@ -1,3970 +1,0 @@
-
-Òτ
-msgdef.proto"%
-AAAWORLDPOS
-
-fx (
-
-fz ("¶
-DB_CHAR_BASE_INFO_PB
-Charguid (
-Sex (
-Name (	
-Level (
-StartSceneID (
-MenPai (
-
-EquipModel (
-CombatPoint (
-IsDressShow	 ("‡
-BloodLeagueStoreItem
-SellId (
-Index (
-ItemId (
-DailyBuyNum (
-WeeklyBuyNum (
-MonthlyBuyNum ("a
-	EquipAttr
-AttrType (
-Quality (
-Value (
-IsLocked (
-MaxValue ("Y
-	EquipInfo
-BaseAttr (2
-.EquipAttr
-ExtAttr (2
-.EquipAttr
-	EquipStar ("
-	MediaInfo
-Param1 ("
-ItemInfo
-ItemGUID (
-ItemId (
-	ItemCount (
-	EquipData (2
-.EquipInfo
-IsBind (
-IsNew (
-	MediaData (2
-.MediaInfo"\
-AdditionItem
-ItemId (
-	ItemCount (
-CreateParam (
-AdditionType ("Χ
-MailInfo
-Index (
-Type (
-Sender (	
-
-Receviewer (	
-Title (	
-ReadFlag (
-Content (	
-nTime (
-items	 (2.AdditionItem
-	nReadTime
- ($
-OpType (2.SCRIPT_MAIL_OP_TYPE
-Param0 (
-Param1 (
-Param2 (
-Param3 (
-MailID (
-
-MailFormID (
-Params (	"«
-OneTeamMember
-GUID (
-Name (	
-Level (
-MenPaiID (
-
-HP (
-IsLeader ()
-OnlineStatus (2.TEAM_MEMBER_STATUS
-
-IsFollowed (
-SceneID	 (
-Portrait
- (
-PlayerID (
-WorldPos (2.AAAWORLDPOS
-ObjId (
-MaxHP (
-CombatPoint (
-
-EquipModel (
-IsDressShow (
-	GuildName (	
-TaskTeamDie (
-CurTeamTask (
-
-CirTeamDie ("›
-OneTeamInfo
-TeamID (
-Members (2.OneTeamMember
-TargetID (
-IsAutoMatch (
-StartLv (
-EndLv (
-IsAutoRefuse ("
-
-OneApplyer
-GUID (
-Name (	
-Level (
-Portrait (
-
-CreateTime (
-MenPaiID (
-EquipModelList (
-CombatPoint ("p
-NearbyPlayer
-Name (	
-Level (
-MenPaiID (
-CombatPoint (
-GUID (
-TeamID ("Ό
-
-NearbyTeam
-TeamID (
-Name (	
-Level (
-CombatPoint (
-MemberCount (
-TargetID (
-IsAutoMatch (
-StartLv (
-EndLv	 (
-MenPaiID
- ("F
-RelationUpdateInfo
-GUID (
-Level (
-CombatPoint ("Ί
-RelationInfo
-GUID (
-Name (	8
-RelationType (2.RELATION_TYPE:RELATION_TYPE_NONE
-Level (
-VIPLevel (
-CombatPoint (
-MenPai (
-GuildID (
-	GuildName	 (	
-IsOnline
- (
-LastLogOutTime (
-TimeToBeFriend (
-IsAcceptVisit (
-	HeadIcoin ("»
-	QueryInfo
-GUID (
-Name (	
-Level (
-VIPLevel (
-CombatPoint (
-MenPai (
-GuildID (
-	GuildName (	
-IsOnline	 (
-LastLogOutTime
- ("X
-VisitorInfo%
-BuildingList (2.VisitBuildInfo"
-	HorseList (2.VisitHorseInfo"d
-VisitBuildInfo
-ConfigId (
-
-BuildingId (
-BuildingPosId (
-BuildingLevel ("[
-VisitHorseInfo
-HorseConfigId (
-
-InstanceId (
-Name (	
-AttrList ("|
-	EquipData
-Part (
-	PartLevel (
-	IsEquiped (
-ItemInfo (2	.ItemInfo
-HoleInfo (2.HoleGemInfo"-
-CharAttr
-AttrID (
-	AttrValue ("d
-CharAttribute
-AttrID (
-AttrType (2	.ATTRTYPE
-
-iAttrValue (
-
-fAttrValue ("¥
-OffLinePKInfo
-RankID (
-Guid (
-Name (	
-Level (
-Force (
-ModelIDs (
-MenPaiID (
-IsDressShow (
-	GuildName	 (	"y
-OffLinePKDecord
-Active (
-Success (
-
-RankModify (
-	CurRankid (
-Time (
-OppoName (	"C
-OfflinePkDamageInfo
-Damage (
-IsCri (
-IsHit ("f
-OffLineSkillInfo
-SkillID (
-
-SkillLevel (-
-SkillDamageList (2.OfflinePkDamageInfo"=
-	ModleInfo
-Part (
-	IfModleID (
-ModleID ("4
-OffLinePKSkillInfo
-SkillID (
-Level ("B
-	SkillData
-SkillID (
-
-SkillLevel (
-SkillExp ("R
-PetTrainResult
-AttrID (
-AttrChangeValue (
-AttrResultValue (",
-HoleGemInfo
-HoleId (
-GemId ("x
-ChatShowItemInfo
-ItemInfo (2	.ItemInfo
-IsEquip (
-	EquipPart (2.HUMAN_EQUIP
-EquipGradeLev ("m
-MemberSimpleInfo
-
-MemberGuid (
-
-MemberName (	
-Dir ($
-Result (2.ENTERSCENE_RET_CODE"0
-RankTowerInfo
-Floor (
-CostTime ("
-RankBathInfo
-Score ("4
-RankGuildWarInfo
-Score (
-	GuildName (	"ϊ
-RankInfo
-RankId (
-GUID (
-ModelID (
-
-PlayerName (	
-PlayerLevel (
-CombatPoint (
-Menpai (
-UArenaSection (
-
-UArenaStar	 (
-
-WeekDamage
- (
-PetId (
-PetStarLevel (!
-	RankTower (2.RankTowerInfo
-RankBath (2.RankBathInfo+
-Ranktype (2.RankingType:RankByLevel
-GodSwordPowerID (
-MountPowerID (
-
-PetPowerID (
-TopMemPower ('
-RankGuildWar (2.RankGuildWarInfo
-Money (
-
-HorseValue (
-HorseNum (
-	HorseName (	
-HorseAttrList (
-HorseConfigId (
-HeadIcon (
-MatchReward ("b
-RankPlayerInfo
-GUID (
-
-PlayerName (	
-param1 (
-param2 (
-param3 ("΅
-RankPlayerDetailInfo
-GUID (
-Sex (
-Name (	
-Level (
-MenPai (
-VipLevel (
-HeadID (
-	GuildName (	
-CharAttr	 (2	.CharAttr
-	EquipList
- (2
-.EquipData
-EquipModelList (
-CombatPoint (
-RankID (
-IsDressShow ("Ι
-RankExtDetailInfo
-Name (	
-Level (
-Star (
-ModelID (
-CombatPoint (
-RankID (
-CharAttr (2	.CharAttr
-	SubIDList (
-	Formation	 (
-IsCallUp
- ("”
-RankDetailInfo2
-RankingInfoType (2.RankingType:RankByLevel)
-
-PlayerInfo (2.RankPlayerDetailInfo#
-ExtInfo (2.RankExtDetailInfo"΅
-BloodLeagueSimpleInfo
-BLId (
-BLName (	
-CurrMemberCount (
-Level (
-
-LeaderName (	
-Description (	
-Icon (
-Exp ("σ
-BloodLeagueMemberInfo
-PlayerId (
-CharGuid (
-Name (	
-Level (
-Position (
-Point (
-IsOnline (
-MenPai (
-NickName	 (	
-LastLogOutTime
- (
-	GuildName (	
-TakeChestMaxLevel ("
-GuildDetailInfo
-	GuildName (	
-	GuildDesc (	
-GuildId (
-
-GuildLevel (
-MemberNumber (
-	ChiefName (	
-
-LevelLimit (
-CombatLimit (
-GuildIdIndex	 (	
-GuildCombatPoint
- (
-LastActivation (
-CurActivation (":
-BadgeMissionInfo
-	MissionID (
-MissionStep ("2
-BadgeChestInfo
-ChestId (
-HasTake ("©
-GuildUserDetailInfo
-MenPai (
-Name (	
-Level (
-Combat (9
-Position (2.GUILD_POSITION:GUILD_POSITION_INVALID
-DailyContribution (
-TotalContribution (
-LastLogOutTime (
-IsOnline	 (
-Message
- (	
-CharGuid (
-CurContribution ("§
-GuildUserSimpleInfo
-Name (	
-Level (
-Combat (9
-Position (2.GUILD_POSITION:GUILD_POSITION_INVALID
-LastLogOutTime (
-IsOnline ("*
-GuildBuildingInfo
-BuildingLevel ("-
-ItemData
-ItemId (
-	ItemCount (":
-
-PalaceInfo
-PalaceLevel (
-BossRefreshTime ("®
-ActivityData
-
-ActivityID (
-ActivityOpenStauts (
-LeftTime (
-isOpenTimeUI (
-	BeginTime (
-EndTime (
-Interval (
-DataInfo ("r
-TeamPlayerInfo
-GUID (
-Name (	
-Level (
-VIPLevel (
-CombatPoint (
-MenPai ("F
-ActiveEventData
-EventId (
-
-RequirData (
-Status ("6
-CloseFunctionInfo
-
-FunctionID (
-SubID ("A
-BossBaseInfo
-BossID (
-MapID (
-
-KillerName (	"΅
-GuildGeneralsGuildRankInfo
-	GuildName (	
-GuildId (
-RandID (
-
-GuildLevel (
-MemberNumber (
-	ChiefName (	
-
-TotalScore ("σ
-GuildGeralsPersonalRankInfo
-RandID (
-CharGuid (
-Name (	
-GuildId (
-MenPai (
-Level (
-Combat (9
-Position (2.GUILD_POSITION:GUILD_POSITION_INVALID
-PersonalScore	 (
-
-GuildScore
- ("u
-GuildGeneralsInnerRankList
-RandID (
-GuildId (6
-PerSonalRankList (2.GuildGeralsPersonalRankInfo"-
-	GuildItem
-SellID (
-BuyTimes ("2
-GuildContributeList
-Name (	
-Times ("A
-GuildStudioAttrInfo
-Type (
-Level (
-Value (*6
-VERSION
-VERSION_CODE
-VERSION_LASTMTIMEΘÒ³»*Κε
-	PACKET_ID
-PACKET_WC_SystemMessage 
-PACKET_GC_SystemMessage
-PACKET_CW_SystemMessage
-PACKET_GW_SystemMessage
-PACKET_LW_SystemMessage
-PACKET_AW_SystemMessage
-PACKET_CG_SystemMessage
-PACKET_WG_SystemMessage
-PACKET_LG_SystemMessage
-PACKET_AG_SystemMessage	
-PACKET_WL_SystemMessage
-
-PACKET_GL_SystemMessage
-PACKET_AL_SystemMessage
-PACKET_WA_SystemMessage
-PACKET_GA_SystemMessage
-PACKET_LA_SystemMessage
-PACKET_PW_SystemMessage
-PACKET_WP_SystemMessage
-PACKET_WH_SystemMessage
-PACKET_HW_SystemMessage
-PACKET_WK_SystemMessage
-PACKET_KW_SystemMessage
-PACKET_GK_SystemMessage
-PACKET_KG_SystemMessage)
-%PACKET_REMOTEING_AG_UpdateServerState2)
-%PACKET_REMOTEING_AW_UpdateServerState3)
-%PACKET_REMOTEING_LG_UpdateServerState4)
-%PACKET_REMOTEING_LW_UpdateServerState5)
-%PACKET_REMOTEING_GW_UpdateServerState6)
-%PACKET_REMOTEING_PW_UpdateServerState7)
-%PACKET_REMOTEING_HW_UpdateServerState8*
-&PACKET_REMOTEING_GA_ReceiveServerState<*
-&PACKET_REMOTEING_WA_ReceiveServerState=*
-&PACKET_REMOTEING_GL_ReceiveServerState>*
-&PACKET_REMOTEING_WL_ReceiveServerState?*
-&PACKET_REMOTEING_WG_ReceiveServerState@*
-&PACKET_REMOTEING_WP_ReceiveServerStateA#
-PACKET_REMOTEING_GW_ServerReadyB*
-&PACKET_REMOTEING_WH_ReceiveServerStateC*
-&PACKET_REMOTEING_GK_ReceiveServerStateD*
-&PACKET_REMOTEING_WK_ReceiveServerStateE)
-%PACKET_REMOTEING_AG_UpdatePlayerStateG)
-%PACKET_REMOTEING_AW_UpdatePlayerStateH)
-%PACKET_REMOTEING_LW_UpdatePlayerStateI(
-$PACKET_REMOTEING_WL_KickClientPlayerK(
-$PACKET_REMOTEING_WA_KickClientPlayerL(
-$PACKET_REMOTEING_GA_KickClientPlayerM(
-$PACKET_REMOTEING_LW_KickClientPlayerN(
-$PACKET_REMOTEING_AW_KickClientPlayerO(
-$PACKET_REMOTEING_AG_KickClientPlayerP)
-%PACKET_REMOTEING_KG_UpdateServerStateQ)
-%PACKET_REMOTEING_KW_UpdateServerStateR&
-"PACKET_REMOTEING_GW_ModifyNetDelayZ&
-"PACKET_REMOTEING_WL_ModifyNetDelay[%
-!PACKET_COMMAND_WGPlayerCommandMsgd+
-'PACKET_COMMAND_GWOnLinePlayerCommandMsge
-PACKET_LOGIN_LOGIN_CLLogin‚
-PACKET_LOGIN_LOGIN_LCLoginƒ 
-PACKET_LOGIN_LOGIN_LCStatus„%
- PACKET_LOGIN_LOGIN_CLAskCharList…%
- PACKET_LOGIN_LOGIN_LCRetCharList†&
-!PACKET_LOGIN_LOGIN_CLAskCharLogin‡&
-!PACKET_LOGIN_LOGIN_LCRetCharLogin&
-!PACKET_LOGIN_CHAR_CLAskCreateChar&
-!PACKET_LOGIN_CHAR_LCRetCreateChar&
-!PACKET_LOGIN_CHAR_CLAskDeleteChar&
-!PACKET_LOGIN_CHAR_LCRetDeleteChar&
-!PACKET_LOGIN_CHAR_CLAskIfNameUsed&
-!PACKET_LOGIN_CHAR_LCRetIfNameUsed‘ 
-PACKET_GAME_LOGIN_CGConnect– 
-PACKET_GAME_LOGIN_GCConnect—#
-PACKET_GAME_LOGIN_CGEnterScene#
-PACKET_GAME_LOGIN_GCEnterScene™'
-"PACKET_GAME_LOGIN_CGAskChangeScene'
-"PACKET_GAME_LOGIN_GCRetChangeScene›+
-&PACKET_GAME_LOGIN_CGEnterSceneComplete(
-#PACKET_GAME_LOGIN_CGEquipMentSystem
-PACKET_GAME_SYN_CGAskPing 
-PACKET_GAME_SYN_GCRetPing΅!
-PACKET_GAME_SYN_GCDisconnectΆ*
-%PACKET_GAME_SYN_CGUpdateBroadCastList£!
-PACKET_GAME_LOGIN_CGLoginOut¥$
-PACKET_GAME_LOGIN_CGAskGiveName¦)
-$PACKET_GAME_LOGIN_GCGiveNameResponse§
-PACKET_GAME_SYN_CGCharMoveª
-PACKET_GAME_SYN_GCCharMove«
-PACKET_GAME_SYN_GCArrive¬%
- PACKET_GAME_SYN_GCCharMoveResult­
-PACKET_GAME_SYN_GCNewObj®
-PACKET_GAME_SYN_GCTeleport―
-PACKET_GAME_SYN_CGCharIdle°
-PACKET_GAME_SYN_CGCharDir±
-PACKET_GAME_SYN_GCCharDir² 
-PACKET_GAME_SYN_CGAskRelive³%
- PACKET_GAME_SYN_GCReliveResponse΄ 
-PACKET_GAME_SYN_GCDelObjectµ
-PACKET_GAME_SYN_GCCharDie¶)
-$PACKET_GAME_SYN_CGVerifyCharDriftPos·%
- PACKET_GAME_SYN_GCCorrectCharPosΈ&
-!PACKET_GAME_SYN_GCNotifyBossBirthΉ,
-'PACKET_GAME_ITEMBOX_CGAskItemBoxContentΊ)
-$PACKET_GAME_ITEMBOX_GCItemBoxContent»)
-$PACKET_GAME_ITEMBOX_CGAskPickBoxItemΌ,
-'PACKET_GAME_ITEMBOX_GCPickBoxItemResult½(
-#PACKET_GAME_SYN_CGRequireServerTimeΎ)
-$PACKET_GAME_SYN_GCServerTimeResponseΏ$
-PACKET_GAME_SYN_GCPlatFormStateΐ/
-*PACKET_GAME_SYN_CGAskNearbyPlayerCharStateΑ/
-*PACKET_GAME_SYN_GCRetNearbyPlayerCharStateΒ%
- PACKET_GAME_SYN_GCNotifyPlayPlotΓ(
-#PACKET_GAME_SYN_GCCloseFunctionListΔ*
-%PACKET_GAME_SYN_GCAddNewCloseFunctionΕ!
-PACKET_GAME_SYN_GCDailyResetΗ%
- PACKET_GAME_SKILL_GCCharBuffListΘ%
- PACKET_GAME_SKILL_CGCharUseSkillΙ)
-$PACKET_GAME_SKILL_GCCharDirectImpactΚ!
-PACKET_GAME_SKILL_GCCharBuffΛ#
-PACKET_GAME_SKILL_GCDetailBuffΜ%
- PACKET_GAME_SYN_GCCharStopActionΝ$
-PACKET_GAME_SYN_GCCharSkillSendΞ,
-'PACKET_GAME_SYN_GCDetailHealsAndDamagesΟ)
-$PACKET_GAME_SKILL_CGCharAskSkillInfoΠ)
-$PACKET_GAME_SKILL_GCCharAskSkillInfoΡ&
-!PACKET_GAME_SKILL_CGAskStudySkillÒ+
-&PACKET_GAME_SKILL_GCResponseStudySkillΣ$
-PACKET_GAME_SKILL_GCAddNewSkillΤ$
-PACKET_GAME_SKILL_GCUpdateSkillΥ$
-PACKET_GAME_SKILL_GCRemoveSkillΦ(
-#PACKET_GAME_SKILL_GCSyncCombatStateΧ-
-(PACKET_GAME_SKILL_GCCharUseSkillResponseΨ$
-PACKET_GAME_SKILL_GCDriftImpactΩ#
-PACKET_GAME_SYN_CGLockedTargetΪ&
-!PACKET_GAME_SKILL_GCMonsterAwakenΫ(
-#PACKET_GAME_SKILL_GCCharSkillGatherά'
-"PACKET_GAME_SKILL_CGAskUsePlatFormέ(
-#PACKET_GAME_SKILL_CGAskSkillGemListή%
- PACKET_GAME_SKILL_GCSkillGemListί*
-%PACKET_GAME_SKILL_CGAskUnLockSkillGemΰ/
-*PACKET_GAME_SKILL_GCUnLockSkillGemResponseα)
-$PACKET_GAME_SKILL_CGAskStudySkillGemβ.
-)PACKET_GAME_SKILL_GCStudySkillGemResponseγ)
-$PACKET_GAME_SKILL_CGAskAdornSkillGemδ.
-)PACKET_GAME_SKILL_GCAdornSkillGemResponseε-
-(PACKET_GAME_SKILL_CGDisableStealFunctionζ-
-(PACKET_GAME_SKILL_GCDisableStealFunctionη+
-&PACKET_GAME_SKILL_CGAskUnAdornSkillGemθ0
-+PACKET_GAME_SKILL_GCUnAdornSkillGemResponseι 
-PACKET_GAME_SKILL_CGUseItemκ&
-!PACKET_GAME_SKILL_GCUseItemResultλ(
-#PACKET_GAME_SKILL_CGAskCooldownListμ0
-+PACKET_GAME_SKILL_GCAskCooldownListResponseν'
-"PACKET_GAME_SKILL_GCCooldownUpdateξ*
-%PACKET_GAME_SYN_GCSendSkillTargetListο)
-$PACKET_GAME_SKILL_CGRemoveOnLineBuffπ"
-PACKET_GAME_SKILL_CGRecoverHPρ"
-PACKET_GAME_SKILL_GCRecoverHPς2
--PACKET_GAME_SYN_CGReconnectCharDieInfoRequireσ3
-.PACKET_GAME_SYN_GCReconnectCharDieInfoResponseτ*
-%PACKET_GAME_SYN_CGRequirePacketFinishυ%
- PACKET_GAME_HINT_GCOperateResult¬-
-(PACKET_GAME_CHARATTR_CGAskCharBaseAttrib­.
-)PACKET_GAME_CHARATTR_CGAskCharDetailAttib®*
-%PACKET_GAME_CHARATTR_GCCharBaseAttrib―,
-'PACKET_GAME_CHARATTR_GCCharDetailAttrib°-
-(PACKET_GAME_CHARATTR_CGCharModifyPKModel±5
-0PACKET_GAME_CHARATTR_GCCharModifyPKModelResponse².
-)PACKET_GAME_CHARATTR_CGAskChangeHeadIcoin³1
-,PACKET_GAME_CHARATTR_GCChangeHeadIcoinResult΄/
-*PACKET_GAME_CHARATTR_CGSaveNewBieGuideStepµ.
-)PACKET_GAME_CHARATTR_GCNotifyPlatformGuid¶%
- PACKET_GAME_BAG_CGAskCharBagInfo·%
- PACKET_GAME_BAG_GCRetCharBagInfoΈ&
-!PACKET_GAME_BAG_GCRetCharItemInfoΉ 
-PACKET_GAME_BAG_CGEquipItemΊ#
-PACKET_GAME_BAG_GCRetEquipItem»"
-PACKET_GAME_BAG_CGUnEquipItemΌ%
- PACKET_GAME_BAG_GCRetUnEquipItem½#
-PACKET_GAME_BAG_CGAskEquipListΎ#
-PACKET_GAME_BAG_GCRetEquipListΏ'
-"PACKET_GAME_BAG_CGAskCharUnLockBagΐ'
-"PACKET_GAME_BAG_GCRetCharUnLockBagΑ$
-PACKET_GAME_BAG_CGAskBagShopBuyΒ$
-PACKET_GAME_BAG_GCRetBagShopBuyΓ&
-!PACKET_GAME_BAG_CGAskUpGradeEquipΔ&
-!PACKET_GAME_BAG_GCRetUpGradeEquipΕ!
-PACKET_GAME_BAG_CGAskUseItemΖ!
-PACKET_GAME_BAG_GCRetUseItemΗ"
-PACKET_GAME_BAG_CGAskSellItemΘ"
-PACKET_GAME_BAG_GCRetSellItemΙ%
- PACKET_GAME_BAG_CGAskUpStarEquipΚ%
- PACKET_GAME_BAG_GCRetUpStarEquipΛ$
-PACKET_GAME_BAG_CGAskTransEquipΜ$
-PACKET_GAME_BAG_GCRetTransEquipΝ%
- PACKET_GAME_BAG_CGAskItemComposeΞ%
- PACKET_GAME_BAG_GCRetItemComposeΟ
-PACKET_GAME_BAG_GCGetItemΠ(
-#PACKET_GAME_BAG_GCBagCapacityChangeΡ*
-%PACKET_GAME_BAG_CGAskResetBagRedPointÒ"
-PACKET_GAME_SYN_CGAskTransmitΤ"
-PACKET_GAME_SYN_GCRetTransmitΥ)
-$PACKET_GAME_MISSION_CGAskMissionDataΩ)
-$PACKET_GAME_MISSION_GCRetMissionDataΪ/
-*PACKET_GAME_MISSION_CGAskAcceptableMissionΫ/
-*PACKET_GAME_MISSION_GCRetAcceptableMissionά+
-&PACKET_GAME_MISSION_CGAskAcceptMissionέ+
-&PACKET_GAME_MISSION_GCRetAcceptMissionή0
-+PACKET_GAME_MISSION_GCUpdateAcceptedMissionί+
-&PACKET_GAME_MISSION_CGAskFinishMissionΰ+
-&PACKET_GAME_MISSION_GCRetFinishMissionα5
-0PACKET_GAME_MISSION_CGAskChangeMissionRequirDataβ5
-0PACKET_GAME_MISSION_GCRetChangeMissionRequirDataγ&
-!PACKET_GAME_MISSION_CGAskClickNpcδ&
-!PACKET_GAME_MISSION_GCRetClickNpcε+
-&PACKET_GAME_MISSION_CGNpcFunctionClickζ-
-(PACKET_GAME_MISSION_GCRetCompleteMissionλ0
-+PACKET_GAME_MISSION_CGAskGetActiveEventListο3
-.PACKET_GAME_MISSION_GCRetAskGetActiveEventListπ0
-+PACKET_GAME_MISSION_GCUpdateActiveEventDataρ+
-&PACKET_GAME_ACTIVITY_CWAskActivityDataσ+
-&PACKET_GAME_ACTIVITY_WCRetActivityDataτ+
-&PACKET_GAME_ACTIVITY_CWAskJoinActivityυ+
-&PACKET_GAME_ACTIVITY_WCRetJoinActivityφ7
-2PACKET_GAME_ACTIVITY_GCActivityOpenInSeveralMinuteχ-
-(PACKET_GAME_ACTIVITY_GCActivityIsOpeningψ*
-%PACKET_GAME_ACTIVITY_GCActivityClosedω4
-/PACKET_GAME_ACTIVITY_GCNotifyActivityOpenStatusϊ1
-,PACKET_GAME_ACTIVITY_GCRetBattlefieldUseBombϋ4
-/PACKET_GAME_ACTIVITY_GCNotifyBattlefieldUseBombό4
-/PACKET_GAME_ACTIVITY_GCBattlefieldBossPosNotifyύ0
-+PACKET_GAME_CHARATTR_GCRetCharLevelUpResultÿ&
-!PACKET_GAME_CHARATTR_GCRetLevelUp€*
-%PACKET_GAME_CHARATTR_GCRetMoneyChange
-PACKET_GAME_GM_CGAskGM‚
-PACKET_GAME_GM_GCRetGMƒ2
--PACKET_GAME_SYN_GCRetSetCopySceneDynamicBlock„5
-0PACKET_GAME_COPYSCENE_GCNoticeNewUnlockCopyScene…'
-"PACKET_GAME_SYN_GCRetPassCopyScene†'
-"PACKET_GAME_SYN_CGAskExitCopyScene‡'
-"PACKET_GAME_SYN_GCRetExitCopyScene-
-(PACKET_GAME_COPYSCENE_CGAskCopySceneInfo‰-
-(PACKET_GAME_COPYSCENE_GCRetCopySceneInfo<
-7PACKET_GAME_COPYSCENE_CGAskUnLockedChapterCopySceneList‹<
-7PACKET_GAME_COPYSCENE_GCRetUnlockedChapterCopySceneList.
-)PACKET_GAME_COPYSCENE_CGAskSweepCopyScene.
-)PACKET_GAME_COPYSCENE_GCRetSweepCopyScene+
-&PACKET_GAME_COPYSCENE_CGAskTakeStarBox+
-&PACKET_GAME_COPYSCENE_GCRetTakeStarBox+
-&PACKET_GAME_COPYSCENE_CGAskChapterInfo‘+
-&PACKET_GAME_COPYSCENE_GCRetChapterInfo’.
-)PACKET_GAME_COPYSCENE_CGAskStartCopyScene“.
-)PACKET_GAME_COPYSCENE_GCRetStartCopyScene”?
-:PACKET_GAME_COPYSCENE_GCRetMultiPlayerEnterCopySceneNotice•9
-4PACKET_GAME_COPYSCENE_CGAskMultiPlayerEnterCopyScene–9
-4PACKET_GAME_COPYSCENE_GCRetMultiPlayerEnterCopyScene—0
-+PACKET_GAME_COPYSCENE_CGAskCopySceneInspire0
-+PACKET_GAME_COPYSCENE_GCRetCopySceneInspire™?
-:PACKET_GAME_COPYSCENE_CGAskCancelMultiPlayerEnterCopyScene:
-5PACKET_GAME_COPYSCENE_CWAskConfirmMemberTeamCopyScene›:
-5PACKET_GAME_COPYSCENE_WCRetConfirmMemberTeamCopyScene=
-8PACKET_GAME_COPYSCENE_WCNoticeMemberConfirmTeamCopyScene4
-/PACKET_GAME_COPYSCENE_CWAskConfirmTeamCopyScene4
-/PACKET_GAME_COPYSCENE_WCRetConfirmTeamCopyScene,
-'PACKET_GAME_COPYSCENE_GCTowerDefenseMsg 0
-+PACKET_GAME_COPYSCENE_GCMountCPStatusChange΅6
-1PACKET_GAME_COPYSCENE_CGAskMountCPUseSpecialSkillΆ6
-1PACKET_GAME_COPYSCENE_GCRetMountCPUseSpecialSkill£2
--PACKET_GAME_COPYSCENE_GCRetMountCPHitObstacle¤3
-.PACKET_GAME_AUTOFIGHT_CGRequestAutoFightConfig¥/
-*PACKET_GAME_AUTOFIGHT_CGSetAutoFightConfig¦,
-'PACKET_GAME_AUTOFIGHT_GCAutoFightConfig§.
-)PACKET_GAME_AUTOFIGHT_CGSetAutoFightState¨.
-)PACKET_GAME_AUTOFIGHT_GCSetAutoFightState©-
-(PACKET_GAME_COPYSCENE_CGAskCtrlCopySceneª0
-+PACKET_GAME_COPYSCENE_GCRetAskCtrlCopyScene«*
-%PACKET_GAME_MOUNT_CGAskMountOperation―*
-%PACKET_GAME_MOUNT_GCRetMountOperation°+
-&PACKET_GAME_MOUNT_CGAskActiveMountSkin±+
-&PACKET_GAME_MOUNT_GCRetActiveMountSkin²+
-&PACKET_GAME_MOUNT_CGAskUpStarMountSkin³+
-&PACKET_GAME_MOUNT_GCRetUpStarMountSkin΄)
-$PACKET_GAME_MOUNT_CGAskMountSkinListµ)
-$PACKET_GAME_MOUNT_GCRetMountSkinList¶)
-$PACKET_GAME_MOUNT_GCNotifyMountState·.
-)PACKET_GAME_MOUNT_GCNoticeLostEffectMountΈ%
- PACKET_GAME_DRESS_CGAskDressListΉ%
- PACKET_GAME_DRESS_GCRetDressListΊ$
-PACKET_GAME_DRESS_CGAskBuyDress»&
-!PACKET_GAME_DRESS_CGAskSwearDress½&
-!PACKET_GAME_DRESS_GCRetSwearDressΎ(
-#PACKET_GAME_DRESS_CGAskTakeOffDressΏ(
-#PACKET_GAME_DRESS_GCRetTakeOffDressΐ1
-,PACKET_GAME_DRESS_GCRetNoticeLostEffectDressΑ'
-"PACKET_GAME_DRESS_GCRetDressActiveΒ-
-(PACKET_GAME_DRESS_CGAskSetDressShowRulerΓ-
-(PACKET_GAME_DRESS_GCRetSetDressShowRulerΔ.
-)PACKET_GAME_DRESS_CGAskSuitCollectionInfoΕ.
-)PACKET_GAME_DRESS_GCRetSuitCollectionInfoΖ6
-1PACKET_GAME_DRESS_CGAskActivateSuitCollectionAttrΗ6
-1PACKET_GAME_DRESS_GCRetActivateSuitCollectionAttrΘ/
-*PACKET_GAME_DRESS_CGAskActivateJiangHuSuitΙ-
-(PACKET_GAME_DRESS_GCNoticeSuitInfoChangeΚ/
-*PACKET_GAME_DRESS_GCRetActivateJiangHuSuitΛ+
-&PACKET_GAME_SYN_CGAskSceneThreadStatusΜ+
-&PACKET_GAME_SYN_GCRetSceneThreadStatusΝ2
--PACKET_GAME_MOUNT_CGAskNearbyPlayerMountStateΞ2
--PACKET_GAME_MOUNT_GCRetNearbyPlayerMountStateΟ
-PACKET_GAME_CHAT_CGAskChatΦ
-PACKET_GAME_CHAT_GCRetChatΧ!
-PACKET_GAME_CHAT_CGQueryInfoΨ$
-PACKET_GAME_CHAT_GCRetQueryInfoΩ#
-PACKET_GAME_EQUIP_CGAskHoleGemΰ#
-PACKET_GAME_EQUIP_GCRetHoleGemα)
-$PACKET_GAME_EQUIP_CGAskRemoveHoleGemβ)
-$PACKET_GAME_EQUIP_GCRetRemoveHoleGemγ'
-"PACKET_GAME_EQUIP_CGAskGemCompoundδ'
-"PACKET_GAME_EQUIP_GCRetGemCompoundε$
-PACKET_GAME_EQUIP_GCRetOpenHoleζ+
-&PACKET_GAME_EQUIP_CGAskEquipAttrRefineη+
-&PACKET_GAME_EQUIP_GCRetEquipAttrRefineθ0
-+PACKET_GAME_EQUIP_CGAskSaveEquipRefinedAttrι0
-+PACKET_GAME_EQUIP_GCRetSaveEquipRefinedAttrκ,
-'PACKET_GAME_EQUIP_CGAskLockEquipExtAttrλ,
-'PACKET_GAME_EQUIP_GCRetLockEquipExtAttrμ&
-!PACKET_GAME_PET_CGAskQueryPetListÿ)
-$PACKET_GAME_PET_GCRetAskQueryPetList€#
-PACKET_GAME_PET_CGAskActivePet&
-!PACKET_GAME_PET_GCRetAskActivePet‚!
-PACKET_GAME_PET_CGAskCallPetƒ$
-PACKET_GAME_PET_GCRetAskCallPet„"
-PACKET_GAME_PET_CGAskSleepPet…%
- PACKET_GAME_PET_GCRetAskSleepPet†/
-*PACKET_GAME_PET_CGActiveSkillInPassiveList‡/
-*PACKET_GAME_PET_GCActiveSkillInPassiveList0
-+PACKET_GAME_PET_CGUpgradeSkillInPassiveList‰0
-+PACKET_GAME_PET_GCUpgradeSkillInPassiveList*
-%PACKET_GAME_PET_CGOperatePassiveSkill‹*
-%PACKET_GAME_PET_GCOperatePassiveSkill%
- PACKET_GAME_PET_CGStarLevelUpPet%
- PACKET_GAME_PET_GCStarLevelUpPet'
-"PACKET_GAME_PET_CGTrainningPetAttr'
-"PACKET_GAME_PET_GCTrainningPetAttr/
-*PACKET_GAME_PET_CGActivePetBattleFormation‘2
--PACKET_GAME_PET_GCRetActivePetBattleFormation’2
--PACKET_GAME_PET_CGOperatePetToBattleFormation“5
-0PACKET_GAME_PET_GCRetOperatePetToBattleFormation”,
-'PACKET_GAME_PET_CGAskActiveSkillLevelUp•,
-'PACKET_GAME_PET_GCRetActiveSkillLevelUp–#
-PACKET_GAME_MAIL_GCRetMailList#
-PACKET_GAME_MAIL_CGAskReadMail.
-)PACKET_GAME_MAIL_CGAskReadAllAdditionMail "
-PACKET_GAME_MAIL_GCNotifyMail΅%
- PACKET_GAME_MAIL_CGAskDeleteMailΆ#
-PACKET_GAME_MAIL_CWAskMailList£&
-!PACKET_GAME_MAIL_CGAskFetchAttach¤&
-!PACKET_GAME_MAIL_GCRetFetchAttach¥'
-"PACKET_GAME_RELATION_CWAskRelation¦'
-"PACKET_GAME_RELATION_GCRetRelation§-
-(PACKET_GAME_RELATION_WCRetNotifyRelation¨-
-(PACKET_GAME_RELATION_CWAskNotifyRelation©#
-PACKET_GAME_RANK_CWAskRankInfo°#
-PACKET_GAME_RANK_WCRetRankInfo±/
-*PACKET_GAME_RANK_CWAskRankPlayerDetailInfo²/
-*PACKET_GAME_RANK_WCRetRankPlayerDetailInfo³
-PACKET_GAME_RANK_CGWorship΄
-PACKET_GAME_RANK_GCWorshipµ(
-#PACKET_GAME_RANK_CGAskWorshipStatus·+
-&PACKET_GAME_RANK_GCRetAskWorshipStatusΈ$
-PACKET_GAME_TEAM_CGAskTeamMarchΉ$
-PACKET_GAME_TEAM_GCRetTeamMarchΊ#
-PACKET_GAME_TEAM_CGAskTeamInfo»&
-!PACKET_GAME_TEAM_GCRetAskTeamInfoΌ"
-PACKET_GAME_TEAM_CGCreateTeam½%
- PACKET_GAME_TEAM_GCRetCreateTeamΎ"
-PACKET_GAME_TEAM_GCNotifyTeamΏ"
-PACKET_GAME_TEAM_GCTeamResultΐ!
-PACKET_GAME_TEAM_CGApplyTeamΑ$
-PACKET_GAME_TEAM_GCRetApplyTeamΓ#
-PACKET_GAME_TEAM_GCApplyerListΔ&
-!PACKET_GAME_TEAM_GCOpreateApplyerΕ+
-&PACKET_GAME_TEAM_CGAskCleanApplyerListΖ%
- PACKET_GAME_TEAM_CGAcceptApplyerΗ!
-PACKET_GAME_TEAM_GCTeamErrorΘ%
- PACKET_GAME_TEAM_CGOperateInviteΙ$
-PACKET_GAME_TEAM_GCInviteNotifyΚ#
-PACKET_GAME_TEAM_CGDismissTeamΛ%
- PACKET_GAME_TEAM_CGAppointLeaderΜ 
-PACKET_GAME_TEAM_CGKickTeamΝ!
-PACKET_GAME_TEAM_CGLeaveTeamΞ)
-$PACKET_GAME_TEAM_CGAskTeamMemberInfoΟ,
-'PACKET_GAME_TEAM_GCRetAskTeamMemberInfoΠ(
-#PACKET_GAME_TEAM_CGAskNearbyPlayersΡ+
-&PACKET_GAME_TEAM_GCRetAskNearbyPlayersÒ&
-!PACKET_GAME_TEAM_CGAskNearbyTeamsΣ)
-$PACKET_GAME_TEAM_GCRetAskNearbyTeamsΤ%
- PACKET_GAME_TEAM_CGOperateGatherΥ$
-PACKET_GAME_TEAM_GCGatherNotifyΦ"
-PACKET_GAME_TEAM_CGDelApplyerΧ%
- PACKET_GAME_TEAM_CGSetTeamTargetΨ(
-#PACKET_GAME_TEAM_GCRetSetTeamTargetΩ.
-)PACKET_GAME_TEAM_GCNotifyTeamTargetChangeΪ'
-"PACKET_GAME_TEAM_GCNotifyTeamEventΫ'
-"PACKET_GAME_TEAM_CWAskRelationListά*
-%PACKET_GAME_TEAM_GCRetAskRelationListέ$
-PACKET_GAME_TEAM_CWRemindLeaderή'
-"PACKET_GAME_TEAM_WCRetRemindLeaderί'
-"PACKET_GAME_TEAM_CWAskCtrlTeamTaskΰ'
-"PACKET_GAME_TEAM_WCRetCtrlTeamTaskα%
- PACKET_GAME_STORE_CGAskStoreTypeγ%
- PACKET_GAME_STORE_GCRetStoreTypeδ%
- PACKET_GAME_STORE_CGAskStoreListε%
- PACKET_GAME_STORE_GCRetStoreListζ$
-PACKET_GAME_STORE_CGAskStoreBuyη$
-PACKET_GAME_STORE_GCRetStoreBuyθ(
-#PACKET_GAME_STORE_CGAskStoreBuyDataι(
-#PACKET_GAME_STORE_GCRetStoreBuyDataκ,
-'PACKET_GAME_STORE_CGAskAddStoreGirlMoodλ,
-'PACKET_GAME_STORE_GCRetAddStoreGirlMoodμ.
-)PACKET_GAME_STORE_CGAskServerLimitBuyDataν1
-,PACKET_GAME_STORE_GCRetAskServerLimitBuyDataξ,
-'PACKET_WG_STORE_GWCharBuyStoreLimitItemο/
-*PACKET_WG_STORE_WGRetCharBuyStoreLimitItemπ,
-'PACKET_WG_STORE_WGUpDateStoreLimitItemsρ-
-(PACKET_WG_STORE_GWRollBackStoreLimitItemς*
-%PACKET_GAME_STORE_CGAskSingleGoodInfoσ'
-"PACKET_GAME_STORE_GCSingleGoodInfoτ1
-,PACKET_GAME_ACTIVITY_CGAskEnterSiegeActivity1
-,PACKET_GAME_ACTIVITY_GCRetEnterSiegeActivity‚3
-.PACKET_GAME_ACTIVITY_GCUpdateSiegeActivityInfoƒ-
-(PACKET_GAME_ACTIVITY_GCSendSiegeRankInfo„/
-*PACKET_GAME_ACTIVITY_GCNotifySiegeRankList…)
-$PACKET_GAME_STATUS_CGAskGetAllStatus‹)
-$PACKET_GAME_STATUS_GCRetGetAllStatus-
-(PACKET_GAME_STATUS_CGAskGetAppointStatus-
-(PACKET_GAME_STATUS_GCRetGetAppointStatus0
-+PACKET_GAME_STATUS_CGAskUpdateAppointStatus0
-+PACKET_GAME_STATUS_GCRetUpdateAppointStatus+
-&PACKET_GAME_STATUS_CGAskClearAllStatus‘+
-&PACKET_GAME_STATUS_GCRetClearAllStatus’*
-%PACKET_GAME_OFFLINEPK_CWAskPlayerList•-
-(PACKET_GAME_OFFLINEPK_WCRetAskPlayerList–)
-$PACKET_GAME_OFFLINEPK_CGAskOfflinePK—,
-'PACKET_GAME_OFFLINEPK_GCRetAskOfflinePK,
-'PACKET_GAME_OFFLINEPK_GCOfflinePKResult™/
-*PACKET_GAME_OFFLINEPK_CGAskOfflinePKRecord2
--PACKET_GAME_OFFLINEPK_GCRetAskOfflinePKRecord›-
-(PACKET_GAME_OFFLINEPK_CGAskOfflinePKInfo0
-+PACKET_GAME_OFFLINEPK_GCRetAskOfflinePKInfo.
-)PACKET_GAME_OFFLINEPK_CGAskArenaStoreList.
-)PACKET_GAME_OFFLINEPK_GCRetArenaStoreList-
-(PACKET_GAME_OFFLINEPK_CGAskArenaStoreBuy 0
-+PACKET_GAME_OFFLINEPK_GCRetAskArenaStoreBuy΅*
-%PACKET_GAME_OFFLINEPK_CGAskArenaPKBuyΆ-
-(PACKET_GAME_OFFLINEPK_GCRetAskArenaPKBuy£/
-*PACKET_GAME_OFFLINEPK_CWAskOfflinePKReward¤2
--PACKET_GAME_OFFLINEPK_WCRetAskOfflinePKReward¥0
-+PACKET_GAME_BLOODLEAGUE_CGInviteBloodLeague©3
-.PACKET_GAME_BLOODLEAGUE_GCRetInviteBloodLeagueª3
-.PACKET_GAME_BLOODLEAGUE_GCAskInviteBloodLeague«3
-.PACKET_GAME_BLOODLEAGUE_CGAskCreateBloodLeague¬6
-1PACKET_GAME_BLOODLEAGUE_GCRetAskCreateBloodLeague­0
-+PACKET_GAME_BLOODLEAGUE_CWModifyBloodLeague®3
-.PACKET_GAME_BLOODLEAGUE_WCRetModifyBloodLeague―2
--PACKET_GAME_BLOODLEAGUE_CWAskLeaveBloodLeague°2
--PACKET_GAME_BLOODLEAGUE_WCRetLeaveBloodLeague±8
-3PACKET_GAME_BLOODLEAGUE_CWTakeLevelChestBloodLeague²;
-6PACKET_GAME_BLOODLEAGUE_GCRetTakeLevelChestBloodLeague³2
--PACKET_GAME_BLOODLEAGUE_CWAskApplyBloodLeague΄7
-2PACKET_GAME_BLOODLEAGUE_CWConfirmInviteBloodLeagueµ:
-5PACKET_GAME_BLOODLEAGUE_WCRetConfirmInviteBloodLeague¶4
-/PACKET_GAME_BLOODLEAGUE_CWAskRecruitBloodleague·6
-1PACKET_WG_BLOODLEAGUE_GWAskAchieveListBloodLeagueΈ1
-,PACKET_GAME_BLOODLEAGUE_CWAskBloodLeagueListΓ4
-/PACKET_GAME_BLOODLEAGUE_WCRetAskBloodLeagueListΔ1
-,PACKET_GAME_BLOODLEAGUE_CWAskBloodLeagueInfoΕ4
-/PACKET_GAME_BLOODLEAGUE_WCRetAskBloodLeagueInfoΖ5
-0PACKET_GAME_BLOODLEAGUE_WCRetAskApplyBloodLeagueΗ6
-1PACKET_GAME_BLOODLEAGUE_CWOperateApplyBloodLeagueΙ9
-4PACKET_GAME_BLOODLEAGUE_WCRetOperateApplyBloodLeagueΚ4
-/PACKET_GAME_BLOODLEAGUE_CWKickMemberBloodLeagueΛ7
-2PACKET_GAME_BLOODLEAGUE_WCRetKickMemberBloodLeagueΜ1
-,PACKET_GAME_BLOODLEAGUE_GCSynBloodLeagueInfoΝ8
-3PACKET_GAME_BLOODLEAGUE_GCRetBloodLeagueMemberCountΞ'
-"PACKET_GAME_GUILD_CGAskCreateGuildΡ'
-"PACKET_GAME_GUILD_GCRetCreateGuildÒ%
- PACKET_GAME_GUILD_CWAskGuildInfoΣ%
- PACKET_GAME_GUILD_WCRetGuildInfoΤ%
- PACKET_GAME_GUILD_CWAskGuildListΥ%
- PACKET_GAME_GUILD_WCRetGuildListΦ+
-&PACKET_GAME_GUILD_CWAskChangeGuildDescΧ+
-&PACKET_GAME_GUILD_WCRetChangeGuildDescΨ0
-+PACKET_GAME_GUILD_CWAskChangeGuildConditionΩ0
-+PACKET_GAME_GUILD_WCRetChangeGuildConditionΪ,
-'PACKET_GAME_GUILD_CWAskChangeAutoAcceptΫ,
-'PACKET_GAME_GUILD_WCRetChangeAutoAcceptά)
-$PACKET_GAME_GUILD_CWAskApplyForGuildέ)
-$PACKET_GAME_GUILD_WCRetApplyForGuildή%
- PACKET_GAME_GUILD_CWAskQuitGuildί%
- PACKET_GAME_GUILD_WCRetQuitGuildΰ)
-$PACKET_GAME_GUILD_CWAskGuildUserListα)
-$PACKET_GAME_GUILD_WCRetGuildUserListβ'
-"PACKET_GAME_GUILD_CWAskGuildManageγ'
-"PACKET_GAME_GUILD_WCRetGuildManageδ,
-'PACKET_GAME_GUILD_WCUpdateGuildUserInfoε$
-PACKET_GAME_GUILD_WCGuildNoticeζ'
-"PACKET_GAME_GUILD_CWAskGuildInviteη'
-"PACKET_GAME_GUILD_WCRetGuildInviteθ*
-%PACKET_GAME_GUILD_WCGuildInviteNoticeι*
-%PACKET_GAME_GUILD_CWAskOptGuildInviteκ*
-%PACKET_GAME_GUILD_WCRetOptGuildInviteλ+
-&PACKET_GAME_GUILD_CWAskBuildingLevelUpμ+
-&PACKET_GAME_GUILD_WCRetBuildingLevelUpν%
- PACKET_GAME_BADGE_CGAskBadgeInfoο(
-#PACKET_GAME_BADGE_GCRetAskBadgeInfoπ%
- PACKET_GAME_BADGE_CGLevelUpBadgeρ(
-#PACKET_GAME_BADGE_GCRetLevelUpBadgeς'
-"PACKET_GAME_BADGE_CGTakeBadgeChestσ*
-%PACKET_GAME_BADGE_GCRetTakeBadgeChestτ3
-.PACKET_GAME_WORLD_BOSS_GCNotifyWorldBossStatus.
-)PACKET_GAME_WORLD_BOSS_CGAskBossSceneData‰1
-,PACKET_GAME_WORLD_BOSS_GCRetAskBossSceneData/
-*PACKET_GAME_WORLD_BOSS_GCSyncBossSceneData‹5
-0PACKET_GAME_WORLD_BOSS_CGAskAddBossSceneStayTime5
-0PACKET_GAME_WORLD_BOSS_GCRetAddBossSceneStayTime-
-(PACKET_GAME_WORLD_BOSS_CWGetBossInfoList0
-+PACKET_GAME_WORLD_BOSS_WCRetGetBossInfoList1
-,PACKET_GAME_GODSWORD_CGAskGodSwordUnlockInfo—4
-/PACKET_GAME_GODSWORD_GCRetAskGodSwordUnlockInfo1
-,PACKET_GAME_GODSWORD_GCSynGodSwordUnlockInfo™(
-#PACKET_GAME_PALACE_CGAskLeavePalaceΆ+
-&PACKET_GAME_PALACE_GCRetAskLeavePalace£,
-'PACKET_GAME_PALACE_GCPalaceStatusChange¤+
-&PACKET_GAME_PALACE_CGAskPalaceLeftTime¥.
-)PACKET_GAME_PALACE_GCRetAskPalaceLeftTime¦3
-.PACKET_REMOTEING_GWUpdatePalaceBossRefreshTime§2
--PACKET_GAME_PALACE_CWAskPalaceBossRefreshTime¨/
-*PACKET_GAME_PALACE_WCPalaceBossRefreshTime©/
-*PACKET_GAME_SECRETSHOP_CWAskSecretShopInfoΎ/
-*PACKET_GAME_SECRETSHOP_WCRetSecretShopInfoΏ.
-)PACKET_GAME_SECRETSHOP_CWAskBuySecretItemΐ0
-+PACKET_GAME_SECRETSHOP_WCSecretShopOpResultΑ.
-)PACKET_GAME_SECRETSHOP_WGAskBuySecretItemΒ7
-2PACKET_GAME_SECRETSHOP_GWSecretShopBuyFailRollBackΓ2
--PACKET_GAME_SECRETSHOP_GCSecretShopBuySuccessΔ.
-)PACKET_GAME_CHARATTR_GCNotifyTriggerEventά1
-,PACKET_GAME_CHARATTR_CGCharLoginPrizeRequireί2
--PACKET_GAME_CHARATTR_GCCharLoginPrizeResponseΰ6
-1PACKET_GAME_CHARATTR_CGCharDailySignInInfoRequireα7
-2PACKET_GAME_CHARATTR_GCCharDailySignInInfoResponseβ2
--PACKET_GAME_CHARATTR_CGCharDailySignInRequireγ3
-.PACKET_GAME_CHARATTR_GCCharDailySignInResponseδ.
-)PACKET_GAME_SECURITY_GCCaptureDataRequireζ/
-*PACKET_GAME_SECURITY_CGCaptureDataResponseη(
-#PACKET_GAME_MISC_CGAskRecruitMemberμ1
-,PACKET_GAME_MISC_GCKillerConstableInfoUpdateν$
-PACKET_GAME_MISC_CGCharFeedBackξ$
-PACKET_GAME_MISC_GCCharFeedBackο0
-+PACKET_GAME_MISC_CGAskQueryPlayerDetailInfoπ0
-+PACKET_GAME_MISC_GCRetQueryPlayerDetailInfoρ%
- PACKET_GAME_MISC_GCRetPaoPaoTalkς#
-PACKET_GAME_MISC_CGAskBossInfoσ#
-PACKET_GAME_MISC_GCRetBossInfoτ-
-(PACKET_GAME_MISC_GCNoticeSomeOneQueryYouυ/
-*PACKET_GAME_MISC_GCNoticeTreasureMapUpdateφ.
-)PACKET_GAME_MISC_GCNoticeTreasureMapEventχ#
-PACKET_WL_LOGIN_LWAskCharLoginϊ#
-PACKET_WL_LOGIN_WLRetCharLoginϋ'
-"PACKET_WL_LOGIN_LWAskAccountStatusό,
-'PACKET_WL_LOGIN_WLAccountStatusResponseύ1
-,PACKET_WL_LOGIN_LWSynLoginPlayerConnectCountώ*
-%PACKET_WL_LOGIN_WLCancelAccLoginLimitÿ&
-!PACKET_WL_LOGIN_WLRemoveAllPlayer€#
-PACKET_WL_CHAR_LWAskDeleteChar„#
-PACKET_WL_CHAR_WLRetDeleteChar…"
-PACKET_WG_LOGIN_GWAskUserData"
-PACKET_WG_LOGIN_WGRetUserData!
-PACKET_WG_LOGIN_GWNotifyUser!
-PACKET_WG_LOGIN_WGNotifyUser‘"
-PACKET_WG_LOGIN_GWRetUserData’"
-PACKET_WG_LOGIN_GWAskGiveName“*
-%PACKET_WG_LOGIN_WGAskGiveNameResponse”%
- PACKET_WG_SCENE_GWAskChangeSceneΆ%
- PACKET_WG_SCENE_WGRetChangeScene£%
- PACKET_WG_SCENE_GWFixChangeScene¤(
-#PACKET_WG_SCENE_WGRetFixChangeScene¥-
-(PACKET_WG_SCENE_GWAskSynScenePlayerCount¦)
-$PACKET_WG_SCENE_GWEnterSceneComplate§$
-PACKET_WG_SCENE_GWPlayerLevelUp¨(
-#PACKET_GC_SCENE_GCScenePlayerNumber©8
-3PACKET_WG_SCENE_GWAskMultiPlayerEnterCopySceneCheck¶8
-3PACKET_WG_SCENE_WGRetMultiPlayerEnterCopySceneCheck·6
-1PACKET_WG_SCENE_GWMultiPlayerEnterCopySceneNoticeΈ6
-1PACKET_WG_SCENE_WGMultiPlayerEnterCopySceneNoticeΉ3
-.PACKET_WG_SCENE_GWAskMultiPlayerEnterCopySceneΊ3
-.PACKET_WG_SCENE_WGRetMultiPlayerEnterCopyScene»9
-4PACKET_WG_SCENE_GWAskCancelMultiPlayerEnterCopySceneΌ
-PACKET_WG_SCENE_GWAskChatΚ
-PACKET_WG_SCENE_WGRetChatΛ
-PACKET_WG_CHAT_GWQueryInfoΜ"
-PACKET_WG_CHAT_WGRetQueryInfoΝ!
-PACKET_WG_MAIL_WGRetMailListΥ!
-PACKET_WG_MAIL_GWAskReadMailΦ!
-PACKET_WG_MAIL_WGRetReadMailΧ
-PACKET_WG_MAIL_GWSendMailΨ!
-PACKET_WG_MAIL_WGRetSendMailΩ#
-PACKET_WG_MAIL_GWBatchSendMailΪ 
-PACKET_WG_MAIL_WGRetDelMailΫ#
-PACKET_WG_MAIL_GWAskDeleteMailά#
-PACKET_WG_MAIL_GWSynMailStatusέ$
-PACKET_WG_MAIL_GWAskFetchAttachή$
-PACKET_WG_MAIL_WGRetFetchAttachί%
- PACKET_WG_RELATION_GWAskRelationθ%
- PACKET_WG_RELATION_WGRetRelationι,
-'PACKET_WG_RELATION_GWSyncUserSimpleDataκ 
-PACKET_WG_RANK_GWAskRankingς 
-PACKET_WG_RANK_WGRetRankingσ4
-/PACKET_WG_RANK_WGQueryPlayerDetailInfoFromWorldτ5
-0PACKET_WG_RANK_GWRetQueryPlayerDetailInfoToWorldυ)
-$PACKET_WG_RANK_WGSyncPlayerInTopListφ4
-/PACKET_WG_RANK_GWSyncTopPlayerDetailInfoToWorldχ#
-PACKET_WG_RANK_GWWorshipStatusψ&
-!PACKET_WG_RANK_WGRetWorshipStatusω!
-PACKET_WG_TEAM_GWAskTeamInfoό$
-PACKET_WG_TEAM_WGRetAskTeamInfoύ 
-PACKET_WG_TEAM_GWCreateTeamώ#
-PACKET_WG_TEAM_WGRetCreateTeamÿ 
-PACKET_WG_TEAM_WGTeamResult€
-PACKET_WG_TEAM_GWApplyTeam"
-PACKET_WG_TEAM_WGRetApplyTeam‚!
-PACKET_WG_TEAM_WGApplyerListƒ$
-PACKET_WG_TEAM_WGOpreateApplyer„&
-!PACKET_WG_TEAM_GWCleanApplyerList…#
-PACKET_WG_TEAM_GWAcceptApplyer†
-PACKET_WG_TEAM_WGTeamError‡#
-PACKET_WG_TEAM_GWOperateInvite"
-PACKET_WG_TEAM_WGInviteNotify‰!
-PACKET_WG_TEAM_GWDismissTeam#
-PACKET_WG_TEAM_GWAppointLeader‹
-PACKET_WG_TEAM_GWKickTeam
-PACKET_WG_TEAM_GWLeaveTeam'
-"PACKET_WG_TEAM_GWAskTeamMemberInfo*
-%PACKET_WG_TEAM_WGRetAskTeamMemberInfo#
-PACKET_WG_TEAM_GWOperateGather"
-PACKET_WG_TEAM_WGGatherNotify‘ 
-PACKET_WG_TEAM_GWDelApplyer’#
-PACKET_WG_TEAM_GWSetTeamTarget“.
-)PACKET_WG_TEAM_GWSynMemberSceneInfoToTeam”1
-,PACKET_WG_TEAM_WGRetSynMemberSceneInfoTOTeam•+
-&PACKET_WG_TEAM_GWAskTeamListByTargetID–.
-)PACKET_WG_TEAM_WGRetAskTeamListByTargetID—%
- PACKET_WG_TEAM_GWSynPlayerStatus(
-#PACKET_WG_TEAM_WGRetAskRelationList™.
-)PACKET_WG_ACTIVITY_WGNotifyActivityStatus¨2
--PACKET_WG_ACTIVITY_WGNotifyActivityOpenStatus«5
-0PACKET_WG_ACTIVITY_NotifyActivityStatusFromWorld¬5
-0PACKET_WG_ACTIVITY_GWNotifyActivityStatusToWorld­-
-(PACKET_WG_ACTIVITY_GWUpdateSiegeRankInfo®0
-+PACKET_WG_ACTIVITY_GWAskBattlefieldCampInfo―3
-.PACKET_WG_ACTIVITY_WGRetAskBattlefieldCampInfo°/
-*PACKET_WG_ACTIVITY_GWChooseCampBattlefield±2
--PACKET_WG_ACTIVITY_WGRetChooseCampBattlefield²0
-+PACKET_WG_ACTIVITY_GWKickoutCampBattlefield³.
-)PACKET_WG_ACTIVITY_GWClearCampBattlefield΄0
-+PACKET_WG_ACTIVITY_GWSynBattlefieldRankInfoµ'
-"PACKET_WG_OFFLINEPK_GWAskOfflinePKΊ*
-%PACKET_WG_OFFLINEPK_WGRetAskOfflinePK»*
-%PACKET_WG_OFFLINEPK_GWOfflinePKNotifyΌ0
-+PACKET_WG_OFFLINEPK_WGOfflinePKResultRecord½9
-4PACKET_WG_OFFLINEPK_WGQueryOfflinePKPlayerDetailInfoΎ<
-7PACKET_WG_OFFLINEPK_GWRetQueryOfflinePKPlayerDetailInfoΏ&
-!PACKET_WG_GM_WGAskGMQueryRoleInfoΐ&
-!PACKET_WG_GM_GWRetGMQueryRoleInfoΑ.
-)PACKET_WG_MISC_GWAskQueryPlayerDetailInfoΒ.
-)PACKET_WG_MISC_WGRetQueryPlayerDetailInfoΓ*
-%PACKET_WG_GM_GWNotifyModifyServerTimeΔ
-PACKET_WG_GWAskGMΕ
-PACKET_WG_WGRetGMΖ
-PACKET_WG_GM_WGForbitChatΗ(
-#PACKET_WG_GM_WGSynCloseFunctionListΘ(
-#PACKET_WG_MISC_GWPlayerRetainNotifyΙ!
-PACKET_WG_GM_WGModifyGMRightΚ$
-PACKET_WG_GM_WGAskGMAddCurrencyΛ1
-,PACKET_WG_BLOODLEAGUE_GWAskCreateBloodLeagueΜ1
-,PACKET_WG_BLOODLEAGUE_WGRetCreateBloodLeagueΝ9
-4PACKET_WG_BLOODLEAGUE_WGRetTakeLevelChestBloodLeagueΞ7
-2PACKET_WG_BLOODLEAGUE_WGSyncBloodLeagueAchieveListΟ2
--PACKET_WG_BLOODLEAGUE_WGRetSynBloodLeagueInfoζ)
-$PACKET_WG_BLOODLEAGUE_WGSynBLMissionι%
- PACKET_WG_GUILD_GWAskCreateGuildκ%
- PACKET_WG_GUILD_WGRetCreateGuildλ)
-$PACKET_WG_GUILD_GWNoticeDestroyGuildμ+
-&PACKET_WG_GUILD_WGSynGuildInfoToServerν)
-$PACKET_WG_GUILD_WGAskChangeGuildDescξ)
-$PACKET_WG_GUILD_GWRetChangeGuildDescο)
-$PACKET_WG_GUILD_GWAskUpdateGuildAttrπ!
-PACKET_GUILD_GWGuildSceneMsgρ!
-PACKET_GUILD_WGGuildSceneMsgς+
-&PACKET_WG_GUILD_GWAskGuildBuildingPlayσ+
-&PACKET_WG_GUILD_WGRetGuildBuildingPlayτ1
-,PACKET_WG_PETCOPYSCENE_GWAskUpdateDamageRank	
-PACKET_WORLD_SS_SSConnect‰	'
-"PACKET_WORLD_SS_SSScenePlayerCount	
-PACKET_GAME_GCAskFlyButton’	3
-.PACKET_GAME_PETCOPYSCENE_CGAskPetCopySceneInfo	3
-.PACKET_GAME_PETCOPYSCENE_GCRetPetCopySceneInfo	3
-.PACKET_GAME_PETCOPYSCENE_CGAskUnLockPetChapter	3
-.PACKET_GAME_PETCOPYSCENE_GCRetUnLockPetChapter	4
-/PACKET_GAME_PETCOPYSCENE_CGAskDrawPetCopyReward 	4
-/PACKET_GAME_PETCOPYSCENE_GCRetDrawPetCopyReward΅	1
-,PACKET_GAME_PETCOPYSCENE_CGAskChallengeAgainΆ	1
-,PACKET_GAME_PETCOPYSCENE_GCRetChallengeAgain£	6
-1PACKET_WG_BLOODLEAGUE_GWAskBloodLeagueMemberCount°	6
-1PACKET_WG_BLOODLEAGUE_WGRetBloodLeagueMemberCount±	%
- PACKET_GAME_COPYSCENE_CGTowerMsg²	%
- PACKET_GAME_COPYSCENE_GCTowerMsg³	)
-$PACKET_GAME_COPYSCENE_GWTowerRankMsg΄	$
-PACKET_GAME_COPYSCENE_CGBathMsgµ	$
-PACKET_GAME_COPYSCENE_GCBathMsg¶	$
-PACKET_GAME_COPYSCENE_GWBathMsg·	$
-PACKET_GAME_COPYSCENE_WGBathMsgΈ	*
-%PACKET_GAME_COPYSCENE_GCUpdateBathExpΉ	(
-#PACKET_GAME_COPYSCENE_CGExpSceneMsgΊ	(
-#PACKET_GAME_COPYSCENE_GCExpSceneMsg»	=
-8PACKET_GAME_COPYSCENE_CGBeginVirtualBattlefieldCopySceneΌ	5
-0PACKET_GAME_COPYSCENE_GCUpdateMountCPMaxDistanceΏ	!
-PACKET_SYS_ACGameServerCloseΞ	!
-PACKET_SYS_LCGameServerCloseΟ	5
-0PACKET_GAME_ACTIVITY_GCUpdateBattlefieldCampInfoΣ	1
-,PACKET_GAME_ACTIVITY_CGChooseCampBattlefieldΤ	4
-/PACKET_GAME_ACTIVITY_GCRetChooseCampBattlefieldΥ	.
-)PACKET_GAME_ACTIVITY_CGAskBattlefieldInfoΦ	.
-)PACKET_GAME_ACTIVITY_GCRetBattlefieldInfoΧ	1
-,PACKET_GAME_ACTIVITY_GCUpdateBattlefieldInfoΨ	5
-0PACKET_GAME_ACTIVITY_GCNotifyBattlefieldRankListΩ	2
--PACKET_GAME_ACTIVITY_CGAskBattlefieldCampInfoΪ	5
-0PACKET_GAME_ACTIVITY_GCUpdateBattlefieldRankListΫ	.
-)PACKET_GAME_ACTIVITY_CGBattelfieldUseBombά	5
-0PACKET_GAME_ACTIVITY_BattlefieldBombAndScoreInfoέ	6
-1PACKET_GAME_ACTIVITY_CGAskBattlefieldBombAndScoreή	+
-&PACKET_GAME_VISIT_CGAskStartVisitSceneβ	+
-&PACKET_GAME_VISIT_GCRetStartVisitSceneγ	*
-%PACKET_GAME_VISIT_CGAskStopVisitSceneδ	*
-%PACKET_GAME_VISIT_GCRetStopVisitSceneε	
-PACKET_GAME_CGLovelyPetMsgμ	
-PACKET_GAME_GCLovelyPetMsgν	&
-!PACKET_GAME_GCLovelyPetInvaildMsgξ	-
-(PACKET_GAME_ONLINE_CGRequestOnlineStatus”
-0
-+PACKET_GAME_ONLINE_GCRetRequestOnlineStatus•
-&
-!PACKET_GAME_ONLINE_CGAskGetReward–
-)
-$PACKET_GAME_ONLINE_GCRetAskGetReward—
-,
-'PACKET_GAME_ONLINE_GCUpdateOnlineStatus
-2
--PACKET_GAME_ACTIVITY_CGAskEnterGatherActivity
-2
--PACKET_GAME_ACTIVITY_GCRetEnterGatherActivity
-3
-.PACKET_GAME_ACTIVITY_GCGatherSceneStatusChange 
-1
-,PACKET_GAME_ACTIVITY_CGAskExitGatherActivity΅
-1
-,PACKET_GAME_ACTIVITY_GCRetExitGatherActivityΆ
-,
-'PACKET_GAME_LEGEND_CGAskLegendLuckyDraw¨
-0
-+PACKET_GAME_LEGEND_GCLegendLuckyDraResponse©
-2
--PACKET_GAME_LEGEND_CGAskLegendLuckyDrawSubmitª
-.
-)PACKET_GAME_LEGEND_CGAskLegendChapterDraw«
-3
-.PACKET_GAME_LEGEND_GCLegendChapterDrawResponse¬
-'
-"PACKET_GAME_LEGEND_CGAskLegendInfo­
-$
-PACKET_GAME_LEGEND_GCLegendInfo®
-*
-%PACKET_GAME_LEGEND_GCUpDataLegendInfo―
-.
-)PACKET_GAME_THEMELOTTERY_CGAskLotteryInfo΄
-.
-)PACKET_GAME_THEMELOTTERY_GCRetLotteryInfoµ
-.
-)PACKET_GAME_THEMELOTTERY_CGAskDrawLottery¶
-.
-)PACKET_GAME_THEMELOTTERY_GCRetDrawLottery·
-)
-$PACKET_GAME_TITLE_CGAskCharTitleInfoΌ
-&
-!PACKET_GAME_TITLE_GCCharTitleInfo½
-(
-#PACKET_GAME_TITLE_GCCharAddNewTitleΎ
--
-(PACKET_GAME_TITLE_GCCharRemoveAdornTitleΏ
-&
-!PACKET_GAME_TITLE_CGAskAdornTitleΐ
-+
-&PACKET_GAME_TITLE_GCAdornTitleResponseΑ
-5
-0PACKET_GAME_BLOODLEAGUE_CGAskBloodLeagueStoreBuyΠ
-6
-1PACKET_GAME_BLOODLEAGUE_CGAskBloodLeagueStoreListΡ
-6
-1PACKET_GAME_BLOODLEAGUE_GCRetBloodLeagueStoreListÒ
-5
-0PACKET_GAME_BLOODLEAGUE_GCRetBloodLeagueStoreBuyΣ
-3
-.PACKET_WG_BLOODLEAGUE_GWAskBloodLeagueStoreBuyΤ
-3
-.PACKET_WG_BLOODLEAGUE_WGRetBloodLeagueStoreBuyΥ
-4
-/PACKET_WG_BLOODLEAGUE_WGSynBloodLeagueScoreInfoΦ
-4
-/PACKET_WG_BLOODLEAGUE_GWAskBloodLeagueStoreListΧ
-4
-/PACKET_WG_BLOODLEAGUE_WGRetBloodLeagueStoreListΨ
-1
-,PACKET_WG_BLOODLEAGUE_GWAskAddExpBloodLeagueΩ
-#
-PACKET_GAME_CGOfflineRewardMsgΒ
-#
-PACKET_GAME_GCOfflineRewardMsgΓ
-3
-.PACKET_WG_COPYSCENE_GWUpdateCopySceneTopRecordΔ
-0
-+PACKET_WG_COPYSCENE_WGSynCopySceneTopRecordΕ
-,
-'PACKET_GAME_MISSION_GCDailyMissionResetΖ
-2
--PACKET_GAME_QUESTION_CGAskFinishQuestionnaireΗ
-2
--PACKET_GAME_QUESTION_GCRetFinishQuestionnaireΘ
--
-(PACKET_GAME_GIFTBAG_CWRequireDrawGiftBagΪ
-.
-)PACKET_GAME_GIFTBAG_WCDrawGiftBagResponseΫ
-(
-#PACKET_GAME_CARNIVAL_GCCarnivalListψ
-*
-%PACKET_GAME_CARNIVAL_GCUpdataCarnivalω
-1
-,PACKET_GAME_CARNIVAL_CGSubmitCarnivalRequireϊ
-2
--PACKET_GAME_CARNIVAL_GCSubmitCarnivalResponseϋ
-'
-"PACKET_GAME_CARNIVAL_GCAddCarnivalό
-'
-"PACKET_GAME_CARNIVAL_GCDelCarnivalύ
-&
-!PACKET_WG_CARNIVAL_WGCarnivalListώ
-%
- PACKET_WG_CARNIVAL_WGAddCarnivalÿ
-(
-#PACKET_WG_CARNIVAL_WGRefeshCarnival€0
-+PACKET_WG_CARNIVAL_WGRefeshCarnivalToPlayer/
-*PACKET_GAME_GUILDBOSS_CWAskGuildBossStatus‚/
-*PACKET_GAME_GUILDBOSS_WCRetGuildBossStatusƒ-
-(PACKET_GAME_GUILDBOSS_CWAskOpenGuildBoss„-
-(PACKET_GAME_GUILDBOSS_WCRetOpenGuildBoss…,
-'PACKET_GAME_GUILDBOSS_WCGuildBossNotice†1
-,PACKET_GAME_GUILDBOSS_CGAskGuildBossCopyInfo‡1
-,PACKET_GAME_GUILDBOSS_GCRetGuildBossCopyInfo4
-/PACKET_GAME_GUILDBOSS_GCUpdateGuildBossCopyInfo‰'
-"PACKET_GAME_GUILD_CGAskGuildSignIn'
-"PACKET_GAME_GUILD_GCRetGuildSignIn‹-
-(PACKET_GAME_GUILDBOSS_WGAskOpenGuildBoss-
-(PACKET_GAME_GUILDBOSS_GWRetOpenGuildBoss3
-.PACKET_GAME_GUILDBOSS_GWAskSendGuildBossReward7
-2PACKET_GAME_GUILDBOSS_WGSyncHumanGuildAttrToServer&
-!PACKET_GAME_GUILD_CGGuildToastMsg&
-!PACKET_GAME_GUILD_GCGuildToastMsg‘0
-+PACKET_GAME_GUILD_GCGuildToastTreatDrinkMsg’:
-5PACKET_GAME_GUILDBOSS_WGNotifyGuildCopyGuildUserLeave”$
-PACKET_WG_BOSS_GWUpdateBossInfo–%
- PACKET_WG_BOSS_WGSynBossInfoList—+
-&PACKET_WG_GIFTBAG_WGRequireDrawGiftBag ,
-'PACKET_WG_GIFTBAG_GWDrawGiftBagResponse΅
-PACKET_GUILD_CWGuildWarMsg¥
-PACKET_GUILD_CGGuildWarMsg¦#
-PACKET_GUILD_GWGuildCityWarMsg¬#
-PACKET_GUILD_WGGuildCityWarMsg­"
-PACKET_EFFIGY_GWAskEffigyInfo®&
-!PACKET_EFFIGY_WGRespondEffigyInfo―#
-PACKET_EFFIGY_WGSyncEffigyInfo°
-PACKET_GUILD_GCGuildWarMsg±
-PACKET_GUILD_WCGuildWarMsg²&
-!PACKET_GAME_MISSION_CGCtrlMissionµ&
-!PACKET_GAME_MISSION_GCCtrlMission¶$
-PACKET_GAME_GUILD_CGAskGuildMsg·$
-PACKET_GAME_GUILD_GCRetGuildMsgΈ1
-,PACKET_WG_MISC_WGAskQueryPlayerGetDetailInfoά1
-,PACKET_WG_MISC_GWRetQueryPlayerGetDetailInfoέ#
-PACKET_WG_GM_GWAskAddRobotByGMή'
-"PACKET_WG_GM_GWAskSetGuildAttrByGMί'
-"PACKET_WG_GM_WGAskGMModifyRoleInfoΰ'
-"PACKET_GAME_UARENA_CGRequireUArenaΐ(
-#PACKET_GAME_UARENA_GCResponseUArenaΑ%
- PACKET_WG_UARENA_GWRequireUArenaΒ&
-!PACKET_WG_UARENA_WGResponseUArenaΓ%
- PACKET_WG_UARENA_WGRequireUArenaΔ&
-!PACKET_WG_UARENA_GWResponseUArenaΕ)
-$PACKET_WG_UARENA_GWUArenaScoreResultΖ+
-&PACKET_GAME_UARENA_GCUArenaScoreResultΗ.
-)PACKET_WG_UARENA_WGUniverArenaMonthResultΘ2
--PACKET_GAME_UARENA_CWRequireUArenaRankHistoryΙ3
-.PACKET_GAME_UARENA_WCResponseUArenaRankHistoryΚ-
-(PACKET_GAME_UARENA_GCOverplusPrepareTimeΛ*
-%PACKET_GAME_UARENA_GCUArenaTargetInfoΜ0
-+PACKET_GAME_GUILD_CWCheckEnterGuildGeneralsΤ3
-.PACKET_GAME_GUILD_WCRetCheckEnterGuildGeneralsΥ-
-(PACKET_GAME_GUILD_CGAskGuildGeneralsDataΦ-
-(PACKET_GAME_GUILD_GCSynGuildGeneralsDataΧ+
-&PACKET_GUILD_GWUpdateGuildGeneralsDataή)
-$PACKET_GUILD_WGSyncGuildGeneralsDataί*
-%PACKET_GAME_CHAR_CGResourceRecoverMsgθ*
-%PACKET_GAME_CHAR_GCResourceRecoverMsgι-
-(PACKET_GAME_UARENA_CGAskArenaShopBuyDataς-
-(PACKET_GAME_UARENA_GCRetArenaShopBuyDataσ)
-$PACKET_GAME_UARENA_CGAskArenaShopBuyτ)
-$PACKET_GAME_UARENA_GCRetArenaShopBuyυ-
-(PACKET_GAME_GUILD_CGAskGuildBuildingPlayό-
-(PACKET_GAME_GUILD_GCRetGuildBuildingPlayύ&
-!PACKET_GAME_HORSE_CGAskAdoptHorse¤&
-!PACKET_GAME_HORSE_GCRetAdoptHorse¥&
-!PACKET_GAME_HORSE_CGAskNamedHorse¦&
-!PACKET_GAME_HORSE_GCRetNamedHorse§"
-PACKET_GAME_HORSE_CGHorseList¨"
-PACKET_GAME_HORSE_GCHorseList©%
- PACKET_GAME_HORSE_CGAskFeedHorseª%
- PACKET_GAME_HORSE_GCRetFeedHorse«&
-!PACKET_GAME_HORSE_CGAskTrainHorse¬&
-!PACKET_GAME_HORSE_GCRetTrainHorse­+
-&PACKET_GAME_HORSE_CGAskCycleHorseTrain®+
-&PACKET_GAME_HORSE_GCRetCycleHorseTrain―$
-PACKET_GAME_HORSE_CGReqBuyHorse°$
-PACKET_GAME_HORSE_GCRetBuyHorse±(
-#PACKET_GAME_HORSE_CGReqBuyGroupInfo²(
-#PACKET_GAME_HORSE_GCRetBuyGroupInfo³+
-&PACKET_GAME_HORSE_GCHorseInfoChangeNtf΄)
-$PACKET_GAME_HORSE_CGAskHorseSuitInfoµ)
-$PACKET_GAME_HORSE_GCRetHorseSuitInfo¶-
-(PACKET_GAME_TRAINSITE_CGAskTrainSiteInfo·-
-(PACKET_GAME_TRAINSITE_GCRetTrainSiteInfoΈ0
-+PACKET_GAME_TRAINSITE_CGAskLevelUpTrainSiteΉ0
-+PACKET_GAME_TRAINSITE_GCRetLevelUpTrainSiteΊ/
-*PACKET_GAME_TRAINSITE_CGAskActiveTrainSite»/
-*PACKET_GAME_TRAINSITE_GCRetActiveTrainSiteΌ,
-'PACKET_GAME_TRAINSITE_CGAskSpeedUpTrain½,
-'PACKET_GAME_TRAINSITE_GCRetSpeedUpTrainΎ'
-"PACKET_GAME_HORSE_GCNotifyAddHorseΏ/
-*PACKET_GAME_HORSE_GCNotifyHorseInfoCompareΐ%
- PACKET_GAME_HORSE_CGAskSellHorseΑ(
-#PACKET_GAME_HORSE_GCSellHorseResultΒ+
-&PACKET_GAME_HORSE_CGResetHorseRedPointΓ+
-&PACKET_GAME_HORSE_GCResetHorseRedPointΔ'
-"PACKET_GAME_HORSE_GCNotifyDelHorseΕ/
-*PACKET_GAME_HORSE_GCNotifyHorseTrainFinishΖ+
-&PACKET_GAME_BUILDING_CGAskBuildingInfo+
-&PACKET_GAME_BUILDING_GCRetBuildingInfo‰.
-)PACKET_GAME_BUILDING_CGAskLevelUpBuilding.
-)PACKET_GAME_BUILDING_GCRetLevelUpBuilding‹)
-$PACKET_GAME_BUILDING_CGAskLayUpHorse)
-$PACKET_GAME_BUILDING_CGRetLayUpHorse.
-)PACKET_GAME_BUILDING_CGAskSpeedUpBuilding.
-)PACKET_GAME_BUILDING_GCRetSpeedUpBuilding(
-#PACKET_GAME_NEWSTORE_CGAskGoodsListΊ(
-#PACKET_GAME_NEWSTORE_GCRetGoodsList»'
-"PACKET_GAME_NEWSTORE_CGAskBuyGoodsΌ'
-"PACKET_GAME_NEWSTORE_CGRetBuyGoods½%
- PACKET_GAME_CGReqEnterMatchSceneΔ%
- PACKET_GAME_GCRetEnterMatchSceneΕ 
-PACKET_GAME_CGReqBeginMatchΖ!
-PACKET_GAME_GCRetMatchResultΗ
-PACKET_GAME_CGReqMatchInfoΘ
-PACKET_GAME_GCRetMatchInfoΙ'
-"PACKET_GAME_CGAskRegTourMatchHorseΚ*
-%PACKET_GAME_GCRegTourMatchHorseResultΛ%
- PACKET_GAME_CGAskEnrollTourMatchΜ(
-#PACKET_GAME_GCEnrollTourMatchResultΝ)
-$PACKET_GAME_CWAskTourMatchEnrollInfoΞ)
-$PACKET_GAME_WCRetTourMatchEnrollInfoΟ)
-$PACKET_GAME_CWAskTourMatchRewardInfoΠ)
-$PACKET_GAME_WCRetTourMatchRewardInfoΡ#
-PACKET_GAME_CWAskTourMatchInfoÒ#
-PACKET_GAME_WCRetTourMatchInfoΣ%
- PACKET_GAME_CWAskTourMatchResultΤ%
- PACKET_GAME_WCRetTourMatchResultΥ-
-(PACKET_GAME_GCNotfiyTourMatchBeginEnrollΦ#
-PACKET_GAME_CGAskQueryDiscountΧ#
-PACKET_GAME_GCRetQueryDiscountΨ*
-%PACKET_GAME_QUERY_CWAskFuzzyQueryInfoμ*
-%PACKET_GAME_QUERY_WCRetFuzzyQueryInfoν)
-$PACKET_WG_HORSE_WGTourMatchPromotionΝ)
-$PACKET_WG_HORSE_WGTourMatchBroadcastΞ$
-PACKET_WG_HORSE_GWTourMatchTestΟ/
-*PACKET_WG_HORSE_WGUpDateHorseBuyLimitItemsΠ,
-'PACKET_WG_HORSE_GWCharBuyHorseLimitItemΡ/
-*PACKET_WG_HORSE_WGRetCharBuyHorseLimitItemÒ0
-+PACKET_WG_HORSE_GWRollBackBuyHorseLimitItemΣ'
-"PACKET_WG_HORSE_GWBuyHorseIncCountΤ
-PACKET_WG_HORSE_WGDelHorseΥ)
-$PACKET_WG_HORSE_GWAskEnrollTourMatchΦ)
-$PACKET_WG_HORSE_WGEnrollTourMatchRetΧ&
-!PACKET_WG_HORSE_GWUpdateHorsePropΨ,
-'PACKET_WG_HORSE_WGNotifyTourMatchResultΩ2
--PACKET_GAME_HORSE_MARKET_CWAskMarketHorseListΪ2
--PACKET_GAME_HORSE_MARKET_WCRetMarketHorseListΫ5
-0PACKET_GAME_HORSE_MARKET_CWAskMarketPreSaleHorseά5
-0PACKET_GAME_HORSE_MARKET_WCRetMarketPreSaleHorseέ2
--PACKET_GAME_HORSE_MARKET_WGMarketPreSaleHorseή2
--PACKET_GAME_HORSE_MARKET_GWMarketPreSaleHorseί;
-6PACEKT_GAME_HORSE_MARKET_WGNotifyHorseMarketDrawResultΰ8
-3PACKET_GAME_NEW_HORSEMARKET_CGAskNewMarketHorseListα8
-3PACKET_GAME_NEW_HORSEMARKET_GCRetNewMarketHorseListβ<
-7PACKET_GAME_NEW_HORSEMARKET_CGAskNewMarketPurchaseHorseγ<
-7PACKET_GAME_NEW_HORSEMARKET_GCRetNewMarketPurchaseHorseδ>
-9PACKET_GAME_NEW_HORSEMARKET_GCNotifyRefreshNewMarketHorseε=
-8PACKET_GAME_NEW_HORSEMARKET_CGAskResetNewMarketHorseListζ@
-;PACKET_GAME_NEW_HORSEMARKET_GCResetNewMarketHorseListResultη=
-8PACKET_GAME_NEW_HORSEMARKET_GCNotifyDelReEnterMatchHorseθ:
-5PACKET_GAME_NEW_HORSEMARKET_CGAskBuyReEnterMatchHorseι=
-8PACKET_GAME_NEW_HORSEMARKET_GCBuyReEnterMatchHorseResultκ=
-8PACKET_GAME_NEW_HORSEMARKET_GCNotifyAddReEnterMatchHorseλ3
-.PACKET_GAME_LOTTERY_CGAskMysteriousDrawLotteryξ3
-.PACKET_GAME_LOTTERY_GCRetMysteriousDrawLotteryο(
-#PACKET_GAME_LOTTERY_CGAskBuyDrawKeyπ(
-#PACKET_GAME_LOTTERY_GCRetBuyDrawKeyρ)
-$PACKET_GAME_AUCTION_CWAskAuctionInfo΄)
-$PACKET_GAME_AUCTION_WCRetAuctionInfoµ#
-PACKET_WG_AUCTION_WGRetAuction¶#
-PACKET_GW_AUCTION_GWRetAuction·"
-PACKET_HORSE_WGRetTuppingInfoΎ"
-PACKET_HORSE_GWRetHorseNotifyΏ
-PACKET_HTTP_TEST_MSGΔ!
-PACKET_HTTP_TEST_SESSION_MSGΕ(
-#PACKET_HTTP_TEST_STRUCT_SESSION_MSGΖ
-PACKET_HTTP_LU_HELLOΙ
-PACKET_HTTP_UL_HELLOΚ
-PACKET_HTTP_GU_HELLOΛ
-PACKET_HTTP_UG_HELLOΜ
-PACKET_LU_LOGINΞ
-PACKET_UL_LOGINRESULTΟ
-PACKET_GU_UCSyncGameDataΠ$
-PACKET_ADMIN_HWAdminAskSendMail¨"
-PACKET_ADMIN_WHSendMailResult©&
-!PACKET_ADMIN_HWAdminAskUserFriendª"
-PACKET_ADMIN_WHSendUserFriend«
-PACKET_ADMIN_HWAskUserInfo¬ 
-PACKET_ADMIN_WHSendUserInfo­"
-PACKET_ADMIN_HWAskChangeToken®%
- PACKET_ADMIN_WHChangeTokenResult―$
-PACKET_ADMIN_HWAskUserHorseInfo°$
-PACKET_ADMIN_WHRetUserHorseInfo±
-PACKET_ADMIN_HWAskMailList²
-PACKET_ADMIN_WHRetMailList³ 
-PACKET_ADMIN_HWAskHorseRank΄ 
-PACKET_ADMIN_WHRetHorseRankµ"
-PACKET_ADMIN_HWAskKillOutUser¶%
- PACKET_ADMIN_WHKillOutUserResult·#
-PACKET_ADMIN_HWNotifyUserTokenΈ"
-PACKET_ADMIN_HWReqOrderNotifyΉ%
- PACKET_ADMIN_WHOrderNotifyResultΊ
-PACKET_ADMIN_HWReqDelHorse»"
-PACKET_ADMIN_WHDelHorseResultΌ%
- PACKET_ADMIN_HWNotifyMatchConfig½+
-&PACKET_ADMIN_WHModifyMatchConfigResultΎ"
-PACKET_ADMIN_HWAskMatchConfigΏ%
- PACKET_ADMIN_WHMatchConfigResultΐ*
-%PACKET_ADMIN_HWAskTourMatchEnrollInfoΑ*
-%PACKET_ADMIN_WHRetTourMatchEnrollInfoΒ,
-'PACKET_ADMIN_HWAskSetTourMatchHorseRankΓ/
-*PACKET_ADMIN_WHSetTourMatchHorseRankResultΔ#
-PACKET_ADMIN_HWAskSetRaceHorseΕ#
-PACKET_ADMIN_WHRetSetRaceHorseΖ$
-PACKET_ADMIN_HWAskRaceHorseInfoΗ$
-PACKET_ADMIN_WHRetRaceHorseInfoΘ!
-PACKET_PK_CKReqLoginPKServer$
-PACKET_PK_KCLoginPKServerResult"
-PACKET_PK_CKReqEnterFrameGame%
- PACKET_PK_KCEnterFrameGameResult%
- PACKET_PK_CKNotifyLoadResSuccess(
-#PACKET_PK_KCBroadcastLoadResSuccess‘&
-!PACKET_PK_KCNotifyEnterReadyState’%
- PACKET_PK_KCNotifyBeginFrameGame“
-PACKET_PK_CKNotifyUserOpt”"
-PACKET_PK_KCBroadcastFrameOpt•#
-PACKET_PK_WKReqCreateFrameGame–&
-!PACKET_PK_KWCreateFrameGameResult—"
-PACKET_PK_GKReqSendUserPKData%
- PACKET_PK_KGSendUserPKDataResult™
-PACKET_PK_KGNotifyPKResult#
-PACKET_GAME_MALL_CGAskMallInfoΎ#
-PACKET_GAME_MALL_GCRetMallInfoΏ-
-(PACKET_QUICK_PURCHASE_CGAskQuickPurchaseπ-
-(PACKET_QUICK_PURCHASE_GCRetQuickPurchaseρ#
-PACKET_GAME_PROFIT_CGAskProfitΆ#
-PACKET_GAME_PROFIT_GCRetProfit£%
- PACKET_GAME_CGAskGotExchangeCode¤(
-#PACKET_GAME_GCGotExchangeCodeResult¥"
-PACKET_GAME_CGAskExchangeList¦%
- PACKET_GAME_GCExchangeListResult§#
-PACKET_GAME_CGAskConsumeRecord¨&
-!PACKET_GAME_GCReturnConsumeRecord©(
-#PACKET_GAME_LAMP_GCRetHorseRaceLampΤ#
-PACKET_GAME_CWAskTeamMatchInfo†#
-PACKET_GAME_WCRetTeamMatchInfo‡
-PACKET_GMT_ID *ώ
-RET_CODE
-	RET_ERROR 
-RET_SUCCESS
-RET_AUTH_FAIL
-
-RET_SAVING
-RET_GM_LIMIT
-RET_SAME_ACCOUNT_ONLINE
-
-RET_TICKED
-RET_VERRSION_WRONG
-RET_ACCOUNT_NULL_OR_ILLEAGE
-RET_CRASH_DOWN_TO_VIPACC	
-RET_CRASH_DOWN_TO_ACC
-*¥
-RET_AUTH_FAIL_CODE
-RAFC_CHANNEL_RESULTFAIL
-RAFC_CHANNEL_REQUESTFAIL)
-RAFC_REQUEST_PARAMETER_ERRORÿÿÿÿÿÿÿÿÿ)
-RAFC_REQ_CHANNEL_PARAM_ERRORώÿÿÿÿÿÿÿÿ 
-RAFC_REQ_SIGN_ERRORύÿÿÿÿÿÿÿÿ
-
-RAFC_ERRORÿÿÿÿÿÿÿÿ(
-RAFC_CONNECT_PLATFORM_ERRORÿÿÿÿÿÿÿÿ 
-RAFC_PLATFORM_NORET›ÿÿÿÿÿÿÿÿ(
-RAFC_PARSER_RECEIVEDATA_ERRÿÿÿÿÿÿÿÿ,
-RAFC_ACCOUNT_AND_PASSWORD_ERROR™ÿÿÿÿÿÿÿÿ
-RAFC_SERVER_UPHOLDÿÿÿÿÿÿÿÿ*λ
-
-ENTERSCENE_RET_CODE
-ENTERSCENE_RET_OK 
-ENTERSCENE_RET_INVALID
-ENTERSCENE_ERROR)
-%ENTERSCENE_COPYSCENE_CANNOT_CHALLENGE)
-%ENTERSCENE_COPYSCENE_POWER_NOT_ENOUGH 
-ENTERSCENE_ERROR_LEVEL_LIMIT#
-ENTERSCENE_COPYSCENE_STAR_LIMIT"
-ENTERSCENE_COPYSCENE_VIP_ERROR*
-&ENTERSCENE_COPYSCENE_ONLINE_TIME_ERROR*
-&ENTERSCENE_COPYSCENE_ONLINE_DAYS_ERROR	*
-&ENTERSCENE_COPYSCENE_PRESCENE_NO_PASSS
-6
-2ENTERSCENE_INCOPYSCENE_CANNONT_ENTER_TEAMCOPYSCENE
-ENTERSCENE_RET_FULL%
-!ENTERSCENE_PALACE_NOT_ENOUGH_TIME%
-!ENTERSCENE_PALACE_SCENE_NOT_FOUND&
-"ENTERSCENE_PALACE_ALREADY_IN_SCENE)
-%ENTERSCENE_COPYSCENE_MONEY_NOT_ENOUGH/
-+ENTERSCENE_COPYSCENE_BINDYUANBAO_NOT_ENOUGH+
-'ENTERSCENE_COPYSCENE_YUANBAO_NOT_ENOUGH+
-'ENTERSCENE_COPYSCENE_NOT_ACCEPT_MISSION(
-$ENTERSCENE_PETCOPYSCENE_ALREADY_PASS-
-)ENTERSCENE_ENTER_LIMIT_NEET_ACTIVITY_OPEN)
-%ENTERSCENE_ENTER_LIMIT_ACTIVITY_CLOSE%
-!ENTERSCENE_CANNOT_ENTER_IN_COMBAT$
- ENTERSCENE_WORLDBOSS_DAILY_LIMIT.
-*ENTERSCENE_WORLDBOSS_FIGHT_ITEM_NOT_ENOUGH,
-(ENTERSCENE_BLEXPEDITION_HAVE_BEEN_PASSED.
-*ENTERSCENE_GUILDGENERALS_OP_NOT_IN_AC_TIME+
-'ENTERSCENE_GUILDGENERALS_OP_AC_NOT_OPEN0
-,ENTERSCENE_GUILDGENERALS_OP_AC_ALREADY_CLOSE+
-'ENTERSCENE_GUILDGENERALS_OP_LEVEL_LIMIT,
-(ENTERSCENE_GUILDGENERALS_OP_NOT_IN_GUILD0
-,ENTERSCENE_GUILDGENERALS_OP_GUILDLEVEL_LIMIT *Μ
-CHANGESCENERETURN
-CSR_SUCCESS 
-CSR_SUCCESS_DIFFSERVER
-	CSR_ERROR
-CSR_NO_DEST_MAP
-CSR_NO_THREAD
-CSR_CANNOT_ACTION"
-CSR_COPYSCENE_CANNOT_CHALLENGE"
-CSR_COPYSCENE_POWER_NOT_ENOUGH
-CSR_ERROR_IN_IMAGESCENE
-CSR_ERROR_LEVEL_LIMIT	
-CSR_COPYSCNE_STAR_LIMIT
-
-CSR_ERROR_NOT_TEAM_LEADER
-CSR_ERROR_NO_TEAM
-CSR_ERROR_NUMBER_NUM_LIMIT(
-$CSR_ERROR_COPYSCENE_PRESCENE_NO_PASS'
-#CSR_ERROR_COPYSCENE_TEAM_HAVE_ENTER*
-&CSR_ERROR_INCOPYSCENE_CANNOT_TEAMENTER
-CSR_ERROR_DEST_SCENE_FULL+
-'CSR_ERROR_COPYSCENE_TEAM_SOMEONE_REFUSE$
- CSR_ERROR_PALACE_NOT_ENOUGH_TIME$
- CSR_ERROR_PALACE_SCENE_NOT_FOUND%
-!CSR_ERROR_PALACE_ALREADY_IN_SCENE3
-/CSR_ERROR_INCOPYSCENE_CANNOT_TO_OTHER_COPYSCENE(
-$CSR_ERROR_COPYSCENE_MONEY_NOT_ENOUGH.
-*CSR_ERROR_COPYSCENE_BINDYUANBAO_NOT_ENOUGH*
-&CSR_ERROR_COPYSCENE_YUANBAO_NOT_ENOUGH*
-&CSR_ERROR_COPYSCENE_NOT_ACCEPT_MISSION'
-#CSR_ERROR_PETCOPYSCENE_ALREADY_PASS 
-CSR_ERROR_NEET_ACTIVITY_OPEN$
- CSR_ERROR_CANNOT_ENTER_IN_COMBAT#
-CSR_ERROR_WORLDBOSS_DAILY_LIMIT-
-)CSR_ERROR_WORLDBOSS_FIGHT_ITEM_NOT_ENOUGH+
-'CSR_ERROR_BLEXPEDITION_HAVE_BEEN_PASSED 2
-.CSR_ENTERSCENE_GUILDGENERALS_OP_NOT_IN_AC_TIME!/
-+CSR_ENTERSCENE_GUILDGENERALS_OP_AC_NOT_OPEN"4
-0CSR_ENTERSCENE_GUILDGENERALS_OP_AC_ALREADY_CLOSE#/
-+CSR_ENTERSCENE_GUILDGENERALS_OP_LEVEL_LIMIT$0
-,CSR_ENTERSCENE_GUILDGENERALS_OP_NOT_IN_GUILD%4
-0CSR_ENTERSCENE_GUILDGENERALS_OP_GUILDLEVEL_LIMIT&*M
-SCENE_THREAD_STATUS
-	STS_CLOSE 
-STS_FREE
-STS_HOT
-STS_BUSY*2
-CLIENT_TURN_STATUS
-CTS_TURN 
-
-CTS_NORMAL*Χ
-ASKCREATECHAR_RESULT
-ASKCREATECHAR_SUCCESS 
-ASKCREATECHAR_SERVER_BUSY
-ASKCREATECHAR_OP_TIMES
-ASKCREATECHAR_FULL
-ASKCREATECHAR_SAME_NAME
-ASKCREATECHAR_OP_ERROR 
-ASKCREATECHAR_INTERNAL_ERROR
-ASKCREATECHAR_INVALID_NAME
-ASKCREATECHAR_NAME_TOOLONG
-ASKCREATECHAR_ILLEGAL	
-ASKCREATECHAR_NULL_NAME
-*™
-ASKCHARLIST_RESULT
-ASKCHARLIST_SUCCESS 
-ASKCHARLIST_OP_FAILS
-ASKCHARLIST_SERVER_BUSY
-ASKCHARLIST_OP_TIMES
-ASKCHARLIST_OP_SAVING*­
-ASKCHARLOGIN_RESULT
-ASKCHARLOGIN_SUCCESS 
-ASKCHARLIST_WORLD_FULL
-ASKCHARLOGIN_SERVER_BUSY
-ASKCHARLOGIN_LOADDB_ERROR
-ASKCHARLOGIN_OP_TIMES
-ASKCHARLOGIN_NOT_OWNER
-ASKCHARLOGIN_SERVER_STOP
-ASKCHARLOGIN_CHANGE_SCENE
-ASKCHARLOGIN_SAVING
-ASKCHARLOGIN_LIMIT	*L
-ASK_LOGINSTATUS
-ALS_ASKSTATUS 
-ALS_SENDDATA
-ALS_OffLineLogin*x
-UDRETURN
-UDR_NOTFINDUSERDATA 
-UDR_USERDATA
-UDR_USERDATALIVING
-UDR_USERSERVERCRASH
-UDR_KEYERROR*΄
-NOTIFY_USER_STATUS
-NUS_DISCONNECT 
-
-NUS_REMOVE
-NUS_NEED_WORLD_KICK
-NUS_REMOVE_BY_ANOTHER_MAC
-NUS_LOGOUT_SAVING
-NUS_BACKTOCHARLIST
-NUS_WAS_KILLOUT*ρ
-OPERATE_RESULT	
-OR_OK 
-OR_ERRORÿÿÿÿÿÿÿÿÿ
-OR_DIEώÿÿÿÿÿÿÿÿ
-OR_INVALID_SKILLύÿÿÿÿÿÿÿÿ
-OR_TARGET_DIEόÿÿÿÿÿÿÿÿ
-OR_LACK_MANAϋÿÿÿÿÿÿÿÿ
-OR_COOL_DOWNINGϊÿÿÿÿÿÿÿÿ
-OR_NO_TARGETωÿÿÿÿÿÿÿÿ
-OR_INVALID_TARGETψÿÿÿÿÿÿÿÿ
-OR_OUT_RANGEχÿÿÿÿÿÿÿÿ
-OR_IN_RANGEφÿÿÿÿÿÿÿÿ
-OR_NO_PLATFORMυÿÿÿÿÿÿÿÿ
-OR_OUT_PLATFORMτÿÿÿÿÿÿÿÿ
-
-OR_NO_TOOLσÿÿÿÿÿÿÿÿ
-OR_STUFF_LACKςÿÿÿÿÿÿÿÿ 
-OR_BAG_OUT_OF_SPACEρÿÿÿÿÿÿÿÿ
-
-OR_WARNINGπÿÿÿÿÿÿÿÿ
-OR_BUSYοÿÿÿÿÿÿÿÿ
-OR_MISSION_HAVEξÿÿÿÿÿÿÿÿ!
-OR_MISSION_LIST_FULLνÿÿÿÿÿÿÿÿ 
-OR_MISSION_NOT_FINDμÿÿÿÿÿÿÿÿ
-OR_EXP_LACKλÿÿÿÿÿÿÿÿ+
-OR_CHAR_DO_NOT_KNOW_THIS_SKILLκÿÿÿÿÿÿÿÿ
-OR_NO_SCRIPTιÿÿÿÿÿÿÿÿ
-OR_NOT_ENOUGH_HPθÿÿÿÿÿÿÿÿ
-OR_NOT_ENOUGH_RAGEηÿÿÿÿÿÿÿÿ'
-OR_NOT_ENOUGH_STRIKE_POINTζÿÿÿÿÿÿÿÿ
-OR_NOT_ENOUGH_ITEMεÿÿÿÿÿÿÿÿ 
-OR_NOT_ENOUGH_VIGORδÿÿÿÿÿÿÿÿ
-OR_NO_LEVELγÿÿÿÿÿÿÿÿ
-OR_CANNOT_UPGRADEβÿÿÿÿÿÿÿÿ
-
-OR_FAILUREαÿÿÿÿÿÿÿÿ
-OR_GEM_CONFLICTΰÿÿÿÿÿÿÿÿ#
-OR_NEED_IN_FURY_STANCEίÿÿÿÿÿÿÿÿ"
-OR_INVALID_TARGET_POSήÿÿÿÿÿÿÿÿ
-OR_GEM_SLOT_LACKέÿÿÿÿÿÿÿÿ
-OR_LIMIT_MOVEάÿÿÿÿÿÿÿÿ
-OR_LIMIT_USE_SKILLΫÿÿÿÿÿÿÿÿ
-OR_INACTIVE_SKILLΪÿÿÿÿÿÿÿÿ
-OR_TOO_MUCH_HPΩÿÿÿÿÿÿÿÿ
-OR_NEED_A_WEAPONΨÿÿÿÿÿÿÿÿ%
-OR_NEED_HIGH_LEVEL_XINFAΧÿÿÿÿÿÿÿÿ&
-OR_NEED_LEARN_SKILL_FIRSTΦÿÿÿÿÿÿÿÿ'
-OR_NEED_MENPAI_FOR_LEVELUPΥÿÿÿÿÿÿÿÿ)
-OR_U_CANNT_DO_THIS_RIGHT_NOWΤÿÿÿÿÿÿÿÿ
-OR_ROBOT_TIMEOUTΣÿÿÿÿÿÿÿÿ
-OR_NEED_HAPPINESSÒÿÿÿÿÿÿÿÿ
-OR_NEED_HIGH_LEVELΡÿÿÿÿÿÿÿÿ
-OR_CANNOT_GETEXPΠÿÿÿÿÿÿÿÿ
-OR_NEED_LIFEΟÿÿÿÿÿÿÿÿ
-OR_EXP_FULLΞÿÿÿÿÿÿÿÿ
-OR_TOO_MANY_TRAPSΝÿÿÿÿÿÿÿÿ(
-OR_PET_PLACARD_ISSUE_FAILEDΜÿÿÿÿÿÿÿÿ+
-OR_PET_PLACARD_NOT_APPOINT_PETΛÿÿÿÿÿÿÿÿ.
-!OR_PET_PLACARD_ONLY_CAN_ISSUE_ONEΚÿÿÿÿÿÿÿÿ)
-OR_PET_PLACARD_NEED_PET_TYPEΙÿÿÿÿÿÿÿÿ*
-OR_PET_PLACARD_NEED_PET_LEVELΘÿÿÿÿÿÿÿÿ.
-!OR_PET_PLACARD_NEED_PET_HAPPINESSΗÿÿÿÿÿÿÿÿ)
-OR_PET_PLACARD_NEED_PET_LIFEΖÿÿÿÿÿÿÿÿ$
-OR_NEED_IN_STEALTH_MODEΕÿÿÿÿÿÿÿÿ!
-OR_NOT_ENOUGH_ENERGYΔÿÿÿÿÿÿÿÿ'
-OR_CAN_NOT_MOVE_STALL_OPENΓÿÿÿÿÿÿÿÿ#
-OR_NEED_IN_SHIELD_MODEΒÿÿÿÿÿÿÿÿ
-
-OR_PET_DIEΑÿÿÿÿÿÿÿÿ+
-OR_PET_HADRECALL_NEEDHAPPINESSΐÿÿÿÿÿÿÿÿ&
-OR_PET_HADRECALL_NEEDLIFEΏÿÿÿÿÿÿÿÿ!
-OR_GEM_NOT_FIT_EQUIPΎÿÿÿÿÿÿÿÿ$
-OR_CANNOT_ASK_PETDETIAL½ÿÿÿÿÿÿÿÿ0
-#OR_VARIANCEPET_CANNOT_RETURNTOCHILDΌÿÿÿÿÿÿÿÿ+
-OR_COMBAT_CANNOT_RETURNTOCHILD»ÿÿÿÿÿÿÿÿ
-OR_IMPASSABLE_ZONEΊÿÿÿÿÿÿÿÿ%
-OR_NEED_SETMINORPASSWORDΉÿÿÿÿÿÿÿÿ(
-OR_NEED_UNLOCKMINORPASSWORDΈÿÿÿÿÿÿÿÿ,
-OR_PETINEXCHANGE_CANNOT_GOFIGHT·ÿÿÿÿÿÿÿÿ.
-!OR_HASSPOUSE_CANNOT_RETURNTOCHILD¶ÿÿÿÿÿÿÿÿ*
-OR_CAN_NOT_FIND_SPECIFIC_ITEMµÿÿÿÿÿÿÿÿ"
-OR_YUANBAO_NOT_ENOUGH΄ÿÿÿÿÿÿÿÿ#
-OR_COPYSCENE_NOT_EXIST³ÿÿÿÿÿÿÿÿ!
-OR_COPYSCENE_NOT_FIT²ÿÿÿÿÿÿÿÿ+
-OR_COPYSCENE_CONDITION_NOT_FIT±ÿÿÿÿÿÿÿÿ)
-OR_COPYSCENE_THROUGH_SUCCESS°ÿÿÿÿÿÿÿÿ(
-OP_COPYSCENE_THROUGH_FAILED―ÿÿÿÿÿÿÿÿ
-OP_MOUNT_NOMOUNT®ÿÿÿÿÿÿÿÿ$
-OP_MOUNT_LAUNCHED_MOUNT­ÿÿÿÿÿÿÿÿ 
-OP_MOUNT_DOWN_MOUNT¬ÿÿÿÿÿÿÿÿ 
-OP_COPYSCENE_NOPASS«ÿÿÿÿÿÿÿÿ-
- OP_COPYSCENE_SWEEP_NOT_THREESTARªÿÿÿÿÿÿÿÿ%
-OR_SHOP_MONEY_NOT_ENOUGH©ÿÿÿÿÿÿÿÿ(
-OR_SHOP_YUANBAO_NOT_ENOUGHT¨ÿÿÿÿÿÿÿÿ+
-OR_SHOP_BINDYUANBAO_NOT_ENOUGH§ÿÿÿÿÿÿÿÿ+
-OR_SHOP_BODYPOWER_BUYCOUNT_MAX¦ÿÿÿÿÿÿÿÿ1
-$OR_COPYSCENE_STARBOX_STAR_NOT_ENOUGH¥ÿÿÿÿÿÿÿÿ,
-OR_COPYSCENE_STARBOX_HAVE_TAKEN¤ÿÿÿÿÿÿÿÿ%
-OR_SELL_ITEM_CANNOT_SELL£ÿÿÿÿÿÿÿÿ)
-OR_COPYSCENE_EVER_HAVE_STARTΆÿÿÿÿÿÿÿÿ*
-OR_COPYSCENE_IS_NOT_COPYSCENE΅ÿÿÿÿÿÿÿÿ$
-OR_CURRENCY_REACH_LIMIT ÿÿÿÿÿÿÿÿ
-OR_BAGFULL_TO_MAILÿÿÿÿÿÿÿÿ3
-&OR_COPYSCENE_STARBOX_INVALID_CHAPTERIDÿÿÿÿÿÿÿÿ/
-"OR_COPYSCENE_STARBOX_INVALID_BOXIDÿÿÿÿÿÿÿÿ*
-OP_SKILL_CURRENCY_ERROR_BEGINÿÿÿÿÿÿÿÿ!
-OP_SKILL_MONEY_ERROR›ÿÿÿÿÿÿÿÿ#
-OP_SKILL_YUANBAO_ERRORÿÿÿÿÿÿÿÿ'
-OP_SKILL_BINDYUANBAO_ERROR™ÿÿÿÿÿÿÿÿ
-OP_SKILL_EXP_ERRORÿÿÿÿÿÿÿÿ$
-OP_SKILL_PHYSICAL_ERROR—ÿÿÿÿÿÿÿÿ"
-OR_PET_ALREAY_ACTIVED‡ÿÿÿÿÿÿÿÿ!
-OR_PET_ALREAY_CALLED†ÿÿÿÿÿÿÿÿ!
-OR_PET_ALREAY_SLEEPT…ÿÿÿÿÿÿÿÿ!
-OR_PET_LACK_FRAGMENT„ÿÿÿÿÿÿÿÿ$
-OR_PET_SUB_FRAGMENT_ERRƒÿÿÿÿÿÿÿÿ
-OR_PET_LIST_FULL‚ÿÿÿÿÿÿÿÿ
-OR_PET_ADD_FAILDÿÿÿÿÿÿÿÿ
-OR_PET_NOT_ACTIVED€ÿÿÿÿÿÿÿÿ%
-OR_PET_SKILL_NOT_ACTIVEDÿώÿÿÿÿÿÿÿ)
-OR_PET_SKILL_ALREADY_ACTIVEDώώÿÿÿÿÿÿÿ'
-OR_PET_ACTIVE_SKILL_FAILEDύώÿÿÿÿÿÿÿ(
-OR_PET_UPGRADE_SKILL_FAILEDόώÿÿÿÿÿÿÿ%
-OR_PET_SKILL_NOT_INSTALLϋώÿÿÿÿÿÿÿ)
-OR_PET_SKILL_ALREADY_INSTALLϊώÿÿÿÿÿÿÿ&
-OR_PET_STAR_UP_LACK_MONEYωώÿÿÿÿÿÿÿ"
-OR_PET_STAR_UP_FAILEDψώÿÿÿÿÿÿÿ!
-OR_PET_NO_TRAIN_ATTRχώÿÿÿÿÿÿÿ)
-OR_PET_FULL_LEVEL_TRAIN_ATTRφώÿÿÿÿÿÿÿ$
-OR_PET_TRAIN_LACK_MONEYυώÿÿÿÿÿÿÿ)
-OR_PET_STARUP_DEC_MONEY_FAILτώÿÿÿÿÿÿÿ(
-OR_PET_TRAIN_DEC_MONEY_FAILσώÿÿÿÿÿÿÿ 
-OR_PET_TRAIN_FAILEDςώÿÿÿÿÿÿÿ'
-OR_PET_LACK_SKILL_GRID_NUMρώÿÿÿÿÿÿÿ 
-OR_PET_STAR_UP_FULLπώÿÿÿÿÿÿÿ!
-OR_PET_SKILL_UP_FULLοώÿÿÿÿÿÿÿ0
-#OR_PET_FORMATION_ACTIVE_LIMIT_LEVELξώÿÿÿÿÿÿÿ,
-OR_PET_FORMATION_ALREADY_ACTIVEνώÿÿÿÿÿÿÿ'
-OR_PET_ALREDY_IN_FORMATIONμώÿÿÿÿÿÿÿ$
-OR_PET_NOT_IN_FORMATIONλώÿÿÿÿÿÿÿ"
-OR_PET_FORMATION_FULLκώÿÿÿÿÿÿÿ.
-!OR_EQUIP_UPGRADE_ITEM_NOT_ENOUGHTιώÿÿÿÿÿÿÿ-
- OR_EQUIP_UPGRADE_REACH_MAX_LEVELθώÿÿÿÿÿÿÿ%
-OR_EQUIP_UPGRADE_SUCCESSηώÿÿÿÿÿÿÿ6
-)OR_EQUIP_UPGRADE_FAILED_MONEY_NOT_ENOUGHTζώÿÿÿÿÿÿÿ4
-'OR_EQUIP_UPGRADE_FAILED_ITEM_NOT_ENOUGHεώÿÿÿÿÿÿÿ+
-OR_EQUIP_UPSTAR_EQUIP_NOTEXISTΰώÿÿÿÿÿÿÿ1
-$OR_EQUIP_UPSTAR_EQUIP_NOTFIT_THEPARTίώÿÿÿÿÿÿÿ-
- OR_EQUIP_UPSTAR_ITEM_NOT_ENOUGHTήώÿÿÿÿÿÿÿ+
-OR_EQUIP_UPSTAR_REACH_MAX_STARέώÿÿÿÿÿÿÿ$
-OR_EQUIP_UPSTAR_SUCCESSάώÿÿÿÿÿÿÿ#
-OR_EQUIP_UPSTAR_FAILEDΫώÿÿÿÿÿÿÿ0
-#OR_EQUIP_UPSTAR_FAILED_AND_DOWNSTARΪώÿÿÿÿÿÿÿ"
-OR_SKILL_CANNOT_STUDYΈώÿÿÿÿÿÿÿ 
-OR_SKILL_STUDY_FULL·ώÿÿÿÿÿÿÿ$
-OR_SKILL_STUDY_LV_ERROR¶ώÿÿÿÿÿÿÿ'
-OR_SKILL_STUDY_MONEY_ERRORµώÿÿÿÿÿÿÿ+
-OR_SKILL_STUDY_INVALD_OPMETHOD΄ώÿÿÿÿÿÿÿ(
-OR_RELATION_ERROR_IS_FRIEND…ώÿÿÿÿÿÿÿ+
-OR_RELATION_ERROR_IN_BLACKLIST„ώÿÿÿÿÿÿÿ-
- OR_RELATION_ERROR_CANNOT_ADDSELFƒώÿÿÿÿÿÿÿ+
-OR_RELATION_ERROR_ILLEGAL_NAME‚ώÿÿÿÿÿÿÿ8
-+OR_RELATION_ERROR_REMOVEBROTHER_TOBLACKLIST€ώÿÿÿÿÿÿÿ.
-!OR_RELATION_ERROR_NOT_INBLACKLISTύύÿÿÿÿÿÿÿ8
-+OR_RELATION_ERROR_REMOVEBROTHER_TODELFRIENDϋύÿÿÿÿÿÿÿ.
-!OR_RELATION_ERROR_PASSWD_NOTMATCHψύÿÿÿÿÿÿÿ+
-OR_RELATION_ERROR_ISNOT_FRIENDχύÿÿÿÿÿÿÿ9
-,OR_RELATION_ERROR_TARGET_NOT_ONLINE_OR_EXISTφύÿÿÿÿÿÿÿ/
-"OR_RELATION_ERROR_PEER_SET_REFUSEDυύÿÿÿÿÿÿÿ'
-OR_RELATION_ERROR_IS_ENEMYτύÿÿÿÿÿÿÿ.
-!OR_RELATION_ERROR_APPLERLIST_FULLσύÿÿÿÿÿÿÿ.
-!OR_RELATION_ERROR_ADDAPPLYER_FAILςύÿÿÿÿÿÿÿ/
-"OR_RELATION_ERROR_ADDAPPLYER_EXISTρύÿÿÿÿÿÿÿ2
-%OR_RELATION_ERROR_IN_TARGET_BLACKLISTπύÿÿÿÿÿÿÿ1
-$OR_RELATION_ERROR_NOT_IN_APPLYERLISTούÿÿÿÿÿÿÿ.
-!OR_RELATION_ERROR_FRIENDLIST_FULLξύÿÿÿÿÿÿÿ-
- OR_RELATION_ERROR_BLACKLIST_FULLνύÿÿÿÿÿÿÿ5
-(OR_RELATION_ERROR_TARGET_FRIENDLIST_FULLμύÿÿÿÿÿÿÿ/
-"OR_RELATION_ERROR_APPLERLIST_EMPTYλύÿÿÿÿÿÿÿ2
-%OR_RELATION_ERROR_RECOMMANDLIST_EMPTYκύÿÿÿÿÿÿÿ7
-*OR_RELATION_ERROR_CANNOT_ADDSELF_BLACKLISTιύÿÿÿÿÿÿÿ*
-OR_RELATION_ERROR_FRIEND_FULLθύÿÿÿÿÿÿÿ-
- OR_COPYSCENE_CHALLENGE_DIALY_MAXΣύÿÿÿÿÿÿÿ1
-$OR_COPYSCENE_RELIVE_MONEY_NOT_ENOUGHÒύÿÿÿÿÿÿÿ.
-!OR_COPYSCENE_BODYPOWER_NOT_ENOUGHΡύÿÿÿÿÿÿÿ7
-*OR_COPYSCENE_CANNOT_START_DO_MISSION_FIRSTΠύÿÿÿÿÿÿÿ1
-$OR_COPYSCENE_START_COPYSCENE_TIMEOUTΟύÿÿÿÿÿÿÿ*
-OR_COPYSCENE_MONEY_NOT_ENOUGHΞύÿÿÿÿÿÿÿ0
-#OR_COPYSCENE_BINDYUANBAO_NOT_ENOUGHΝύÿÿÿÿÿÿÿ,
-OR_COPYSCENE_YUANBAO_NOT_ENOUGHΜύÿÿÿÿÿÿÿ)
-OR_COPYSCENE_NOT_ALLOW_SWEEPΛύÿÿÿÿÿÿÿ7
-*OR_UNEQUIPITEM_ERROR_PART_NOT_OUT_OF_RANGE΅ύÿÿÿÿÿÿÿ+
-OR_UNEQUIPITEM_ERROR_IS_IN_BAG ύÿÿÿÿÿÿÿ*
-OR_UNEQUIPITEM_ERROR_BAG_FULLύÿÿÿÿÿÿÿ*
-OR_UNEQUIPITEM_ERROR_NO_EQUIPύÿÿÿÿÿÿÿ%
-OR_EQUIPITEM_LEVEL_LIMITύÿÿÿÿÿÿÿ#
-OR_EQUIPITEM_JOB_LIMITύÿÿÿÿÿÿÿ$
-OR_EQUIPITEM_PART_ERROR›ύÿÿÿÿÿÿÿ$
-OR_EQUIPITEM_EQUIP_NULLύÿÿÿÿÿÿÿ&
-OR_EQUIPITEM_CONFIG_ERROR™ύÿÿÿÿÿÿÿ*
-OR_EQUIPITEM_NOT_SUITFOR_PARTύÿÿÿÿÿÿÿ&
-OR_EQUIPITEM_IS_NOT_EQUIP—ύÿÿÿÿÿÿÿ
-OR_CHAT_NO_TEAMπόÿÿÿÿÿÿÿ$
-OR_CHAT_YOU_ARE_INBLACKοόÿÿÿÿÿÿÿ1
-$OR_CHAT_DESTUSER_OFFLINE_OR_NOEXISTSξόÿÿÿÿÿÿÿ$
-OR_CHAT_LABA_NOT_ENOUGHνόÿÿÿÿÿÿÿ#
-OR_CHAT_SUB_LABA_ERRORμόÿÿÿÿÿÿÿ 
-OR_CHAT_IS_YOURSELFλόÿÿÿÿÿÿÿ 
-OR_CHAT_IS_INCDTIMEκόÿÿÿÿÿÿÿ)
-OR_CHAT_BATTLEFIELD_ISCLOSEDιόÿÿÿÿÿÿÿ2
-%OR_CHAT_BATTLEFIELD_NOT_INBATTLESCENEθόÿÿÿÿÿÿÿ
-OR_CHAT_FORBITηόÿÿÿÿÿÿÿ6
-)OR_QUERY_DETAILINFO_DESTPLAYER_NOT_ONLINEΫόÿÿÿÿÿÿÿ1
-$OR_QUERY_DETAILINFO_ILLEGAL_DESTNAMEΪόÿÿÿÿÿÿÿ)
-OR_QUERY_DETAILINFO_YOURSELFΩόÿÿÿÿÿÿÿ1
-$OR_QUERY_DETAILINFO_CANNOT_FIND_DESTΨόÿÿÿÿÿÿÿ.
-!OR_QUERY_PLAYER_NOT_IN_THIS_SCENEΧόÿÿÿÿÿÿÿ3
-&OR_MOUNT_ACTIVE_ERROR_MONT_STAGE_LIMITόÿÿÿÿÿÿÿ3
-&OR_MOUNT_ACTIVE_ERROR_CHAR_LEVEL_LIMIT‹όÿÿÿÿÿÿÿ,
-OR_MOUNT_ACTIVE_ERROR_HAVE_DONEόÿÿÿÿÿÿÿ-
- OR_MOUNT_UPSTAR_ERROR_ITEM_LIMIT‰όÿÿÿÿÿÿÿ+
-OR_MOUNT_UPSTAR_ERROR_MAX_STARόÿÿÿÿÿÿÿ#
-OR_MOUNT_UPSTAR_FAILED‡όÿÿÿÿÿÿÿ/
-"OR_MOUNT_CHANGEMOUNT_NO_THIS_MOUNT†όÿÿÿÿÿÿÿ,
-OR_MOUNT_CHANGEMOUNT_NOT_ACTIVE…όÿÿÿÿÿÿÿ)
-OR_MOUNT_CHANGEMOUNT_IS_SAME„όÿÿÿÿÿÿÿ.
-!OR_MOUNT_PLAYER_NOT_IN_THIS_SCENEƒόÿÿÿÿÿÿÿ.
-!OR_MOUNT_UPSTAR_ERROR_MONEY_LIMIT‚όÿÿÿÿÿÿÿ'
-OR_STORE_VERSION_AREDY_NEWΩϋÿÿÿÿÿÿÿ%
-OR_STORE_VERSION_NOT_NEWΨϋÿÿÿÿÿÿÿ&
-OR_STORE_ITEM_IS_OUT_DATEΧϋÿÿÿÿÿÿÿ3
-&OR_STORE_ITEM_IS_OUT_DAILY_LIMIT_TIMESΦϋÿÿÿÿÿÿÿ3
-&OR_STORE_ITEM_IS_OUT_BIRTH_LIMIT_TIMESΥϋÿÿÿÿÿÿÿ+
-OR_STORE_GIRL_CD_TIME_NOT_OVERΤϋÿÿÿÿÿÿÿ+
-OR_STORE_GIRL_MOODVALUE_IS_MAXΣϋÿÿÿÿÿÿÿ2
-%OR_STORE_ITEM_IS_OUT_WEEK_LIMIT_TIMESÒϋÿÿÿÿÿÿÿ3
-&OR_STORE_ITEM_IS_OUT_MONTH_LIMIT_TIMESΡϋÿÿÿÿÿÿÿ'
-OR_GEM_ERROR_ISINVLID_PART§ϋÿÿÿÿÿÿÿ#
-OR_GEM_ERROR_NOT_A_GEM¦ϋÿÿÿÿÿÿÿ!
-OR_GEM_ERROR_NO_HOLE¥ϋÿÿÿÿÿÿÿ&
-OR_GEM_ERROR_CONFIG_ERROR¤ϋÿÿÿÿÿÿÿ&
-OR_GEM_ERROR_INVILID_HOLE£ϋÿÿÿÿÿÿÿ0
-#OR_GEM_ERROR_THEGEM_NOT_FIT_THEHOLEΆϋÿÿÿÿÿÿÿ
-OR_GEM_ERROR΅ϋÿÿÿÿÿÿÿ%
-OR_GEM_ERROR_BAG_NO_ITEM ϋÿÿÿÿÿÿÿ(
-OR_GEM_ERROR_THEHOLE_NO_GEMϋÿÿÿÿÿÿÿ
-OR_REMOVEGEM_ERRORϋÿÿÿÿÿÿÿ(
-OR_GEMCOMPOUND_CONFIG_ERRORϋÿÿÿÿÿÿÿ)
-OR_GEMCOMPOUND_ERROR_NOT_GEMϋÿÿÿÿÿÿÿ,
-OR_GEMCOMPOUND_NO_FIND_THE_HOLE›ϋÿÿÿÿÿÿÿ'
-OR_GEMCOMPOUND_HOLE_NO_GEMϋÿÿÿÿÿÿÿ*
-OR_GEMCOMPOUND_GEM_NOT_ENOUGH™ϋÿÿÿÿÿÿÿ#
-OR_GEMCOMPOUND_NO_HOLEϋÿÿÿÿÿÿÿ%
-OR_GEMCOMPOUND_MAX_LEVEL—ϋÿÿÿÿÿÿÿ*
-OR_GEMCOMPOUND_INLIVID_ITEMID–ϋÿÿÿÿÿÿÿ%
-OR_REMOVEGEM_BAG_IS_FULL•ϋÿÿÿÿÿÿÿ*
-OR_PET_ERROR_POS_IN_FORMATIONυϊÿÿÿÿÿÿÿ,
-OR_PET_ALREADY_IN_FORMATION_POSτϊÿÿÿÿÿÿÿ$
-OR_PET_NOT_MATCH_TO_POSσϊÿÿÿÿÿÿÿ0
-#OR_TRANS_EQUIP_IS_INLIVID_EQUIPPARTΔϊÿÿÿÿÿÿÿ-
- OR_TRANS_EQUIP_ERROR_NO_THEEQUIPΓϊÿÿÿÿÿÿÿ2
-%OR_TRANS_EQUIP_ERROR_DEST_STAR_UPPPERΒϊÿÿÿÿÿÿÿ7
-*OR_TRANS_EQUIP_CLIENT_DATA_NOT_MATCH_SERVEΑϊÿÿÿÿÿÿÿ6
-)OR_TRANS_EQUIP_CANNOT_BOTH_FROM_EQUIPPARTΐϊÿÿÿÿÿÿÿ.
-!OR_TRANS_EQUIP_ERROR_IS_NOT_EQUIPΏϊÿÿÿÿÿÿÿ,
-OR_TRANS_EQUIP_MONEY_NOT_ENOUGHΎϊÿÿÿÿÿÿÿ+
-OR_TRANS_EQUIP_SUB_MONEY_ERROR½ϊÿÿÿÿÿÿÿ,
-OR_STORE_ITEM_IS_NOT_REACH_DATE‘ϊÿÿÿÿÿÿÿ4
-'OR_STORE_ITEM_IS_OUT_SERVER_LIMIT_TIMESϊÿÿÿÿÿÿÿ3
-&OR_DRESS_IS_NOT_NORMALDRESS_CANNOT_BUYίωÿÿÿÿÿÿÿ1
-$OR_DRESS_MONEY_NOT_ENOUGH_CANNOT_BUYήωÿÿÿÿÿÿÿ0
-#OR_DRESS_IS_NOT_ACTIVE_CANNOT_SWEARέωÿÿÿÿÿÿÿ,
-OR_DRESS_SWEAR_INVLID_EQUIPPARTάωÿÿÿÿÿÿÿ.
-!OR_DRESS_TAKEOFF_INVLID_EQUIPPARTΫωÿÿÿÿÿÿÿ&
-OR_DRESS_TAKEOFF_NO_DRESSΪωÿÿÿÿÿÿÿ'
-OR_DRESS_ERROR_HAVE_BOUGHTΩωÿÿÿÿÿÿÿ.
-!OR_DRESS_ERROR_JIANGHU_CANNOT_BUYΨωÿÿÿÿÿÿÿ3
-&OR_DRESS_ERROR_CANNOT_BUY_MENPAI_LIMITΧωÿÿÿÿÿÿÿ5
-(OR_DRESS_ERROR_CANNOT_SWEAR_MENPAI_LIMITΦωÿÿÿÿÿÿÿ5
-(OR_RESOURCE_COPYSCENE_INVLID_INSPIRETYPE­ωÿÿÿÿÿÿÿ:
--OR_RESOURCE_COPYSCENE_IS_NOT_RESOURCECOPYSCEN¬ωÿÿÿÿÿÿÿ8
-+OR_RESOURCE_COPYSCENE_IS_NOT_MONEYCOPYSCENE«ωÿÿÿÿÿÿÿ6
-)OR_RESOURCE_COPYSCENE_INSPIRE_MONEY_LIMITªωÿÿÿÿÿÿÿ8
-+OR_RESOURCE_COPYSCENE_INSPIRE_YUANBAO_LIMIT©ωÿÿÿÿÿÿÿ6
-)OR_RESOURCE_COPYSCENE_INSPIRE_COUNT_LIMIT¨ωÿÿÿÿÿÿÿ1
-$OR_EQUIPATTR_REFINE_INVALID_EQUIPARTϋψÿÿÿÿÿÿÿ0
-#OR_EQUIPATTR_REFINE_EQUIP_NOT_EXISTϊψÿÿÿÿÿÿÿ7
-*OR_EQUIPATTR_REFINE_EQUIPGUID_NOT_FIT_PARTωψÿÿÿÿÿÿÿ1
-$OR_EQUIPATTR_REFINE_ATTR_HAVE_LOCKEDψψÿÿÿÿÿÿÿ0
-#OR_EQUIPATTR_REFINE_ATTR_LOCK_ERRORχψÿÿÿÿÿÿÿ-
- OR_EQUIPATTR_REFINE_IS_NOT_EQUIPφψÿÿÿÿÿÿÿ,
-OR_EQUIPATTR_REFINE_MONEY_LIMITυψÿÿÿÿÿÿÿ+
-OR_EQUIPATTR_REFINE_ITEM_LIMITτψÿÿÿÿÿÿÿ*
-OR_EQUIPATTR_LOCK_MONEY_LIMITσψÿÿÿÿÿÿÿ)
-OR_EQUIPATTR_LOCK_ITEM_LIMITςψÿÿÿÿÿÿÿ2
-%OR_EQUIPATTR_REFINE_HAVE_NO_THIS_ATTRρψÿÿÿÿÿÿÿ$
-OR_ACTIVITY_IS_NOT_OPENΙψÿÿÿÿÿÿÿ1
-$OR_ACTIVITY_NUMBER_REACH_UPPER_LIMITΘψÿÿÿÿÿÿÿ#
-OR_ACTIVITY_IS_NOT_ENDΗψÿÿÿÿÿÿÿ$
-OR_ACTIVITY_IS_FINISHEDΖψÿÿÿÿÿÿÿ$
-OR_STATUS_KEY_NOT_EXISTµψÿÿÿÿÿÿÿ
-OR_CUT_PATHROUTEψÿÿÿÿÿÿÿ
-OR_GATHER_USING—ψÿÿÿÿÿÿÿ&
-OR_GATHER_REQUIRE_MISSION–ψÿÿÿÿÿÿÿ"
-OR_GATHRE_WRONG_STATE•ψÿÿÿÿÿÿÿ0
-#OR_GATHER_REQUIRE_TREAUREMAPMISSION”ψÿÿÿÿÿÿÿ)
-OR_GATHER_IS_NOT_YOUR_DIGPOS“ψÿÿÿÿÿÿÿ&
-OR_SECRETSHOP_OUT_OF_DATEψÿÿÿÿÿÿÿ"
-OR_SECRETSHOP_SOLDOUTψÿÿÿÿÿÿÿ%
-OR_SECRETSHOP_LACK_COUNTψÿÿÿÿÿÿÿ%
-OR_SECRETSHOP_LACK_MONEY‹ψÿÿÿÿÿÿÿ
-OR_ITEM_INVALIDζχÿÿÿÿÿÿÿ'
-OR_ITEM_lOVELPETID_INVALIDεχÿÿÿÿÿÿÿ2
-%OR_ITEM_lOVELPET_ENABLETIME_REACH_MAXδχÿÿÿÿÿÿÿ8
-+OR_ITEM_lOVELPET_ENABLETIME_ALREADY_FOREVERγχÿÿÿÿÿÿÿ!
-OR_OFFLINEPK_INVALIDÒχÿÿÿÿÿÿÿ%
-OR_OFFLINEPK_PKNUM_LIMITΡχÿÿÿÿÿÿÿ.
-!OR_OFFLINEPK_OPPONENT_RANK_MODIFYΠχÿÿÿÿÿÿÿ0
-#OR_OFFLINEPK_OPPONENT_EXIT_OTHER_PKΟχÿÿÿÿÿÿÿ3
-&OR_OFFLINEPK_OPPONENT_NOT_REACH_CDTIMEΞχÿÿÿÿÿÿÿ4
-'OR_OFFLINEPK_OPPONENT_CAN_NOT_BE_MYSELFΝχÿÿÿÿÿÿÿ=
-0OR_OFFLINEPK_STORE_ITEM_IS_OUT_DAILY_LIMIT_TIMESΜχÿÿÿÿÿÿÿ5
-(OR_OFFLINEPK_SHOP_ARENA_MONEY_NOT_ENOUGHΐχÿÿÿÿÿÿÿ(
-OR_OFFLINEPK_GUID_NOT_EXISTΏχÿÿÿÿÿÿÿ)
-OR_OFFLINEPK_SCENE_NOT_MATCHΎχÿÿÿÿÿÿÿ+
-OR_OFFLINEPK_NOT_DURING_CDTIME½χÿÿÿÿÿÿÿ8
-+OR_OFFLINEPK_PURCHASE_CD_YUANBAO_NOT_ENOUGHΌχÿÿÿÿÿÿÿ<
-/OR_OFFLINEPK_PURCHASE_COUNTS_YUANBAO_NOT_ENOUGH»χÿÿÿÿÿÿÿ#
-OR_GUILD_NAME_NOT_NULL³χÿÿÿÿÿÿÿ#
-OR_GUILD_NAME_REPEATED²χÿÿÿÿÿÿÿ-
- OR_GUILD_CREATE_MONEY_NOT_ENOUGH±χÿÿÿÿÿÿÿ 
-OR_GUILD_ALREADY_IN°χÿÿÿÿÿÿÿ!
-OR_GUILD_MEMBER_FULL―χÿÿÿÿÿÿÿ(
-OR_GUILD_CREATE_LEVEL_LIMIT®χÿÿÿÿÿÿÿ"
-OR_GUILD_ALREADY_FULL­χÿÿÿÿÿÿÿ
-OR_GUILD_NOT_IN¬χÿÿÿÿÿÿÿ'
-OR_GUILD_LIMITED_AUTHORITY«χÿÿÿÿÿÿÿ)
-OR_GUILD_AUTOACCEPT_NOCHANGEªχÿÿÿÿÿÿÿ+
-OR_GUILD_LEVEL_CONDITION_LIMIT©χÿÿÿÿÿÿÿ,
-OR_GUILD_COMBAT_CONDITION_LIMIT¨χÿÿÿÿÿÿÿ#
-OR_GUILD_APPLY_SUCCESS§χÿÿÿÿÿÿÿ"
-OR_GUILD_JOIN_SUCCESS¦χÿÿÿÿÿÿÿ
-OR_GUILD_NOT_EXIST¥χÿÿÿÿÿÿÿ#
-OR_GUILD_PROPOSER_FULL¤χÿÿÿÿÿÿÿ$
-OR_GUILD_NO_APPLICATION£χÿÿÿÿÿÿÿ#
-OR_GUILD_POSITION_FULLΆχÿÿÿÿÿÿÿ'
-OR_GUILD_CHIEF_CANNOT_QUIT΅χÿÿÿÿÿÿÿ
-OR_GUILD_CREATE_OK χÿÿÿÿÿÿÿ#
-OR_GUILD_APPLY_FAILUREχÿÿÿÿÿÿÿ"
-OR_GUILD_APPLY_REPEATχÿÿÿÿÿÿÿ'
-OR_GUILD_GUILDNAME_INVALIDχÿÿÿÿÿÿÿ'
-OR_GUILD_INPUT_LEN_INVALIDχÿÿÿÿÿÿÿ'
-OR_GUILD_GUILDDESC_INVALID›χÿÿÿÿÿÿÿ)
-OR_GUILD_INPUT_RANGE_INVALIDχÿÿÿÿÿÿÿ+
-OR_GUILD_TARGETUSER_ALREADY_IN™χÿÿÿÿÿÿÿ(
-OR_GUILD_INVITEE_NOT_ONLINEχÿÿÿÿÿÿÿ)
-OR_GUILD_INVITEE_LEVEL_LIMIT—χÿÿÿÿÿÿÿ)
-OR_GUILD_BOSS_STATUS_INVALID–χÿÿÿÿÿÿÿ
-OR_GUILD_BOSS_OPEN•χÿÿÿÿÿÿÿ#
-OR_GUILD_BOSS_FINISHED”χÿÿÿÿÿÿÿ,
-OR_GUILD_BOSS_CREATECOPY_FAILED“χÿÿÿÿÿÿÿ1
-$OR_GUILD_BOSS_IS_NOT_GUILDBOSS_SCENE’χÿÿÿÿÿÿÿ 
-OR_GUILD_I_AM_ROBOT‘χÿÿÿÿÿÿÿ&
-OR_GUILD_CREATE_IN_CDTIMEχÿÿÿÿÿÿÿ%
-OR_GUILD_APPLY_IN_CDTIMEχÿÿÿÿÿÿÿ'
-OR_GUILD_INVITEE_IN_CDTIMEχÿÿÿÿÿÿÿ*
-OR_GUILD_TARGETUSER_IN_CDTIMEχÿÿÿÿÿÿÿ(
-OR_GUILD_MEMBER_FULL_ONEKEYχÿÿÿÿÿÿÿ/
-"OR_GUILD_MODIFYGUILDNAME_IN_CDTIME‹χÿÿÿÿÿÿÿ'
-OR_GUILD_BUILDING_ID_ERRORχÿÿÿÿÿÿÿ0
-#OR_GUILD_MODIFYGUILDNAME_ITEM_LIMIT‰χÿÿÿÿÿÿÿ*
-OR_GUILD_BUILDING_LEVEL_ERRORχÿÿÿÿÿÿÿ8
-+OR_GUILD_BUILDING_LEVELUP_SHRINELEVEL_LIMIT‡χÿÿÿÿÿÿÿ6
-)OR_GUILD_BUILDING_LEVELUP_CREATEDAY_LIMIT†χÿÿÿÿÿÿÿ7
-*OR_GUILD_BUILDING_LEVELUP_GUILDMONEY_LIMIT…χÿÿÿÿÿÿÿ"
-OR_GUILD_SIGNIN_ERROR„χÿÿÿÿÿÿÿ%
-OR_GUILD_BOSS_NOT_ACTIVEƒχÿÿÿÿÿÿÿ,
-OR_GUILD_CONTRIBUTE_MONEY_LIMIT‚χÿÿÿÿÿÿÿ,
-OR_GUILD_CONTRIBUTE_TIMES_LIMITχÿÿÿÿÿÿÿ(
-OR_GUILD_CONTRIBUTION_LIMIT€χÿÿÿÿÿÿÿ"
-OR_GUILD_SELLID_ERRORÿφÿÿÿÿÿÿÿ)
-OR_GUILD_GOODS_BUYTIME_LIMITώφÿÿÿÿÿÿÿ)
-OR_GUILD_LOTTERY_TIMES_LIMITύφÿÿÿÿÿÿÿ,
-OR_GUILD_STUDIO_ATTRLEVEL_LIMITόφÿÿÿÿÿÿÿ(
-OR_GUILD_LOTTERYINDEX_ERRORϋφÿÿÿÿÿÿÿ,
-OR_GUILD_CONTRIBUTE_TIMES_ERRORϊφÿÿÿÿÿÿÿ(
-OR_GUILD_EXCHANGE_IN_CDTIMEωφÿÿÿÿÿÿÿ*
-OR_GUILD_EXCHANGE_TIMES_LIMITψφÿÿÿÿÿÿÿ*
-OR_WORLDBOSS_BOSSID_NOT_EXISTΟφÿÿÿÿÿÿÿ*
-OR_WORLDBOSS_ALREADY_BEKILLEDΞφÿÿÿÿÿÿÿ+
-OR_WORLDBOSS_LEVEL_NOT_ENCOUGHΝφÿÿÿÿÿÿÿ.
-!OR_WORLDBOSS_REWARDTYPE_NOT_EXISTΜφÿÿÿÿÿÿÿ*
-OR_WORLDBOSS_PLAYERS_TOO_MUCHΛφÿÿÿÿÿÿÿ0
-#OR_WORLDBOSS_IS_NOT_WORLDBOSS_SCENEΚφÿÿÿÿÿÿÿ,
-OR_WORLDBOSS_ERROR_CONFIG_ERRORΙφÿÿÿÿÿÿÿ4
-'OR_WORLDBOSS_DELAY_STAYTIME_MONEY_LIMITΘφÿÿÿÿÿÿÿ7
-*OR_WORLDBOSS_DELAY_STAYTIME_SUBMONEY_ERRORΗφÿÿÿÿÿÿÿ-
- OR_CONFIRM_TEAMCOPYSCENE_NO_TEAMμυÿÿÿÿÿÿÿ0
-#OR_CONFIRM_TEAMCOPYSCENE_NOT_LEADERλυÿÿÿÿÿÿÿ4
-'OR_CONFIRM_TEAMCOPYSCENE_NO_HAVE_LEADERκυÿÿÿÿÿÿÿ/
-"OR_CONFIRM_TEAMCOPYSCENE_ALL_AGREEιυÿÿÿÿÿÿÿ9
-,OR_CONFIRM_TEAMCOPYSCENE_HAVE_SOMEONE_REFUSEθυÿÿÿÿÿÿÿ)
-OR_WHOREHOUSE_FIELD_OCCUPIEDΉυÿÿÿÿÿÿÿ%
-OR_WHOREHOUSE_FIELD_FULLΈυÿÿÿÿÿÿÿ.
-!OR_WHOREHOUSE_GIRL_ALREADY_CALLED·υÿÿÿÿÿÿÿ(
-OR_WHOREHOUSE_FIELDID_ERROR¶υÿÿÿÿÿÿÿ)
-OR_WHOREHOUSE_GIRL_NOT_EXISTµυÿÿÿÿÿÿÿ*
-OR_WHOREHOUSE_GIRL_NOT_CALLED΄υÿÿÿÿÿÿÿ/
-"OR_WHOREHOUSE_BUILDING_LEVEL_LIMIT³υÿÿÿÿÿÿÿ-
- OR_WHOREHOUSE_BUILDING_LACK_ITEM²υÿÿÿÿÿÿÿ)
-OR_WHOREHOUSE_SUB_ITEM_ERROR±υÿÿÿÿÿÿÿ3
-&OR_WHOREHOUSE_UPGRADE_CD_TIME_NOT_OVER°υÿÿÿÿÿÿÿ0
-#OR_WHOREHOUSE_UNLOCKGIRL_ITEM_LIMIT―υÿÿÿÿÿÿÿ'
-OR_WHOREHOUSE_GIRLID_ERROR®υÿÿÿÿÿÿÿ.
-!OR_WHOREHOUSE_GIRL_ALREADY_UNLOCK­υÿÿÿÿÿÿÿ(
-OR_WHOREHOUSE_UPGRADE_ERROR¬υÿÿÿÿÿÿÿ.
-!OR_WHOREHOUSE_UPGRADEACCE_NOMONEY«υÿÿÿÿÿÿÿ4
-'OR_MOUNTCOPYSCENE_NOT_ENOUGH_RAGE_VALUE‡υÿÿÿÿÿÿÿ2
-%OR_WING_ACTIVE_ERROR_WING_STAGE_LIMITώτÿÿÿÿÿÿÿ2
-%OR_WING_ACTIVE_ERROR_CHAR_LEVEL_LIMITύτÿÿÿÿÿÿÿ+
-OR_WING_ACTIVE_ERROR_HAVE_DONEότÿÿÿÿÿÿÿ,
-OR_WING_UPSTAR_ERROR_ITEM_LIMITϋτÿÿÿÿÿÿÿ*
-OR_WING_UPSTAR_ERROR_MAX_STARϊτÿÿÿÿÿÿÿ"
-OR_WING_UPSTAR_FAILEDωτÿÿÿÿÿÿÿ,
-OR_WING_CHANGEWING_NO_THIS_WINGψτÿÿÿÿÿÿÿ*
-OR_WING_CHANGEWING_NOT_ACTIVEχτÿÿÿÿÿÿÿ'
-OR_WING_CHANGEWING_IS_SAMEφτÿÿÿÿÿÿÿ/
-"OR_WING_UPSTAR_ERROR_YUANBAO_LIMITυτÿÿÿÿÿÿÿ-
- OR_WING_UPSTAR_ERROR_LIJIN_LIMITττÿÿÿÿÿÿÿ-
- OR_WING_UPSTAR_ERROR_MONEY_LIMITστÿÿÿÿÿÿÿ/
-"OR_WING_UPSTAR_ERROR_SHOP_NOT_SELLςτÿÿÿÿÿÿÿ8
-+OR_WING_ACTIVE_ERROR_COMMON_WING_NOT_ACTIVEρτÿÿÿÿÿÿÿ0
-#OR_PETCOPYSCENE_REWARD_ALREADY_DREWΥτÿÿÿÿÿÿÿ-
- OR_PETCOPYSCENE_CANNOT_CHALLENGEΤτÿÿÿÿÿÿÿ6
-)OR_PETCOPYSCENE_UNLOCKCHAPTER_LEVEL_LIMITΣτÿÿÿÿÿÿÿ%
-OR_PETCOPYSCENE_BAG_FULLÒτÿÿÿÿÿÿÿ+
-OR_TREASUREMAP_ERROR_IN_DIGING¤τÿÿÿÿÿÿÿ(
-OR_TREASUREMAP_ERROR_CONFIG£τÿÿÿÿÿÿÿ)
-OR_TREASUREMAP_DIG_DAILY_MAXΆτÿÿÿÿÿÿÿ+
-OR_TREASUREMAP_UPPER_DAILY_MAX΅τÿÿÿÿÿÿÿ'
-OR_TREASUREMAP_IS_NOT_YOUR τÿÿÿÿÿÿÿ-
- OR_TREASUREMAP_ROBOTHER_REACHMAXτÿÿÿÿÿÿÿ%
-OR_VIEWPLAYER_IN_CD_TIMEΛτÿÿÿÿÿÿÿ0
-#OR_TOWER_AUTO_PASS_FAILED_BAD_FLOORΒτÿÿÿÿÿÿÿ1
-$OR_TOWER_AUTO_PASS_FAILED_ONLYE_ONCEΑτÿÿÿÿÿÿÿ*
-OR_TOWER_RESET_IN_TOWER_SCENEΐτÿÿÿÿÿÿÿ$
-OR_TOWER_NEXT_WAIT_OVERΏτÿÿÿÿÿÿÿ"
-OR_TOWER_NEXT_NO_MOREΎτÿÿÿÿÿÿÿ.
-!OR_TOWER_NEXT_MUST_IN_TOWER_SCENE½τÿÿÿÿÿÿÿ"
-OR_TOWER_NO_THIS_BUFFΌτÿÿÿÿÿÿÿ%
-OR_TOWER_BUFF_NEED_FLOOR»τÿÿÿÿÿÿÿ&
-OR_TOWER_BUFF_LESS_VOLUMEΊτÿÿÿÿÿÿÿ
-OR_TOWER_BUFF_FULLΉτÿÿÿÿÿÿÿ#
-OR_TOWER_BUFF_FULL_LEVΈτÿÿÿÿÿÿÿ)
-OR_TOWER_BUFF_CANNOT_OVERLAY·τÿÿÿÿÿÿÿ'
-OR_TOWER_RESET_COUNT_LIMIT¶τÿÿÿÿÿÿÿ#
-OR_TOWER_RESET_NO_NEEDµτÿÿÿÿÿÿÿ(
-OR_TOWER_NO_STUDY_THIS_BUFF΄τÿÿÿÿÿÿÿ"
-OR_BATH_ADVANCED_BOAT®τÿÿÿÿÿÿÿ&
-OR_BATH_NO_MONEY_BUY_BOAT­τÿÿÿÿÿÿÿ!
-OR_BATH_NO_THIS_BOAT¬τÿÿÿÿÿÿÿ*
-OR_BLOODLEAGUE_NO_BLOODLEAGUE†τÿÿÿÿÿÿÿ+
-OR_BLOODLEAGUE_STORE_OUT_LIMIT…τÿÿÿÿÿÿÿ
-OR_STORAGEHP_LIMITόσÿÿÿÿÿÿÿ&
-OR_STORAGEHP_OUT_OF_LIMITϋσÿÿÿÿÿÿÿ!
-OR_STORAGEHP_SUCCESSϊσÿÿÿÿÿÿÿ)
-OR_ITEM_COMPOSE_CONFIG_ERRORθσÿÿÿÿÿÿÿ.
-!OR_ITEM_COMPOSE_MONEY_NOT_ENOUGHTησÿÿÿÿÿÿÿ,
-OR_ITEM_COMPOSE_ITEM_NOT_ENOUGHζσÿÿÿÿÿÿÿ+
-OR_ITEM_COMPOSE_SUB_ITEM_ERRORεσÿÿÿÿÿÿÿ/
-"OR_ITEM_COMPOSE_DEC_CURRENCY_ERRORδσÿÿÿÿÿÿÿ-
- OR_ITEM_COMPOSE_BAG_OUT_OF_SPACEγσÿÿÿÿÿÿÿ$
-OR_ERROR_ITEM_NOT_EXISTΏσÿÿÿÿÿÿÿ(
-OR_BATTLEFIELD_CAMP_INVALID«σÿÿÿÿÿÿÿ)
-OR_BATTLEFIELD_INOPPOSE_CAMPªσÿÿÿÿÿÿÿ#
-OR_BATTLEFIELD_IN_CAMP©σÿÿÿÿÿÿÿ(
-OR_BATTLEFIELD_CAMP_D_VALUE¨σÿÿÿÿÿÿÿ%
-OR_SCENE_LIMIT_USE_SKILLσÿÿÿÿÿÿÿ%
-OR_SCENE_LIMIT_USE_MOUNTσÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_0σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_1‹σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_2σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_3‰σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_4σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_5‡σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_6†σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_7…σÿÿÿÿÿÿÿ
-OR_SCENE_LIMIT_8„σÿÿÿÿÿÿÿ#
-OR_ONLINE_HAS_NO_INDEXπςÿÿÿÿÿÿÿ%
-OR_ONLINE_TIME_NOT_REACHοςÿÿÿÿÿÿÿ)
-OR_ONLINE_REWARD_ALREADY_GETξςÿÿÿÿÿÿÿ*
-OR_RANK_ALREADY_WORSHIP_TODAYνςÿÿÿÿÿÿÿ&
-OR_GATHER_SCENE_MAX_COUNTζςÿÿÿÿÿÿÿ,
-OR_PET_SKILLLEVELUP_MONEY_LIMITάςÿÿÿÿÿÿÿ+
-OR_PET_SKILLLEVELUP_ITEM_LIMITΫςÿÿÿÿÿÿÿ0
-#OR_PET_SKILLLEVELUP_STARLEVEL_LIMITΪςÿÿÿÿÿÿÿ)
-OR_THEMELOTTERY_LACK_YUANBAOχρÿÿÿÿÿÿÿ%
-OR_FEEDBACK_CONFIG_ERRORΪρÿÿÿÿÿÿÿ.
-!OR_QUESTIONNAIRE_ALREADY_FINISHEDΟρÿÿÿÿÿÿÿ$
-OR_HP_ALREADY_REACH_MAXΖρÿÿÿÿÿÿÿ
-OR_HP_STORAGE_NONEΕρÿÿÿÿÿÿÿ"
-OR_HP_IS_REACHING_MAXΔρÿÿÿÿÿÿÿ
-OR_HP_IS_INCDTIMEΓρÿÿÿÿÿÿÿ1
-$OR_ACTIVE_GINTENSIFYSUIT_LEVEL_LIMITªρÿÿÿÿÿÿÿ(
-OR_COPY_SCENE_PASS_TIME_OUTβπÿÿÿÿÿÿÿ+
-OR_LEVEL_LIMIT_SYSTEM_INLOCKEDΧπÿÿÿÿÿÿÿ(
-OR_FUNCTION_IS_CLOSED_BY_GMΦπÿÿÿÿÿÿÿ
-OR_SYSTEM_UNOPENEDΥπÿÿÿÿÿÿÿ2
-%OR_LEVELUP_MEDICINE_LEVEL_ALREADY_MAXΞπÿÿÿÿÿÿÿ:
--OR_LEVELUP_MEDICINE_LEVEL_REACHING_OUT_OF_MAXΝπÿÿÿÿÿÿÿ1
-$OR_LEVELUP_MEDICINE_LEVEL_UP_SUCCESSΜπÿÿÿÿÿÿÿ0
-#OR_MOUNT_CANNOT_LAUCH_IN_THIS_STATEΔπÿÿÿÿÿÿÿ"
-OR_MOUNT_CONFIG_ERRORΓπÿÿÿÿÿÿÿ0
-#OR_OFFLINE_PK_DONT_NEED_BUY_PKTIMESΒπÿÿÿÿÿÿÿ$
-OR_SELLITEN_CANNOT_SELLΌπÿÿÿÿÿÿÿ%
-OR_SELLITEM_INVALID_ITEM»πÿÿÿÿÿÿÿ*
-OR_SELLITEM_INVALID_SELLCOUNTΊπÿÿÿÿÿÿÿ(
-OR_SELLITEM_ITEM_NOT_ENOUGHΉπÿÿÿÿÿÿÿ
-OR_SELLITEM_ERRORΈπÿÿÿÿÿÿÿ2
-%OR_CAN_NOT_CALL_UP_PET_BY_SCENE_LIMIT·πÿÿÿÿÿÿÿ)
-OR_GUILDMISSION_CONFIG_ERRORµπÿÿÿÿÿÿÿ*
-OR_GUILDMISSION_HAVE_ACCEPTED΄πÿÿÿÿÿÿÿ-
- OR_GUILDMISSION_CYCLE_NOT_FINISH³πÿÿÿÿÿÿÿ2
-%OR_GUILDMISSION_CYCLE_REWARD_NOT_TAKE²πÿÿÿÿÿÿÿ/
-"OR_GUILDMISSION_CYCLE_REWARD_TAKEN±πÿÿÿÿÿÿÿ-
- OR_GUILDMISSION_CYCLE_UPPERLIMIT°πÿÿÿÿÿÿÿ,
-OR_GUILDMISSION_GUILD_NOT_EXIST―πÿÿÿÿÿÿÿ'
-OR_GUILDMISSION_NOT_ACCEPT®πÿÿÿÿÿÿÿ3
-&OR_STOP_COPYSCENE_IS_NOT_DYNAMIC_SCENE­πÿÿÿÿÿÿÿ5
-(OR_STOP_COPYSCENE_IS_COPYSCENE_NOT_EXIST¬πÿÿÿÿÿÿÿ:
--OR_STOP_COPYSCENE_IS_COPYSCENE_ATTR_NOT_EXIST«πÿÿÿÿÿÿÿ:
--OR_STOP_COPYSCENE_TEAM_ENTER_TYPE_FORBIT_STOPªπÿÿÿÿÿÿÿ.
-!OR_STOP_COPYSCENE_ALREADY_IS_STOP©πÿÿÿÿÿÿÿ2
-%OR_UARENA_SHOP_ARENA_MONEY_NOT_ENOUGH¦πÿÿÿÿÿÿÿ!
-OR_TEAM_IMAGE_FINISHπÿÿÿÿÿÿÿ
-OR_RECRUIT_NO_TEAM’πÿÿÿÿÿÿÿ)
-OR_RECRUIT_IS_NOT_TEAMLEADER‘πÿÿÿÿÿÿÿ+
-OR_NEW_MARKET_HORSE_NOT_EXISTSπÿÿÿÿÿÿÿ1
-$OR_NEW_MARKET_HORSE_NUMBER_REACH_MAXπÿÿÿÿÿÿÿ'
-OR_NEW_MARKET_CONFIG_ERRORπÿÿÿÿÿÿÿ1
-$OR_NEW_MARKET_RESET_NOT_ENOUGH_TOKENπÿÿÿÿÿÿÿ5
-(OR_NEW_MARKET_BUY_HORSE_MONEY_NOT_ENOUGHπÿÿÿÿÿÿÿ5
-(OR_NEW_MARKET_BUY_HORSE_TOKEN_NOT_ENOUGH‹πÿÿÿÿÿÿÿ(
-OR_HORSE_TRAIN_CONFIG_ERRORπÿÿÿÿÿÿÿ+
-OR_HORSE_TRAIN_HORSE_NOT_EXIST‡πÿÿÿÿÿÿÿ*
-OR_HORSE_TRAIN_SLOT_NOT_EXIST†πÿÿÿÿÿÿÿ*
-OR_HORSE_TRAIN_SITE_NOT_EXIST…πÿÿÿÿÿÿÿ4
-'OR_HORSE_TRAIN_ACTIVE_SLOT_HAVE_EXISTED„πÿÿÿÿÿÿÿ1
-$OR_HORSE_TRAIN_ACTIVE_SLOT_REACH_MAXƒπÿÿÿÿÿÿÿ7
-*OR_HORSE_TRAIN_ACTIVE_SLOT_ITEM_NOT_ENOUGH‚πÿÿÿÿÿÿÿ8
-+OR_HORSE_TRAIN_LEVELUP_SITE_ITEM_NOT_ENOUGHπÿÿÿÿÿÿÿ7
-*OR_HORSE_TRAIN_LEVELUP_SITE_REACH_MAXLEVEL€πÿÿÿÿÿÿÿ8
-+OR_HORSE_TRAIN_SPEEDUP_TRAIN_NOT_NOT_ENOUGHÿοÿÿÿÿÿÿÿ%
-OR_HORSE_TRAIN_TRAINNINGώοÿÿÿÿÿÿÿ/
-"OR_HORSE_TRAIN_NOT_FIND_TRAINCORSEύοÿÿÿÿÿÿÿ,
-OR_HORSE_TRAIN_HORSE_ATTR_ERRORόοÿÿÿÿÿÿÿ(
-OR_HORSE_TRAIN_HORSE_RETIREϋοÿÿÿÿÿÿÿ+
-OR_HORSE_TRAIN_SATIATE_IS_LACKϊοÿÿÿÿÿÿÿ+
-OR_HORSE_TRAIN_EMOTION_IS_LACKωοÿÿÿÿÿÿÿ-
- OR_HORSE_TRAIN_ENDURANCE_IS_LACKψοÿÿÿÿÿÿÿ+
-OR_HORSE_TRAIN_HEALTHY_IS_LACKχοÿÿÿÿÿÿÿ)
-OR_HORSE_TRAIN_MONEY_IS_LACKφοÿÿÿÿÿÿÿ)
-OR_HORSE_TRAIN_TOKEN_IS_LACKυοÿÿÿÿÿÿÿ1
-$OR_HORSE_TRAIN_SPEEDUP_TOKEN_IS_LACKτοÿÿÿÿÿÿÿ3
-&OR_HORSE_TRAIN_SPEEDUP_HORSE_NOT_EXISTσοÿÿÿÿÿÿÿ,
-OR_HORSE_TRAIN_HORSELEVEL_LIMITςοÿÿÿÿÿÿÿ(
-OR_HORSE_TRAIN_IS_TRAINNINGροÿÿÿÿÿÿÿ*
-OR_HORSE_TRAIN_REQ_FREQUENTLYποÿÿÿÿÿÿÿ(
-OR_HORSE_ADOPT_CONFIG_ERRORξοÿÿÿÿÿÿÿ'
-OR_HORSE_ADOPT_HAS_ADOPTEDνοÿÿÿÿÿÿÿ-
- OR_HORSE_ADOPT_ININT_HORES_ERRORμοÿÿÿÿÿÿÿ*
-OR_HORSE_NAMED_LENGTH_INVALIDλοÿÿÿÿÿÿÿ+
-OR_HORSE_NAMED_HORSE_NOT_EXISTκοÿÿÿÿÿÿÿ,
-OR_HORSE_NAMED_NAME_HAS_EXISTEDιοÿÿÿÿÿÿÿ*
-OR_HORSE_FEED_HORSE_NOT_EXISTθοÿÿÿÿÿÿÿ'
-OR_HORSE_FEED_CONFIG_ERRORηοÿÿÿÿÿÿÿ&
-OR_HORSE_BUY_CONFIG_ERRORζοÿÿÿÿÿÿÿ'
-OR_HORSE_CREATE_HORSE_FAILεοÿÿÿÿÿÿÿ)
-OR_HORSE_BUY_NOT_ENOUGH_ITEMδοÿÿÿÿÿÿÿ#
-OR_HORSE_GROUP_HAS_BUYγοÿÿÿÿÿÿÿ.
-!OR_HORSE_BUY_INVENTORY_NOT_ENOUGHβοÿÿÿÿÿÿÿ+
-OR_MATCH_CANT_FIND_MATCHCONFIGαοÿÿÿÿÿÿÿ+
-OR_MATCH_CANT_FIND_ROBOTCONFIGΰοÿÿÿÿÿÿÿ%
-OR_MATCH_HORSE_NOT_EXISTίοÿÿÿÿÿÿÿ&
-OR_MATCH_ROBOT_NOT_ENOUGHήοÿÿÿÿÿÿÿ0
-#OR_MATCH_HORSE_MATCHLIFE_NOT_ENOUGHέοÿÿÿÿÿÿÿ/
-"OR_MATCH_HORSE_STRENGTH_NOT_ENOUGHάοÿÿÿÿÿÿÿ+
-OR_MATCH_HORSE_ITEM_NOT_ENOUGHΫοÿÿÿÿÿÿÿ-
- OR_MATCH_HORSE_TICKET_NOT_ENOUGHΪοÿÿÿÿÿÿÿ+
-OR_MATCH_HORSE_RACE_NOT_UNLOCKΩοÿÿÿÿÿÿÿ,
-OR_MATCH_HORSE_MONEY_NOT_ENOUGHΨοÿÿÿÿÿÿÿ'
-OR_MATCH_HORSE_WRONG_MATCHΧοÿÿÿÿÿÿÿ,
-OR_AUCTION_ERR_NOT_ENOUGH_MONEYΦοÿÿÿÿÿÿÿ,
-OR_AUCTION_ERR_NOT_ENOUGH_TOKENΥοÿÿÿÿÿÿÿ(
-OR_AUCTION_ERR_ALREADY_SELLΤοÿÿÿÿÿÿÿ)
-OR_AUCTION_ERR_OFF_THE_SHELFΣοÿÿÿÿÿÿÿ*
-OR_AUCTION_ERR_EXCEED_LIMITEDÒοÿÿÿÿÿÿÿ*
-OR_HORSE_SELL_HORSE_NOT_EXISTΡοÿÿÿÿÿÿÿ-
- OR_HORSE_SELL_HORSE_CONFIG_ERRORΠοÿÿÿÿÿÿÿ)
-OR_SUIT_ERR_NOT_ENOUGH_MONEYΜοÿÿÿÿÿÿÿ)
-OR_SUIT_ERR_NOT_ENOUGH_TOKENΛοÿÿÿÿÿÿÿ%
-OR_SUIT_ERR_ALREADY_HAVEΚοÿÿÿÿÿÿÿ'
-OR_SUIT_ERR_ONLY_ONE_HORSEΙοÿÿÿÿÿÿÿ)
-OR_MATCH_HORSE_LEVEL_TOO_LOWΘοÿÿÿÿÿÿÿ/
-"OR_MATCH_HORSE_TRAIN_LEVEL_TOO_LOWΗοÿÿÿÿÿÿÿ-
- OR_MATCH_HORSE_HAS_FINISH_RACEIDΖοÿÿÿÿÿÿÿ/
-"OR_MATCH_HORSE_MATCH_NUM_REACH_MAXΔοÿÿÿÿÿÿÿ"
-OR_MATCH_HORSE_RETIREΓοÿÿÿÿÿÿÿ)
-OR_MALL_ERR_NOT_ENOUGH_MONEYΒοÿÿÿÿÿÿÿ)
-OR_MALL_ERR_NOT_ENOUGH_TOKENΑοÿÿÿÿÿÿÿ'
-OR_MALL_ERR_NOT_ENOUGH_BAGΐοÿÿÿÿÿÿÿ+
-OR_MALL_ERR_PROPS_ALREADY_DOWNΏοÿÿÿÿÿÿÿ)
-OR_MALL_ERR_EXCHANGE_LIMITEDΎοÿÿÿÿÿÿÿ,
-OR_MALL_ERR_MALL_PLAT_NOT_EXIST½οÿÿÿÿÿÿÿ2
-%OR_QUICKPURCHASE_ERR_NOT_ENOUGH_MONEYΌοÿÿÿÿÿÿÿ2
-%OR_QUICKPURCHASE_ERR_NOT_ENOUGH_TOKEN»οÿÿÿÿÿÿÿ0
-#OR_QUICKPURCHASE_ERR_NOT_ENOUGH_BAGΊοÿÿÿÿÿÿÿ'
-OR_MATCH_HORSE_IS_TRAININGΉοÿÿÿÿÿÿÿ2
-%OR_LEVELUP_BUILDING_ERROR_READ_CONFIGΈοÿÿÿÿÿÿÿ0
-#OR_LEVELUP_BUILDING_ERROR_LEVEL_MAX·οÿÿÿÿÿÿÿ6
-)OR_LEVELUP_BUILDING_ERROR_NOT_ENOUGH_ITEM¶οÿÿÿÿÿÿÿ7
-*OR_LEVELUP_BUILDING_ERROR_NOT_ENOUGH_MONEYµοÿÿÿÿÿÿÿ"
-OR_ERR_PLAT_FAIL_CODE΄οÿÿÿÿÿÿÿ'
-OR_REENTER_HORSE_NOT_EXIST³οÿÿÿÿÿÿÿ1
-$OR_REENTER_HORSE_BUY_ITEM_NOT_ENOUGH²οÿÿÿÿÿÿÿ4
-'OR_RENETER_HORSE_BUY_HORSE_CONFIG_ERROR±οÿÿÿÿÿÿÿ8
-+OR_REENTER_HORSE_BUY_HORSE_NUMBER_REACH_MAX°οÿÿÿÿÿÿÿ1
-$OR_REENTER_HORSE_BUY_HORSE_ADD_ERROR―οÿÿÿÿÿÿÿ0
-#OR_TOURMATCH_HORSE_MODULE_NOT_EXIST®οÿÿÿÿÿÿÿ)
-OR_TOURMATCH_HORSE_NOT_EXIST­οÿÿÿÿÿÿÿ2
-%OR_TOURMATCH_REG_FEE_CONFIG_NOT_EXIST¬οÿÿÿÿÿÿÿ&
-OR_TOURMATCH_HAS_REGISTER«οÿÿÿÿÿÿÿ2
-%OR_TOURMATCH_REG_HORSE_DEC_TOKEN_FAILªοÿÿÿÿÿÿÿ(
-OR_TOURMATCH_CHAMPION_HORSE©οÿÿÿÿÿÿÿ0
-#OR_TOURMATCH_MATCH_CONFIG_NOT_EXIST¨οÿÿÿÿÿÿÿ$
-OR_TOURMATCH_HAS_ENROLL§οÿÿÿÿÿÿÿ,
-OR_TOURMATCH_ENROLL_PLAYER_FULL¦οÿÿÿÿÿÿÿ*
-OR_TOURMATCH_MATCH_HAS_FINISH¥οÿÿÿÿÿÿÿ,
-OR_TOURMATCH_IS_NOT_ENROLL_TIME¤οÿÿÿÿÿÿÿ+
-OR_TOURMATCH_AFTER_ENROLL_TIME£οÿÿÿÿÿÿÿ1
-$OR_TOURMATCH_ENROLL_TOKEN_NOT_ENOUGHΆοÿÿÿÿÿÿÿ$
-OR_TOURMATCH_NOT_FINISH΅οÿÿÿÿÿÿÿ7
-*OR_NEWBIETOURMATCH_HORSE_STAR_MUST_BELOW_3 οÿÿÿÿÿÿÿ2
-%OR_MYSTERY_STORE_BUY_KEY_CONFIG_ERRORθξÿÿÿÿÿÿÿ3
-&OR_MYSTERY_STORE_BUY_KEY_ILLEGAL_PARAMηξÿÿÿÿÿÿÿ7
-*OR_MYSTERY_STORE_DRAW_LOTTERY_CONFIG_ERRORζξÿÿÿÿÿÿÿ6
-)OR_MYSTERY_STORE_NOT_DURING_ACTIVITY_TIMEεξÿÿÿÿÿÿÿ3
-&OR_MYSTERY_STORE_DRAW_LOTTERY_KEY_LACKδξÿÿÿÿÿÿÿ&
-OR_HORSE_SUIT_DELET_ERROR¶ξÿÿÿÿÿÿÿ'
-OR_HORSE_SUIT_CONFIG_ERRORµξÿÿÿÿÿÿÿ%
-OR_MALL_ERR_NOT_REPEATED¬ξÿÿÿÿÿÿÿ,
-OR_FEED_HORSE_SPECIAL_REACH_MAX„ξÿÿÿÿÿÿÿ*
-OR_EEED_HORSE_ITEM_NOT_ENOUGHƒξÿÿÿÿÿÿÿ*
-OR_EEED_HORSE_DAILY_REACH_MAX‚ξÿÿÿÿÿÿÿ*
-OR_FEED_HORSE_HORSE_NOT_EXISTξÿÿÿÿÿÿÿ)
-OR_TEAM_MATCH_ENROLL_LIMITEDÒνÿÿÿÿÿÿÿ+
-OR_TEAM_MATCH_NOT_ENOUGH_TOKENΡνÿÿÿÿÿÿÿ,
-OR_TEAM_MATCH_ROOM_NAME_LIMITEDΠνÿÿÿÿÿÿÿ)
-OR_TEAM_MATCH_ALREADY_ENROLLΟνÿÿÿÿÿÿÿ&
-OR_TEAM_MATCH_ENROLL_FULLΞνÿÿÿÿÿÿÿ'
-OR_TEAM_MATCH_ROOM_IS_FULLΝνÿÿÿÿÿÿÿ)
-OR_TEAM_MATCH_ROOM_NOT_EXISTΜνÿÿÿÿÿÿÿ,
-OR_TEAM_MATCH_ROOM_CONFIG_ERRORΛνÿÿÿÿÿÿÿ-
- OR_TEAM_MATCH_ROOM_REPEAT_ENROLLΚνÿÿÿÿÿÿÿ&
-OR_TEAM_MATCH_ROOM_IS_ENDΙνÿÿÿÿÿÿÿ-
- OR_TEAM_MATCH_ROOM_ALREADY_STARTΘνÿÿÿÿÿÿÿ-
- OR_GLOBAL_LIMITED_ONE_STAR_HORSE νÿÿÿÿÿÿÿ-
- OR_GLOBAL_LIMITED_2_5_STAR_HORSEνÿÿÿÿÿÿÿ-
- OR_GLOBAL_LIMITED_CHAMPION_MATCHνÿÿÿÿÿÿÿ,
-OR_GLOBAL_LIMITED_CAN_NOT_TRAINνÿÿÿÿÿÿÿ+
-OR_GLOBAL_LIMITED_CAN_NOT_FEEDνÿÿÿÿÿÿÿ
-OR_CHAT_KILLWORLDBOSS_ID'!
-OR_CHAT_CREATEBLOODLEAGUE_ID‰'"
-OR_CHAT_CASHCOW_BEYOND_RECORD'
-OR_CHAT_CASHCOW_REWARD‹'
-OR_CHAT_PKVALUE_ONLINE'
-OR_CHAT_TREASUREMAP_ROIT'
-OR_CHAT_TREASUREMAP_DEMON'!
-OR_CHAT_SIEGECOPY_STAGETHREE' 
-OR_CHAT_SIEGECOPY_STAGEFOUR'0
-+CHAT_BATTLEFIELD_BROADCAST_SEIZERELIVEPOINT‘'(
-#CHAT_BATTLEFIELD_BROADCAST_KILLDOOR’'0
-+CHAT_BATTLEFIELD_BROADCAST_RED_ACTIVATEBOSS“'1
-,CHAT_BATTLEFIELD_BROADCAST_BLUE_ACTIVATEBOSS”'*
-%CHAT_BATTLEFIELD_BROADCAST_DOORDAMAGE•'*
-%CHAT_BATTLEFIELD_BROADCAST_BOSSDAMAGE–'
-OR_CHAT_BOSS_DIE_BROADCAST—'%
- OR_CHAT_BOSS_BORN_SOON_BROADCAST')
-$OR_CHAT_BOSS_BORN_RIGHTNOW_BROADCAST™'*
-%CHAT_BATTLEFIELD_BROADCAST_FIRSTBLOOD')
-$CHAT_BATTLEFIELD_BROADCAST_MULTIKILL',
-'OR_CHAT_ACTIVITY_OPEN_IN_SEVERAL_MINUTE'!
-OR_CHAT_ACTIVITY_OPENING_NOW›'-
-(OR_CHAT_ACTIVITY_CLOSE_IN_SERVEAL_MINUTE'$
-OR_CHAT_ACTIVITY_CLOSED_ALREADY'
-OR_CHAT_WORLDBOSS_HP_LEFT '%
- OR_CHAT_TREASURE_MONSTER_APPPEARΆ''
-"OR_CHAT_TREASURE_MONSTER_BE_KILLED£')
-$OR_CHAT_TREASURE_MONSTER_KILL_PLAYER¤' 
-OR_CHAT_PALACE_RESET_NOTICE¦'#
-OR_CHAT_TREASUREMAP_SECRETSHOP§'"
-OR_CHAT_TREASUREMAP_LIGHTNING¨'"
-OR_CHAT_TREASUREMAP_DOUBLEBOX©'
-OR_CHAT_TREASUREMAP_STATUEª' 
-OR_CHAT_TREASUREMAP_JIUDING¬'%
- OR_CHAT_TREASUREMAP_CALLMONSTERS«'!
-OR_CHAT_THEMELOTTERY_REWARDS­'&
-!OR_CHAT_SERVER_TIME_MODIFY_NOTICE®'
-OR_CHAT_GM_ANNOUNCEMENT―'
-OR_CHAT_GM_SYSTEM°'
-OR_CHAT_GUILDBOSS_OVER²' 
-OR_CHAT_PALACE_BOSS_REFRESH¶' 
-OR_CHAT_BLOODLEAGUE_RECRUIT·'
-OR_CHAT_GUILDBOSS_HPΉ'$
-OR_CHAR_GUILD_GENERALS_BOSS_DIEΔ'%
- OR_CHAR_GUILD_GENERALS_BOSS_OPENΕ'&
-!OR_CHAR_GUILD_GENERALS_BOSS_CLOSEΖ')
-$OR_CHAR_GUILD_GENERALS_CHIEFTAIN_DIEΗ'1
-,OR_CHAR_GUILD_GENERALS_MYGUILD_SCORE_ONE_MINΘ'2
--OR_CHAR_GUILD_GENERALS_MYGUILD_SCORE_RANK_TOPΙ'1
-,OR_CHAR_GUILD_GENERALS_MYGUILD_CHIEFTAIN_DIEΚ'"
-OR_CHANGE_AVATAR_CONFIG_ERRORΛ'
-OR_AUCTION_SUCCESSΜ'
-OR_HAS_ENTER_FRAME_GAMEΝ'
-OR_HAS_FRAME_GAME_FULLΞ'
-OR_NOT_IN_FRAME_GAMEΟ'
-OR_NOT_AT_LOADING_STATUSΠ'
-OR_NOT_AT_PLAYING_STATUSΡ'
-
-OR_MAX_NUMψΨÿÿÿÿÿÿÿ*Δ
-ModifyServerTimeType
-Modify_Time_NONE 
-Modify_Time_REDUCE
-Modify_Time_ADD
-Modify_Time_APPOINT
-Modify_Time_APPOINT_REDUCE
-Modify_Time_APPOINT_ADD
-Modify_Time_NUM*Π
-CharBoolMark
-
-ATTR_ALIVE 
-ATTR_IN_COMBAT
-ATTR_CAN_MOVE
-ATTR_CAN_USESKILL
-ATTR_IN_IMMUNITY
-ATTR_IN_INVINCIBLE
-ATTR_IN_STEALTH_MODE
-ATTR_CAN_DETECT_STEALTH
-	MAX_INDEX*l
-
-ReliveType
-	RT_GOHOME 
-RT_ORIGINALPLACE
-RT_SKILL
-RT_ENTERANCE
-	RT_NEARBY
-
-RT_ALL*:
-TransmitResult
-TRANSMIT_SUCCESS 
-TRANSMIT_ERROR*Ν
-CurrencyType
-CURRENCY_NONE 
-CURRENCY_MONEY
-CURRENCY_TOKENCOIN
-CURRENCY_BINDYUANBAO
-CURRENCY_EXP
-CURRENCY_BODYPOWER
-CURRENCY_RMB
-CURRENCY_ARENA_MONEY
-CURRENCY_GUILDMONEY
-
-CURRENCY_UNIVERSE_GEST
-CURRENCY_GUILDCONTRIBUTION
-CURRENCY_KEY
-CURRENCY_EXCHANGE
-CURRENCY_NUM*?
-SkillComsumeType
-SCT_PHYSICAL 
-SCT_RAGE
-SCT_NUM*΄
-GM_ID
-GM_NONE 
-
-GM_ADDITEM
-
-GM_SUBITEM
-GM_AddCURRENCY
-GM_SUBCURRENCY
-GM_SETLEVEL
-	GM_ADDEXP
-GM_EMAIL
-GM_PLAYENUMERSHOW
-GM_INSTANTKILL
-GM_ADDMONSTER
-	GM_ADDNPC
-GM_TRANS
-GM_ACCEPTMISSION
-GM_FINISHMISSION
-GM_ADDVALUE
-GM_ADDSTORAGEHP
-GM_EQUIP_INTENSIFY
-GM_EQUIP_UPSTAR
-GM_SKILL_ACTIVE
-GM_SECURITY_SCAN_OPEN
-GM_OPEN_GODSWORD
-GM_RELOAD_SHOPMALL
-GM_ACTIVE_MOUNT
-GM_MODIFYACTIVITY
-
-GM_ADDBUFF
-GM_MODIFYSERVERTIME
-GM_SERVERTIMESHOW
-GM_COPYSCENEACTIVE
-GM_CREATE_EQUIP
-GM_IMGOD 
-GM_KiCK!
-GM_ACTIVE_DRESS"
-GM_SET_NETDELAY#
-	GM_SEEPOS$
-
-GM_ADDFAME%
-GM_SUBWEAPON&
-GM_ALTER_SIEGEACTIVITY'
-GM_TABLE_RELOAD(
-GM_FORBIT_ACCOUNT)
-GM_FORBIT_CHAT*
-GM_CHAT+
-GM_ADD_GIFTBAG_CODING,
-GM_GODSWORD_UNLOCK-
-GM_CANCEL_LOGIN_LIMIT.
-GM_FUNCTION_CLOSE/
-GM_MISSION_TO0
-GM_FLY_BUTTON1
-GM_ADD_COMMONITEM2
-GM_RETAINSHOW3
-GM_MODIFY_GMRIGHT4
-GM_ADD_LEGENDOVERPLUS5
-GM_SET_COPYSCENE_STAR6
-GM_CREATE_PLATFORM7
-GM_TOWER_PASS8
-GM_GODSWORD_RAGE_FULL9
-GM_STORAGEHP_CLEARCD:
-GM_INC_CHALLENGE;
-GM_WING_STAR<
-GM_MOUNT_STAR=
-GM_GODSWORD_SMELTLV>
-
-GM_PETSTAR?
-GM_PETLEVEL@
-GM_ACTIVE_WINGA
-GM_ACTIVEPETB
-GM_SKILL_LEVELUPC
-GM_OPEN_PETCOPYSCENED
-GM_RESET_CHALLENGEMISSIONE
-GM_ADD_ROBOTF
-GM_ROBOT_FUNCG
-GM_ADD_BL_EXPH
-GM_SET_GUILD_ATTRI
-GM_ADD_CHALLENGE_MISSIONJ
-GM_LOAD_CVSK
-GM_SET_NEWBIE_STEPL
-GM_CHG_HORSE_ATTRM
-GM_CHG_HORSE_RACEIDN
-GM_TEST_MATCHO
-GM_ENTER_LAST_MATCHP
-GM_TOUR_MATCH_TESTQ
-GM_MYSTERY_DRAWNUMR
-
-GM_MAXS*P
-GM_ROBOT_TYPE
-GM_ROBOT_GUILD
-GM_ROBOT_BLOODLEAGUE
-GM_ROBOT_TEAM*G
-GM_OPERATE_ACTIVITY_TYPE
-GM_CLOSE_ACTIVITY 
-GM_OPEN_ACTIVITY*k
-MissionOpenType
-MOT_CREATE_ROLE
-MOT_FINISH_TASK
-MOT_LEVELUP_BUILDING
-MOT_FINISH_MATCH*Β
-MissionGoalType
-MGT_LEVELUP_BUILDING
-MGT_FINISH_MATCH
-MGT_BUY_HORSE
-MGT_BUY_ITEM
-MGT_LEVELUP_HORSE_ATTR
-MGT_HORSE_BREED
-MGT_FEED_HORSE
-MGT_VISIT_HORSE
-MGT_TRAIN_HORSE	
-MGT_BUY_STAR_HORSE
-
-MGT_OWN_STAR_LV_HORSE
-MGT_OWN_STAR_TRAINLV_HORSE
-MGT_LEVEL_TRAIN_SITE*ƒ
-MissionStatus
-MISSION_STATUS_ACCEPTED 
-MISSION_STATUS_UNACCEPTED
-MISSION_STATUS_COMPLITE
-MISSION_STATUS_FINISH*i
-MissionType
-MISSION_TYPE_NONE 
-MISSION_TYPE_MAIN
-MISSION_TYPE_DAILY
-MISSION_TYPE_SUB*
-ConditionLogicType'
-INVALID_CONDITION_LOGIC_IDÿÿÿÿÿÿÿÿÿ
-CONDITION_LOGIC_NONE $
- CONDITION_LOGIC_LEVELUP_BUILDING 
-CONDITION_LOGIC_FINISH_MATCH
-CONDITION_LOGIC_BUY_HORSE
-CONDITION_LOGIC_BUY_ITEM&
-"CONDITION_LOGIC_LEVELUP_HORSE_ATTR
-CONDITION_LOGIC_HORSE_BREED$
- CONDITION_LOGIC_ENTER_HORSE_FEED
-CONDITION_LOGIC_VISIT_HORSE
-CONDITION_LOGIC_TRAIN_HORSE	"
-CONDITION_LOGIC_BUY_STAR_HORSE
-%
-!CONDITION_LOGIC_OWN_STAR_LV_HORSE*
-&CONDITION_LOGIC_OWN_STAR_TRAINLV_HORSE&
-"CONDITION_LOGIC_LEVELUP_TRAIN_SITE)
-%CONDITION_LOGIC_SECRECT_SHOP_OPEN_BOX%
-!CONDITION_LOGIC_FINISH_TOUR_MATCH
-MAX_CONDITION_LOGIC_ID*
-
-GAME_TRAPS
-GT_RESOURCE_MONEY 
-GT_RESOURCE_EQUIP
-GT_RESOURCE_MOUNT
-GT_RESOURCE_TOWERDEFENSE
-GT_RESOURCE_PET
-GT_RESOURCE_EXP
-GT_SIEGESCENE
-GT_BATTLEFIELD
-	GT_GATHER
-GT_BATH	
-GT_OFFLINE_PK
-
-GT_PLOT
-GT_CHALLENGE_MISSION
-	GT_PALACE
-GT_WORLD_BOSS
-GT_TOWER
-
-GT_CASHCOW
-
-GT_HANG_UP
-GT_HARD_PLOT
-
-GT_MAX_NUM*£
-CLIENT_WINDOW_ID
-CLIENT_WINDOW_NONE 
-CLIENT_WINDOW_EQUIP
-CLIENT_WINDOW_PET
-CLIENT_WINDOW_SHOP
-CLIENT_WINDOW_SKILL
-CLIENT_WINDOW_SIZE*‡
-MISSION_EQUIP_OP_TYPE
-MISSION_EQUIP_OP_NONE 
-MISSION_EQUIP_OP_PUTON
-MISSION_EQUIP_OP_TAKEOFF
-MISSION_EQUIP_OP_SIZE*υ
-MissionError
-MISSION_ERROR_OK !
-MISSION_ERROR_TABLE_NOT_EXIST#
-MISSION_ERROR_CHAPTER_NOT_EXIST
-MISSION_ERROR_ACCEPTED
-MISSION_ERROR_FINISHED
-MISSION_ERROR_ACCEPT_LEVEL"
-MISSION_ERROR_NEED_PRE_MISSION
-MISSION_ERROR_FULL
-MISSION_ERROR_UNKNOWN)
-%MISSION_ERROR_FINISH_REQUIREMENT_NEED	$
- MISSION_ERROR_FINISH_NEED_ACCEPT
-
-MISSION_ERROR_NOT_EXIST!
-MISSION_ERROR_INVALID_REQUEST
-MISSION_ERROR_BAG_FULL+
-'MISSION_ERROR_CHALLENGE_ACCEPTABLE_FULL+
-'MISSION_ERROR_CHALLENGE_ACCEPTABLE_NULL&
-"MISSION_ERROR_CHALLENGE_ALL_ORANGE/
-+MISSION_ERROR_CHALLENGE_RERESH_LACK_YUANBAO0
-,MISSION_ERROR_CHALLENGE_RERESH_SUB_ITEM_FAIL-
-)MISSION_ERROR_CHALLENGE_RERESH_LACK_MONEY1
--MISSION_ERROR_CHALLENGE_RERESH_SUB_MONEY_FAIL
-MISSION_ERROR_NOT_CHALLENGE$
- MISSION_ERROR_LACK_CHALLENGE_NUM+
-'MISSION_ERROR_QUICK_FINISH_LACK_YUANBAO%
-!MISSION_ERROR_NOT_MATCH_FREE_TYPE&
-"MISSION_ERROR_NOT_MATCH_MONEY_TYPE!
-MISSION_ERROR_MENPAI_DISMATCH+
-'MISSION_ERROR_ALREARD_GET_CHAPTERREWARD&
-"MISSION_ERROR_CHAPTER_NOT_FINISHED)
-%MISSION_ERROR_REQ_FINISH_INVALID_TYPE*
-MissionTransmitType
-MISSION_TRANSMIT_NONE 
-MISSION_TRANSMIT_ACCEPT
-MISSION_TRANSMIT_COMPLETED
-MISSION_TRANSMIT_FINISHED*)
-AutoFightError
-AUTO_FIGHT_ERROR_OK *ο
-PickBoxItemError
-PICKBOXITEM_OK 
-PICKBOXITEM_YOU_DIE
-PICKBOXITEM_NOT_EXIST
-PICKBOXITEM_NOT_ITEMBOX
-PICKBOXITEM_INVALIDRADIUS
-PICKBOXITEM_NOT_HAVE_RIGHT
-PICKBOXITEM_NOT_HAVE_ITEM
-PICKBOXITEM_BAG_FULL*2
-eAttachType
-eAttach_Item 
-eAttach_Horse*L
-DelObjReason
-
-DEL_COMMON 
-DEL_DEAD
-DEL_CRITICAL
-DEL_DROP*­
-
-SCENE_TYPE
-SCENE_TYPE_INVALIDÿÿÿÿÿÿÿÿÿ
-SCENE_TYPE_GAMELOGIC 
-SCENE_TYPE_COPY
-SCENE_TYPE_COPY_CHAPTER
-SCENE_TYPE_IMAGE
-SCENE_TYPE_COPY_RESOURCE
-SCENE_TYPE_BATTLEFIELD
-SCENE_TYPE_ARENA
-SCENE_TYPE_CIT
-SCENE_TYPE_HOME
-SCENE_TYPE_HOUSE	
-SCENE_TYPE_SIEGE_ACTIVITY
-
-SCENE_TYPE_PALACE
-SCENE_TYPE_WORLDBOSS"
-SCENE_TYPE_COPY_RESOURCE_MOUNT
-SCENE_TYPE_COPY_PET#
-SCENE_TYPE_BATTLEFIELD_ACTIVITY
-SCENE_TYPE_GATHER 
-SCENE_TYPE_TREASUREMAP_DEMON+
-'SCENE_TYPE_VIRTUAL_BATTLEFIELD_ACTIVITY*
-&SCENE_TYPE_COPY_BLOODLEAGUE_EXPEDITION
-SCENE_TYPE_GUILD_BOSS
-SCENE_TYPE_GUILD_WAR
-SCENE_TYPE_GUILD_BASE
-SCENE_TYPE_TEAM_IMAGE"
-SCENE_TYPE_COPY_UNIVERSE_ARENA"
-SCENE_TYPE_COPY_GUILD_GENERALS
-SCENE_TYPE_NUMBERS*«
-ItemQuality
-ITEM_QUALIY_WHITE
-ITEM_QUALIY_GREEN
-ITEM_QUALIY_BLUE
-ITEM_QUALIY_PURPLE
-ITEM_QUALIY_ORANGE
-ITEM_QUALIY_RED
-ITEM_QUALIY_MAX*―
-HUMAN_EQUIP
-HEQUIP_WEAPON 
-HEQUIP_NECKLACE
-HEQUIP_RING
-HEQUIP_SASH
-HEQUIP_ARMOR
-HEQUIP_PANTS
-HEQUIP_BOOT
-
-HEQUIP_CAP
-HEQUIP_NUMBER*
-EQUIP_APPEARANCE
-EQUIP_APP_MAIN_WEAPON 
-EQUIP_APP_SUB_WEAPON
-EQUIP_APP_ARMOR
-EQUIP_APP_MANTLE
-EQUIP_APP_NUMBER*{
-NPC_FUNCTION
-NPC_FUNC_NONE 
-NPC_FUNC_DUNGEON
-NPC_FUNC_TRANSMIT
-NPC_FUNC_CREATEBL
-NPC_FUNC_LEAVEBL*ϋ
-CHAR_ATTR_TYPE
-ATTR_MAX_HP 
-ATTR_ATTACK
-ATTR_DEFENCE
-ATTR_CRITLV
-ATTR_CRITRATE
-ATTR_CRITHARM
-ATTR_TENACITYLV
-ATTR_DEFCRITRATE
-ATTR_MISSLV
-ATTR_MISSRATE	
-
-ATTR_HITLV
-
-ATTR_HITRATE
-ATTR_ARMORBREAK
-ATTR_DEFARMORBREAK
-ATTR_INCDAMAGE
-ATTR_DECDAMAGE
-ATTR_SHENFALV
-ATTR_ICEDEFENCE
-ATTR_FIREDEFENCE
-ATTR_WINDDEFENCE
-ATTR_THUNDERDEFENCE
-MAX_CHAR_ATTR_INDEX
-ATTR_HPRECOVER3
-ATTR_MOVE_SPEED4
-	ATTR_CAMP5
-ATTR_MODEL_ID6
-ATTR_MOUNT_ID7
-ATTR_EXP_REFIX8
-ATTR_STEALLEVEL9
-ATTR_DETECTLEVEL:
-MAX_CHAR_ATTR_NUMd*Ϊ
-	CHAT_TYPE
-CHAT_TYPE_INVALIDÿÿÿÿÿÿÿÿÿ
-CHAT_TYPE_SYSTEM
-CHAT_TYPE_TELL
-CHAT_TYPE_MENPAI
-CHAT_TYPE_GUILD
-CHAT_TYPE_BLOOD
-CHAT_TYPE_TEAM
-CHAT_TYPE_SCENE
-CHAT_TYPE_NORMAL
-CHAT_TYPE_CHANNEL	
-CHAT_TYPE_SELF
-
-CHAT_TYPE_LABA
-CHAT_TYPE_ANNOUNCEMENT
-CHAT_TYPE_ACTIVITY
-CHAT_TYPE_ALL*C
-BAG_TYPE
-BAG_NONE 
-BAG_BASE
-BAG_TASK
-	BAG_EQUIP*_
-MOUNT_OP_TYPE
-MOUNT_OP_NONE 
-MOUNT_OP_LAUNCH
-MOUNT_OP_DOWN
-MOUNT_OP_ChANGE*V
-PKMODEL_TYPE
-PKMODEL_COMMON 
-
-PKMODEL_PK
-PKMODEL_GUILD
-PKMODEL_MAX*Λ
-RELATION_TYPE
-RELATION_TYPE_NONE 
-RELATION_TYPE_FRIEND
-RELATION_TYPE_BROTHER
-RELATION_TYPE_BLACKNAME
-RELATION_TYPE_TEMPFRIEND
-RELATION_TYPE_STRANGER
-RELATION_TYPE_SIZE*Ώ
-REQ_RELATION_OPERATION_TYPE
-REQ_RELATION_OPERATION_NONE %
-!REQ_RELATION_OPERATION_ONLINELIST&
-"REQ_RELATION_OPERATION_ADD_APPLYER3
-/REQ_RELATION_OPERATION_TEMPFRIEND_ADDTO_APPLYER'
-#REQ_RELATION_OPERATION_ADDBLACKLIST5
-1REQ_RELATION_OPERATION_TEMPFRIEND_ADDTO_BLACKLIST$
- REQ_RELATION_OPERATION_DELFRIEND,
-(REQ_RELATION_OPERATION_DELFROM_BLACKLIST%
-!REQ_RELATION_OPERATION_VIEWPLAYER
-REQ_RELATION_OPERATION_LIST	&
-"REQ_RELATION_OPERATION_APPLER_LIST
-.
-*REQ_RELATION_OPERATION_RECOMMENDATION_LIST!
-REQ_RELATION_OPERATION_ACCEPT%
-!REQ_RELATION_OPERATION_ACCEPT_ALL"
-REQ_RELATION_OPERATION_ADD_ALL%
-!REQ_RELATION_OPERATION_REFUSE_ALL%
-!REQ_RELATION_OPERATION_GOTO_VISIT0
-,REQ_RELATION_OPERATION_ADD_APPLYER_BY_SCRIPT/
-+REQ_RELATION_OPERATION_ADD_FRIEND_BY_SCRIPT/
-+REQ_RELATION_OPERATION_DEL_FRIEND_BY_SCRIPT)
-%REQ_RELATION_OPERATION_REFUSE_APPLYER,
-(REQ_RELATION_OPERATION_LASTEST_FRIEDINFO*Ι
-RET_RELATION_OPERATION_TYPE
-RET_RELATION_OPERATION_NONE %
-!RET_RELATION_OPERATION_ONLINELIST$
- RET_RELATION_OPERATION_ADDFRIEND2
-.RET_RELATION_OPERATION_TEMPFRIEND_ADDTO_FRIEND'
-#RET_RELATION_OPERATION_ADDBLACKLIST5
-1RET_RELATION_OPERATION_TEMPFRIEND_ADDTO_BLACKLIST$
- RET_RELATION_OPERATION_DELFRIEND,
-(RET_RELATION_OPERATION_DELFROM_BLACKLIST/
-+RET_RELATION_OPERATION_NOTIFY_ADDTEMPFRIEND+
-'RET_RELATION_OPERATION_NOTIFY_ADDFRIEND	(
-$RET_RELATION_OPERATION_NOTIFY_ONLINE
-)
-%RET_RELATION_OPERATION_NOTIFY_OFFLINE%
-!RET_RELATION_OPERATION_VIEWPLAYER
-RET_RELATION_OPERATION_LIST&
-"RET_RELATION_OPERATION_APPLER_LIST.
-*RET_RELATION_OPERATION_RECOMMENDATION_LIST,
-(RET_RELATION_OPERATION_NOTIFY_ADDAPPLYER,
-(RET_RELATION_OPERATION_NOTIFY_DELAPPLYER"
-RET_RELATION_OPERATION_ADD_ALL'
-#RET_RELATION_OPERATION_BE_DELFRIEND&
-"RET_RELATION_OPERATION_ADD_APPLYER)
-%RET_RELATION_OPERATION_REFUSE_APPLYER0
-,RET_RELATION_OPERATION_NOTIFY_REFUSE_APPLYER,
-(RET_RELATION_OPERATION_LASTEST_FRIEDINFO%
-!RET_RELATION_OPERATION_GOTO_VISIT*…
-QUERY_MAIL_TYPE!
-QUERY_MAIL_TYPE_NONEÿÿÿÿÿÿÿÿÿ
-QUERY_MAIL_TYPE_NORMAL 
-QUERY_MAIL_TYPE_LOGIN
-QUERY_MAIL_TYPE_SIZE*¨
-MAIL_READ_STATUS"
-MAIL_READ_STATUS_NONEÿÿÿÿÿÿÿÿÿ
-MAIL_NORMAL_NOT_READ 
-MAIL_NORMAL_ALREADY_READ
-MAIL_ADDTION_ALREADY_READ
-MAIL_READ_STATUS_SIZE*t
-MAIL_OP_TYPE
-MAIL_OP_NONEÿÿÿÿÿÿÿÿÿ
-MAIL_OP_ADD 
-MAIL_OP_UPDATE
-MAIL_OP_DELETE
-MAIL_OP_SIZE*i
-MAIL_SEND_TYPE
-MAIL_SEND_NONEÿÿÿÿÿÿÿÿÿ
-MAIL_SEND_BATCH 
-MAIL_SEND_ALL
-MAIL_SEND_SIZE*
-TEAM_MEMBER_STATUS
-TEAM_MEMBER_NONEÿÿÿÿÿÿÿÿÿ
-TEAM_MEMBER_ONLINE 
-TEAM_MEMBER_OFFLINE
-TEAM_MEMBER_DEAD
-TEAM_MEMBER_SIZE*
-TEAM_APPLER_OP_TYPE 
-TEAM_APPLER_OP_NONEÿÿÿÿÿÿÿÿÿ
-TEAM_APPLER_OP_ADD 
-TEAM_APPLER_OP_DEL
-TEAM_APPLER_OP_CLEAN
-TEAM_APPLER_OP_SIZE*
-TEAM_INVITE_OP_TYPE 
-TEAM_INVITE_OP_NONEÿÿÿÿÿÿÿÿÿ
-TEAM_INVITE_OP_SEND 
-TEAM_INVITE_OP_ACCEPT
-TEAM_INVITE_OP_REJECT
-TEAM_INVITE_OP_SIZE*
-TEAM_GATHER_OP_TYPE 
-TEAM_GATHER_OP_NONEÿÿÿÿÿÿÿÿÿ
-TEAM_GATHER_OP_SEND 
-TEAM_GATHER_OP_ACCEPT
-TEAM_GATHER_OP_REJECT
-TEAM_GATHER_OP_SIZE*l
-
-QUERY_TYPE
-QUERY_TYPE_NONEÿÿÿÿÿÿÿÿÿ
-QUERY_TYPE_PLAYER 
-QUERY_TYPE_GUILD
-QUERY_TYPE_SIZE*±
-QUERY_RESULT
-QUERY_RESULT_NONEÿÿÿÿÿÿÿÿÿ
-QUERY_RESULT_TYPE_INVALID 
-QUERY_RESULT_NAME_EMPTY!
-QUERY_RESULT_PLAYER_NOT_EXIST$
- QUERY_RESULT_PLAYER_EXIST_ONLINE%
-!QUERY_RESULT_PLAYER_EXIST_OFFLINE 
-QUERY_RESULT_GUILD_NOT_EXIST
-QUERY_RESULT_GUILD_EXIST
-QUERY_RESULT_SIZE*³
-LOGIN_OUT_TYPE
-LOGIN_OUT_NONEÿÿÿÿÿÿÿÿÿ
-LOGIN_OUT_SWITCH_ROLE 
-LOGIN_OUT_SWITCH_LOGIN
-LOGIN_OUT_NORMAL_QUIT
-LOGIN_OUT_EXCEPT_QUIT
-LOGIN_OUT_TYPE_SIZE*¬
-
-TEAM_ERROR
-TEAM_ERROR_SUCCESS  
-TEAM_ERROR_INVITEDESTHASTEAM
-TEAM_ERROR_INVITEREFUSE
-TEAM_ERROR_INVITETEAMFULL!
-TEAM_ERROR_INVITELEADERREFUSE
-TEAM_ERROR_DISMISSNOTLEADER
-TEAM_ERROR_KICKNOTLEADER
-TEAM_ERROR_APPLYSOURHASTEAM"
-TEAM_ERROR_APPLYDESTHASNOTTEAM 
-TEAM_ERROR_APPLYLEADERREFUSE	
-TEAM_ERROR_APPLYTEAMFULL
-#
-TEAM_ERROR_APPLYLEADERGUIDERROR
-TEAM_ERROR_APPLYLISTFULL
-TEAM_ERROR_APPLYTEAMNULL 
-TEAM_ERROR_APPOINTSOURNOTEAM 
-TEAM_ERROR_APPOINTDESTNOTEAM!
-TEAM_ERROR_APPOINTNOTSAMETEAM"
-TEAM_ERROR_APPOINTSOURNOLEADER$
- TEAM_ERROR_APPLYLEADERCANTANSWER
-TEAM_ERROR_INVITERNOTINTEAM
-TEAM_ERROR_APPLYWHENINTEAM
-TEAM_ERROR_TEAMFULL"
-TEAM_ERROR_REFUSEINVITESETTING
-TEAM_ERROR_TARGETNOTONLINE$
- TEAM_ERROR_CLEAN_APPLERS_NO_TEAM&
-"TEAM_ERROR_CLEAN_APPLERS_NO_LEADER$
- TEAM_ERROR_CLEAN_APPLERS_OFFLINE(
-$TEAM_ERROR_ACCPET_APPLYER_NOT_LEADER
-TEAM_ERROR_LEADER_OFFLINE
-TEAM_ERROR_TEAM_NULL
-TEAM_ERROR_APPLER_OFFLINE'
-#TEAM_ERROR_GATHER_OPERATER_TEAMNULL'
-#TEAM_ERROR_GATHER_OPERATER_NOLEADER '
-#TEAM_ERROR_GATHER_OPERATEE_TEAMNULL!$
- TEAM_ERROR_GATHER_DIFFERENT_TEAM"&
-"TEAM_ERROR_GATHER_OPERATER_OFFLINE#&
-"TEAM_ERROR_GATHER_OPERATEE_OFFLINE$+
-'TEAM_ERROR_GATHER_OPERATEE_CANNOTANSWER%+
-'TEAM_ERROR_GATHER_OPERATER_CANNOTANSWER&%
-!TEAM_ERROR_GATHER_OPERATEE_REJECT'"
-TEAM_ERROR_CREATE_ALREADY_HAVE(%
-!TEAM_ERROR_DEL_APPLYER_NOT_LEADER)%
-!TEAM_ERROR_TARGET_IN_MY_BLACKLIST*"
-TEAM_ERROR_IN_TARGET_BLACKLIST+$
- TEAM_ERROR_ALREADY_IN_APPLY_LIST,
-TEAM_ERROR_APPLY_SUCCESS-
-TEAM_ERROR_INVITE_SUCCESS..
-*TEAM_ERROR_IN_TEAMCOPYSCENE_CANNOT_DISMISS0-
-)TEAM_ERROR_IN_TEAMCOPYSCENE_CANNOT_CREATE1*
-&TEAM_ERROR_IN_TEAMCOPYSCENE_CANNOT_DEL2,
-(TEAM_ERROR_IN_TEAMCOPYSCENE_CANNOT_LEAVE3-
-)TEAM_ERROR_IN_TEAMCOPYSCENE_CANNOT_ACCEPT4#
-TEAM_ERROR_HAVE_ALREADY_IN_TEAM5'
-#TEAM_ERROR_NOT_LEADER_CANNOT_ACCEPT6*
-&TEAM_ERROR_NOT_LEADER_CANNOT_SETTARGET73
-/TEAM_ERROR_NOT_AUTOMATH_SWITCH_TARGET_NOT_MATCH8#
-TEAM_ERROR_RELATIONTYPE_INVALID9(
-$TEAM_ERROR_BATTLEFIELD_NOT_SAME_CAMP:
-TEAM_ERROR_LEVEL_NOT_MATCH;5
-1TEAM_ERROR_NOT_AUTOREFUSE_SWITCH_TARGET_NOT_MATCH<
-TEAM_ERROR_IN_AUTOREFUSE=
-TEAM_ERROR_IS_MYSELF>#
-TEAM_ERROR_TEAM_MISSION_SUCCESS?-
-)TEAM_ERROR_TEAM_MISSION_OPERATOR_NOLEADER@#
-TEAM_ERROR_TEAM_NUM_NOT_ENCOUGHA/
-+TEAM_ERROR_TEAM_ONLINE_USER_NUM_NOT_ENCOUGHB/
-+TEAM_ERROR_TEAMMEMBER_LEAVE_NOT_ENCOUGH_NUMC6
-2TEAM_ERROR_TEAMMEMBER_LEAVE_NOT_ENCOUGH_ONLINE_NUMD#
-TEAM_ERROR_MISSION_ALREADY_FULLE+
-'TEAM_ERROR_TEAM_IMAGE_OPERATOR_NOLEADERF0
-,TEAM_ERROR_TEAM_IMAGE_ALREADY_OPEN_CANNOT_ING(
-$TEAM_ERROR_TEAM_IMAGE_LEADER_CHANGEDH%
-!TEAM_ERROR_TRANS_ITEM_NOT_ENCOUGHK$
- TEAM_ERROR_LOCK_ITEM_NOT_ENCOUGHL"
-TEAM_ERROR_DIE_NUM_NOT_ENCOUGHM"
-TEAM_ERROR_HAS_NOT_THIS_REWARDN*
-&TEAM_ERROR_THIS_REWARD_ALREADY_REWADEDO"
-TEAM_ERROR_NOT_REACH_CONDITIONP
-TEAM_ERROR_NUMBERQ*‡
-TEAM_RESULT
-TEAM_RESULT_MEMBERENTERTEAM 
-TEAM_RESULT_MEMBERLEAVETEAM
-TEAM_RESULT_LEADERLEAVETEAM
-TEAM_RESULT_TEAMDISMISS
-TEAM_RESULT_TEAMKICK
-TEAM_RESULT_TEAMAPPOINT
-TEAM_RESULT_TEAMREFRESH 
-TEAM_RESULT_STARTCHANGESCENE
-TEAM_RESULT_ENTERSCENE!
-TEAM_RESULT_REFRESHSERVERINFO	
-TEAM_RESULT_MEMBEROFFLINE
-
-TEAM_RESULT_GATHER
-TEAM_RESULT_SETTARGET2
-.TEAM_RESULT_TEAMKICK_CANNOT_ENTERTEAMCOPYSCENE"
-TEAM_RESULT_SYNCTEAMMEMBERINFO$
- TEAM_RESULT_AUTOREFUSETEAMINVITE
-TEAM_RESULT_TEAMTASK_OPEN
-TEAM_RESULT_TEAMTASK_SYN
-TEAM_RESULT_TEAMIMAGE_EXIT
-TEAM_RESULT_NUMBER*z
-BLOODLEAGUE_POSITION 
-BLOODLEAGUE_POSITION_INVALID 
-BLOODLEAGUE_POSITION_LEADER
-BLOODLEAGUE_POSITION_MEMBER*³
-BLOODLEAGUE_ERROR
-BLOODLEAGUE_ERROR_OK 
-BLOODLEAGUE_ERROR_NOK
-BLOODLEAGUE_ERROR_HasBL,
-(BLOODLEAGUE_ERROR_LeaderHasNOTeamOrNoMem)
-%BLOODLEAGUE_ERROR_LeaderHasNoJinLanPu"
-BLOODLEAGUE_ERROR_CreatorHasBL
-!
-BLOODLEAGUE_ERROR_InvalidName!
-BLOODLEAGUE_ERROR_NameTooLong
-BLOODLEAGUE_ERROR_Illegal%
-!BLOODLEAGUE_ERROR_BLCountReachMax'
-#BLOODLEAGUE_ERROR_NoSuchBloodLeague(
-$BLOODLEAGUE_ERROR_AlreadyInApplyList%
-!BLOODLEAGUE_ERROR_ApplyListIsFull
-BLOODLEAGUE_ERROR_NotLeader"
-BLOODLEAGUE_ERROR_MemberIsFull.
-*BLOODLEAGUE_ERROR_TargetInOtherBloodLeague$
- BLOODLEAGUE_ERROR_NotInApplyList'
-#BLOODLEAGUE_ERROR_AlreadyInTempList 
-BLOODLEAGUE_ERROR_KickLeader%
-!BLOODLEAGUE_ERROR_NotInMemberList'
-#BLOODLEAGUE_ERROR_LeaderCannotLeave#
-BLOODLEAGUE_ERROR_NotTeamLeader&
-"BLOODLEAGUE_ERROR_NotInBloodLeague "
-BLOODLEAGUE_ERROR_NameRepeated#"
-BLOODLEAGUE_ERROR_NoTempMember$'
-#BLOODLEAGUE_ERROR_CreateBLCheckFail%&
-"BLOODLEAGUE_ERROR_MemberNotConfirm&$
- BLOODLEAGUE_ERROR_CancleCreation'$
- BLOODLEAGUE_ERROR_CreateTimeOver((
-$BLOODLEAGUE_ERROR_BeBrotherCheckFail)-
-)BLOODLEAGUE_ERROR_StoreSelfScoreNotEnough*$
- BLOODLEAGUE_ERROR_ScoreNotEnough+%
-!BLOODLEAGUE_ERROR_STORE_OUT_LIMIT,&
-"BLOODLEAGUE_ERROR_BAG_OUT_OF_SPACE-&
-"BLOODLEAGUE_ERROR_MONEY_NOT_ENOUGH.+
-'BLOODLEAGUE_ERROR_STORE_NOT_LEAGUE_TYPE/+
-'BLOODLEAGUE_ERROR_STORE_TABLE_NOT_FOUND0#
-BLOODLEAGUE_ERROR_NoPreCreateBL1!
-BLOODLEAGUE_ERROR_LevelLocked2
-BLOODLEAGUE_ERROR_NearNPC3)
-%BLOODLEAGUE_ERROR_NPC_TABLE_NOT_FOUND4#
-BLOODLEAGUE_ERROR_TRANSMIT_FAIL5,
-(BLOODLEAGUE_ERROR_COMMON_TABLE_NOT_FOUND6%
-!BLOODLEAGUE_ERROR_Item_Not_Enough7$
- BLOODLEAGUE_ERROR_ICON_OUT_RANGE8$
- BLOODLEAGUE_ERROR_CD_NOT_READY_19$
- BLOODLEAGUE_ERROR_CD_NOT_READY_2:"
-BLOODLEAGUE_ERROR_NoSuchPerson;&
-"BLOODLEAGUE_ERROR_AlreadyInMemList<%
-!BLOODLEAGUE_ERROR_Table_Not_Found=/
-+BLOODLEAGUE_ERROR_Privilege_Table_Not_Found>8
-4BLOODLEAGUE_ERROR_Privilege_Table_Position_Not_Found?&
-"BLOODLEAGUE_ERROR_Has_No_Privilege@#
-BLOODLEAGUE_ERROR_InvalidStringA#
-BLOODLEAGUE_ERROR_StringTooLongB!
-BLOODLEAGUE_ERROR_TargetHasBLC 
-BLOODLEAGUE_ERROR_DenyInviteD*M
-BLOODLEAGUE_TEAM_BUFF_TYPE/
-+BLOODLEAGUE_TEAM_BUFF_TYPE_EQUIP_DROP_RATIO*h
-BLOODLEAGUE_ACHIEVE_TYPE"
-BLOODLEAGUE_ACHIEVE_TYPE_LEVEL(
-$BLOODLEAGUE_ACHIEVE_TYPE_COMBATPOINT*ÿ
-BLOODLEAGUE_PRIVILEGE_TYPE&
-"BLOODLEAGUE_PRIVILEGE_TYPE_KickMem%
-!BLOODLEAGUE_PRIVILEGE_TYPE_Invite+
-'BLOODLEAGUE_PRIVILEGE_TYPE_ModifyBLName,
-(BLOODLEAGUE_PRIVILEGE_TYPE_OperateInvate0
-,BLOODLEAGUE_PRIVILEGE_TYPE_ModifyMemNickName-
-)BLOODLEAGUE_PRIVILEGE_TYPE_ModifyNickName+
-'BLOODLEAGUE_PRIVILEGE_TYPE_ModifyIconID)
-%BLOODLEAGUE_PRIVILEGE_TYPE_ModifyDesc*Λ
-BLOODLEAGUE_OPERATE_TYPE"
-BLOODLEAGUE_OPERATE_TYPE_Apply '
-#BLOODLEAGUE_OPERATE_TYPE_KickMember$
- BLOODLEAGUE_OPERATE_TYPE_SynBLId(
-$BLOODLEAGUE_OPERATE_TYPE_AcceptApply"
-BLOODLEAGUE_OPERATE_TYPE_ENTER"
-BLOODLEAGUE_OPERATE_TYPE_Leave$
- BLOODLEAGUE_OPERATE_TYPE_Destroy"
-BLOODLEAGUE_OPERATE_TYPE_Fired)
-%BLOODLEAGUE_OPERATE_TYPE_UpdateLeader	$
- BLOODLEAGUE_OPERATE_TYPE_Refused
-.
-*BLOODLEAGUE_OPERATE_TYPE_ModifyMemNickName+
-'BLOODLEAGUE_OPERATE_TYPE_ModifyNickName)
-%BLOODLEAGUE_OPERATE_TYPE_ModifyIconID'
-#BLOODLEAGUE_OPERATE_TYPE_ModifyDesc*X
-BLMISSION_OPERATE_TYPE
-BLMISSION_OPERATE_TYPE_ADD
-BLMISSION_OPERATE_TYPE_DEL*Ν
-BADGE_ERROR
-BADGE_ERROR_OK 
-BADGE_ERROR_NOK
-BADGE_ERROR_TABLE
-BADGE_ERROR_FameNotEnough
-BADGE_ERROR_IsNotDailyChest
-BADGE_ERROR_DailyChestTaken
-BADGE_ERROR_ReachMaxLevel*ά
-PALACE_ERROR
-PALACE_ERROR_OK 
-PALACE_ERROR_UNKNOWN
-PALACE_ERROR_LEVEL_LIMIT 
-PALACE_ERROR_NOT_ENOUGH_TIME
-PALACE_ERROR_INVALID_SCENE
-PALACE_ERROR_INVALID_CONFIG
-PALACE_ERROR_SCENE_RESET*ι
-BADGE_MISSION_TYPE
-BADGE_MISSION_TYPE_NON "
-BADGE_MISSION_TYPE_KillMonster#
-BADGE_MISSION_TYPE_ConsumeMoney$
- BADGE_MISSION_TYPE_FinishMission%
-!BADGE_MISSION_TYPE_AttendActivity 
-BADGE_MISSION_TYPE_LoginGame.
-*BADGE_MISSION_TYPE_AttendResourceCopyScene&
-"BADGE_MISSION_TYPE_AttendOfflinePK-
-)BADGE_MISSION_TYPE_FinishChapterCopyScene(
-$BADGE_MISSION_TYPE_AttendPalaceScene	(
-$BADGE_MISSION_TYPE_KillMonsterByType
-$
- BADGE_MISSION_TYPE_AttendCashCow*:
-
-BADGE_TYPE
-BADGE_TYPE_MISSION
-BADGE_TYPE_CHEST*7
-MOUNT_STATE
-STATE_ON_MOUNT
-STATE_DOWN_MOUNT*4
-
-WING_STATE
-STATE_ON_WING
-STATE_DOWN_WING*(
-ATTRTYPE
-INT_TYPE
-
-FLOAT_TYPE*/
-IMPROVE_TYPE
-NOT_IMPROVE 
-
-IS_IMPROVE*/
-SUCCESS_TYPE
-
-IS_SUCCESS 
-NOT_SUCCESS*y
-OFFLINEPK_NOTIFY_TYPE 
-OFFLINEPK_NOTIFY_TYPE_ONLINE
-OFFLINEPK_NOTIFY_TYPE_MAIL
-OFFLINEPK_NOTIFY_TYPE_SIZE*ή	
-SCRIPT_MAIL_OP_TYPE
-SCRIPT_MAIL_OP_TYPE_NONE #
-SCRIPT_MAIL_OP_TYPE_ADD_APPLYER"
-SCRIPT_MAIL_OP_TYPE_ADD_FRIEND"
-SCRIPT_MAIL_OP_TYPE_DEL_FRIEND/
-+SCRIPT_MAIL_OP_TYPE_OFFLINEPK_REWARD_FRIEND(
-$SCRIPT_MAIL_OP_TYPE_OFFLINEPK_RECORD,
-(SCRIPT_MAIL_OP_TYPE_SYN_BLOODLEAGUE_INFO"
-SCRIPT_MAIL_OP_TYPE_GUILD_INFO/
-+SCRIPT_MAIL_OP_TYPE_SYN_BLOODLEAGUE_MISSION#
-SCRIPT_MAIL_OP_TYPE_FORBIT_CHAT	'
-#SCRIPT_MAIL_OP_TYPE_CARNIVAL_REFESH
-1
--SCRIPT_MAIL_OP_TYPE_GUILDBOSS_CHALLENGEREWARD.
-*SCRIPT_MAIL_OP_TYPE_GUILDBOSS_KILLEDREWARD&
-"SCRIPT_MAIL_OP_TYPE_MODIFY_GMRIGHT+
-'SCRIPT_MAIL_OP_TYPE_GUILD_JOININ_CDTIME&
-"SCRIPT_MAIL_OP_TYPE_UNIVERSE_ARENA(
-$SCRIPT_MAIL_OP_TYPE_DIRECT_SENDMONEY"
-SCRIPT_MAIL_OP_TYPE_GM_ADD_EXP%
-!SCRIPT_MAIL_OP_TYPE_GM_ADD_CHARLV%
-!SCRIPT_MAIL_OP_TYPE_GM_SET_CHARLV'
-#SCRIPT_MAIL_OP_TYPE_GM_ADD_GOLDCOIN'
-#SCRIPT_MAIL_OP_TYPE_GM_SET_GOLDCOIN&
-"SCRIPT_MAIL_OP_TYPE_GM_ADD_YUANBAO&
-"SCRIPT_MAIL_OP_TYPE_GM_SET_YUANBAO.
-*SCRIPT_MAIL_OP_TYPE_HORSEMARKET_DRAWRESULT)
-%SCRIPT_MAIL_OP_TYPE_HORSE_TUPPING_END!
-SCRIPT_MAIL_OP_TYPE_DEL_HORSE(
-$SCRIPT_MAIL_OP_TYPE_TOURMATCH_RESULT,
-(SCRIPT_MAIL_OP_TYPE_TOUR_MATCH_PROMOTION
-SCRIPT_MAIL_OP_TYPE_SIZE*`
-PET_SKILL_OP_TYPE
-PET_SKILL_OP_INSTALL
-PET_SKILL_OP_UNINSTALL
-PET_SKILL_OP_SIZE*
-ACTIVE_MOUNT_SKIN_LIMIT_TYPE 
-ACTIVE_MOUNT_SKIN_LIMIT_NONE !
-ACTIVE_MOUNT_SKIN_LIMIT_STAGE%
-!ACTIVE_MOUNT_SKIN_LIMIT_CHARLEVEL*D
-COPYSCENE_ENTER_TYPE
-PERSONAL_ENTER_TYPE 
-TEAM_ENTER_TYPE*Λ
-COMMON_CONFIG_ID
-COMMON_CONFIG_NONE 
-COMMON_CONFIG_MAX_TEAM_NUM+
-'COMMON_CONFIG_CHALLENGE_MISSION_CD_TIME4
-0COMMON_CONFIG_CHALLENGE_MISSION_ONCE_CONSUME_ADD1
--COMMON_CONFIG_CHALLENGE_MISSION_CONSUME_LIMIT6
-2COMMON_CONFIG_CHALLENGE_MISSION_REFRESH_ORANGE_VIP8
-4COMMON_CONFIG_CHALLENGE_MISSION_REFRESH_ORANGE_MONEY9
-5COMMON_CONFIG_CHALLENGE_MISSION_REFRESH_ORANGE_ITEMID<
-8COMMON_CONFIG_CHALLENGE_MISSION_REFRESH_ORANGE_ITEMCOUNT-
-)COMMON_CONFIG_CHALLENGE_MISSION_DAILY_NUM	-
-)COMMON_CONFIG_CHALLENGE_MISSION_REST_TIME
-/
-+COMMON_CONFIG_CHALLENGE_MISSION_ROUND_LEVEL3
-/COMMON_CONFIG_CHALLENGE_MISSION_HUMAN_MAX_LEVEL1
--COMMON_CONFIG_CHALLENGE_MISSION_MAX_ACCEPTNUM
-COMMON_CONFIG_STORE_VERSION 
-COMMON_CONFIG_MOLEST_CD_TIME
-COMMON_CONFIG_SIZE%
-!COMMON_CONFIG_BADGE_DAILY_MISSION#
-COMMON_CONFIG_BADGE_DAILY_CHEST
-COMMON_CONFIG_PALACE_TIME#
-COMMON_CONFIG_PALACE_RESET_TIME*
-&COMMON_CONFIG_PALACE_RESET_NOTICE_TIME"
-COMMON_CONFIG_PALACE_MAIN_CITY$
- COMMON_CONFIG_PALACE_ENTER_LEVEL-
-)COMMON_CONFIG_TREASUREMAP_DIG_DAILY_LIMIT &
-"COMMON_CONFIG_ROBOTHER_DAILY_LIMIT!&
-"COMMON_CONFIG_RELIVE_OUTGHOST_TIME"$
- COMMON_CONFIG_SKILL_GEM_ADORN_CD##
-COMMON_CONFIG_STORAGE_HPCD_TIME$.
-*COMMON_CONFIG_BODYPOWER_AUTO_RECOVER_LIMIT%$
- COMMON_CONFIG_COUNT_RECOVER_TIME&%
-!COMMON_CONFIG_COMBAT_POINT_PARAM1'%
-!COMMON_CONFIG_COMBAT_POINT_PARAM2(%
-!COMMON_CONFIG_COMBAT_POINT_PARAM3)%
-!COMMON_CONFIG_COMBAT_POINT_PARAM4*(
-$COMMON_CONFIG_TRANS_EQUIP_MONEY_COST+-
-)COMMON_CONFIG_TRANS_EQUIP_COST_MONEY_TYPE,
-COMMON_CONFIG_PKPROTECTLLV-1
--COMMON_CONFIG_DAILY_CHALLENGE_WORLDBOSS_LIMIT.,
-(COMMON_CONFIG_WORLDBOSS_BOUGHT_PARAM_FIR/,
-(COMMON_CONFIG_WORLDBOSS_BOUGHT_PARAM_SEC0(
-$COMMON_CONFIG_FEEDBACK_REWARD_ITEMID1)
-%COMMON_CONFIG_FEEDBACK_REWARD_ITEMNUM2)
-%COMMON_CONFIG_FREE_RELIVE_COUNT_DAILY3-
-)COMMON_CONFIG_RELIVE_COST_EQUATION_PARAM14-
-)COMMON_CONFIG_RELIVE_COST_EQUATION_PARAM25%
-!COMMENT_CONFIG_PLAYER_LEVEL_LIMIT61
--COMMON_CONFIG_MAX_BLEXPEDITION_CHALLENGECOUNT72
-.COMMON_CONFIG_BLEXEPEDITION_BUY_CHALLENGE_COST86
-2COMMON_CONFIG_BLEXEPEDITION_BUY_CHALLENGE_MAX_COST9/
-+COMMON_CONFIG_BLEXPEDITIION_MAX_RESET_COUNT:
-COMMON_CONFIG_CAMP_D_VALUE;*
-&COMMON_CONFIG_FIRST_EXP_SCENE_EVENT_ID<.
-*COMMON_CONFIG_BLOODLEAGUE_CREATE_NEED_ITEM=4
-0COMMON_CONFIG_BLOODLEAGUE_CREATE_NEED_ITEM_COUNT>4
-0COMMON_CONFIG_BLOODLEAGUE_CREATE_NEED_MONEY_TYPE?5
-1COMMON_CONFIG_BLOODLEAGUE_CREATE_NEED_MONEY_COUNT@+
-'COMMON_CONFIG_BLOODLEAGUE_CREATE_CDTIMEA1
--COMMON_CONFIG_BLOODLEAGUE_QUIT_APPOINT_LEADERB1
--COMMON_CONFIG_BLOODLEAGUE_KICK_APPLYER_CDTIMEC,
-(COMMON_CONFIG_GUILDMISSION_MAX_CYCLE_NUMD+
-'COMMON_CONFIG_GUILD_TOAST_DRINK_MAX_NUME-
-)COMMON_CONFIG_GUILD_TOAST_DRINK_COST_TYPEF,
-(COMMON_CONFIG_GUILD_TOAST_DRINK_COST_NUMG&
-"COMMON_CONFIG_GUILDBOSS_BORNPOS_FXH&
-"COMMON_CONFIG_GUILDBOSS_BORNPOS_FZI
-COMMON_CONFIG_GUILDBOSS_DIRJ0
-,COMMON_CONFIG_UNIVERSE_ARENA_DAILY_VALIDTIMEK1
--COMMON_CONFIG_UNIVERSE_ARENA_JOINTIMEBYREWARDL3
-/COMMON_CONFIG_UNIVERSE_ARENA_ARENAMONTHNODETIMEM4
-0COMMON_CONFIG_MAX_GUILD_WAR_CONVENING_FREE_COUNTN0
-,COMMON_CONFIG_GUILD_TOAST_DRINK_MAX_FREE_NUMO+
-'COMMON_CONFIG_GUILD_TOAST_DRINK_ADD_EXPP2
-.COMMON_CONFIG_GUILD_TOAST_DRINK_COST_ITEM_TYPEQ1
--COMMON_CONFIG_GUILD_TOAST_DRINK_COST_ITEM_NUMR0
-,COMMON_CONFIG_GUILD_TOAST_DRINK_PRAISE_COUNTS
-COMMON_CONFIG_RR_MONEY_PRET
-COMMON_CONFIG_RR_RMB_PREU
-COMMON_CONFIG_TOWER_SWEEPV'
-#COMMON_CONFIG_TOWER_MAX_RESET_COUNTW/
-+COMMON_CONFIG_GUILD_CONTRIBUTE_YUANBAO_COSTX3
-/COMMON_CONFIG_GUILD_CONTRIBUTE_BINDYUANBAO_COSTY(
-$COMMON_CONFIG_GUILD_CONTRIBUTE_TIMESZ&
-"COMMON_CONFIG_GUILD_EXCHANGE_TIMES[+
-'COMMON_CONFIG_GUILD_CONTRIBUTION_REWARD\$
- COMMON_CONFIG_GUILD_MONEY_REWARD]%
-!COMMON_CONFIG_GUILD_LOTTERY_TIMES^2
-.COMMON_CONFIG_GUILD_EXCHANGE_CONTRIBUTION_COST_*«
-BLOODLEAGUEICONID
-BLOODLEAGUEICONID_Num0 
-BLOODLEAGUEICONID_Num1
-BLOODLEAGUEICONID_Num2
-BLOODLEAGUEICONID_Num3
-BLOODLEAGUEICONID_Num4
-BLOODLEAGUEICONID_Num5
-BLOODLEAGUEICONID_Num6
-BLOODLEAGUEICONID_Num7
-BLOODLEAGUEICONID_Num8
-BLOODLEAGUEICONID_Num9	*
-CHALLENGE_MISSION_REFRESH_TYPE
-REFRESH_TYPE_NONE 
-FREE_REFRESH
-MONEY_REFRESH
-ORANGE_REFRESH
-FROCE_FREE_REFRESH
-REFRESH_TYPE_SIZE*°
-	StoreType
-STORE_TYPE_NONE 
-STORE_TYPE_FIRST_PAGE
-STORE_TYPE_ITEM
-STORE_TYPE_CASH_GIFT
-STORE_TYPE_GIFT_BAG
-STORE_TYPE_MYSTERY
-STORE_TYPE_SIZE*©
-OperatePetFormationType
-PET_FORMATION_TYPE_NONE 
-PET_FORMATION_TYPE_ON
-PET_FORMATION_TYPE_OFF
-PET_FORMATION_TYPE_CHANGE
-PET_FORMATION_TYPE_SIZE*b
-HUMANPART_HOLE_OPEN_TYPE
-HOLE_OPEN_BY_QUALITY
-HOLE_OPEN_BY_VIP
-HOLE_OPEN_BY_LEVEL*.
-MedicItemType
-COMMON_TYPE
-GEM_TYPE*>
-TaskItemSubType
-COMMON_ITEM_TYPE
-VIRTUAL_ITEM_TYPE*I
-FASHION_DRESS_TYPE
-FASHION_DRESS_NORMAL
-FASHION_DRESS_JIANGHU*Θ
-MonsterType
-MONTER_TYPE_NONEÿÿÿÿÿÿÿÿÿ
-MONTER_TYPE_NORMAL 
-MONTER_TYPE_BOSS
-MONTER_TYPE_WILDBOSS
-MONSTER_TYPE_WORLDBOSS
-MONSTER_TYPE_TREASURE 
-MONSTER_TYPE_BATTLEFIELDBOSS
-MONSTER_TYPE_GATHER!
-MONSTER_TYPE_MOUNTCP_PLATFORM
-
-MONSTER_TYPE_MOUNTCP_NORMAL
-MONSTER_TYPE_MOUNTCP_FLY 
-MONSTER_TYPE_MOUNTCP_MONSTER 
-MONSTER_TYPE_PETCOPY_MONSTER
-MONSTER_TYPE_DEMON_BOSS
-MONSTER_TYPE_HUMAN_MONSTER%
-!MONSTER_TYPE_UARENA_ROBOT_MONSTER!
-MONSTER_TYPE_UARENA_ROBOT_PET
-MONSTER_TYPE_MOUNTCP_FLAG
-MONTER_TYPE_SIZE*Ξ
-CopySceneResourceType
-RESOURCE_NORMAL 
-RESOURCE_MONEY
-RESOURCE_EQUIP
-RESOURCE_MOUNT
-RESOURCE_TOWERDEFENSE
-RESOURCE_PET
-RESOURCE_TOWER
-RESOURCE_EXP
-RESOURCE_SIZE*6
-INSPIRE_TYPE
-MONEY_INSPIRE
-YUANBAO_INSPIRE*I
-TeamKickReason
-TEAM_KICK_NONE#
-TEAM_KICK_NOT_FIT_TEAMCOPYSCENE*η
-PKOutlineAskForPlayerListTYPE&
-"PKOutlineAskForPlayerListTYPE_NONE (
-$PKOutlineAskForPlayerListTYPE_NORMAL(
-$PKOutlineAskForPlayerListTYPE_CHARTS%
-!PKOutlineAskForPlayerListTYPE_ALL(
-$PKOutlineAskForPlayerListTYPE_HEAVEN'
-#PKOutlineAskForPlayerListTYPE_EARTH(
-$PKOutlineAskForPlayerListTYPE_PEOPLE&
-"PKOutlineAskForPlayerListTYPE_SIZE*“
-RankingType
-RankByLevel 
-RankByPower
-RankByPetCopyDamage
-RankByPetCopyHOF
-RankByTower
-
-RankByBath
-	RankByTop
-RankByMount
-RankByGodSword
-	RankByPet	
-RankCarnival
-
-Rank_Guild_War
-RankArena1v1_Universe
-RankArena1v1_LOCAL
-Rank_Guild_War_king
-RankByMoney
-RankByHorseValue
-RankByTourMatchReward
-RankByRookieMatchReward*
-	QueryType
-RankPlayerType*k
- ACTIVE_SUBWEAPON_SKIN_LIMIT_TYPE
-ACTIVE_LIMIT_STAGELV
-ACTIVE_LIMIT_VIPLV
-ACTIVE_LIMIT_ITEM*;
-GUILD_REQUEST_TYPE
-SINGLE_REQUEST
-BATCH_REQUEST*Σ
-GUILD_POSITION
-GUILD_POSITION_INVALID 
-GUILD_POSITION_MEMBER
-GUILD_POSITION_ELITE
-GUILD_POSITION_BABY 
-GUILD_POSITION_ASS_CHIEFTAIN
-GUILD_POSITION_CHIEFTAIN
-GUILD_POSITION_SIZE*A
-GUILD_USER_TYPE
-GUILD_USER_INFORMAL
-GUILD_USER_FORMAL*†
-GUILD_MANAGE_TYPE
-GUILD_MANAGE_REMOVE
-GUILD_MANAGE_REVIEW
-GUILD_MANAGE_CHANGEPOSITION
-GUILD_MANAGE_REVIEW_ONEKEY*B
-GUILD_JOIN_RESULT
-GUILD_CHECK_AGREE
-GUILD_CHECK_REFUSE*¨
-GUILD_UPDATE_TYPE
-
-TYPE_APPLY
-	TYPE_JOIN
-	TYPE_QUIT
-TYPE_REFUSE
-TYPE_POSITION
-TYPE_ASSIGN
-	TYPE_FIRE
-
-TYPE_LOGIN
-TYPE_LOGOUT	
-TYPE_REVIEW
-
-TYPE_AUTOJOIN
-TYPE_SYNCUSERINFO
-TYPE_SYNCGUILDINFO
-TYPE_JOIN_ONEKEY
-TYPE_BUILDING_STORE*5
-GUILD_NOTICE_TYPE
-
-TYPE_FIRED
-TYPE_REFUSED*t
-MOUNT_COPYSCENE_MONSTER_TYPE
-TYPE_MONSTER
-TYPE_NORMAL_OBSTACLE
-TYPE_FLY_OBSTACLE
-TYPE_PLATFORM*Λ
-CopySceneUnlockType
-TYPE_LEVELE_UNLOCK
-TYPE_PASS_BEFORECOPYSCENE
-TYPE_ONLINE_TOTALTIME
-TYPE_ONLINE_TOTALDAYS
-TYPE_STAR_LIMIT
-TYPE_MISSION_CHECK
-TYPE_TEAMMISSION_CHECK*£
-EnterCopySceneCostType
-COST_TYPE_CHALLENG
-COST_TYPE_BODYPOWR
-COST_TYPE_MONEY
-COST_TYPE_BINDYUANBAO
-COST_TYPE_YUANBAO
-COST_TYPE_ITEM*–
-CopySceneCommentType
-COMMENT_BY_NONE 
-COMMENT_BY_PASSTIME
-COMMENT_BY_KILLMONSTER
-COMMENT_BY_MONSTERWAVES
-COMMENT_BY_DISTANCE*B
-PlatFormStateType
-PFST_BEGORE_GATHER 
-PFST_AFTER_GATHER*7
-UpdateBroadCastOperate
-UBCO_ADD 
-UBCO_REMOVE*5
-PLAYERSTATUS
-PLAYER_ONLINE
-PLAYER_OFFLINE*
-
-DAMAGETYPE
-IS_CRITICAL 
-IS_MISS
-
-ICE_DAMAGE
-FIRE_DAMAGE
-WIND_DAMAGE
-THUNDER_DAMAGE
-BOMB_DAMAGE*W
-RelationType
-NEARBYPLAYERTYPE
-
-FRIENDTYPE
-	GUILDTYPE
-MAX_TYPE_INDEX*H
-TARGET_EVENT_TYPE
-TET_GODSWORD
-
-TET_LEGEND
-MAX_EVENT_NUMd*.
-Lottery_Type
-	LT_SINGLE 
-LT_REPEATED*Χ
-ExpSceneEventType
-	ESET_NONEÿÿÿÿÿÿÿÿÿ
-ESET_MONSTER_MORE_WEAK 
-ESET_MONSTER_WEAK
-ESET_MONSTER_STRONG
-ESET_MONSTER_MORE_STRONG
-ESET_PASS_TIME_CHANGE_LONG
-ESET_PASS_TIME_CHANGE_LESS
-ESET_EXP_MULTIPLY_TYPE1
-ESET_EXP_MULTIPLY_TYPE2
-ESET_EXP_MULTIPLY_TYPE3
-ESET_EXP_MULTIPLY_TYPE4	
-ESET_NUM
-*G
-SexType
-SexTypeNoneÿÿÿÿÿÿÿÿÿ
-SexTypeMale 
-SexTypeFemale*;
-WorshipOpType
-GET_WORSHIP_INFO 
-SET_WORSHIP_INFO*	
-UI_SYSTEM_TYPE
-UI_SYSTEM_TYPE_CHAR
-UI_SYSTEM_TYPE_BAG
-UI_SYSTEM_TYPE_EQUIP
-UI_SYSTEM_TYPE_SKILL
-UI_SYSTEM_TYPE_HERO
-UI_SYSTEM_TYPE_GODSWORD
-UI_SYSTEM_TYPE_MOUNT!
-UI_SYSTEM_TYPE_KILLERCONSTANT
-UI_SYSTEM_TYPE_GUILD	
-UI_SYSTEM_TYPE_BADGE
-
-UI_SYSTEM_TYPE_WING
-UI_SYSTEM_TYPE_OFFLINEPK
-UI_SYSTEM_TYPE_GM
-UI_SYSTEM_TYPE_UI_RULER
-UI_SYSTEM_TYPE_BLOODLEAGUE
-UI_SYSTEM_TYPE_SUBWEAPON
-UI_SYSTEM_TYPE_SETTING
-UI_SYSTEM_TYPE_SHOP
-UI_SYSTEM_TYPE_RANK
-UI_SYSTEM_TYPE_CHARPTER
-UI_SYSTEM_TYPE_ACTIVITY
-UI_SYSTEM_TYPE_OFFERMISSION$
- UI_SYSTEM_TYPE_RESOURECCOPYSCENE
-UI_SYSTEM_TYPE_PALACE
-UI_SYSTEM_TYPE_WORLDBOSS
-UI_SYSTEM_TYPE_CLIMBTOWER
-UI_SYSTEM_TYPE_CASHCOW
-UI_SYSTEM_TYPE_WHOLEHOUSE
-UI_SYSTEM_TYPE_SECRETSHOP 
-UI_SYSTEM_TYPE_BLOODBOTTLE#!
-UI_SYSTEM_TYPE_COMBAT_ANALYSE%
-UI_SYSTEM_TYPE_WELFARE&
-UI_SYSTEM_TYPE_LAUNCHREWARD'
-UI_SYSTEM_TYPE_DRAWLOTTERY(
-UI_SYSTEM_TYPE_LEGEND)
-UI_SYSTEM_TYPE_SUITCOLLECT*
-UI_SYSTEM_TYPE_LOVLYPET+
-UI_SYSTEM_TYPE_QUESTIONARE,&
-"UI_SYSTEM_TYPE_OPENSERVER_ACTIVITY-
-UI_SSYTEM_TYPE_MAX.*Ζ
-UI_SYSTEM_CHAR_SUB_TYPE
-UI_SYSTEM_CHAR_SUB_CHAR
-UI_SYSTEM_CHAR_SUB_BAG
-UI_SYSTEM_CHAR_SHOP_IN_BAG
-UI_SYSTEM_CHAR_DRESS
-UI_SYSTEM_CHAR_ITEMCOMPOSE
-UI_SYSTEM_CHAR_TITLE*Χ
-UI_SYSTEM_EQUIP_SUB_TYPE'
-#UI_SYSTEM_EQUIP_SUB_EQUIP_INTENSIFY$
- UI_SYSTEM_EQUIP_SUB_EQUIP_UPSTAR#
-UI_SYSTEM_EQUIP_SUB_EQUIP_TRANS!
-UI_SYSTEM_EQUIP_SUB_EQUIP_GEM$
- UI_SYSTEM_EQUIP_SUB_EQUIP_REFINE*[
-UI_SYSTEM_SKILL_SUB_TYPE
-UI_SYSTEM_SKILL_SUB_SKILL 
-UI_SYSTEM_SKILL_SUB_GEMSKILL*•
-UI_SYSTEM_HERO_SUB_TYPE
-UI_SYSTEM_HERO_SUB_TRAIN
-UI_SYSTEM_HERO_SUB_UPSTAR
-UI_SYSTEM_HERO_SUB_SKILL
-UI_SYSTEM_HERO_SUB_FIGHTING*c
-UI_SYSTEM_GODSWORD_SUB_TYPE#
-UI_SYSTEM_GODSWORD_SUB_GODSWORD
-UI_SYSTEM_GODSWORD_SUB_RUNE*o
-UI_SYSTEM_MOUNT_SUB_TYPE
-UI_SYSTEM_MOUNT_SUB_MOUNT
-UI_SYSTEM_MOUNT_SKIN
-UI_SYSTEM_MOUNT_LAUNCH*W
-UI_SYSTEM_WING_SUB_TYPE
-UI_SYSTEM_WING_SUB_WING
-UI_SYSTEM_WING_SUB_WINGSKIN*b
-UI_SYSTEM_SUBWEAPON_SUB_TYPE 
-UI_SYSTEM_SUBWEAPON_SUB_LIST 
-UI_SYSTEM_SUBWEAPON_SUB_SKIN*Η
-
-DailyReset
-DR_NONE 
-DR_TOWER
-DR_COPYSCENE
-DR_TREASUREMAP
-DR_SUBWEAPON
-DR_BLOODLEAGUE_EXPEDITION
-
-DR_CASHCOW
-DR_WING
-DR_OFFLINEPKTIMES
-
-DR_WORSHIP	
-DR_BOSSGROUP
-
-	DR_PALACE
-DR_BADGE
-
-DR_PETCOPY
-DR_PETCOPY_TIMES
-DR_PETCOPY_PROGRESS
-DR_PETLOTTERY_FREE 
-DR_REFRESH_CHALLENGE_MISSION
-DR_GUILDMISSION
-DR_UNIVERSE_ARENA
-DR_UNIVERSE_ARENA_MONTH
-DR_HORSEMARKET*―
-CARNIVAL_ID
-CID_NONEÿÿÿÿÿÿÿÿÿ
-
-CID_BATTLE
-CID_LEVELGIFT
-CID_DAILYGIFT
-CID_COPYSCENEGIFT
-CID_LEVELRANK
-CID_COMBATPOINTRANK
-CID_HEGEMONY*
-PlayerRetainType
-PRT_Nonÿÿÿÿÿÿÿÿÿ
-PRT_FirstDayReg 
-PRT_2DayLogin
-PRT_3DayLogin
-PRT_7DayLogin
-PRT_30DayLogin*ά
-GIFTBAG_RESULT
-	GBR_ERRORÿÿÿÿÿÿÿÿÿ
-GBR_OKώÿÿÿÿÿÿÿÿ
-GBR_OVETTIMEύÿÿÿÿÿÿÿÿ
-GBR_NOT_EXISTόÿÿÿÿÿÿÿÿ 
-GBR_NOT_IN_TIMEZONEϋÿÿÿÿÿÿÿÿ
-GBR_HAVE_DONEϊÿÿÿÿÿÿÿÿ 
-GBR_MUTEX_HAVE_DONEωÿÿÿÿÿÿÿÿ(
-GBR_REUSABLE_CODE_REACH_MAXψÿÿÿÿÿÿÿÿ"
-GBR_LEVEL_NOT_ENCOUGHχÿÿÿÿÿÿÿÿ 
-GBR_CHANNELID_LIMITφÿÿÿÿÿÿÿÿ
-	GBR_PROXYυÿÿÿÿÿÿÿÿ*°
-AIActionType
-AIActionType_Invalid 
-AIActionType_EnterScene
-AIActionType_EnterCombat 
-AIActionType_HealthIncrement
-AIActionType_OwnerMaxHp
-AIActionType_OwnerCurHp
-AIActionType_KillObject
-AIActionType_LeaveCombat
-AIActionType_ONDIE
-AIActionType_SpecialCase	*P
-	BOSS_TYPE
-TYPEINVALIDÿÿÿÿÿÿÿÿÿ
-BOSSHOME
-	WORLDBOSS
-WILDBOSS*E
-TEAM_TARGET_TYPE
-GENERAL_TYPE 
-
-AUTO_MATCH
-AUTO_REFUSE*D
-TEAM_ENTER_SCENE_TYPE
-COMMON_SCENE_TYPE 
-IMAGE_SCENE_TYPE*ξ
-UArenaResult
-UR_ERRORÿÿÿÿÿÿÿÿÿ	
-UR_OK 
-UR_QUEUEING
-UR_QUEUEING_SUCESS
-UR_ERROR_IN_COPYSCENE
-UR_ERROR_LIMIT
-UR_NOT_QUEUEING
-UR_JOINTIME_NOT_ENOUGH
-UR_HAS_REWARD
-UR_BAG_FULL
-UR_NOT_OPEN	*‰
-
-UArenaType
-
-UT_ADD 
-UT_PAUSE
-UT_STOP
-UT_CONTINUE
-UT_ENTER
-UT_CANCEL_ENTER
-UT_DAILY_REWARD
-UT_LIST*=
-UArenaScoreType
-UST_WIN 
-UST_FAIL
-UST_DOGFALL*r
-TEAM_TASK_CTRL_TYPE
-
-START_TASK
-RESTART_TASK
-THIS_CIRCLE_INFO
-THIS_TASK_INFO
-CHANGE_TASK*
-TEAM_MARCH_TYPE
-ASK_DETINFO 
-
-TEAM_MARCH
-TARGET_REWARD
-FINAL_REWARD
-
-EVENT_INFO
-ADD_MARCH_EXP
-VISITOR_REWARD*η
-GUILD_GENERALS_OP
-GUILD_CHENCK_ENTER 
-GUILD_ASK_DETAILINFO
-GUILD_UPDATE_GC_MSG
-GUILD_UPDATE_WC_MSG
-GUILD_UPDATE_WG_MSG
-GUILD_UPDATE_GW_MSG
-GUILD_G_ASK_W_MSG
-GUILD_CAL_REWARD
-GUILD_RANKLIST
-GUILD_INNERRANKLIST	
-GUILD_CAL_INFO
-
-GUILD_UPDATE_MY_INFO
-GUILD_UPDATE_BOSS_INFO
-GUILD_UPDATE_HP_INFO*
-GUILDGENERALS_ERRORCODE
-GUILDGENERALS_OP_OK #
-GUILDGENERALS_OP_NOT_IN_AC_TIME 
-GUILDGENERALS_OP_AC_NOT_OPEN%
-!GUILDGENERALS_OP_AC_ALREADY_CLOSE 
-GUILDGENERALS_OP_LEVEL_LIMIT!
-GUILDGENERALS_OP_NOT_IN_GUILD%
-!GUILDGENERALS_OP_GUILDLEVEL_LIMIT*Ζ
-ResourceRecoverType
-RR_TOWER 
-RR_MONEY
-RR_MOUNT
-
-RR_EXP
-RR_TOWER_DEFENSE
-RR_EQUIP
-RR_NORMAL_ENSLAVED
-RR_HARD_ENSLAVED
-RR_CHALLENGE_MISSION
-	RR_PALACE	*r
-BUILDINGPLAY_TYPE
-TYPE_CONTRIBUTE
-TYPE_EXCHANGE
-TYPE_LOTTERY
-TYPE_PROMOTE
-TYPE_BUYGOODS*°
-HORSE_ATTR_ID
-HORSE_ATTR_BREED
-HORSE_ATTR_GENDER
-HORSE_ATTR_QUALITY
-HORSE_ATTR_LEVEL
-HORSE_ATTR_INIITVALUE
-HORSE_ATTR_TUPPING
-HORSE_ATTR_MATCHLIFE
-HORSE_ATTR_HEALTHY
-HORSE_ATTR_EMOTION	
-HORSE_ATTR_COMPETIVESTATE
-
-HORSE_ATTR_SPEED
-HORSE_ATTR_ENDURANCE
-HORSE_ATTR_ACCELERATE
-HORSE_ATTR_BURST
-HORSE_ATTR_DEXTEROUSE
-HORSE_ATTR_CONTROLMAX
-HORSE_ATTR_ENVIRONMENTAL
-HORSE_ATTR_SITE
-HORSE_ATTR_APPEARID
-HORSE_ATTR_SATIATE
-HORSE_ATTR_TRAINLEVEL
-HORSE_ATTR_MAX*d
-HORSE_SUIT_ID
-HORSE_SUIT_HAND
-HORSE_SUIT_PATCH
-HORSE_SUIT_REINS
-HORSE_SUIT_MAX*‡
-SECRETSHOP_OP_RESULT"
-SECRETSHOP_OP_ITEM_INDEX_WRONG"
-SECRETSHOP_OP_ITEM_HAS_SELLOUT'
-#SECRETSHOP_OP_SHOPITEM_CONFIG_WRONG*²
-AuctionType
-AUCTION_OPERATER_LIST
-AUCTION_OPERATER_MYLIST
-AUCTION_OPERATER_APPLY
-AUCTION_OPERATER_DOWN
-AUCTION_OPERATER_BUY
-AUCTION_OPERATER_QUERY*.
-GLOBAL_CONFIG_ID
-HORSE_DAILY_FEED_LIMIT6*/
-eTourMatchType
-eTMT_NewBie
-eTMT_AllBH

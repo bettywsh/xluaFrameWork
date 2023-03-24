@@ -1,0 +1,24 @@
+
+¾
+proto_resource.protocom.bochsler.protocol"ˆ
+DisplayResource1
+res (2.com.bochsler.protocol.ResourceRres
+amount (Ramount*
+lastRecoveryTime (RlastRecoveryTime"
+AllResourceRequest"Q
+AllResourceResponse:
+list (2&.com.bochsler.protocol.DisplayResourceRlist"N
+SCUpdateResource:
+list (2&.com.bochsler.protocol.DisplayResourceRlist"c
+ExchangeResourceRequestH
+exchangeRes (2&.com.bochsler.protocol.DisplayResourceRexchangeRes"
+ExchangeResourceResponse*J
+Resource
+FOOD
+
+TIMBER	
+STONE
+GOLD
+GEM
+
+ACTION

@@ -1,0 +1,17 @@
+
+Û
+proto_chat.protocom.bochsler.protocol"W
+ChatRequest
+playerId (	RplayerId
+name (	Rname
+content (	Rcontent"X
+ChatResponse
+playerId (	RplayerId
+name (	Rname
+content (	Rcontent"=
+FaceRequest
+playerId (	RplayerId
+icon (	Ricon">
+FaceResponse
+playerId (	RplayerId
+icon (	Ricon

@@ -1,0 +1,15 @@
+return {
+"msg_types_cs",
+"msg_types_sc",
+"proto_chat",
+"proto_common",
+"proto_gm",
+"proto_login",
+"proto_param",
+"proto_player",
+"proto_prompt",
+"proto_resource",
+"proto_role",
+"proto_system",
+"proto_world",
+}

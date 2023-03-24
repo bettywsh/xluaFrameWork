@@ -1,0 +1,16 @@
+
+Ü
+msg_types_cs.protocom.bochsler.protocol*®
+CSMessageEnum
+CS_LoginRequest‘N
+CS_PingRequest’N
+CS_ReconnectRequest“N
+CS_GmOrderRequest™N
+CS_LoginSuccReqšN
+CS_CreateRoleRequest›N
+CS_RoleListRequestœN
+CS_RoleLoginRequestN
+CS_RoleLogoutRequestN
+CS_ChatRequestõN
+CS_FaceRequestöN
+CS_WorldPlayerMove…R

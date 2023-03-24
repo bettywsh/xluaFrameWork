@@ -1,1 +1,0 @@
-{"version":"1.0.5","url":"https://www.sojson.com/simple_json.html","channel":[{"channelID":10001,"channelName":"豌豆荚","URL":"http://down.fasthorse.world/"},{"channelID":10002,"channelName":"豌豆荚","URL":"www.baiducom"}]}

@@ -18,10 +18,10 @@ function NetMgr:init()
     -- self:RegisterProto()
     -- self:RegisterProtoFile()
     self:InitHandleMessage()
-    self:RegisterGlobalProto()
+    self:RegisterEventMessage()
 end
 
-function NetMgr:RegisterGlobalProto()
+function NetMgr:RegisterEventMessage()
     -- 服务器连接失去连接
     MessageMgr:RegisterEventMessage(CS.MessageConst.MsgLostConnect, function(data)
         if self.hasSendPing then
@@ -68,9 +68,11 @@ end
 
 -- 注册网络协议的文件
 function NetMgr:RegisterProtoFile()
-    local protodefs = {"login_login"}
-    for _, v in ipairs(protodefs) do
-        local fn = ResMgr:OnLoadAsset("Common", "Protobuf/"..v .. ".pc", CSDefine.ResType.Bytes)
+    local protodefs = require("Protobuf/ProtoFlies")
+    Function:ShowTable(protodefs)
+    for k, v in ipairs(protodefs) do
+        local fn = ResMgr:GloabLoadAssetAsync("Protobuf/"..v .. ".pc", CSDefine.ResType.Bytes)
+        Function:Error(fn.text)
         fn = fn.text
         local file, x = self.PB.load(fn)
         if not file then

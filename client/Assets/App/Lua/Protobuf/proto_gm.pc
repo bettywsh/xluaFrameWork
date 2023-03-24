@@ -1,0 +1,18 @@
+
+™
+proto_gm.protocom.bochsler.protocol"ê
+GmOrderRequest
+gmOrder (	RgmOrder
+
+firstOrder (	R
+firstOrder 
+secondOrder (	RsecondOrder"
+targetParams (	RtargetParams"ä
+GmOrderResponse#
+	isSuccess (:falseR	isSuccess
+result (	Rresult:
+info (2&.com.bochsler.protocol.GmOrderHelpInfoRinfo"a
+GmOrderHelpInfo 
+moduleOrder (	RmoduleOrder
+desc (	Rdesc
+example (	Rexample
