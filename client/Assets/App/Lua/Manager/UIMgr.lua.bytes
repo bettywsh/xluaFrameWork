@@ -120,9 +120,9 @@ function UIMgr:AutoBind(transform)
 end
 
 function UIMgr:CreateCell(args)
-    local cell = require(args[1])
-    cell:Open(args[0])
-    cell:OnOpen()
+    local cell = require(args[0])
+    cell:Open(args[1])
+    cell:OnOpen(args[2])
     return cell
 end
 

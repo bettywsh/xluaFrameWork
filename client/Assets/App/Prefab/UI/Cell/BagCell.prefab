@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1764998814983601108
 RectTransform:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: 110
-  m_PreferredHeight: 110
+  m_PreferredHeight: 150
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -166,7 +166,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_selectedIndex: -1
   BindLuaPath: 
-  varData: []
+  varData:
+  - objName: transform
+    objValue: {fileID: 5461500086728055287}
+  - objName: img_Icon
+    objValue: {fileID: 918604321599003799}
+  - objName: txt_Title
+    objValue: {fileID: 7116102664159694597}
 --- !u!1 &7116102664159694597
 GameObject:
   m_ObjectHideFlags: 0

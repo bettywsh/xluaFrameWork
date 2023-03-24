@@ -58,7 +58,7 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
         LuaTable luaTable = listViewItem.luaTable;
         if (luaTable == null)
         {
-            luaTable = LuaManager.Instance.CallFunction("UIMgr", "CreateCell", transform, vp.BindLuaPath)[0] as LuaTable;
+            luaTable = LuaManager.Instance.CallFunction("UIMgr", "CreateCell",  "UI/Cell/" + transform.name.Replace("(Clone)", ""), transform, idx)[0] as LuaTable;
 
         }
         else
