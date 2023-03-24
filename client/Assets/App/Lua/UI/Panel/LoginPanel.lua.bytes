@@ -6,7 +6,7 @@ end
 
 
 function LoginPanel:UI_btn_click_OnClick()
-	-- NetMgr:ConnectTo(GameDefine.Connect_Login, GameDefine.ServerAddress.LoginSvrIp, GameDefine.LoginSvrPort)
+	NetMgr:ConnectTo(GameDefine.Connect_Login, GameDefine.ServerAddress.LoginSvrIp, GameDefine.ServerAddress.LoginSvrPort)
 	-- DialogMgr:ShowDialog1("111", "2", function() print(3333)end)
 	-- DialogMgr:ShowTextFlying("1111")
 	-- local CLLogin =
@@ -22,6 +22,20 @@ function LoginPanel:UI_btn_click_OnClick()
 	-- 	-- string    Mac = 9;
 	-- }
 	-- NetMgr:SendCmdNew("pbproto.CLLogin", CLLogin)
+
+-- 总长度 4字节
+-- 包头 6字节
+-- 包索引 2字节 
+-- 协议id 2字节
+-- 0	2字节
+-- 包体
+
+-- 包体长度 4字节
+-- 包索引 4字节
+-- 协议id 2字节
+-- 0 4字节
+-- 包体
+
 	SceneMgr:LoadScene("Main", false)
 end
 
