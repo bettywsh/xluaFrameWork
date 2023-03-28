@@ -9,19 +9,17 @@ function LoginPanel:UI_btn_click_OnClick()
 	NetMgr:ConnectTo(GameDefine.Connect_Login, GameDefine.ServerAddress.LoginSvrIp, GameDefine.ServerAddress.LoginSvrPort)
 	-- DialogMgr:ShowDialog1("111", "2", function() print(3333)end)
 	-- DialogMgr:ShowTextFlying("1111")
-	-- local CLLogin =
-	-- {
-	-- 	PacketId = "PACKET_LOGIN_LOGIN_CLLogin",
-	-- 	LoginType = "LT_ACCOUNT",
-	-- 	UserName = self.view.input_account.text,
-	-- 	PassWord = self.view.input_passWorld.text,
-	-- 	-- string    Token 	  = 5;
-	-- 	-- string	   ClientVersion = 6;
-	-- 	-- string    UserId = 7;
-	-- 	-- string    ChannelId = 8;
-	-- 	-- string    Mac = 9;
-	-- }
-	-- NetMgr:SendCmdNew("pbproto.CLLogin", CLLogin)
+	local LoginRequest =
+	{
+		username = "PACKET_LOGIN_LOGIN_CLLogin",
+		password = "LT_ACCOUNT"
+		-- string    Token 	  = 5;
+		-- string	   ClientVersion = 6;
+		-- string    UserId = 7;
+		-- string    ChannelId = 8;
+		-- string    Mac = 9;
+	}
+	NetMgr:SendCmdNew("com.bochsler.protocol.LoginRequest", CLLogin)
 
 -- 总长度 4字节
 -- 包头 6字节

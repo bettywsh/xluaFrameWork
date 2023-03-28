@@ -15,12 +15,13 @@ import os.path
 
 #2015/04/09 解决编码问题
 import sys
-import imp
+import importlib
 import re
 import string
 import csv
+import json
 import codecs
-from imp import reload
+from importlib import reload
 import configparser
 reload(sys)
 
@@ -34,11 +35,14 @@ ROW_START = 3
 #==========================================================================
 FLOAT_FORMAT = "%.8f"
 
-EXPORT_CLIENT = True
+EXPORT_CLIENT_LUA = True
+EXPORT_CLIENT_CSHARP = True
+EXPORT_CLIENT_JSON = True
 EXPORT_SERVER = True
 
 server_export_excel_list = []
-client_export_excel_list = []
+client_export_lua_excel_list = []
+client_export_csharp_excel_list = []
 
 
 def gen_table(filename):
@@ -65,7 +69,8 @@ def gen_table(filename):
 				if v is not None and value != "":
 					rdict[cidx] = v
 			if rdict: sdict[ridx] = rdict
-		if sdict: luaT[sidx] = sdict
+		if sdict: 
+			luaT[sidx] = sdict
 
 		# handle merged-cell
 		for crange in sheet.merged_cells:
@@ -87,6 +92,82 @@ def gen_table(filename):
 		sidx += 1
 	return luaT, luaN
 
+def tabletodict(luaT):
+	allList = {}
+	for sidx, sheet in luaT.items():
+		#第一行为参考
+		head = sheet.get(1)
+		if head is None:
+			break;
+		allIdList = []
+		id_index = 0
+		for rowidx, row in sheet.items():
+			if rowidx >= (ROW_START-1) and row.get(0) != None:
+				item = {}
+				titleList = [] 
+				isUnion = False
+				unionID = ""
+				for colidx, col in row.items():
+					try:
+						name_head = head.get(colidx)
+						if name_head.startswith("_"):
+							continue
+						if name_head.find("(int32)") > 0:
+							col=int(col)
+						if name_head.find("(float)") > 0:
+							col=float(col)
+						if name_head.find("(bool)") > 0:
+							col=bool(col)
+						if name_head.find("int32[") > 0:							
+							cols = col.split(',')
+							col = list(map(int,cols))
+						if name_head.find("string[") > 0:							
+							cols = col.split(',')
+							col=cols
+						if name_head.find("float[") > 0:							
+							cols = col.split(',')
+							col = list(map(float,cols))
+						
+						s = col		
+						name = head.get(colidx)
+						if not name.startswith("_"):
+							endBlone = name.split("_",1)[0]
+							if trim(endBlone).lower() == "p" or trim(endBlone).lower() == "c":
+								content = name.split("_",1)[1]
+
+								if "_union" in content.lower():
+									isUnion = True
+									unionID = unionID + "_" + s
+								typeInfo = content.split("(",1)[1].replace(")","")
+								typeName = content.split("(",1)[0].replace("_union","")
+								
+								#处理表头的大小写
+								if trim(typeName.upper()) == "ID" :
+									typeName = "ID"
+									id_index = colidx
+								
+								if typeName in titleList :
+									raise Exception( " 表头信息重复   " + typeName)
+
+								titleList.append(typeName)
+								# itemInfoStr.append("\t\t%s = %s,\n"%(typeName, s))
+								item[typeName] = s
+					except Exception as e:
+						raise Exception("Write Table error (%s,%s,%s) : %s"%(sidx+1,rowidx+1,colidx+1,str(e)))
+				if isUnion :
+					if unionID.lstrip('_').strip() in allIdList:
+						raise Exception( " 联合主键ID重复   " + unionID.lstrip('_').strip())
+					allIdList.append(unionID.lstrip('_').strip())
+					allList[str(unionID.lstrip('_').strip())] = item
+				else:
+					if row.get(id_index) in allIdList:
+						raise Exception( " 联合主键ID重复   " + row.get(0) )
+					allIdList.append(row.get(id_index))
+					if is_number(row.get(id_index)):
+						allList[int(row.get(id_index))] = item
+					else:
+						allList[str(row.get(id_index))] = item
+	return allList
 	
 
 def format_value(value, vtype, book):
@@ -115,7 +196,7 @@ def format_output(v):
 		s = "%s "%(s)
 	return s
 
-def write_table(luaT, luaN ,outfile = '-', withfunc = True):
+def write_lua(luaT, luaN ,outfile = '-', withfunc = True):
 	''' lua table key index starts from 1
 	'''
 	if outfile and outfile != '-':
@@ -123,8 +204,6 @@ def write_table(luaT, luaN ,outfile = '-', withfunc = True):
 	else:
 		import StringIO
 		outfp = StringIO.StringIO()
-
-
 	szName = outfile.split('.')[0]
 	szName = szName.replace('/', '\\')
 	szName = szName.split('\\')[-1]
@@ -136,7 +215,6 @@ def write_table(luaT, luaN ,outfile = '-', withfunc = True):
 		head = sheet.get(1)
 		if head is None:
 			break;
-		# outfp.write("[%d] = {\n"%(sidx + 1))
 		max_row = len(head)
 
 		allIdList = []
@@ -156,21 +234,27 @@ def write_table(luaT, luaN ,outfile = '-', withfunc = True):
 							continue
 						if name_head.find("(int32)") > 0:
 							col=int(col)
-						
+						if name_head.find("(bool)") > 0:
+							col=bool(col)
 						if name_head.find("int32[") > 0:
 							col=str(col)
-
+							col = "{" + col + "}"
+						if name_head.find("string[") > 0:
+							col=str(col)
+							col = "{\"" + col.replace(",", "\",\"") + "\"}"
+						if name_head.find("float[") > 0:
+							col=str(col)
+							col = "{" + col + "}"
 						if type(col) is int: s = "%d"%(col)
 						elif type(col) is float: s = FLOAT_FORMAT%(col)
+						elif type(col) is bool: 
+							s=str(col).lower()
 						else : 
 							szCol = col.strip();
-
 							if szCol[0] == '{' and szCol[(len(szCol)-1)] == '}':
 								s = "%s" % (col)
 							else:
 								s = "\"%s\""%(format_output(col))
-								# s = "[[%s]]"%(format_output(col))		--2015/06/03支持换行
-						# outfp.write("\t\t[%d] = %s,\n"%(colidx + 1, s))
 						name = head.get(colidx)
 
 						if not name.startswith("_"):
@@ -221,6 +305,60 @@ def write_table(luaT, luaN ,outfile = '-', withfunc = True):
 		print(outfp.read())
 	outfp.close()
 
+def write_json(luaT, luaN ,outfile = '-', withfunc = True):
+	if outfile and outfile != '-':
+		outfp = open(outfile, 'w',encoding= "utf-8")
+	else:
+		import StringIO
+		outfp = StringIO.StringIO()
+
+	allList = tabletodict(luaT)
+	print(allList)
+	data = json.dumps(allList, indent=1, ensure_ascii=False)
+	outfp.write(data)
+	if not outfile or outfile == '-':
+		outfp.seek(0)
+		print(outfp.read())
+	outfp.close()
+
+
+def write_csharp(luaT, luaN ,outfile = '-', withfunc = True):
+	if outfile and outfile != '-':
+		outfp = open(outfile, 'w',encoding= "utf-8")
+	else:
+		import StringIO
+		outfp = StringIO.StringIO()
+	szName = outfile.split('.')[2]
+	szName = szName.split('\\')[-1]
+	outfp.write("using System.Collections.Generic;\n\n")
+	outfp.write("public class "+ szName +"\n{\n")
+	allList = tabletodict(luaT)
+	for key, value in allList.items():
+		for k, v in value.items():
+			if type(v) is int:
+				outfp.write("\tpublic int "+ k +";\n")
+			elif type(v) is float: 
+				outfp.write("\tpublic float "+ k +";\n")
+			elif type(v) is bool:
+				 outfp.write("\tpublic bool "+ k +";\n")
+			elif type(v) is str:
+				 outfp.write("\tpublic string "+ k +";\n")
+			else:
+				if type(v[0]) is int:
+					outfp.write("\tpublic List<int> "+ k +" = new List<int>();\n")
+				elif type(v[0]) is float:
+					outfp.write("\tpublic List<float> "+ k +" = new List<float>();\n")
+				else:
+					outfp.write("\tpublic List<string> "+ k +" = new List<string>();\n")
+		break
+
+	# data = json.dumps(allList, indent=1, ensure_ascii=False)
+	outfp.write("}\n")
+	if not outfile or outfile == '-':
+		outfp.seek(0)
+		print(outfp.read())
+	outfp.close()
+
 def trim(s):
 	if s.startswith(' ') or s.endswith(' '):
 		return re.sub(r"^(\s+)|(\s+)$", "", s)
@@ -254,36 +392,64 @@ def export_client_lua(dir_src,dir_dst):
 	if dir_dst[len(dir_dst) - 1] != '\\':
 		dir_dst = dir_dst + "\\"
 	# 创建dst_src的目录树
-	if not os.path.exists(dir_dst) and EXPORT_CLIENT:
+	if not os.path.exists(dir_dst) and EXPORT_CLIENT_LUA:
 		os.makedirs(dir_dst)
 
 	#tag = True
-	for name in client_export_excel_list:
+	for name in client_export_lua_excel_list:
 		name_temp = dir_src + "\\" + name
-		'''
-		if os.path.isdir(name_temp): 
-			if tag is True:
-				dir_temp = dir_dst + name
-				transferClient(name_temp, dir_temp)
-			else:
-				continue
-		'''
-		if os.path.isfile(name_temp) and not name.startswith("_") and name.endswith("xlsx") and not '$' in name :
-			print("Start : " + name_temp)
+		if os.path.isfile(name_temp) and not name.startswith("_") and not '$' in name :
+			print("Start Lua: " + name_temp)
 			t, n = gen_table(name_temp)
-			if EXPORT_CLIENT :
+			if EXPORT_CLIENT_LUA :
 				if name.startswith('s_') or name.startswith('S_'):
 					continue
 				pathInfo =  os.path.basename(name_temp)
-				outfile = dir_dst + pathInfo.split('.')[0] + ".lua"
-				write_table(t, n, outfile, withfunc = True)
-				print("Client : SUCCESS ")
+				outfile = dir_dst + pathInfo.split('.')[0] + ".lua.bytes"
+				write_lua(t, n, outfile, withfunc = True)
+				print("Client Lua: SUCCESS ")
+
+def export_client_csharp(dir_src, dir_dst_csharp):
+	if dir_dst_csharp[len(dir_dst_csharp) - 1] != '\\':
+		dir_dst_csharp = dir_dst_csharp + "\\"
+	# 创建dst_src的目录树
+	if not os.path.exists(dir_dst_csharp) and EXPORT_CLIENT_CSHARP:
+		os.makedirs(dir_dst_csharp)
+	for name in client_export_csharp_excel_list:
+		name_temp = dir_src + "\\" + name
+		if os.path.isfile(name_temp) and not name.startswith("_") and not '$' in name :
+			print("Start Csharp: " + name_temp)
+			t, n = gen_table(name_temp)
+			if EXPORT_CLIENT_LUA :
+				if name.startswith('s_') or name.startswith('S_'):
+					continue
+				pathInfo =  os.path.basename(name_temp)
+				write_csharp(t, n, dir_dst_csharp + pathInfo.split('.')[0] + ".cs", withfunc = True)
+				print("Client Csharp: SUCCESS ")
+
+def export_client_json(dir_src, dir_dst_json):
+	if dir_dst_json[len(dir_dst_json) - 1] != '\\':
+		dir_dst_json = dir_dst_json + "\\"
+	# 创建dst_src的目录树
+	if not os.path.exists(dir_dst_json) and EXPORT_CLIENT_JSON:
+		os.makedirs(dir_dst_json)
+	for name in client_export_csharp_excel_list:
+		name_temp = dir_src + "\\" + name
+		if os.path.isfile(name_temp) and not name.startswith("_") and not '$' in name :
+			print("Start Json: " + name_temp)
+			t, n = gen_table(name_temp)
+			if EXPORT_CLIENT_LUA :
+				if name.startswith('s_') or name.startswith('S_'):
+					continue
+				pathInfo =  os.path.basename(name_temp)
+				write_json(t, n, dir_dst_json + pathInfo.split('.')[0] + ".json", withfunc = True)
+				print("Client Json: SUCCESS ")
 
 def export_server_csv(dir_src, dir_dst):
 	if dir_dst[len(dir_dst) - 1] != '\\':
 		dir_dst = dir_dst + "\\"
 	# 创建dst_src的目录树
-	if not os.path.exists(dir_dst) and EXPORT_CLIENT:
+	if not os.path.exists(dir_dst) and EXPORT_SERVER:
 		os.makedirs(dir_dst)
 
 	#tag = True
@@ -321,13 +487,16 @@ def get_export_excel_list(export_file):
 	#然后读取sheet
 	for ridx in range(1,sheet.nrows):
 		export_filename  = sheet.cell_value(ridx, 0)
-		is_export_client = sheet.cell_value(ridx, 1)
-		is_export_server = sheet.cell_value(ridx, 2)
+		export_client_lua = sheet.cell_value(ridx, 1)
+		export_client_csharp = sheet.cell_value(ridx, 2)
+		is_export_server = sheet.cell_value(ridx, 3)
         
-		if int(is_export_client) :
-			client_export_excel_list.append(export_filename+".xlsx")
+		if int(export_client_lua) :
+			client_export_lua_excel_list.append(export_filename+".xls")
+		if int(export_client_csharp) :
+			client_export_csharp_excel_list.append(export_filename+".xls")
 		if int(is_export_server) :
-			server_export_excel_list.append(export_filename+".xlsx")
+			server_export_excel_list.append(export_filename+".xls")
 		
 def main():
 	#读取ini配置文件  依次获得excel目录  服务器导出目录 客户端导出目录
@@ -335,11 +504,15 @@ def main():
 	config_ini = r"ExcelTools.ini"
 	config_parse.read(config_ini)
 	dir_src=config_parse.get("config","excel_dir")
-	dir_dst_client = config_parse.get("config","client_export_dir")
+	dir_dst_client_lua = config_parse.get("config","client_export_lua_dir")
+	dir_dst_client_csharp = config_parse.get("config","client_export_csharp_dir")
+	dir_dst_client_json = config_parse.get("config","client_export_json_dir")
 	dir_dst_server = config_parse.get("config","server_export_dir")
 	export_config = config_parse.get("config","excel_export_config")
 	get_export_excel_list(dir_src+"//"+export_config)
-	export_client_lua(dir_src,dir_dst_client)
+	export_client_lua(dir_src,dir_dst_client_lua)
+	export_client_csharp(dir_src, dir_dst_client_csharp)
+	export_client_json(dir_src, dir_dst_client_json)
 	export_server_csv(dir_src,dir_dst_server)
 
 if __name__=="__main__":
