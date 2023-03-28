@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using LuaFramework;
 using UnityEditor.Sprites;
+using UnityEditor.Experimental.GraphView;
 
 
     public class TcpProtocolCodec : IProtocolCodec
@@ -69,7 +70,7 @@ using UnityEditor.Sprites;
             memStream.Write(receiveData, 0, length);
             //Reset to beginning
             memStream.Seek(0, SeekOrigin.Begin);
-            int PacketHeadSize = 10;
+            int PacketHeadSize = 14;
             while (RemainingBytes() >= PacketHeadSize)
             {
                 byte[] totalLengthBytes = reader.ReadBytes(4);
@@ -84,14 +85,17 @@ using UnityEditor.Sprites;
                 //ushort msgidex = reader.ReadUInt16();
                 //uint packetId = reader.ReadUInt16();
                 //uint aa = reader.ReadUInt32();
-                int messageLen = totalLength - 14;
+                int messageLen = totalLength;
                 if (RemainingBytes() >= messageLen)
                 {
                     byte[] packetArray = reader.ReadBytes((int)messageLen);
+                //Array.Reverse(packetArray);
+                //byte[] proto = null;
+                //    Array.Copy(packetArray, 0, proto, 0, messageLen);
                     //if (null != packetArray) {
                     //    RC4.Instance().RC4DecryptTo(ref packetArray);
                     //}
-                    KeyValuePair<int, byte[]> newData = new KeyValuePair<int, byte[]>((int)packetId, packetArray);
+                KeyValuePair<int, byte[]> newData = new KeyValuePair<int, byte[]>((int)packetId, packetArray);
                     datas.Add(newData);
                     // KeyValuePair<int, byte[]> newData = new KeyValuePair<int, byte[]>((int)packetId, reader.ReadBytes((int)messageLen));
                     // datas.Add(newData);

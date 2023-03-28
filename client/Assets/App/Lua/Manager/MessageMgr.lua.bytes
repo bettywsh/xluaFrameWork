@@ -17,8 +17,8 @@ end
 --注册网络事件  lua层注册事件的内容
 function MessageMgr:RegisterNetMessage(cmdName,func)
     local cmdID = NetMgr:GetPbIDFromCmdName(cmdName)
-	if not cmdID then 
-		print('===cmdName:', cmdName, "not register in pb")
+	if not cmdID then
+		Function:Log('===cmdName:', cmdName, "not register in pb")
 		return
     end
     self.NetMessageListern[cmdID] = func
@@ -28,7 +28,7 @@ end
 function MessageMgr:UnRegisterNetCmd(cmdName)
 	local cmdID = NetMgr:GetPbIDFromCmdName(cmdName)
 	if not cmdID then
-		print('===cmdName:', cmdName, "not register in pb")
+		Function:Log('===cmdName:', cmdName, "not register in pb")
 		return
     end
 	self.NetMessageListern[cmdID] = nil
@@ -92,7 +92,7 @@ end
 function MessageMgr:NetMessageNotify(cmdID, msg)
     local cb = self.NetMessageListern[cmdID]
     if cb == nil then
-        warring("NO Lisern " .. cmdID .. ",cmd:" .. NetMgr:GetPbIDFromCmdName(cmdID))
+        Function:Warring("NO Lisern " .. cmdID .. ",cmd:" .. NetMgr:GetPbIDFromCmdName(cmdID))
     else
         cb(msg)
     end

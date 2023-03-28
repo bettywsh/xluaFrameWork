@@ -238,8 +238,7 @@ public class TcpConnect : IConnect {
 				if (onReceiveData != null)
 				{
 					object obj = objSerializer.dataToObj(packetId, data);
-					onReceiveData(this, packetId, obj);
-                    Debug.LogError("有数据");
+					onReceiveData(this, packetId, data);
                 }
 			}
 		}

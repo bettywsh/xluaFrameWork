@@ -1,5 +1,5 @@
 ﻿public delegate void ConnectEvent(IConnect connect);
-public delegate void ConnectDataEvent(IConnect connect,int id,object data);
+public delegate void ConnectDataEvent(IConnect connect,int id,byte[] data);
 	
 public interface IConnect{
 	ConnectEvent onConnected{get;set;}

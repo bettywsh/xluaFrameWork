@@ -93,7 +93,9 @@ function NetMgr:SendCmd(cmdName, cmd)
 end
 
 function NetMgr:GetPbIDFromCmdName(cmdName)
-    return self._NetCmdNameRegistry[cmdName]
+    -- return self._NetCmdNameRegistry[cmdName]
+    local cmdName = self.PB.enum(GameDefine.ProtobufPackage.."SCMessageEnum", cmdName)
+    return cmdName
 end
 
 function NetMgr:ConnectTo(targetName, ip, port)
@@ -144,26 +146,26 @@ function NetMgr:InitHandleMessage()
     MessageMgr:RegisterEventMessage(CS.MessageConst.MsgNetData, function(datas)
         local packetId = datas[0]
         if datas[1] == nil then
-            print("on socket lua:" .. packetId)
+            Function:Log("on socket lua:" .. packetId)
         end
-        local cmdData = datas[1]
-        local data = cmdData:ReadBuffer()
+        local data = datas[1]
+        -- local data = cmdData:ReadBuffer()
         if not data then
-            error("NULL network data")
+            Function:Error("NULL network data")
         else
-            local cmdName = self._NetCmdNameRegistry[packetId]
-            local _, sCmdName = string.match(cmdName, "(%a+_%a+).(%a+)")
-            if sCmdName then
-                print(sCmdName..",".. os.time())
-                local cmd = self.PB.decode("pbproto."..sCmdName, data)
-                print(require"3rd/lua-protobuf/serpent".block(cmd))
+            Function:Error(packetId)
+            local cmdName = self.PB.enum(GameDefine.ProtobufPackage.."SCMessageEnum", packetId)
+            if cmdName then
+                cmdName = Function:Split(cmdName, "_")[2]
+                local cmd = self.PB.decode(GameDefine.ProtobufPackage..cmdName, data)
+                Function:Log(cmdName..require"3rd/lua-protobuf/serpent".block(cmd))
                 if not cmd then
-                    warring("protobuf decode error:" .. sCmdName .. "." .. errstr)
+                    Function:Warring("protobuf decode error:" .. cmdName .. "." .. errstr)
                 else
                     MessageMgr:NetMessageNotify(packetId, cmd)
                 end
             else
-                error("no packetId defined:" + packetId)
+                Function:Error("no packetId defined:" + packetId)
             end
         end
     end)

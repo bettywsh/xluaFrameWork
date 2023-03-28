@@ -9,7 +9,7 @@ public class NetManager : MonoSingleton<NetManager>
 {
     Dictionary<string, IConnect> connects = new Dictionary<string, IConnect>();
     Dictionary<string, IConnect> tempConnects = new Dictionary<string, IConnect>();
-    List<KeyValuePair<int, object>> tmpEvents = new List<KeyValuePair<int, object>>();
+    List<KeyValuePair<int, byte[]>> tmpEvents = new List<KeyValuePair<int, byte[]>>();
     Queue sEvents = new Queue();
     NetworkInfo _netWorkInfo;
 
@@ -29,13 +29,13 @@ public class NetManager : MonoSingleton<NetManager>
         {
             while (sEvents.Count > 0)
             {
-                KeyValuePair<int, object> _event = (KeyValuePair<int, object>)sEvents.Dequeue();
+                KeyValuePair<int, byte[]> _event = (KeyValuePair<int, byte[]>)sEvents.Dequeue();
                 tmpEvents.Add(_event);
             }
         }
         for (int i = 0; i < tmpEvents.Count; i++)
         {
-            KeyValuePair<int, object> _event = tmpEvents[i];
+            KeyValuePair<int, byte[]> _event = tmpEvents[i];
 
             MessageManager.Instance.EventNotify(MessageConst.MsgNetData,_event.Key, _event.Value); //send message ex: "OnNetMsg_GCConnect"
         }
@@ -127,11 +127,11 @@ public class NetManager : MonoSingleton<NetManager>
         MessageManager.Instance.EventNotify(MessageConst.MsgDisconnected, connect);
     }
 
-    public void OnReceiveData(IConnect connect, int id, object obj)
+    public void OnReceiveData(IConnect connect, int id, byte[] data)
     {
         lock (sEvents.SyncRoot)
         {
-            sEvents.Enqueue(new KeyValuePair<int, object>(id, obj));
+            sEvents.Enqueue(new KeyValuePair<int, byte[]>(id, data));
         }
     }
 

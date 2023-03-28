@@ -36,6 +36,10 @@ function LoginPanel:UI_btn_click_OnClick()
 	SceneMgr:LoadScene("Main", false)
 end
 
+function LoginPanel:OnNetCmd_SC_LoginResponse(msg)
+	Function:Error(11111)
+end
+
 --隐藏UI
 function LoginPanel:OnClose()
 end
