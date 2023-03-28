@@ -12,12 +12,12 @@ function LoginPanel:UI_btn_click_OnClick()
 	MessageMgr:RegisterEventMessage("OnConnected", function(scmd)
 		local LoginRequest =
 		{
-			loginType = 0,
 			sceneType = 3,
 			password = "",
-			username = "641c2d502b8451e601e6a968"
+			username = "6422bf99fad65bd0a84c10ab",
+			loginType = 0,
 		}
-		NetMgr:SendCmd(GameDefine.ProtobufPackage.."LoginRequest", LoginRequest)
+		NetMgr:SendCmd("LoginRequest", LoginRequest)
     end)
 
 

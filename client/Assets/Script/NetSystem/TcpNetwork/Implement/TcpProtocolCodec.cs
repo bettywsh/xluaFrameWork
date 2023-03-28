@@ -6,11 +6,14 @@ using System.Net.Sockets;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading;
+using LuaFramework;
+using UnityEditor.Sprites;
 
 
     public class TcpProtocolCodec : IProtocolCodec
     {
-        static ushort msgIndex = 0;
+        public static volatile int msgIndex = 0;
         MemoryStream memStream;
         BinaryReader reader;
 
@@ -33,17 +36,25 @@ using System.Security.Cryptography;
                 ms.Position = 0;
                 BinaryWriter writer = new BinaryWriter(ms);
                 uint msglen = (uint)(data.Length + 6);
-                //uint sid = (uint)id << 19;
-                //sid = sid | (uint)msglen;
-                msgIndex += (ushort)1;
-                Debug.LogError(msglen);
-                Debug.LogError(msgIndex);
-                Debug.LogError(id);
-                writer.Write((uint)msglen);
-                writer.Write((ushort)msgIndex);
-                writer.Write((ushort)id);
-                writer.Write((ushort)0);
-                writer.Write(data);
+            //uint sid = (uint)id << 19;
+            //sid = sid | (uint)msglen;
+                ushort msgIndex = (ushort)(Interlocked.Increment(ref TcpProtocolCodec.msgIndex) & 0xFFFF);
+
+                //writer.Write((uint)msglen);
+                //writer.Write((ushort)msgIndex);
+                //writer.Write((ushort)id);
+                //writer.Write((ushort)0);
+                //writer.Write(data);
+
+                writer.Write(BitConverter.GetBytes(Converter.GetBigEndian((uint)(msglen))), 0, 4);
+                //发送的包索引
+                writer.Write(BitConverter.GetBytes(Converter.GetBigEndian((ushort)msgIndex)), 0, 2);
+                //发送的协议ID
+                writer.Write(BitConverter.GetBytes(Converter.GetBigEndian((ushort)id)), 0, 2);
+                //writer
+                writer.Write(BitConverter.GetBytes(Converter.GetBigEndian((ushort)0)), 0, 2);
+                //协议数据
+                writer.Write(data, 0, data.Length);
                 writer.Flush();
                 return ms.ToArray();
             }
@@ -58,14 +69,22 @@ using System.Security.Cryptography;
             memStream.Write(receiveData, 0, length);
             //Reset to beginning
             memStream.Seek(0, SeekOrigin.Begin);
-            int PacketHeadSize = 4;
+            int PacketHeadSize = 10;
             while (RemainingBytes() >= PacketHeadSize)
             {
-                uint h = reader.ReadUInt32();
-                ushort msgidex = reader.ReadUInt16();
-                uint packetId = reader.ReadUInt16();
-                uint aa = reader.ReadUInt32();
-                uint messageLen = h - 6;
+                byte[] totalLengthBytes = reader.ReadBytes(4);
+                int totalLength = Converter.GetBigEndian(BitConverter.ToInt32(totalLengthBytes, 0));
+                byte[] msgidexBytes = reader.ReadBytes(4);
+                int msgidex = Converter.GetBigEndian(BitConverter.ToInt32(msgidexBytes, 0));
+                byte[] packetIdBytes = reader.ReadBytes(2);
+                ushort packetId = Converter.GetBigEndian(BitConverter.ToUInt16(packetIdBytes, 0));
+                byte[] aaBytes = reader.ReadBytes(4);
+                int aa = Converter.GetBigEndian(BitConverter.ToInt32(aaBytes, 0));
+
+                //ushort msgidex = reader.ReadUInt16();
+                //uint packetId = reader.ReadUInt16();
+                //uint aa = reader.ReadUInt32();
+                int messageLen = totalLength - 14;
                 if (RemainingBytes() >= messageLen)
                 {
                     byte[] packetArray = reader.ReadBytes((int)messageLen);

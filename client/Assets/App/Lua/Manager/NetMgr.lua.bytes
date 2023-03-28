@@ -83,19 +83,12 @@ function NetMgr:SendCmd(cmdName, cmd)
     if self.NetLog and cmdName ~= "CGAskPing" then
         showTable(cmd, "==>>Send:" .. cmdName, "lightblue")
     end
-    local bytes = self.PB.encode(cmdName, cmd)
-    -- local buffer = CS.ByteBuffer()
-    -- buffer:WriteBuffer(bytes)
-    local data2 = assert(self.PB.decode(cmdName, bytes))
-    Function:Log(cmdName..require"3rd/lua-protobuf/serpent".block(data2))
-    local cmds = Function:Split(cmdName, ".")
-    local cmdid = self.PB.enum(GameDefine.ProtobufPackage.."CSMessageEnum", "CS_".. cmds[4])
+    local cmdFullName = GameDefine.ProtobufPackage..cmdName
+    local bytes = self.PB.encode(cmdFullName, cmd)
+    local data2 = assert(self.PB.decode(cmdFullName, bytes))
+    Function:Log(cmdFullName..require"3rd/lua-protobuf/serpent".block(data2))
+    local cmdid = self.PB.enum(GameDefine.ProtobufPackage.."CSMessageEnum", "CS_".. cmdName)
     local serverName = GameDefine.Connect_Login
-    -- if cmdId < 150 then
-    --     serverName = GameDefine.Connect_Login
-    -- elseif cmdId >= 150 then
-    --     serverName = GameDefine.Connect_Game
-    -- end
     CSDefine.NetManager:Send(serverName, tonumber(cmdid), bytes)
 end
 

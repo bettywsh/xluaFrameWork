@@ -175,7 +175,8 @@ public class TcpConnect : IConnect {
 	
 	void doOnRead(IAsyncResult asr) {
         int bytesRead = 0;
-		try
+        Debug.LogWarning("收到包");
+        try
 		{
 			lock (client.GetStream())
 			{         //读取字节流到缓冲区
@@ -238,7 +239,8 @@ public class TcpConnect : IConnect {
 				{
 					object obj = objSerializer.dataToObj(packetId, data);
 					onReceiveData(this, packetId, obj);
-				}
+                    Debug.LogError("有数据");
+                }
 			}
 		}
 	}
