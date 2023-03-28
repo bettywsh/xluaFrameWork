@@ -1,0 +1,157 @@
+
+“
+proto_login.protocom.bochsler.protocolproto_common.proto"â
+LoginRequest
+username (	Rusername
+password (	Rpassword>
+	loginType (2 .com.bochsler.protocol.LoginTypeR	loginType>
+	sceneType (2 .com.bochsler.protocol.SceneTypeR	sceneType
+sceneMap (	RsceneMap"\
+SuperSdkInfo
+	sdkTicket (	R	sdkTicket
+opId (	RopId
+opGameId (	RopGameId"’
+
+ClientInfo
+pubKey (	RpubKey
+deviceId (	RdeviceId$
+clientVersion (	RclientVersion
+worldId (RworldId
+roleId (RroleId(
+operationSystem (	RoperationSystem
+platform (	Rplatform
+
+resVersion (	R
+resVersion
+country	 (	Rcountry
+model
+ (	Rmodel
+bundleId (	RbundleId
+
+languageId (R
+languageId&
+clientTimeZone (	RclientTimeZone"Ï
+LoginResponseA
+
+playerInfo (2!.com.bochsler.protocol.PlayerInfoR
+playerInfo
+timeZone (RtimeZone
+
+servertime (R
+servertime:
+result (2".com.bochsler.protocol.LoginResultRresult
+	serverkey (	R	serverkey
+	resetTime (R	resetTime
+	isNewRole (R	isNewRole9
+data (2%.com.bochsler.protocol.LoginExtraDataRdata
+opGameId	 (	RopGameId
+opId
+ (	RopId>
+	loginType (2 .com.bochsler.protocol.LoginTypeR	loginType"å
+ReconnectRequest>
+	loginType (2 .com.bochsler.protocol.LoginTypeR	loginType=
+sdkInfo (2#.com.bochsler.protocol.SuperSdkInfoRsdkInfoA
+
+clientInfo (2!.com.bochsler.protocol.ClientInfoR
+clientInfo$
+reconnectType (RreconnectType
+msgIndex (RmsgIndexM
+reconnectParam (2%.com.bochsler.protocol.ReconnectParamRreconnectParam"@
+ReconnectParam
+clientIp (	RclientIp
+time (Rtime"ž
+ReconnectResponse:
+result (2".com.bochsler.protocol.LoginResultRresult
+playerId (	RplayerId
+timeZone (RtimeZone
+
+servertime (R
+servertime
+	serverkey (	R	serverkeyA
+
+playerInfo (2!.com.bochsler.protocol.PlayerInfoR
+playerInfo
+
+allianceId (R
+allianceId(
+allianceWorldId (RallianceWorldId
+msgIndex	 (RmsgIndex
+opGameId
+ (	RopGameId
+opId (	RopId"´
+
+PlayerInfo
+csid (	Rcsid
+nickname (	Rnickname
+icon (	Ricon
+sex (Rsex
+level (Rlevel
+exp (Rexp 
+isVipActive (RisVipActive
+vipLevel (RvipLevel
+vipExp	 (RvipExp
+playerId
+ (	RplayerId
+
+allianceId (	R
+allianceId
+power (	Rpower
+
+createTime (R
+createTime0
+onlineAddictionTime (	RonlineAddictionTime.
+antiAddicationFlag (RantiAddicationFlag"è
+LoginExtraData
+banshu (Rbanshu
+account (	Raccount
+country (	Rcountry
+lang (	Rlang
+apiUrl (	RapiUrl
+cdnUrl (	RcdnUrl*
+battleRecordPath (	RbattleRecordPath
+clientIp (	RclientIp"
+LoginSuccReq"
+LoginSuccResp"—
+ReconnectMsgIndex
+msgType (RmsgType
+sendSN (RsendSN
+recvSN (RrecvSN
+pushSN (RpushSN 
+broadcastSN (RbroadcastSN"£
+ClientVersion
+opGameId (	RopGameId
+opId (	RopId$
+clientVersion (	RclientVersion"
+extraVersion (	RextraVersion(
+resLimitVersion (	RresLimitVersion*
+resLatestVersion (	RresLatestVersion&
+forceUpdateUrl (	RforceUpdateUrl
+cdnArray (	RcdnArray"U
+SCClientVersionList>
+version (2$.com.bochsler.protocol.ClientVersionRversion"a
+ClientVersionPreUpdateRequest
+platform (	Rplatform$
+clientChannel (	RclientChannel"l
+ClientVersionPreUpdateResponseJ
+clientVersion (2$.com.bochsler.protocol.ClientVersionRclientVersion*²
+LoginResult
+LOGIN_SUCCESS
+VERSION_ERROR
+NOT_IN_WHITELIST
+SDK_TIMESTAMP_ERROR
+SDK_SIGN_ERROR
+PARAM_IP_ERROR
+PARAM_ACCOUNT_ERROR
+PARAM_ROLE_ERROR
+PARAM_WORLD_ERROR	
+ROLE_BE_BANNED
+
+ROLE_COUNT_MAX
+ROLE_CREATE_ERROR
+ACCOUNT_IS_LOGGING
+INTERNAL_ERROR
+LOGIN_SIGN_ERROR
+RECONNECT_ERROR
+PARAM_DEVICE_ERROR
+PARAM_TIMESTAMP_ERROR
+PARAM_NOTNULL_ERROR

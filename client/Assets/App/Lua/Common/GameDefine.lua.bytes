@@ -2,7 +2,7 @@ local GameDefine = {
     ServerAddress = {
         -- 开发环境
         Type = 1,
-        LoginSvrIp = 'hiku.grandlink.net', -- 网络连接IP地址
+        LoginSvrIp = "shiku.grandlink.net", -- 网络连接IP地址
         LoginSvrPort = 8443,               -- 网络连接端口
         SvrResIp = "http://cdn.fasthorse.world/hotfix/clientTest/", -- 资源下载地址
         SvrHttpIp = "http://120.55.101.231:8800/", -- sdk地址
@@ -11,7 +11,11 @@ local GameDefine = {
         LogIp = "http://120.55.101.231:30235/", -- log地址
         IsSkipVerificationCode = false -- 是否跳过验证码
     },
-    GameSvrPort = 0,
+    ProtobufPackage = "com.bochsler.protocol.",
+    -- 网络连接标识
+    Connect_Login = "LoginSeverConnect",
+    Connect_Game = "GameSeverConnect",
+
     -- 是否开启新手引导
     IsGuidance = false,
     -- 断线重连的标识
@@ -20,9 +24,7 @@ local GameDefine = {
     NoConnect = false,
     -- 进入才能短线重连
     isLoginBroken = false,
-    -- 网络连接标识
-    Connect_Login = "LoginSeverConnect",
-    Connect_Game = "GameSeverConnect",
+
 
     isReConnect = 3,
     -- 断线重连状态

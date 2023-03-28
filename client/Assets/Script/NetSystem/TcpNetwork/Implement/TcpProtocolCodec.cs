@@ -5,11 +5,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 
     public class TcpProtocolCodec : IProtocolCodec
     {
-        static int index;
+        static ushort msgIndex = 0;
         MemoryStream memStream;
         BinaryReader reader;
 
@@ -26,18 +27,22 @@ using System.Collections.Generic;
 
         public byte[] encode(int id, byte[] data)
         {
-
-
             MemoryStream ms = null;
             using (ms = new MemoryStream())
             {
                 ms.Position = 0;
                 BinaryWriter writer = new BinaryWriter(ms);
-                uint msglen = (uint)data.Length;
-                uint sid = (uint)id << 19;
-                sid = sid | (uint)msglen;
-                byte[] aa = BitConverter.GetBytes(sid);
-                writer.Write(sid);
+                uint msglen = (uint)(data.Length + 6);
+                //uint sid = (uint)id << 19;
+                //sid = sid | (uint)msglen;
+                msgIndex += (ushort)1;
+                Debug.LogError(msglen);
+                Debug.LogError(msgIndex);
+                Debug.LogError(id);
+                writer.Write((uint)msglen);
+                writer.Write((ushort)msgIndex);
+                writer.Write((ushort)id);
+                writer.Write((ushort)0);
                 writer.Write(data);
                 writer.Flush();
                 return ms.ToArray();
@@ -57,8 +62,10 @@ using System.Collections.Generic;
             while (RemainingBytes() >= PacketHeadSize)
             {
                 uint h = reader.ReadUInt32();
-                uint packetId = h >> 19;
-                uint messageLen = h << 13 >> 13;
+                ushort msgidex = reader.ReadUInt16();
+                uint packetId = reader.ReadUInt16();
+                uint aa = reader.ReadUInt32();
+                uint messageLen = h - 6;
                 if (RemainingBytes() >= messageLen)
                 {
                     byte[] packetArray = reader.ReadBytes((int)messageLen);

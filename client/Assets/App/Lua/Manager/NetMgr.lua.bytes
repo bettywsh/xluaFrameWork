@@ -15,8 +15,7 @@ NetMgr.pingnum = 0
 
 -- 初始化PB
 function NetMgr:init()
-    -- self:RegisterProto()
-    -- self:RegisterProtoFile()
+    self:RegisterProtoFile()
     self:InitHandleMessage()
     self:RegisterEventMessage()
 end
@@ -69,66 +68,35 @@ end
 -- 注册网络协议的文件
 function NetMgr:RegisterProtoFile()
     local protodefs = require("Protobuf/ProtoFlies")
-    Function:ShowTable(protodefs)
     for k, v in ipairs(protodefs) do
-        local fn = ResMgr:GloabLoadAssetAsync("Protobuf/"..v .. ".pc", CSDefine.ResType.Bytes)
-        Function:Error(fn.text)
-        fn = fn.text
-        local file, x = self.PB.load(fn)
-        if not file then
-            print("加载失败".. fn .. x)
-        end
-    end
-end
-
--- 注册网络协议的ID内容
-function NetMgr:RegisterProto()
-    local fn = ResMgr:OnLoadAsset("Common", "Protobuf/msgdef.proto", CSDefine.ResType.Txt)
-    -- print(fn.text)
-    fn = fn.text
-    local lines = string.split(fn, "\n")
-    for i = 1, #lines do
-        local le = string.match(lines[i], "%a+_%a+_%a+%s*=%s*%d+")
-        if le then
-            local a, b, c, d = string.match(le, "(%a+)_(%a+)_(%a+%s*)=(%s*%d+)")
-            local la = string.lower(a)
-            local lb = string.lower(b)
-            local mc = string.match(c, "%a+")
-            local md = string.match(d, "%d+")
-            local dd = tonumber(md)
-            if dd then
-                NetMgr._NetCmdNameRegistry[dd] = la .. "_" .. lb .. "." .. mc
-                NetMgr._NetCmdNameRegistry[mc] = dd
-            else
-                error("bad packet ID:" .. md)
+        ResMgr:GloabLoadAssetAsync("Protobuf/"..v .. ".pc", CSDefine.ResType.Bytes, function(obj)
+            local file, x = self.PB.load(obj.bytes)
+            if not file then
+                print("加载失败".. obj.bytes .. x)
             end
-        end
+        end)
     end
 end
 
 -- new 表示为一个新的连接 此处区分了login服务器和game服务器
-function NetMgr:SendCmdNew(cmdName, cmd)
+function NetMgr:SendCmd(cmdName, cmd)
     if self.NetLog and cmdName ~= "CGAskPing" then
         showTable(cmd, "==>>Send:" .. cmdName, "lightblue")
     end
-
-    print(cmdName.. ",".. os.time())
     local bytes = self.PB.encode(cmdName, cmd)
-    local buffer = CS.ByteBuffer()
-    buffer:WriteBuffer(bytes)
+    -- local buffer = CS.ByteBuffer()
+    -- buffer:WriteBuffer(bytes)
     local data2 = assert(self.PB.decode(cmdName, bytes))
-    print(require"3rd/lua-protobuf/serpent".block(data2))
-    local cmds = cmdName:split(".")
-    local cmdId = self._NetCmdNameRegistry[cmds[2]]
-    error(cmdId)
+    Function:Log(cmdName..require"3rd/lua-protobuf/serpent".block(data2))
+    local cmds = Function:Split(cmdName, ".")
+    local cmdid = self.PB.enum(GameDefine.ProtobufPackage.."CSMessageEnum", "CS_".. cmds[4])
     local serverName = GameDefine.Connect_Login
-    if cmdId < 150 then
-        serverName = GameDefine.Connect_Login
-    elseif cmdId >= 150 then
-        serverName = GameDefine.Connect_Game
-    end
-
-    NetManager.Instance:SendTo(serverName, cmdId, buffer)
+    -- if cmdId < 150 then
+    --     serverName = GameDefine.Connect_Login
+    -- elseif cmdId >= 150 then
+    --     serverName = GameDefine.Connect_Game
+    -- end
+    CSDefine.NetManager:Send(serverName, tonumber(cmdid), bytes)
 end
 
 function NetMgr:GetPbIDFromCmdName(cmdName)
@@ -136,18 +104,18 @@ function NetMgr:GetPbIDFromCmdName(cmdName)
 end
 
 function NetMgr:ConnectTo(targetName, ip, port)
-    NetManager.Instance:ConnectTo(targetName, ip, port)
+    CSDefine.NetManager:ConnectTo(targetName, ip, port)
 end
 
 function NetMgr:DisConnectAll()
-    NetManager.Instance:DisConnectAll()
+    CSDefine.NetManager:DisConnectAll()
 end
 
 function NetMgr:Update()
     -- 每段时间发一次ping值协议
     if self.hasSendPing and Time.time - self._sendPingTime > 5 then
         self._sendPingTime = Time.time
-        self:SendCmdNew("CGAskPing", {})
+        self:SendCmd("CGAskPing", {})
         self.pingnum = self.pingnum + 1
     end
     if self.hasSendPing and self.pingnum >= 2 then
@@ -165,16 +133,17 @@ function NetMgr:Update()
         end
         -- self:ResetLogin();
     end
-if UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.A) and GameDefine.ServerAddress.Type == 1 then
-        local baseCanvas = UIManager.Instance.canvasRoot.transform:Find("UICanvas/BaseCanvas")
-        for i = 0, baseCanvas.childCount - 1 do
-            local tf = baseCanvas:GetChild(i)
-            local metaTable = baseCanvas:GetChild(i):GetComponent("LuaBehaviour").metaTable
-            if metaTable.Start ~= nil then
-                metaTable:Start()
-            end
-        end
-    end
+
+    -- if UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.A) and GameDefine.ServerAddress.Type == 1 then
+    --     local baseCanvas = UIManager.Instance.canvasRoot.transform:Find("UICanvas/BaseCanvas")
+    --     for i = 0, baseCanvas.childCount - 1 do
+    --         local tf = baseCanvas:GetChild(i)
+    --         local metaTable = baseCanvas:GetChild(i):GetComponent("LuaBehaviour").metaTable
+    --         if metaTable.Start ~= nil then
+    --             metaTable:Start()
+    --         end
+    --     end
+    -- end
 end
 
 

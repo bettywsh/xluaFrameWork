@@ -1,0 +1,53 @@
+
+
+msg_types_cs.protocom.bochsler.protocol*ï
+
+CSMessageEnum
+CS_LoginRequest‘N
+CS_PingRequest’N
+CS_ReconnectRequest“N
+CS_GmOrderRequest™N
+CS_LoginSuccReqšN
+CS_CreateRoleRequest›N
+CS_RoleListRequestœN
+CS_RoleLoginRequestN
+CS_RoleLogoutRequestN
+CS_ChatRequestõN
+CS_FaceRequestöN
+CS_DanceRequest÷N
+CS_SeatRequestøN
+CS_WorldPlayerMove…R!
+CS_EnterSceneCompleteRequest†R
+CS_EnterSceneRequest‡R
+CS_WorldPlayerMoveRequestR
+CS_MailListRequestéR
+CS_ReadMailRequestêR
+CS_MailRewardRequestëR
+CS_DelMailRequestìR
+CS_JoinMeetingRequestÍS
+CS_ExitMeetingRequestÎS
+CS_MeetingListRequestÏS
+CS_CreateMeetingRequestĞS
+CS_SetSpokesmanRequestÑS 
+CS_MeetingShareLinksRequestÒS
+CS_MeetingPlayPdfRequestÓS
+CS_MeetingPdfPageRequestÔS%
+ CS_MeetingParticipantListRequestÕS#
+CS_MeetingSpokesmanListRequestÖS
+CS_MeetingMoodRequest×S'
+"CS_MeetingParticipantActionRequestØS!
+CS_MeetingParticipantRequestÙS
+CS_MeetingGiftRequestÚS 
+CS_MeetingPlayScreenRequestÛS 
+CS_MeetingStopScreenRequestÜS
+CS_MeetingPlayVideoRequestİS
+CS_MeetingStopVideoRequestŞS
+CS_MeetingVideoTimeRequestßS
+CS_MeetingStopPdfRequestàS
+CS_PackageItemListRequest±T
+CS_UsePackageItemsRequest²T
+CS_ChangeAvatarRequest•U
+CS_ChangeHeadRequest–U
+CS_GetRoomNFTListRequestùU
+CS_SetNFTLinkRequestúU
+CS_ReadNFTInfoRequestûU

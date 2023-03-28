@@ -20,7 +20,7 @@ function GameMgr:RegisterMessage()
         else
             NetMgr._canRequestPing = true
             -- 获取服务器时间
-            NetMgr:SendCmdNew('CGRequireServerTime', {})
+            NetMgr:SendCmd('CGRequireServerTime', {})
             -- 运行
             SDKBuryingPoint("10003", "10002")
         end
@@ -48,7 +48,7 @@ function GameMgr:MessageLogout(scmd)
     -- local cmd = {
     --     Type = 'LOGIN_OUT_NORMAL_QUIT'
     -- }
-    -- NetMgr:SendCmdNew('CGLoginOut', cmd)
+    -- NetMgr:SendCmd('CGLoginOut', cmd)
 end
 
 -- function GameMgr:UpdateInfo()
@@ -101,7 +101,7 @@ function GameMgr:OnNetCmd_GCDailyReset(msg)
         for key, value in pairs(msg.reset) do
             if value == "DR_HORSEMARKET" then -- 马市刷新
                 BuyingHorsesModel:Reset();
-                NetMgr:SendCmdNew('CGAskNewMarketHorseList', {});
+                NetMgr:SendCmd('CGAskNewMarketHorseList', {});
             end
         end
     end

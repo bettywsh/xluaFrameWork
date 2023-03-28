@@ -1,6 +1,6 @@
 package com.bochsler.protocol;
 
-//import "proto_role.proto";
+import "proto_common.proto";
 
 enum LoginResult {
   LOGIN_SUCCESS = 1;
@@ -24,20 +24,15 @@ enum LoginResult {
   PARAM_NOTNULL_ERROR = 19; //参数错误：不能传空
 }
 
-//登录类型
-enum LoginType {
-  LOGIN_SDK = 0;          //SDK登录
-  LOGIN_GM = 1;           //GM登录
-  LOGIN_DEV = 2;          //开发环境登录
-}
-
 // 登陆请求
 message LoginRequest {
-  // required LoginType loginType = 1; //登录类型
   // optional SuperSdkInfo sdkInfo = 2;
   // optional ClientInfo clientInfo = 3;
   required string username = 1;
   required string password = 2;
+  required LoginType loginType = 3;
+  required SceneType sceneType = 4; //登录场景类型
+  optional string sceneMap = 5; 	//默认为"",用在游客登陆直接进入指定地图
 }
 
 message SuperSdkInfo {

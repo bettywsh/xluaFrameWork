@@ -1,17 +1,22 @@
 local CSDefine = {
     ResManager = CS.ResManager.Instance,
     UIManager = CS.UIManager.Instance,
+    NetManager = CS.NetManager.Instance,
+    UpdateManager = CS.UpdateManager.Instance,
+    LoadSceneManager = CS.LoadSceneManager,
+    ResType = CS.ResType,
+
     GameObject = CS.UnityEngine.GameObject,
     PlayerPrefs = CS.UnityEngine.PlayerPrefs,
-    DOTween = CS.DG.Tweening.DOTween,
+    AudioClip = CS.AudioClip,
     Object = CS.UnityEngine.Object,
     Vector3 = CS.UnityEngine.Vector3,
     Time = CS.UnityEngine.Time,
     Canvas = CS.UnityEngine.Canvas,
     GraphicRaycaster = CS.UnityEngine.UI.GraphicRaycaster,
     Renderer = CS.UnityEngine.Renderer,
-    UpdateManager = CS.UpdateManager.Instance,
-    ResType = CS.ResType,
+    Debug = CS.UnityEngine.Debug,
+    
     Sprite = CS.UnityEngine.U2D.Sprite,
     Image = CS.UnityEngine.UI.Image,
     Button = CS.UnityEngine.UI.Button,
@@ -20,15 +25,17 @@ local CSDefine = {
     CanvasGroup = CS.UnityEngine.CanvasGroup,
     TextMeshProUGUI = CS.TMPro.TextMeshProUGUI,
     TMP_InputField = CS.TMPro.TMP_InputField,
-    Debug = CS.UnityEngine.Debug,
+    ListView = CS.ListView,
+
     Sequence = CS.DG.Tweening.DOTween.Sequence,
-    LoadSceneManager = CS.LoadSceneManager,
-    AudioClip = CS.AudioClip,
+    DOTween = CS.DG.Tweening.DOTween,
+    
     Scene = CS.Scene,
     Font = CS.Font,
     Material = CS.Material,
     SpriteAtlas = CS.SpriteAtlas,
     TextAsset = CS.UnityEngine.TextAsset,
-    ListView = CS.ListView,
+    
+    
 }
 return CSDefine

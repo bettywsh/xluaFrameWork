@@ -196,7 +196,7 @@ public class NetManager : MonoSingleton<NetManager>
         }
     }
 
-    public void SendTo(string targetName, int packetId, byte[] data)
+    public void Send(string targetName, int packetId, byte[] data)
     {
         IConnect con = null;
         if (connects.TryGetValue(targetName, out con))

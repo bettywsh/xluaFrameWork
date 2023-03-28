@@ -18,6 +18,30 @@ enum DisplayAssetType {
   CAR = 7; //豪车
 }
 
+//登录类型
+enum LoginType {
+  LOGIN_VISITOR = 0;          //游客登录
+  LOGIN_WALLET = 1;          //钱包登录
+  LOGIN_ACCOUNT = 2;          //账号登录
+}
+
+//场景类型
+enum SceneType {
+  SceneType_NONE = 0;          		//无
+  SceneType_MEETING = 1;          	//会议
+  SceneType_XINGQIU = 2;          	//星球
+  SceneType_GALLERY = 3;          	//展览馆
+  SceneType_LOGIN = 4;          	//登陆
+  SceneType_PRIVATE = 5;          	//私人
+  SceneType_GUEST = 6;           //游客
+}
+
+//场景类型
+enum RoomType {
+  RoomType_NONE = 0;          		//无
+  RoomType_SYSTEM = 1;          	//0号房
+}
+
 //通用财产显示数据
 message DisplayAsset {
   required DisplayAssetType type = 1; //类型

@@ -1,32 +1,0 @@
-
-Â
-proto_player.protocom.bochsler.protocol"/
-PlayerInfoRequest
-playerId (	RplayerId"æ
-PlayerInfoResponse
-playerId (	RplayerId
-nickname (	Rnickname
-vip (Rvip
-
-allianceId (	R
-allianceId"
-allianceName (	RallianceName"
-allianceCode (	RallianceCode
-
-playerIcon (	R
-playerIcon";
-SCPlayerLevelInfo
-level (Rlevel
-exp (Rexp"7
-ChangeLanguageRequest
-
-languageId (R
-languageId"
-ChangeLanguageResponse"k
-	KillCount
-sum (Rsum
-I (RI
-II (RII
-III (RIII
-IV (RIV
-V (RV

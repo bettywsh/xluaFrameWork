@@ -1,39 +1,0 @@
-
-µ
-proto_param.protocom.bochsler.protocol"„
-ParamDisplay
-paramId (RparamId
-
-paramValue (R
-paramValue:
-origin (2".com.bochsler.protocol.ParamOriginRorigin"P
-SCPlayerParamInfo;
-params (2#.com.bochsler.protocol.ParamDisplayRparams"V
-SCPlayerParamInfoUpdate;
-params (2#.com.bochsler.protocol.ParamDisplayRparams".
-PlayerParamRequest
-paramId (RparamId"R
-PlayerParamResponse;
-params (2#.com.bochsler.protocol.ParamDisplayRparams"d
-ParamOriginValue:
-type (2&.com.bochsler.protocol.ParamOriginTypeRtype
-value (Rvalue"n
-ParamOrigin
-paramId (RparamIdE
-	paramList (2'.com.bochsler.protocol.ParamOriginValueR	paramList".
-ParamOriginRequest
-paramId (RparamId"Y
-ParamOriginResponseB
-
-originList (2".com.bochsler.protocol.ParamOriginR
-originList*s
-ParamOriginType
-PLAYER_INIT
-BUFF
-
-INNER_CITY
-HERO
-
-PLAYER_VIP
-TECH
-ALLIANCE_TECH

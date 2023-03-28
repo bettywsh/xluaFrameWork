@@ -174,8 +174,7 @@ public class TcpConnect : IConnect {
 	}
 	
 	void doOnRead(IAsyncResult asr) {
-
-		int bytesRead = 0;
+        int bytesRead = 0;
 		try
 		{
 			lock (client.GetStream())
