@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(NetManager);
-			Utils.BeginObjectRegister(type, L, translator, 0, 15, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 16, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
@@ -37,6 +37,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DisConnectAll", _m_DisConnectAll);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsConnectedTo", _m_IsConnectedTo);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SendTo", _m_SendTo);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Send", _m_Send);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnApplicationQuit", _m_OnApplicationQuit);
 			
 			
@@ -329,9 +330,9 @@ namespace XLua.CSObjectWrap
                 {
                     IConnect _connect = (IConnect)translator.GetObject(L, 2, typeof(IConnect));
                     int _id = LuaAPI.xlua_tointeger(L, 3);
-                    object _obj = translator.GetObject(L, 4, typeof(object));
+                    byte[] _data = LuaAPI.lua_tobytes(L, 4);
                     
-                    gen_to_be_invoked.OnReceiveData( _connect, _id, _obj );
+                    gen_to_be_invoked.OnReceiveData( _connect, _id, _data );
                     
                     
                     
@@ -469,25 +470,11 @@ namespace XLua.CSObjectWrap
                 NetManager gen_to_be_invoked = (NetManager)translator.FastGetCSObj(L, 1);
             
             
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 4&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& translator.Assignable<object>(L, 4)) 
+                
                 {
                     string _targetName = LuaAPI.lua_tostring(L, 2);
                     int _packetId = LuaAPI.xlua_tointeger(L, 3);
                     object _data = translator.GetObject(L, 4, typeof(object));
-                    
-                    gen_to_be_invoked.SendTo( _targetName, _packetId, _data );
-                    
-                    
-                    
-                    return 0;
-                }
-                if(gen_param_count == 4&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& (LuaAPI.lua_isnil(L, 4) || LuaAPI.lua_type(L, 4) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _targetName = LuaAPI.lua_tostring(L, 2);
-                    int _packetId = LuaAPI.xlua_tointeger(L, 3);
-                    byte[] _data = LuaAPI.lua_tobytes(L, 4);
                     
                     gen_to_be_invoked.SendTo( _targetName, _packetId, _data );
                     
@@ -500,7 +487,35 @@ namespace XLua.CSObjectWrap
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
             
-            return LuaAPI.luaL_error(L, "invalid arguments to NetManager.SendTo!");
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Send(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                NetManager gen_to_be_invoked = (NetManager)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _targetName = LuaAPI.lua_tostring(L, 2);
+                    int _packetId = LuaAPI.xlua_tointeger(L, 3);
+                    byte[] _data = LuaAPI.lua_tobytes(L, 4);
+                    
+                    gen_to_be_invoked.Send( _targetName, _packetId, _data );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
             
         }
         

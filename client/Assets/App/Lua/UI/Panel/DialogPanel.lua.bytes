@@ -24,14 +24,14 @@ function DialogPanel:OnOpen()
     end
 end
 
-function DialogPanel:UI_btn_Ok_OnClick()
+function DialogPanel:OnClick_btn_Ok()
     if self.args.okFun ~= nil then
         self.args.okFun()
     end
     UIMgr:CloseSelf(self)
 end
 
-function DialogPanel:UI_btn_Cancel_OnClick()
+function DialogPanel:OnClick_btn_Cancel()
     if self.args.calFun ~= nil then
         self.args.calFun()
     end
