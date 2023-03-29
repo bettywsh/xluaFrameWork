@@ -5,24 +5,22 @@ function LoginPanel:OnOpen()
 end
 
 
-function LoginPanel:UI_btn_click_OnClick()
+function LoginPanel:OnClick_btn_click()
 	NetMgr:ConnectTo(GameDefine.Connect_Login, GameDefine.ServerAddress.LoginSvrIp, GameDefine.ServerAddress.LoginSvrPort)
-	-- DialogMgr:ShowDialog1("111", "2", function() print(3333)end)
-	-- DialogMgr:ShowTextFlying("1111")
-	MessageMgr:RegisterEventMessage("OnConnected", function(scmd)
-		local LoginRequest =
-		{
-			sceneType = 3,
-			password = "",
-			username = "6422bf99fad65bd0a84c10ab",
-			loginType = 0,
-		}
-		NetMgr:SendCmd("LoginRequest", LoginRequest)
-    end)
 end
 
-function LoginPanel:OnNetCmd_LoginResponse(msg)
-	Function:Error(msg.playerInfo.playerId)
+function LoginPanel:OnCSharpMessage_OnConnected(msg)
+	local LoginRequest =
+	{
+		sceneType = 3,
+		password = "",
+		username = "6422bf99fad65bd0a84c10ab",
+		loginType = 0,
+	}
+	NetMgr:SendCmd("LoginRequest", LoginRequest)
+end
+
+function LoginPanel:OnNetMessage_LoginResponse(msg)
 	SceneMgr:LoadScene("Main", false)
 end
 

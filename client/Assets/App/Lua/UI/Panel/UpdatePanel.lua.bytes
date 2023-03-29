@@ -39,7 +39,7 @@ function UpdatePanelCtrl:SuccessRefreshShowInfoText()
 end
 
 function UpdatePanelCtrl:RegisterEvent()
-	MessageMgr:RegisterEventMessage(MessageConst.MsgUpdateDownLoadUpdate, function(value)
+	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateDownLoadUpdate, function(value)
 		if value[0] ~= "Infinity kb/s" and (Time.time - self.time) > 1 then
 			self.time = Time.time
 			self.view.txt_Content.text = string.format(TextMgr:GetText("UpdatePanel_DownLoadProgress"), value[0])
@@ -51,7 +51,7 @@ function UpdatePanelCtrl:RegisterEvent()
 		end
 	end)
 
-	MessageMgr:RegisterEventMessage(MessageConst.MsgUpdateDownLoadComplete, function()
+	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateDownLoadComplete, function()
 		self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_DownLoadComplete")
 		self.view.progressValue.fillAmount = 1
 		if self.args[0] ~= nil then
@@ -60,11 +60,11 @@ function UpdatePanelCtrl:RegisterEvent()
 		UnityEngine.GameObject.Find("Bootstrap"):GetComponent("Bootstrap"):StartGame()
 	end)
 
-	MessageMgr:RegisterEventMessage(MessageConst.MsgUpdateFristProgress, function(value)
+	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateFristProgress, function(value)
 		self.view.progressValue.fillAmount = (value[0] + 1) / value[1]
 	end)
 
-	MessageMgr:RegisterEventMessage(MessageConst.MsgUpdateDownLoadError, function()
+	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateDownLoadError, function()
 		UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_DownLoadError"), function()
 			CSDefine.UpdateManager:DownLoadFiles()
 		end)
@@ -72,8 +72,8 @@ function UpdatePanelCtrl:RegisterEvent()
 end
 
 function UpdatePanelCtrl:Destroy()
-	MessageMgr:RemoveEventMessage(MessageConst.MsgUpdateDownLoadUpdate)
-	MessageMgr:RemoveEventMessage(MessageConst.MsgUpdateDownLoadComplete)
+	MessageMgr:RemoveCSharpMessage(MessageConst.MsgUpdateDownLoadUpdate)
+	MessageMgr:RemoveCSharpMessage(MessageConst.MsgUpdateDownLoadComplete)
 	UIManager.Instance:HideBaseUI(self.view.gameObject)
 	UnRegisterLuaMessage(self)
 end

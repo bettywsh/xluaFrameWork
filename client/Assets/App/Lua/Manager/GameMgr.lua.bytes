@@ -8,11 +8,11 @@ end
 
 function GameMgr:RegisterMessage()
     -- 注册c#过来的广播
-    MessageMgr:RegisterEventMessage("MsgOnApplicationQuit", function(scmd)
+    MessageMgr:RegisterCSharpMessage("MsgOnApplicationQuit", function(scmd)
         self:MessageLogout()
     end)
 
-    MessageMgr:RegisterEventMessage("EventApplicationPause", function(scmd)
+    MessageMgr:RegisterCSharpMessage("EventApplicationPause", function(scmd)
         if scmd then
             NetMgr._canRequestPing = false
             -- 暂停
@@ -26,7 +26,7 @@ function GameMgr:RegisterMessage()
         end
     end)
 
-    MessageMgr:RegisterEventMessage("MsgOnExceptionLogEvent", function(scmd)
+    MessageMgr:RegisterCSharpMessage("MsgOnExceptionLogEvent", function(scmd)
         if LoginModel.isDebug == 0 then
             return
         end

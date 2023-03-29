@@ -313,7 +313,6 @@ def write_json(luaT, luaN ,outfile = '-', withfunc = True):
 		outfp = StringIO.StringIO()
 
 	allList = tabletodict(luaT)
-	print(allList)
 	data = json.dumps(allList, indent=1, ensure_ascii=False)
 	outfp.write(data)
 	if not outfile or outfile == '-':

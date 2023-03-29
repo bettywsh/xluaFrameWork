@@ -12,7 +12,7 @@ end
 function MainPanel:UI_btn_DialogOne_OnClick()
     DialogMgr:ShowDialogOne("", "一个按钮", function()
         print("确定")
-    end, { txtOk = "确定" })
+    end, { txtOk = "Dialog_Ok" })
 end
 
 function MainPanel:UI_btn_DialogTwo_OnClick()
@@ -20,7 +20,7 @@ function MainPanel:UI_btn_DialogTwo_OnClick()
         print("确定")
     end, function()
         print("取消")
-    end, { txtOk = "确定", txtCal = "取消"})
+    end, { txtOk = "Dialog_Ok", txtCal = "Dialog_Cancel"})
 end
 
 function MainPanel:UI_btn_FlyingText_OnClick()

@@ -11,7 +11,8 @@ function UIBase:Open(transform, args)
     -- self:InitBinder()
 	self.view = UIMgr:AutoBind(transform)
     Function:RegisterLuaMessage(self)
-    Function:RegisterNetCmd(self)
+    Function:RegisterNetMessage(self)
+    Function:RegisterCSharpMessage(self)
     Function:RegisterButtonOnClick(self)
 end
 
@@ -65,8 +66,9 @@ function UIBase:SetEndDragCallback(go, callback)
 end
 
 function UIBase:Close()
-	Function:UnRegisterNetCmd(self)
-    Function:UnRegisterLuaMessage(self)
+    Function:RemoveLuaMessage(self)
+    Function:RemoveNetMessage(self)
+    Function:RemoveCSharpMessage(self)
     Function:UnRequire("UI/"..self.name)
     CSDefine.Object.DestroyImmediate(self.gameObject)
 end

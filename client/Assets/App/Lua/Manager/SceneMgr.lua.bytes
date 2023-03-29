@@ -7,7 +7,7 @@ SceneMgr.oldName = ""
 SceneMgr.scene = nil
 
 function SceneMgr:init()
-	-- MessageMgr:LuaRegisterMessage(GameDefine.BuildInfoChange, self.BuildChangeInfo())
+	-- MessageMgr:RegisterLuaMessage(GameDefine.BuildInfoChange, self.BuildChangeInfo())
 end
 
 function SceneMgr:LoadScene(sceneName, loading, cb)

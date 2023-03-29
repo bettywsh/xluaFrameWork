@@ -17,18 +17,18 @@ NetMgr.pingnum = 0
 function NetMgr:init()
     self:RegisterProtoFile()
     self:InitHandleMessage()
-    self:RegisterEventMessage()
+    self:RegisterCSharpMessage()
 end
 
-function NetMgr:RegisterEventMessage()
+function NetMgr:RegisterCSharpMessage()
     -- 服务器连接失去连接
-    MessageMgr:RegisterEventMessage(CS.MessageConst.MsgLostConnect, function(data)
+    MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgLostConnect, function(data)
         if self.hasSendPing then
             self.disConnect = true
         end
     end)
     -- 服务器连接连接失败
-    MessageMgr:RegisterEventMessage(CS.MessageConst.MsgDisconnected, function(data)
+    MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgDisconnected, function(data)
         if self.hasSendPing then
             self.disConnect = true
         end
@@ -144,7 +144,7 @@ end
 
 
 function NetMgr:InitHandleMessage()
-    MessageMgr:RegisterEventMessage(CS.MessageConst.MsgNetData, function(datas)
+    MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgNetData, function(datas)
         local packetId = datas[0]
         if datas[1] == nil then
             Function:Log("on socket lua:" .. packetId)

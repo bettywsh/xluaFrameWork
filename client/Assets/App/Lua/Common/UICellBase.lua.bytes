@@ -13,7 +13,7 @@ function UICellBase:Open(transform)
 end
 
 function UICellBase:Close()
-	-- UnRegisterNetCmd(self)
+	-- RemoveNetMessage(self)
     -- UnRegisterLuaMessage(self)
     -- Function:UnRequire("UI/"..self.name)
     -- CSDefine.Object.DestroyImmediate(self.gameObject)

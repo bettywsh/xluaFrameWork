@@ -20,10 +20,10 @@ TextMgr:Init()
 SceneMgr:init()
 
 local function StartModule()
-	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateNo)
-	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateBigVersion)
-	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateSmallVersion)
-	MessageMgr:RemoveEventMessage(CS.MessageConst.MsgUpdateLostConnect)
+	MessageMgr:RemoveCSharpMessage(CS.MessageConst.MsgUpdateNo)
+	MessageMgr:RemoveCSharpMessage(CS.MessageConst.MsgUpdateBigVersion)
+	MessageMgr:RemoveCSharpMessage(CS.MessageConst.MsgUpdateSmallVersion)
+	MessageMgr:RemoveCSharpMessage(CS.MessageConst.MsgUpdateLostConnect)
 	Function:UnRequire("Common/GameDefine")
 	Function:UnRequire("Common/LuaClass")
 	Function:UnRequire("Manager/MessageMgr")
@@ -41,28 +41,28 @@ end
 
 local UpdatePanel
 -- 更新
-MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateFristCopy, function()
+MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgUpdateFristCopy, function()
 	UpdatePanel = UIMgr:Open("UpdatePanel", StartModule)
 	UpdatePanel:InitCopyFile()
 end)
 -- 更新
-MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateYes, function()
+MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgUpdateYes, function()
 	UpdatePanel = UIMgr:Open("UpdatePanel", StartModule)
 	UpdatePanel:InitRefreshShowInfoText()
 end)
 --不更新
-MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateNo, function()
+MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgUpdateNo, function()
 	StartModule()
 	CS.UnityEngine.GameObject.Find("Launch"):GetComponent("Launch"):StartGame()
 end)
 --大版本更新
-MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateBigVersion, function(url)
+MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgUpdateBigVersion, function(url)
 	UIMgr:OpenMessageBox(string.format(TextMgr:GetText("UpdatePanel_BigVersion"), url[0]),function()
 		CSDefine.UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
     end,nil,2)
 end)
 --小版本更新
-MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateSmallVersion, function(scmd)
+MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgUpdateSmallVersion, function(scmd)
 	UpdatePanel:RefreshShowInfoText()
 	UIMgr:OpenMessageBox(string.format(TextMgr:GetText("UpdatePanel_NeedUpdateCount"),scmd[0]), function()
 		UpdatePanel:DownLoadFiles()
@@ -71,7 +71,7 @@ MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateSmallVersion, function(
 	end, 3);
 end)
 --服务器连接失败
-MessageMgr:RegisterEventMessage(CS.MessageConst.MsgUpdateLostConnect, function()
+MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgUpdateLostConnect, function()
 	UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_ServerFail"),function()
 		CSDefine.UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
     end,nil,2)

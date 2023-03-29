@@ -5,13 +5,13 @@ function DialogPanel:OnOpen()
     self.view.txt_Msg.text = self.args.txtMsg
 
     if self.args.txtOk ~= nil then
-        self.view.txt_Ok.text = self.args.txtOk
+        self.view.txt_Ok.text = TextMgr:GetText(self.args.txtOk)
     else
         -- body
     end
 
     if self.args.txtCal ~= nil then
-        self.view.txt_Cancel.text = self.args.txtCal
+        self.view.txt_Cancel.text = TextMgr:GetText(self.args.txtCal)
     else
         -- body
     end

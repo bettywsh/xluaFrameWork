@@ -6,11 +6,11 @@ MessageMgr.NetMessageListern = {} --网络协议的存储
 
 
 --注册从C#层传输过来的事件，比如断线  重连 顶号  
-function MessageMgr:RegisterEventMessage(messagename,func)
+function MessageMgr:RegisterCSharpMessage(messagename,func)
     CS.MessageManager.Instance:RegisterEventMessageHandler(messagename,func)
 end
 
-function MessageMgr:RemoveEventMessage(messagename)
+function MessageMgr:RemoveCSharpMessage(messagename)
     CS.MessageManager.Instance:RemoveEventMessage(messagename)
 end
 
@@ -25,7 +25,7 @@ function MessageMgr:RegisterNetMessage(cmdName,func)
 end
 
 --卸载注册的网络时间
-function MessageMgr:UnRegisterNetCmd(cmdName)
+function MessageMgr:RemoveNetMessage(cmdName)
 	local cmdID = NetMgr:GetPbIDFromCmdName(cmdName)
 	if not cmdID then
 		Function:Log('===cmdName:', cmdName, "not register in pb")
@@ -35,7 +35,7 @@ function MessageMgr:UnRegisterNetCmd(cmdName)
 end
 
 --lua层的消息分发协议
-function  MessageMgr:LuaRegisterMessage(messageName, ctrl, func)
+function  MessageMgr:RegisterLuaMessage(messageName, ctrl, func)
     local messageN = self.MessageListern[messageName]
     if messageN == nil then
         messageN = {}
@@ -50,7 +50,7 @@ end
 
 
 --lua层事件注册的删除
-function MessageMgr:LuaUnRegisterMessage(messageName, ctrl, func)
+function MessageMgr:RemoveLuaMessage(messageName, ctrl, func)
     local messList = self.MessageListern[messageName]
     if  messList then
         for i = #messList, 1, -1 do
