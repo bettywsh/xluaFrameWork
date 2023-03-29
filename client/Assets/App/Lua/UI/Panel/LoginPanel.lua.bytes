@@ -19,25 +19,11 @@ function LoginPanel:UI_btn_click_OnClick()
 		}
 		NetMgr:SendCmd("LoginRequest", LoginRequest)
     end)
-
-
--- 总长度 4字节
--- 包索引 2字节 
--- 协议id 2字节
--- 0	2字节
--- 包体
-
--- 包体长度 4字节
--- 包索引 4字节
--- 协议id 2字节
--- 0 4字节
--- 包体
-
-	SceneMgr:LoadScene("Main", false)
 end
 
-function LoginPanel:OnNetCmd_SC_LoginResponse(msg)
-	Function:Error(11111)
+function LoginPanel:OnNetCmd_LoginResponse(msg)
+	Function:Error(msg.playerInfo.playerId)
+	SceneMgr:LoadScene("Main", false)
 end
 
 --隐藏UI

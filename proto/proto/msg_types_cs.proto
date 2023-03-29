@@ -4,66 +4,18 @@ package com.bochsler.protocol;
 
 // 所有客户端->服务器的消息类型 LUA端为10000以上 C#端为10000以下
 enum CSMessageEnum {
-  CS_LoginRequest = 10001;
-  CS_PingRequest = 10002;
-  CS_ReconnectRequest = 10003; // 断线重连
-  CS_GmOrderRequest = 10009;
-  CS_LoginSuccReq = 10010;
-  CS_CreateRoleRequest = 10011; //创建角色
-  CS_RoleListRequest = 10012; //角色列表
-  CS_RoleLoginRequest = 10013; //角色登陆游戏
-  CS_RoleLogoutRequest = 10014; //角色登出游戏
-  CS_ChatRequest = 10101;//聊天
-  CS_FaceRequest = 10102;//表情
-  CS_DanceRequest = 10103;//跳舞
-  CS_SeatRequest = 10104;//坐
-  
-  /**************** 10501 - 10599 星球,世界相关协议*********************/
-  CS_WorldPlayerMove = 10501;		//玩家移动
-  CS_EnterSceneCompleteRequest = 10502;		//玩家移动
-  CS_EnterSceneRequest = 10503;		//进入场景
-  CS_WorldPlayerMoveRequest = 10511;		//玩家移动（后端计算）
-  
-  /**************** 10601 - 10699 用户邮件协议*********************/
-  CS_MailListRequest = 10601;		//玩家邮件列表
-  CS_ReadMailRequest = 10602;		//玩家读取邮件内容
-  CS_MailRewardRequest = 10603;		//玩家领取邮件奖励
-  CS_DelMailRequest = 10604;		//玩家删除邮件
+  LoginRequest = 10001;
+  PingRequest = 10002;
+  ReconnectRequest = 10003; // 断线重连
+  GmOrderRequest = 10009;
+  LoginSuccReq = 10010;
+  CreateRoleRequest = 10011; //创建角色
+  RoleListRequest = 10012; //角色列表
+  RoleLoginRequest = 10013; //角色登陆游戏
+  RoleLogoutRequest = 10014; //角色登出游戏
+  ChatRequest = 10101;//聊天
+  FaceRequest = 10102;//表情
+  DanceRequest = 10103;//跳舞
+  SeatRequest = 10104;//坐
 
-
-  /**************** 10701 - 10799 会议相关协议*********************/
-  CS_JoinMeetingRequest = 10701;	//进入会议
-  CS_ExitMeetingRequest = 10702;	//退出会议
-  CS_MeetingListRequest = 10703;	//会议列表
-  CS_CreateMeetingRequest = 10704;	//创建会议
-  CS_SetSpokesmanRequest = 10705;	//设置发言人
-  CS_MeetingShareLinksRequest = 10706;	//生成分享连接
-  CS_MeetingPlayPdfRequest = 10707;	//播放pdf
-  CS_MeetingPdfPageRequest = 10708;	//请求pdf翻页
-  CS_MeetingParticipantListRequest = 10709;	//请求所有的参会者
-  CS_MeetingSpokesmanListRequest = 10710;	//请求发言人列表
-  CS_MeetingMoodRequest = 10711;	//请求播放场景氛围
-  CS_MeetingParticipantActionRequest = 10712;	//请求设置参与者操作
-  CS_MeetingParticipantRequest = 10713;	//请求排行板  
-  CS_MeetingGiftRequest = 10714;		//送礼物
-  
-  CS_MeetingPlayScreenRequest = 10715;		//发起屏幕分享
-  CS_MeetingStopScreenRequest = 10716;		//结束屏幕分享
-  CS_MeetingPlayVideoRequest = 10717;		//播放视频
-  CS_MeetingStopVideoRequest = 10718;		//结束视频
-  CS_MeetingVideoTimeRequest = 10719;		//指定视频播放时间
-  CS_MeetingStopPdfRequest = 10720;		//结束pdf分享
-  
-  /**************** 10801 - 10899 包裹,道具相关协议*********************/
-  CS_PackageItemListRequest = 10801;		//玩家包裹道具列表
-  CS_UsePackageItemsRequest = 10802;		//使用包裹内道具
-  
-  /**************** 10901 - 10999 换装相关协议*********************/
-  CS_ChangeAvatarRequest = 10901;		//换装广播
-  CS_ChangeHeadRequest = 10902; 			//扭头
-
-  /**************** 11001 - 11099 换装相关协议*********************/
-  CS_GetRoomNFTListRequest = 11001;		//获取房间道具NFT列表请求
-  CS_SetNFTLinkRequest = 11002; 			//设置NFT链接请求
-  CS_ReadNFTInfoRequest = 11003; 			//读取NFT链接请求
 }

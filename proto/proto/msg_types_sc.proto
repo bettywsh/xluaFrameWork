@@ -4,80 +4,24 @@ package com.bochsler.protocol;
 
 // 所有服务器->客户端的消息类型	LUA端为20000以上 C#端为20000以下
 enum SCMessageEnum {
-  SC_LoginResponse = 10001;
-  SC_PingResponse = 10002;
-  SC_ReconnectResponse = 10003; //断线重连
-  SC_SCChannelExpired = 10004;
-  SC_SCServerClosed = 10005;
-  SC_SCServerVersion = 10006;
-  SC_SCPrompt = 10007;
-  SC_SCNotify = 10008;
-  SC_GmOrderResponse = 10009;
-  SC_LoginSuccResp = 10010;
-  SC_CreateRoleResponse = 10011; //创建角色
-  SC_RoleListResponse = 10012; //角色列表
-  SC_RoleLoginResponse = 10013; //角色登陆游戏
-  SC_RoleLogoutResponse = 10014; //角色登出游戏
+  LoginResponse = 10001;
+  PingResponse = 10002;
+  ReconnectResponse = 10003; //断线重连
+  SCChannelExpired = 10004;
+  SCServerClosed = 10005;
+  SCServerVersion = 10006;
+  SCPrompt = 10007;
+  SCNotify = 10008;
+  GmOrderResponse = 10009;
+  LoginSuccResp = 10010;
+  CreateRoleResponse = 10011; //创建角色
+  RoleListResponse = 10012; //角色列表
+  RoleLoginResponse = 10013; //角色登陆游戏
+  RoleLogoutResponse = 10014; //角色登出游戏
   
   
-  SC_ChatResponse = 10101;//聊天
-  SC_FaceResponse = 10102;//表情
-  SC_DanceResponse = 10103;//跳舞
-  SC_SeatResponse = 10104;//坐
-  
-  /**************** 10501 - 10599 星球,世界相关协议*********************/
-  SC_WorldPlayerMove = 10501;		//玩家在星球上移动
-  SC_EnterSceneCompleteResponse = 10502;		//确认进入新场景
-  SC_EnterSceneResponse = 10503;		//确认进入新场景
-  SC_WorldPlayerAdd = 10504;		//玩家进入星球
-  SC_WorldPlayerRemove = 10505;		//玩家退出星球
-  SC_SCEnterScene = 10506;		//进入新场景
-  SC_WorldPlayerMoveResponse = 10511;		//玩家移动（后端计算）
-  SC_WorldPlayerMoveBroadcast = 10599;  //玩家移动坐标广播（后端计算）
-
-  /**************** 10601 - 10699 用户邮件协议*********************/
-  SC_MailListResponse = 10601;		//玩家邮件列表
-  SC_ReadMailResponse = 10602;		//玩家读取邮件内容
-  SC_MailRewardResponse = 10603;		//玩家领取邮件奖励
-  SC_DelMailResponse = 10604;		//玩家删除邮件
-  
-  /**************** 10701 - 10799 会议相关协议*********************/
-  SC_JoinMeetingResponse = 10701;	//进入会议
-  SC_ExitMeetingResponse = 10702;	//退出会议
-  SC_MeetingListResponse = 10703;	//会议列表
-  SC_CreateMeetingResponse = 10704;//创建会议
-  SC_SetSpokesmanResponse = 10705;//设置发言人
-  SC_MeetingShareLinksResponse = 10706;	//返回分享连接
-  SC_MeetingPlayPdfResponse = 10707;	//播放pdf
-  SC_MeetingPdfPageResponse = 10708;	//pdf翻页
-  SC_MeetingParticipantListResponse = 10709;	//所有的参会者
-  SC_MeetingSpokesmanListResponse = 10710;	//发言人列表
-  SC_MeetingMoodResponse = 10711;	//播放场景氛围
-  SC_MeetingParticipantActionResponse = 10712;	//设置参与者操作
-  SC_MeetingParticipantResponse = 10713;	//排行板  
-  SC_MeetingGiftResponse = 10714;		//送礼物  
-  
-  SC_MeetingPlayScreenResponse = 10715;		//发起屏幕分享
-  SC_MeetingStopScreenResponse = 10716;		//结束屏幕分享
-  SC_MeetingPlayVideoResponse = 10717;		//播放视频
-  SC_MeetingStopVideoResponse = 10718;		//结束视频
-  SC_MeetingVideoTimeResponse = 10719;		//指定视频播放时间
-  SC_MeetingStopPdfResponse = 10720;		//结束pdf
-
-  /**************** 10801 - 10899 包裹,道具相关协议*********************/
-  SC_PackageItemListResponse = 10801;		//玩家包裹道具列表
-  SC_UsePackageItemsResponse = 10802;		//使用包裹内道具
-  SC_SCUsePackageItems = 10898;       //广播用户使用道具
-  SC_PackageItemUpdate = 10899;       //包裹内道具信息更新通知
-  
-  /**************** 10901 - 10999 相关协议*********************/
-   SC_ChangeAvatarResponse = 10901;		//换装广播
-   SC_ChangeHeadResponse = 10902;		//扭头
-   SC_ChangeAvatarHeadResponse = 10903;		//头像广播
-
-   /**************** 11001 - 11099 换装相关协议*********************/
-  SC_GetRoomNFTListResponse = 11001;		//获取房间道具NFT列表响应
-  SC_SetNFTLinkResponse = 11002; 			//设置NFT链接响应
-  SC_ReadNFTInfoResponse = 11003; 			//设置NFT链接响应
-  SC_SCNFTItemUpdate = 11099;         //推送更新的NFT信息
+  ChatResponse = 10101;//聊天
+  FaceResponse = 10102;//表情
+  DanceResponse = 10103;//跳舞
+  SeatResponse = 10104;//坐
 }

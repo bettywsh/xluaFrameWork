@@ -175,7 +175,6 @@ public class TcpConnect : IConnect {
 	
 	void doOnRead(IAsyncResult asr) {
         int bytesRead = 0;
-        Debug.LogWarning("收到包");
         try
 		{
 			lock (client.GetStream())
