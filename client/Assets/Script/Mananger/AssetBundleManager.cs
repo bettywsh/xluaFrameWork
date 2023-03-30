@@ -23,7 +23,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
     Dictionary<string, UnloadAssetBundleRequest> assetBundleUnloading = new Dictionary<string, UnloadAssetBundleRequest>();
     Dictionary<string, List<LoadUObjectAsyncRequest>> uobjectAsyncList = new Dictionary<string, List<LoadUObjectAsyncRequest>>();
 
-    public void Init()
+    public override void Init()
     {
         if (!AppConst.DebugMode)
         {
@@ -145,7 +145,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         request.luaFunc = luaFunc;
         request.isFrist = false;
         List<LoadUObjectAsyncRequest> requests = null;
-        if (!uobjectAsyncList.TryGetValue(assetName, out requests))
+        if (!uobjectAsyncList.TryGetValue(abName, out requests))
         {
             requests = new List<LoadUObjectAsyncRequest>();
             request.isFrist = false;

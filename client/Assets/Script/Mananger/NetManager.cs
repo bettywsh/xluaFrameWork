@@ -11,14 +11,9 @@ public class NetManager : MonoSingleton<NetManager>
     Dictionary<string, IConnect> tempConnects = new Dictionary<string, IConnect>();
     List<KeyValuePair<int, byte[]>> tmpEvents = new List<KeyValuePair<int, byte[]>>();
     Queue sEvents = new Queue();
-    NetworkInfo _netWorkInfo;
+    NetworkInfo _netWorkInfo = new NetworkInfo();
 
     public void Init() {
-        //SocketClient.OnRegister();
-
-        _netWorkInfo = new NetworkInfo();
-
-        
     }
 
 

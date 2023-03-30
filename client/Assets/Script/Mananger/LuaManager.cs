@@ -15,13 +15,11 @@ public class LuaManager : MonoSingleton<LuaManager>
         //luaenv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
         luaenv.AddBuildin("ffi", XLua.LuaDLL.Lua.LoadFFI);
         luaenv.AddBuildin("pb", XLua.LuaDLL.Lua.LoadLuaProfobuf);
-        DoFile("UpdateModule");
-
     }
 
     public byte[] MyLoader(ref string filename)
     {
-        TextAsset ta = ResManager.Instance.OnLoadAsset("Common", filename, ResType.Lua) as TextAsset;
+        TextAsset ta = ResManager.Instance.OnLoadAsset("Common", "Lua/" + filename, ResType.Lua) as TextAsset;
         return System.Text.Encoding.UTF8.GetBytes(ta.text);
     }
 

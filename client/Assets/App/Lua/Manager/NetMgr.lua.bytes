@@ -67,7 +67,7 @@ end
 
 -- 注册网络协议的文件
 function NetMgr:RegisterProtoFile()
-    local protodefs = require("Protobuf/ProtoFlies")
+    local protodefs = require("3rd/lua-protobuf/ProtoFlies")
     for k, v in ipairs(protodefs) do
         ResMgr:GloabLoadAssetAsync("Protobuf/"..v .. ".pc", CSDefine.ResType.Bytes, function(obj)
             local file, x = self.PB.load(obj.bytes)
@@ -95,7 +95,6 @@ end
 function NetMgr:GetPbIDFromCmdName(cmdName)
     -- return self._NetCmdNameRegistry[cmdName]
     local cmdName = self.PB.enum(GameDefine.ProtobufPackage.."SCMessageEnum", cmdName)
-    print(cmdName)
     return cmdName
 end
 

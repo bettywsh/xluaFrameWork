@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using System.Resources;
 
 public class Launch : MonoBehaviour
 {
@@ -28,28 +29,22 @@ public class Launch : MonoBehaviour
 
     public void StartUpdate()
     {
-        DownLoadManager.Instance.Init();
-        MessageManager.Instance.Init();
         SoundManager.Instance.Init();
         UIManager.Instance.Init();
         AssetBundleManager.Instance.Init();
+        ResManager.Instance.Init();
         LuaManager.Instance.Init();
-        UpdateManager.Instance.Init();
-        ResManager.Instance.Init();      
-        AtlasManager.Instance.Init();
+        LuaManager.Instance.DoFile("UpdateModule");
     }
 
     public void StartGame()
     {
         DownLoadManager.Instance.OnDestroy();
         UpdateManager.Instance.OnDestroy();
-
-        LuaManager.Instance.DoFile("StartModule");
-        TimerManager.Instance.Init();
-        NetManager.Instance.Init();
-        HttpManager.Instance.Init();
-   
+        ResManager.Instance.Init();
         AssetBundleManager.Instance.Init();
+        LuaManager.Instance.DoFile("StartModule");
+  
         //#if UNITY_EDITOR        
         //        EditorApplication.playModeStateChanged += OnUnityPlayModeChanged;
         //#endif

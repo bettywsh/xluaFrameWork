@@ -4,9 +4,21 @@ using System.IO;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
+using System.Collections.Generic;
 
 public class ResPath
 {
+
+    public static string AppFullPath
+    {
+        get { return Path.Combine(Application.dataPath, ResConst.RootFolderName); }
+    }
+
+    public static string AppRelativePath
+    {
+        get { return Path.Combine("Assets", ResConst.RootFolderName); }
+    }
+
     private static string _SourceFolder;
     /// <summary>
     /// App包内初始资源文件夹
@@ -28,7 +40,7 @@ public class ResPath
                     default:
                         if (AppConst.DebugMode)
                         {
-                            _SourceFolder = ResConst.AppRootPath;
+                            _SourceFolder = AppFullPath;
                         }
                         else
                         {
@@ -59,7 +71,7 @@ public class ResPath
                 {
                     if (!AppConst.UpdateModel)
                     {
-                        _DataFolder = ResConst.AppRootPath;
+                        _DataFolder = AppFullPath;
                     }
                     else
                     {
@@ -105,7 +117,8 @@ public class ResPath
     /// <returns></returns>
     public static string GetStreamingAssetsFilePath(string fileNameWithExtension)
     {
-        return CombinePath(SourceFolder, fileNameWithExtension);
+        return Path.Combine(SourceFolder, fileNameWithExtension);
+        //return CombinePath(SourceFolder, fileNameWithExtension);
     }
 
     /// <summary>
@@ -115,7 +128,8 @@ public class ResPath
     /// <returns></returns>
     public static string GetPersistentFilePath(string fileNameWithExtension)
     {
-        return CombinePath(DataFolder, fileNameWithExtension);
+        return Path.Combine(DataFolder, fileNameWithExtension);
+        //return CombinePath(DataFolder, fileNameWithExtension);
     }
     public static bool CheckPersistentFileExsits(string filePath)
     {
@@ -135,106 +149,82 @@ public class ResPath
         }
     }
 
-    public static string GetAssetBunldeName(string path, ResType resType)
+
+    public static string GetSingleAssetBunldeName(string folderName, ResType resType)
     {
-        if (resType == ResType.Lua || resType == ResType.Bytes || resType == ResType.Bytes)
+        return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
+    }
+
+    public static string GetMultiFileAssetBunldeName(string path, ResType resType)
+    {
+        return path.ToLower() + ResConst.AssetBunldExtName;
+    }
+
+    public static string GetAssetBunldePath(string path, ResType resType, Dictionary<string, BuildJson> BuildJson)
+    {
+        string folderName = path.Substring(0, path.IndexOf("/"));
+        if (BuildJson.Count == 0)
         {
-            return ResConst.LuaFolderName.ToLower() + "/" + ResConst.LuaFolderName.ToLower() + ResConst.AssetBunldExtName;
+            return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
         }
-        else
+        BuildJson buildJson;
+        BuildJson.TryGetValue(folderName, out buildJson);
+        if (buildJson.BuildType == BuildType.OneAB)
         {
-            if (path.IndexOf(".") > 0)
-                path = path.Substring(0, path.IndexOf("."));
-            string extName;
-            string folderName;
-            GetFolderAndExtName(resType, out folderName, out extName);
-            return folderName.ToLower() + "/" + path.ToLower() + ResConst.AssetBunldExtName;
+            return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
+        }
+        else { 
+            return path + ResConst.AssetBunldExtName;
         }
     }
 
-    public static string GetAssetName(string path, ResType resType)
+    public static string GetAssetPath(string path, ResType resType)
     {
-        string pathRoot = "";
-        if (resType == ResType.Lua || resType == ResType.Bytes || resType == ResType.Bytes)
-        {
-            pathRoot = ResConst.AppRootRelativePath + "/" + ResConst.LuaFolderName;
-            if (path.IndexOf(".") > 0)
-                path = path.Substring(0, path.IndexOf("."));
-            string extName;
-            string folderName;
-            GetFolderAndExtName(resType, out folderName, out extName);
-            return pathRoot + "/" + path.ToLower() + extName;
-        }
-        else
-        {
-            pathRoot = ResConst.AppRootRelativePath;
-            //if (path.IndexOf(".") > 0)
-            //    path = path.Substring(0, path.IndexOf("."));
-            string extName;
-            string folderName;
-            GetFolderAndExtName(resType, out folderName, out extName);
-            return pathRoot + "/" + folderName + "/" + path.ToLower() + extName;
-        }
+        string extName = GetExtName(resType);
+        return Path.Combine(ResPath.AppRelativePath, path) + extName;
     }
 
-    public static string GetEditorAssetName(string path, ResType resType)
+    public static string GetExtName(ResType resType)
     {
-        string extName;
-        string folderName;
-        GetFolderAndExtName(resType, out folderName, out extName);
-        return ResConst.AppRootRelativePath + "/" + folderName + "/" + path + extName;
-    }
-
-
-    public static void GetFolderAndExtName(ResType resType, out string folderName, out string extName)
-    {
-        extName = "";
-        folderName = "";
+        string extName = "";
         switch (resType)
         {
             case ResType.Prefab:
                 extName = ResConst.PrefabExtName;
-                folderName = ResConst.PrefabFolderName;
                 break;
             case ResType.Sprite:
                 extName = ResConst.TextureExtName;
-                folderName = ResConst.TextureFolderName;
                 break;
             case ResType.AudioClip:
-                folderName = ResConst.SoundFolderName;
                 break;
             case ResType.Lua:
-                folderName = ResConst.LuaFolderName;
                 extName = ResConst.LuaExtName;
                 break;
             case ResType.Bytes:
-                folderName = ResConst.LuaFolderName;
                 extName = ResConst.BytesExtName;
                 break;
             case ResType.Txt:
-                folderName = ResConst.LuaFolderName;
                 extName = ResConst.TxtExtName;
                 break;
             case ResType.Scene:
-                folderName = ResConst.SceneFolderName;
                 extName = ResConst.SceneExtName;
                 break;
             case ResType.Font:
-                folderName = ResConst.FontFolderName;
                 extName = ResConst.FontExtName;
                 break;
             case ResType.Asset:
-                folderName = ResConst.AssetFolderName;
-                extName = ResConst.AssetExtName;                
+                extName = ResConst.AssetExtName;
                 break;
             case ResType.Material:
-                folderName = ResConst.MaterialFolderName;
                 extName = ResConst.MaterialExtName;
                 break;
             case ResType.Atlas:
-                folderName = ResConst.AtlasFolderName;
                 extName = ResConst.AtlasExtName;
                 break;
+            case ResType.Json:
+                extName = ResConst.JsonExtName;
+                break;
         }
+        return extName;
     }
 }

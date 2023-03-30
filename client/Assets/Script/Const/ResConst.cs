@@ -11,60 +11,9 @@ public class ResConst
     public const string RootFolderName = "App";
 
     /// <summary>
-    /// UI目录
+    /// 项目文件夹打包方式配置
     /// </summary>
-    public const string PrefabFolderName = "Prefab";
-
-    /// <summary>
-    /// UI目录
-    /// </summary>
-    public const string SceneFolderName = "Scene";
-    
-    /// <summary>
-    /// 特效目录
-    /// </summary>
-    public const string SoundFolderName = "Sound";
-
-    /// <summary>
-    /// Lua目录
-    /// </summary>
-    public const string LuaFolderName = "Lua";
-
-    /// <summary>
-    /// ToLua目录
-    /// </summary>
-    public const string ToLuaFolderName = "ToLua";
-
-    /// <summary>
-    /// Atlas目录
-    /// </summary>
-    public const string AtlasFolderName = "Atlas";
-
-    /// <summary>
-    /// Texture目录
-    /// </summary>
-    public const string TextureFolderName = "Texture";
-
-    /// <summary>
-    /// Font目录
-    /// </summary>
-    public const string FontFolderName = "Font";
-
-    /// <summary>
-    /// Asset目录
-    /// </summary>
-    public const string AssetFolderName = "Asset";
-
-    /// <summary>
-    /// Font目录
-    /// </summary>
-    public const string ProtoFolderName = "Protobuf";
-
-
-    /// <summary>
-    /// Material目录
-    /// </summary>
-    public const string MaterialFolderName = "Material";
+    public const string BuildJson = "BuildConfig/Build";
 
     /// <summary>
     /// Lua后缀
@@ -121,6 +70,10 @@ public class ResConst
     /// </summary>
     public const string TxtExtName = ".txt";
 
+    /// <summary>
+    /// json后缀
+    /// </summary>
+    public const string JsonExtName = ".json";
 
     /// <summary>
     /// 版本文件
@@ -136,32 +89,25 @@ public class ResConst
     /// 打包后Manifest文件名
     /// </summary>
     public const string AssetBundleManifest = "NewUpdata";
-    public static string AppRootPath
-    {
-        get { return Application.dataPath + "/" + RootFolderName; }
-    }
 
-    public static string AppRootRelativePath
-    {
-        get { return "Assets/" + RootFolderName; }
-    }
 }
 
 [LuaCallCSharp]
 public enum ResType
 { 
-    AudioClip,
-    Prefab,
-    Texture,
-    Sprite,
-    Lua,
-    Bytes,
-    Txt,
-    Scene,
-    Material,
-    Atlas,
-    Font,    
-    Asset,
-    AssetBundleManifest,
+    AudioClip = 1,
+    Prefab = 2,
+    Texture = 3,
+    Sprite = 4,
+    Lua = 5,
+    Bytes = 6,
+    Txt = 7,
+    Scene = 8,
+    Material = 9,
+    Atlas = 10,
+    Font = 11,
+    Asset = 12,
+    AssetBundleManifest = 13,
+    Json = 14,
 }
 

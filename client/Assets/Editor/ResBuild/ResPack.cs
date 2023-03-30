@@ -30,6 +30,7 @@ public static class ResPack
     }
 
 
+
     /// <summary>
     /// 旧资源目录
     /// </summary>
@@ -96,44 +97,32 @@ public static class ResPack
 
     private static void BuildLuaByBuildTarget(BuildTarget target)
     {
-        string root = ResConst.AppRootPath;
+        string root = ResPath.AppFullPath;
         //List<string> modules = PackFile.EachModuleList(root);  
 
         List<AssetBundleBuild> builds = new List<AssetBundleBuild>();
-        //打包toLua的LUA文件1
-        //string targetDir = Application.dataPath + "/" + ResConst.LuaFolderName;
-        //string sourceDir = Application.dataPath + "/ToLua/Lua";
+        string buildPath = Path.Combine(ResPath.AppRelativePath, ResConst.BuildJson) + ResConst.JsonExtName;
+        string buildJson = AssetDatabase.LoadAssetAtPath<TextAsset>(buildPath).text;
+        Dictionary<string, BuildJson> json = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(buildJson);
+        foreach (var item in json)
+        {
+            if (item.Value.BuildType == BuildType.OneAB)
+            {
+                CreateSingleBuild(item.Value.FolderName, item.Value.ResType, builds);
+            }
+            else if (item.Value.BuildType == BuildType.EveryAB)
+            {
+                CreateMultiBuilds(item.Value.FolderName, item.Value.ResType, builds);
+            }
+        }
 
-        //PackFile.ClearDir(targetDir);
-        //Directory.CreateDirectory(targetDir);
-        //AssetDatabase.Refresh();
-        //PackFile.CopySourceDirTotargetDir(sourceDir, targetDir, ResConst.BytesExtName);
-        //AssetDatabase.Refresh();
-
-        //sourceDir = root + "/" + ResConst.LuaFolderName;
-        //Directory.CreateDirectory(targetDir);
-        //PackFile.CopySourceDirTotargetDir(sourceDir, targetDir, ResConst.BytesExtName);
-        //AssetDatabase.Refresh();
-        CreateSingleBuild(ResType.Lua, builds);
-        CreateMultiBuilds(ResType.Prefab, builds);
-        CreateMultiBuilds(ResType.Atlas, builds);
-        CreateMultiBuilds(ResType.Scene, builds);
-        CreateMultiBuilds(ResType.Material, builds);
-        CreateMultiBuilds(ResType.AudioClip, builds);
-        CreateMultiBuilds(ResType.Asset, builds);
-        CreateMultiBuilds(ResType.Font, builds);
-        CreateMultiBuilds(ResType.Sprite, builds);
 
         AssetDatabase.Refresh();
-
         if (Directory.Exists(ResPack.AppNewAssetBuildPath)) Directory.Delete(ResPack.AppNewAssetBuildPath, true);
         AssetDatabase.Refresh();
         Directory.CreateDirectory(ResPack.AppNewAssetBuildPath);
         AssetDatabase.Refresh();
         BuildPipeline.BuildAssetBundles(ResPack.AppNewAssetBuildPath, builds.ToArray(), BuildAssetBundleOptions.None, target);
-        //删除临时lua
-        //if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true);
-
         AssetDatabase.Refresh();
         Debug.Log("Build all module completed!!! ");
 
@@ -147,13 +136,10 @@ public static class ResPack
         AssetDatabase.Refresh();
     }
 
-
-    private static void CreateSingleBuild(ResType restype, List<AssetBundleBuild> builds)
+    private static void CreateSingleBuild(string folderName, ResType restype, List<AssetBundleBuild> builds)
     {
-        string folderName = ResConst.LuaFolderName;
-        string dir;
-        //ResPath.GetFolderAndExtName(restype, out folderName, out extName);
-        dir = Path.Combine(ResConst.AppRootPath, folderName);
+        string extName = ResPath.GetExtName(restype);
+        string dir = Path.Combine(ResPath.AppFullPath, folderName);
         string[] files = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
         List<string> luaList = new List<string>();
         for (int i = 0; i < files.Length; i++)
@@ -166,19 +152,15 @@ public static class ResPack
         AssetDatabase.Refresh();
 
         AssetBundleBuild build = new AssetBundleBuild();
-        build.assetBundleName = ResPath.GetAssetBunldeName(folderName, ResType.Lua);
+        build.assetBundleName = ResPath.GetSingleAssetBunldeName(folderName, ResType.Lua);
         build.assetNames = luaList.ToArray();
         builds.Add(build);
-
     }
 
-    private static void CreateMultiBuilds(ResType restype, List<AssetBundleBuild> builds)
+    private static void CreateMultiBuilds(string folderName, ResType restype, List<AssetBundleBuild> builds)
     {
-        string folderName;
-        string extName;
-        string dir;
-        ResPath.GetFolderAndExtName(restype, out folderName, out extName);
-        dir = Path.Combine(ResConst.AppRootPath, folderName);
+        string extName = ResPath.GetExtName(restype);
+        string dir = Path.Combine(ResPath.AppFullPath, folderName);
         if (!Directory.Exists(dir))
             return;
         string[] files = null;
@@ -192,14 +174,13 @@ public static class ResPack
             var absolutePath = files[i].Replace("\\", "/");
             int start = absolutePath.IndexOf(folderName + "/");
             string path = absolutePath.Substring(start, absolutePath.Length - start);
-            path = path.Replace(extName, "");
-            path = path.Replace(folderName + "/", "");
+
+            path = path.Replace(Path.GetExtension(files[i]), "");
             var assetPath = PackFile.Trans2AssetPath(absolutePath);
 
-            string[] paths = new string[1];
-            paths[0] = assetPath;
+            string[] paths = new string[1] { assetPath };
             AssetBundleBuild build = new AssetBundleBuild();
-            build.assetBundleName = ResPath.GetAssetBunldeName(path, restype);
+            build.assetBundleName = ResPath.GetMultiFileAssetBunldeName(path, restype);
             build.assetNames = paths;
             builds.Add(build);
         }

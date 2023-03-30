@@ -20,10 +20,10 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     {
         loadPro = 0;
         AsyncOp = null;
-        ResManager.Instance.LoadAssetAsync(name, name, ResType.Scene, (objt) =>
+        ResManager.Instance.LoadAssetAsync(name, "Scene/" + name, ResType.Scene, (objt) =>
         {
             AsyncOp = null;
-            ResManager.Instance.DestroyCache();
+            //ResManager.Instance.Dispose();
             AsyncOp = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
             AsyncOp.allowSceneActivation = false;
             AsyncOp.completed += (AsyncOperation ao) => {
@@ -36,8 +36,7 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
 
     public void ChangeScene(string name)
     {
-        ResManager.Instance.DestroyCache();
-    
+        //ResManager.Instance.Dispose();    
         AsyncOp = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
         AsyncOp.allowSceneActivation = false;
         AsyncOp.completed += (AsyncOperation ao) => {

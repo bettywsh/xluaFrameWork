@@ -26,9 +26,9 @@ FOR /F "delims==" %%i IN ('dir /b *.proto') DO (
 
 
 ::拷贝到项目
-set LuaPath=D:\MyFrameWork\xluaFrameWork\client\Assets\App\Lua\Protobuf
-XCOPY /y .\lua\*.pc.bytes .\..\..\client\Assets\App\Lua\Protobuf
-XCOPY /y .\lua\*.lua.bytes .\..\..\client\Assets\App\Lua\Protobuf
+::set LuaPath=D:\MyFrameWork\xluaFrameWork\client\Assets\App\Lua\Protobuf
+XCOPY /y .\lua\*.pc.bytes .\..\..\client\Assets\App\Protobuf
+XCOPY /y .\lua\*.lua.bytes .\..\..\client\Assets\App\Lua\3rd\lua-protobuf\
 
 del/F /S /Q *.proto
 del/F /S /Q .\cs\*.cs
