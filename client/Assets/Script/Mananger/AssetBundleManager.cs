@@ -25,7 +25,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
 
     public override void Init()
     {
-        if (!AppConst.DebugMode)
+        if (AppConst.IsABMode)
         {
             assetBundleManifest = LoadAssetBundleUObject("Common", ResConst.AssetBundleManifest, ResType.AssetBundleManifest.ToString()) as AssetBundleManifest;
         }

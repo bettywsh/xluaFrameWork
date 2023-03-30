@@ -28,7 +28,7 @@ public class ResManager : Singleton<ResManager>
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
     public UObject OnLoadAsset(string resName, string relativePath, ResType resType)
     {
-        if (AppConst.DebugMode)
+        if (!AppConst.IsABMode)
         {
             return ResLocalManager.Instance.LoadLocalUObject(relativePath, resType);
         }
@@ -45,7 +45,7 @@ public class ResManager : Singleton<ResManager>
     public void LoadAssetAsync(string resName, string relativePath, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
 
-        if (AppConst.DebugMode)
+        if (!AppConst.IsABMode)
         {
             ResLocalManager.Instance.LoadLocalUObjectAsync(relativePath, resType, sharpFunc, luaFunc);
         }
@@ -92,7 +92,7 @@ public class ResManager : Singleton<ResManager>
 
     public void UnLoadAssetBundle(string relativePath, ResType resType)
     {
-        if (!AppConst.DebugMode)
+        if (AppConst.IsABMode)
         {
             string abName = ResPath.GetAssetBunldePath(relativePath, resType, BuildJson);
             AssetBundleManager.Instance.UnloadAssetBundle(abName, true);

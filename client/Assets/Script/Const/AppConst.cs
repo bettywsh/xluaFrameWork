@@ -8,7 +8,7 @@ public class AppConst
     /// 是否是打包模式
     /// </summary>
     /// 
-    public const bool DebugMode = false;
+    public const bool IsABMode = false;
 
     /// <summary>
     /// 热更新模式
