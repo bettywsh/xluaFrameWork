@@ -5,7 +5,8 @@ using UnityEngine;
 public enum BuildType
 { 
     OneAB = 1,
-    EveryAB = 2
+    EveryFileAB = 2,
+    EveryFolderAB = 3
 }
 
 public class BuildJson 

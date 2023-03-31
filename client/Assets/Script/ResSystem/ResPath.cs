@@ -150,7 +150,7 @@ public class ResPath
     }
 
 
-    public static string GetSingleAssetBunldeName(string folderName, ResType resType)
+    public static string GetSingleAssetBunldeName(string folderName)
     {
         return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
     }
@@ -160,24 +160,37 @@ public class ResPath
         return path.ToLower() + ResConst.AssetBunldExtName;
     }
 
+    public static string GetMultiFolderAssetBunldeName(string rootFolderName, string folderName)
+    {
+        return Path.Combine(rootFolderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
+    }
+
     public static string GetAssetBunldePath(string path, ResType resType, Dictionary<string, BuildJson> BuildJson)
     {
+        //不能用Path.Combine 因为这样出来的路径会变成\\ 而依赖文件是/导致文件路径不统一会被认为是不同资源
         string folderName = path.Substring(0, path.IndexOf("/"));
         if (BuildJson.Count == 0)
         {
-            return (Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName).ToLower();
+            return (folderName.ToLower() + "/" + folderName.ToLower() + ResConst.AssetBunldExtName).ToLower();
         }
         BuildJson buildJson;
         BuildJson.TryGetValue(folderName, out buildJson);
         if (buildJson.BuildType == BuildType.OneAB)
         {
-            return (Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName).ToLower();
+            return (folderName.ToLower() + "/" + folderName.ToLower() + ResConst.AssetBunldExtName).ToLower();
         }
-        else { 
+        else if (buildJson.BuildType == BuildType.EveryFileAB)
+        {
             return (path + ResConst.AssetBunldExtName).ToLower();
         }
+        else
+        {
+            string[] folders =  path.Split('/');
+            path = folders[0] + "/" + folders[1];
+            return (path + ResConst.AssetBunldExtName).ToLower();
+        }
+        
     }
-
     public static string GetAssetPath(string path, ResType resType)
     {
         string extName = GetExtName(resType);

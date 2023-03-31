@@ -12,5 +12,5 @@
 	"Scene":{ "FolderName":"Scene", "ResType":8, "BuildType":2 },
 	"AudioClip":{ "FolderName":"AudioClip", "ResType":1, "BuildType":2 },
 	"Font":{ "FolderName":"Font", "ResType":11, "BuildType":2 },
-	"Texture":{ "FolderName":"Texture", "ResType":3, "BuildType":2 }
+	"Texture":{ "FolderName":"Texture", "ResType":3, "BuildType":3 }
 }

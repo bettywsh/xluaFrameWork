@@ -150,13 +150,13 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
             requests = new List<LoadUObjectAsyncRequest>();
             request.isFrist = true;
             requests.Add(request);
-            uobjectAsyncList.Add(abName, requests);       
+            uobjectAsyncList.Add(abName, requests);
+            StartCoroutine(OnLoadAssetAsync(abName, resType));
         }
         else
         {
             requests.Add(request);
         }
-        StartCoroutine(OnLoadAssetAsync(abName, resType));
     }
 
     IEnumerator OnLoadAssetAsync(string abName, ResType resType)
@@ -206,8 +206,8 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
                 requests[i].luaFunc.Dispose();
                 requests[i].luaFunc = null;
             }
-            if (!requests[i].isFrist)
-                bundleInfo.referencedCount++;
+            //if (!requests[i].isFrist)
+            bundleInfo.referencedCount++;
         }
         uobjectAsyncList.Remove(abName);        
     }
@@ -300,7 +300,7 @@ public class AssetBundleInfo
     public AssetBundle assetBundle;
     public int referencedCount;
 
-    public AssetBundleInfo(AssetBundle ab, int RefCount = 1)
+    public AssetBundleInfo(AssetBundle ab, int RefCount = 0)
     {
         assetBundle = ab;
         referencedCount = RefCount;

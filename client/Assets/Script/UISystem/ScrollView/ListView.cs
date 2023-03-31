@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System;
 using XLua;
 
-
+[RequireComponent(typeof(UnityEngine.UI.RectMask2D))]
 [RequireComponent(typeof(UnityEngine.UI.LoopScrollRect))]
 [DisallowMultipleComponent]
 public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSource
@@ -52,21 +52,9 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
     }
 
     public void ProvideData(Transform transform, int idx)
-    {        
-        ListViewItem listViewItem = transform.GetComponent<ListViewItem>();
-        VarPrefab vp = transform.GetComponent<VarPrefab>();
-        LuaTable luaTable = listViewItem.luaTable;
-        if (luaTable == null)
-        {
-            luaTable = LuaManager.Instance.CallFunction("UIMgr", "CreateCell",  "UI/Cell/" + transform.name.Replace("(Clone)", ""), transform, idx)[0] as LuaTable;
+    {
 
-        }
-        else
-        {
-            LuaFunction lf;
-            luaTable.Get("OnOpen", out lf);
-            lf.Call(idx);
-        }
+        //listViewItem.ScrollCellIndex(idx);
         transform.SendMessage("ScrollCellIndex", idx);
     }
     

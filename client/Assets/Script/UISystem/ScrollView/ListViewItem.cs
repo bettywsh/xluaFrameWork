@@ -11,11 +11,25 @@ namespace UnityEngine.UI
         public Button OnClickButton;
         public GameObject SelectedObject;
         public GameObject UnSelectedObject;
-        // private int index;
+        public int index = 0;
 
-        void ScrollCellIndex(int idx)
+        public void ScrollCellIndex(int idx)
         {
-            if(OnClickButton != null)
+            index = idx;
+            VarPrefab vp = transform.GetComponent<VarPrefab>();
+            string className = transform.name.Replace("(Clone)", "").Replace("##", "");
+            transform.name = className + idx;
+            if (luaTable == null)
+            {
+                luaTable = LuaManager.Instance.CallFunction("UIMgr", "CreateCell", "UI/Cell/" + className, transform, idx)[0] as LuaTable;
+            }
+            else
+            {
+                LuaFunction lf;
+                luaTable.Get("OnOpen", out lf);
+                lf.Call(luaTable, idx);
+            }
+            if (OnClickButton != null)
                 OnClickButton.onClick.AddListener(OnClickCallBack);
 
         }

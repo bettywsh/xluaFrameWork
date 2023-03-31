@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
+using static UnityEditor.Progress;
 
 public static class ResPack
 {
@@ -28,7 +29,6 @@ public static class ResPack
     {
         get { return "E:\\work\\hotfix\\client\\Android"; }
     }
-
 
 
     /// <summary>
@@ -85,9 +85,6 @@ public static class ResPack
         {
             PackFile.CopySourceDirTotargetDir(ResPack.AppNewAssetBuildPath, ResPack.AndroidHotUpdateBuildPath);
         }
-
-
-
     }
 
     /// <summary>
@@ -110,9 +107,13 @@ public static class ResPack
             {
                 CreateSingleBuild(item.Value.FolderName, item.Value.ResType, builds);
             }
-            else if (item.Value.BuildType == BuildType.EveryAB)
+            else if (item.Value.BuildType == BuildType.EveryFileAB)
             {
-                CreateMultiBuilds(item.Value.FolderName, item.Value.ResType, builds);
+                CreateMultiFileBuilds(item.Value.FolderName, item.Value.ResType, builds);
+            }
+            else if (item.Value.BuildType == BuildType.EveryFolderAB)
+            {
+                CreateMultiFolderBuilds(item.Value.FolderName, item.Value.ResType, builds);
             }
         }
 
@@ -141,32 +142,29 @@ public static class ResPack
         string extName = ResPath.GetExtName(restype);
         string dir = Path.Combine(ResPath.AppFullPath, folderName);
         string[] files = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
-        List<string> luaList = new List<string>();
+        List<string> fileList = new List<string>();
         for (int i = 0; i < files.Length; i++)
         {
             if (Path.GetExtension(files[i]).ToLower() == ".meta")
                 continue;
             var target = files[i].Replace('\\', '/');
-            luaList.Add(PackFile.Trans2AssetPath(target));
+            fileList.Add(PackFile.Trans2AssetPath(target));
         }
-        AssetDatabase.Refresh();
-
         AssetBundleBuild build = new AssetBundleBuild();
-        build.assetBundleName = ResPath.GetSingleAssetBunldeName(folderName, ResType.Lua);
-        build.assetNames = luaList.ToArray();
+        build.assetBundleName = ResPath.GetSingleAssetBunldeName(folderName);
+        build.assetNames = fileList.ToArray();
         builds.Add(build);
     }
 
-    private static void CreateMultiBuilds(string folderName, ResType restype, List<AssetBundleBuild> builds)
+    private static void CreateMultiFileBuilds(string folderName, ResType restype, List<AssetBundleBuild> builds)
     {
         string extName = ResPath.GetExtName(restype);
         string dir = Path.Combine(ResPath.AppFullPath, folderName);
         if (!Directory.Exists(dir))
             return;
-        string[] files = null;
         if (extName == "")
             extName = ".*";
-        files = Directory.GetFiles(dir, "*" + extName, SearchOption.AllDirectories);
+        string[] files = Directory.GetFiles(dir, "*" + extName, SearchOption.AllDirectories);
         for (int i = 0; i < files.Length; i++)
         {
             if (Path.GetExtension(files[i]).ToLower() == ".meta")
@@ -183,6 +181,34 @@ public static class ResPack
             build.assetBundleName = ResPath.GetMultiFileAssetBunldeName(path, restype);
             build.assetNames = paths;
             builds.Add(build);
+        }
+    }
+    private static void CreateMultiFolderBuilds(string folderName, ResType restype, List<AssetBundleBuild> builds)
+    {
+        string extName = ResPath.GetExtName(restype);
+        string dir = Path.Combine(ResPath.AppFullPath, folderName);
+        if (!Directory.Exists(dir))
+            return;
+        if (extName == "")
+            extName = ".*";
+        string[] folders = Directory.GetDirectories(dir);
+        foreach (string folder in folders)
+        {
+            string childfolder = folder.Substring(folder.LastIndexOf("\\") + 1, folder.Length - folder.LastIndexOf("\\") - 1);
+            string[] files = Directory.GetFiles(folder, "*" + extName, SearchOption.AllDirectories);
+            List<string> fileList = new List<string>();
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (Path.GetExtension(files[i]).ToLower() == ".meta")
+                    continue;
+                var target = files[i].Replace('\\', '/');
+                fileList.Add(PackFile.Trans2AssetPath(target));
+            }
+            AssetBundleBuild build = new AssetBundleBuild();
+
+            build.assetBundleName = ResPath.GetMultiFolderAssetBunldeName(folderName, childfolder);
+            build.assetNames = fileList.ToArray();
+            builds.Add(build);            
         }
     }
 

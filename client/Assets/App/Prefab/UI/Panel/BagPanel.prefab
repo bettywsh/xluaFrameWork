@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 2429131560077638940}
   - component: {fileID: 4653945348645786905}
   - component: {fileID: 490196577254673882}
+  - component: {fileID: 5129480996099315168}
   m_Layer: 5
   m_Name: '#lsv_ListView'
   m_TagString: Untagged
@@ -366,3 +367,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 5461500086728055287, guid: f49eec0b7b99df04c8e7633fe5278788, type: 3}
+--- !u!114 &5129480996099315168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934570252594263287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
