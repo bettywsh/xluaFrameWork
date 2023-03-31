@@ -85,7 +85,7 @@ UIMgr.AutoBindDict = {
     ["tsf"] = function(go) return go.transform end,
     ["img"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Image)), go.name) end,
     ["txt"] = function(go) return assert(go:GetComponent(typeof(CSDefine.TextMeshProUGUI)), go.name) end,
-    ["btn"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Button)), go.name) end,
+    ["btn"] = function(go) return assert(go:GetComponent(typeof(CSDefine.ButtonExt)), go.name) end,
     ["tgl"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Toggle)), go.name) end,
     ["sld"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Slider)), go.name) end,
     ["ipt"] = function(go) return assert(go:GetComponent(typeof(CSDefine.TMP_InputField)), go.name) end,
@@ -120,7 +120,7 @@ function UIMgr:AutoBind(transform)
 end
 
 function UIMgr:CreateCell(args)
-    local cell = require(args[0])
+    local cell = require(args[0]).new()
     cell:Open(args[1])
     cell:OnOpen(args[2])
     return cell

@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1804292436910473575}
   - component: {fileID: 1804292436910473497}
   - component: {fileID: 1804292436910473574}
-  - component: {fileID: 7673763482597078102}
+  - component: {fileID: 5151144325394428205}
   m_Layer: 5
   m_Name: '#btn_Mask'
   m_TagString: Untagged
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7673763482597078102
+--- !u!114 &5151144325394428205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804292436910473572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: af542cecab552634dbf229234f04841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -234,7 +234,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -257,6 +257,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1804292436910473574}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 0
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 1}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6934570252594263287

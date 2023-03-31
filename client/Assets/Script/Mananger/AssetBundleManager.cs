@@ -137,7 +137,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         assetBundleLoading.Remove(path);
     }
 
-    public void LoadAssetBundleUObjectAsync(string resName, string abName, string assetName, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
+    public void LoadAssetBundleUObjectAsync(string resName, string abName, string assetName, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
         LoadUObjectAsyncRequest request = new LoadUObjectAsyncRequest();
         request.assetNames = assetName;
@@ -148,7 +148,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         if (!uobjectAsyncList.TryGetValue(abName, out requests))
         {
             requests = new List<LoadUObjectAsyncRequest>();
-            request.isFrist = false;
+            request.isFrist = true;
             requests.Add(request);
             uobjectAsyncList.Add(abName, requests);       
         }
@@ -156,10 +156,10 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         {
             requests.Add(request);
         }
-        StartCoroutine(OnLoadAssetAsync(abName));
+        StartCoroutine(OnLoadAssetAsync(abName, resType));
     }
 
-    IEnumerator OnLoadAssetAsync(string abName)
+    IEnumerator OnLoadAssetAsync(string abName, ResType resType)
     {
 
         AssetBundleInfo bundleInfo = GetLoadedAssetBundle(abName);
@@ -190,7 +190,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
             AssetBundle ab = bundleInfo.assetBundle;
             if (!ab.isStreamedSceneAssetBundle)
             {
-                var request = ab.LoadAssetAsync<UObject>(assetNames);
+                var request = ab.LoadAssetAsync(assetNames, ResPath.GetResTypeToType(resType));
                 yield return request;
                 result = request.asset;
             }
@@ -291,11 +291,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         }
         dependencies.Remove(abName);
     }
-
     #endregion
-
-
- 
 }
 
 

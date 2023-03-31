@@ -20,7 +20,7 @@ function ResMgr:SceneLoadAssetAsync(relativePath, resType, func)
 end
 
 function ResMgr:PageLoadAssetAsync(table, relativePath, resType, func)
-    CSDefine.ResManager:LoadAssetAsync(table.name, relativePath, resType, nil, func)
+    CSDefine.ResManager:LoadAssetAsync(table.__cname, relativePath, resType, nil, func)
 end
 
 return ResMgr

@@ -2,7 +2,12 @@ local BagCell = LuaClass:Class("BagCell", UICellBase)
 
 --打开UI
 function BagCell:OnOpen(idx)
-    self.view.txt_Title.text = idx
+    idx = idx + 1
+    local bag = ConfigMgr:GetConfigById("Horse", idx)
+    self.view.txt_Title.text = bag.Name
+    ResMgr:PageLoadAssetAsync(self, "Texture/item/".. bag.Icon, CSDefine.ResType.Sprite, function(sprite)
+        self.view.img_Icon.sprite = sprite
+    end)
 end
 
 

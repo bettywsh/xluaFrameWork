@@ -3,6 +3,10 @@ UICellBase.view = {}
 UICellBase.gameObject = nil
 UICellBase.name = nil
 
+function UICellBase:ctor()
+    -- body
+end
+
 function UICellBase:Open(transform)
     self.gameObject = transform.gameObject
 	self.name = self.gameObject.name
@@ -18,4 +22,5 @@ function UICellBase:Close()
     -- Function:UnRequire("UI/"..self.name)
     -- CSDefine.Object.DestroyImmediate(self.gameObject)
 end
+
 return UICellBase

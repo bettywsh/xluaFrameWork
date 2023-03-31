@@ -1,0 +1,28 @@
+return {
+	[1] = {
+		ID = 1,
+		Icon = "horse_10001",
+		Name = 1,
+	},
+	[2] = {
+		ID = 2,
+		Icon = "horse_10002",
+		Name = 2,
+	},
+	[3] = {
+		ID = 3,
+		Icon = "horse_10003",
+		Name = 3,
+	},
+	[4] = {
+		ID = 4,
+		Icon = "horse_10004",
+		Name = 4,
+	},
+	[5] = {
+		ID = 5,
+		Icon = "horse_10005",
+		Name = 5,
+	},
+};
+

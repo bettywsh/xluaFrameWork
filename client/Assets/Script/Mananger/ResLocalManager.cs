@@ -13,15 +13,17 @@ public class ResLocalManager : MonoSingleton<ResLocalManager>
     {
         string assetName = ResPath.GetAssetPath(relativePath, resType);
 #if UNITY_EDITOR
-        var obj = AssetDatabase.LoadAssetAtPath<UObject>(assetName);
+        var obj = AssetDatabase.LoadAssetAtPath(assetName, ResPath.GetResTypeToType(resType));
         if (sharpFunc != null)
         {
             sharpFunc(obj);
+            sharpFunc = null;
         }
         if (luaFunc != null)
         {
             luaFunc.Call(obj);
             luaFunc.Dispose();
+            luaFunc = null;
         }
 #endif
     }
@@ -30,7 +32,7 @@ public class ResLocalManager : MonoSingleton<ResLocalManager>
     {
         string assetName = ResPath.GetAssetPath(relativePath, resType);
 #if UNITY_EDITOR
-        var obj = AssetDatabase.LoadAssetAtPath<UObject>(assetName);
+        var obj = AssetDatabase.LoadAssetAtPath(assetName, ResPath.GetResTypeToType(resType));
         return obj;
 #else
         return null;

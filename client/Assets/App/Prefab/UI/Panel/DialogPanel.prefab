@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 6892950659194578253}
   - component: {fileID: 6892950659194578248}
   - component: {fileID: 6892950659194578251}
-  - component: {fileID: 6892950659194578250}
+  - component: {fileID: 1063665009029087090}
   m_Layer: 5
   m_Name: '#btn_Cancel'
   m_TagString: Untagged
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6892950659194578250
+--- !u!114 &1063665009029087090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950659194578252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: af542cecab552634dbf229234f04841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -595,6 +595,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 0
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 1}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6892950659735519923
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +629,7 @@ GameObject:
   - component: {fileID: 6892950659735519920}
   - component: {fileID: 6892950659735519950}
   - component: {fileID: 6892950659735519921}
-  - component: {fileID: 3232497430289037185}
+  - component: {fileID: 6798093927829108814}
   m_Layer: 5
   m_Name: '#btn_Mask'
   m_TagString: Untagged
@@ -672,7 +695,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3232497430289037185
+--- !u!114 &6798093927829108814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -681,7 +704,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950659735519923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: af542cecab552634dbf229234f04841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -691,7 +714,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -714,6 +737,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6892950659735519921}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 0
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 1}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6892950659824766840
@@ -779,7 +825,7 @@ GameObject:
   - component: {fileID: 6892950660287096085}
   - component: {fileID: 6892950660287096080}
   - component: {fileID: 6892950660287096083}
-  - component: {fileID: 6892950660287096082}
+  - component: {fileID: 4341846355851044134}
   m_Layer: 5
   m_Name: '#btn_Ok'
   m_TagString: Untagged
@@ -846,7 +892,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6892950660287096082
+--- !u!114 &4341846355851044134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -855,7 +901,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950660287096084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: af542cecab552634dbf229234f04841f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -888,6 +934,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6892950660287096083}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 0
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 1}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6892950660369249231

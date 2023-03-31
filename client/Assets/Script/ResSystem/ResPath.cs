@@ -165,16 +165,16 @@ public class ResPath
         string folderName = path.Substring(0, path.IndexOf("/"));
         if (BuildJson.Count == 0)
         {
-            return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
+            return (Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName).ToLower();
         }
         BuildJson buildJson;
         BuildJson.TryGetValue(folderName, out buildJson);
         if (buildJson.BuildType == BuildType.OneAB)
         {
-            return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
+            return (Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName).ToLower();
         }
         else { 
-            return path + ResConst.AssetBunldExtName;
+            return (path + ResConst.AssetBunldExtName).ToLower();
         }
     }
 
@@ -226,5 +226,42 @@ public class ResPath
                 break;
         }
         return extName;
+    }
+
+    public static Type GetResTypeToType(ResType resType)
+    {
+        Type t = null;
+        switch (resType)
+        {
+            case ResType.Prefab:
+                t = typeof(GameObject);
+                break;
+            case ResType.Atlas:
+            case ResType.Sprite:
+                t = typeof(Sprite);
+                break;
+            case ResType.AudioClip:
+                t = typeof(AudioClip);
+                break;
+            case ResType.Json:
+            case ResType.Bytes:
+            case ResType.Txt:
+            case ResType.Lua:
+                t = typeof(TextAsset);
+                break;
+            case ResType.Scene:
+                t = typeof(Scene);
+                break;
+            case ResType.Font:
+                t = typeof(Font);
+                break;
+            //case ResType.Asset:
+            //    t = typeof(Asset);
+            //    break;
+            case ResType.Material:
+                t = typeof(Material);
+                break;
+        }
+        return t;
     }
 }

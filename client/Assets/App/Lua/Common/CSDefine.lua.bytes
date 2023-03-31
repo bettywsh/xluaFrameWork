@@ -26,6 +26,7 @@ local CSDefine = {
     TextMeshProUGUI = CS.TMPro.TextMeshProUGUI,
     TMP_InputField = CS.TMPro.TMP_InputField,
     ListView = CS.ListView,
+    ButtonExt = CS.ButtonExt,
 
     Sequence = CS.DG.Tweening.DOTween.Sequence,
     DOTween = CS.DG.Tweening.DOTween,

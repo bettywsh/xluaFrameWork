@@ -2,16 +2,12 @@ local BagPanel = LuaClass:Class("BagPanel", UIBase)
 
 --打开UI
 function BagPanel:OnOpen()
-    local bags = {
-        {icon = "horse_10001", name = 1},
-        {icon = "horse_10002", name = 1},
-        {icon = "horse_10003", name = 1},
-        {icon = "horse_10004", name = 1},
-        {icon = "horse_10005", name = 1},
-        {icon = "horse_10005", name = 1},
-    }
-    -- Function:ShowTable(self.view)
+    local bags = ConfigMgr:GetConfig("Horse")
     self.view.lsv_ListView.TotalCount = #bags
+end
+
+function BagPanel:OnClick_btn_Mask()
+    UIMgr:CloseSelf(self)
 end
 
 
