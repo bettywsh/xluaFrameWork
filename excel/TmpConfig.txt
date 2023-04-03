@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+public partial class (ConfigName)
+{
+    private Dictionary<string, (ConfigName)Item> dict = new Dictionary<string, (ConfigName)Item>();
+    public List<(ConfigName)Item> list = new List<(ConfigName)Item>();
+        
+    public void Init(List<(ConfigName)Item> items)
+    {
+		list = items;
+        dict = new Dictionary<string, (ConfigName)Item>();
+        foreach ((ConfigName)Item item in list)
+        {
+            dict.Add(item.Id, item);
+        }
+    }
+    
+    public (ConfigName)Item GetById(string id)
+    {
+		(ConfigName)Item item = null;	
+        dict.TryGetValue(id, out item);
+        if (item == null)
+        {
+            throw new Exception($"Not Find Config,ConfigName:{nameof ((ConfigName))},ConfigId:{id}");
+        }
+        return item;
+    }
+	
+	public List<(ConfigName)Item> GetAll()
+	{
+		return list;
+	}
+}
+
+public partial class (ConfigName)Item
+{
+(Fields)
+}

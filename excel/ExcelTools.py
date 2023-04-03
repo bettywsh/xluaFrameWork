@@ -143,7 +143,7 @@ def tabletodict(luaT):
 								
 								#处理表头的大小写
 								if trim(typeName.upper()) == "ID" :
-									typeName = "ID"
+									# typeName = "ID"
 									id_index = colidx
 								
 								if typeName in titleList :
@@ -329,30 +329,33 @@ def write_csharp(luaT, luaN ,outfile = '-', withfunc = True):
 		outfp = StringIO.StringIO()
 	szName = outfile.split('.')[2]
 	szName = szName.split('\\')[-1]
-	outfp.write("using System.Collections.Generic;\n\n")
-	outfp.write("public class "+ szName +"\n{\n")
+	tmpconfig = open("TmpConfig.txt",'r')
+	txttmpconfig = tmpconfig.read()
+	txttmpconfig = txttmpconfig.replace("(ConfigName)",szName)
+	from io import StringIO
+	fields = StringIO()
 	allList = tabletodict(luaT)
 	for key, value in allList.items():
 		for k, v in value.items():
 			if type(v) is int:
-				outfp.write("\tpublic int "+ k +";\n")
+				fields.write("\tpublic int "+ k +";\n")
 			elif type(v) is float: 
-				outfp.write("\tpublic float "+ k +";\n")
+				fiefieldsld.write("\tpublic float "+ k +";\n")
 			elif type(v) is bool:
-				 outfp.write("\tpublic bool "+ k +";\n")
+				 fields.write("\tpublic bool "+ k +";\n")
 			elif type(v) is str:
-				 outfp.write("\tpublic string "+ k +";\n")
+				 fields.write("\tpublic string "+ k +";\n")
 			else:
 				if type(v[0]) is int:
-					outfp.write("\tpublic List<int> "+ k +" = new List<int>();\n")
+					fields.write("\tpublic List<int> "+ k +";\n")
 				elif type(v[0]) is float:
-					outfp.write("\tpublic List<float> "+ k +" = new List<float>();\n")
+					fields.write("\tpublic List<float> "+ k +";\n")
 				else:
-					outfp.write("\tpublic List<string> "+ k +" = new List<string>();\n")
+					fields.write("\tpublic List<string> "+ k +";\n")
 		break
-
-	# data = json.dumps(allList, indent=1, ensure_ascii=False)
-	outfp.write("}\n")
+	txttmpconfig = txttmpconfig.replace("(Fields)", fields.getvalue())
+	fields.close()
+	outfp.write(txttmpconfig)
 	if not outfile or outfile == '-':
 		outfp.seek(0)
 		print(outfp.read())
@@ -423,8 +426,33 @@ def export_client_csharp(dir_src, dir_dst_csharp):
 				if name.startswith('s_') or name.startswith('S_'):
 					continue
 				pathInfo =  os.path.basename(name_temp)
-				write_csharp(t, n, dir_dst_csharp + pathInfo.split('.')[0] + ".cs", withfunc = True)
+				write_csharp(t, n, dir_dst_csharp + pathInfo.split('.')[0] + "Config.cs", withfunc = True)
 				print("Client Csharp: SUCCESS ")
+
+# 生成manager
+def export_client_csharp_manager(dir_src, dir_dst_manager):
+	outfile = dir_dst_manager + "\ConfigManager.cs"
+	if outfile and outfile != '-':
+		outfp = open(outfile, 'w',encoding= "utf-8")
+	from io import StringIO
+	configvar = StringIO()
+	configinit = StringIO()	
+	tmpmanager = open("TmpManager.txt",'r')
+	txttmpmanager = tmpmanager.read()
+	for filename in client_export_csharp_excel_list:
+		name = filename.split('.')[0]
+		configname = name + "Config"
+		confignamelower = configname[0].lower() + configname[1:]
+		configvar.write("public " + configname + " " + confignamelower + " = new " + configname + "();\n")
+		configinit.write(confignamelower + ".Init(LoadConfig<List<ChineseTextConfigItem>>(\"" + name + "\"));\n")
+	txttmpmanager = txttmpmanager.replace("[CONFIG_INIT]", configinit.getvalue())
+	txttmpmanager = txttmpmanager.replace("[CONFIG_VAR]", configvar.getvalue())
+	tmpmanager.close()
+	outfp.write(txttmpmanager)
+	if not outfile or outfile == '-':
+		outfp.seek(0)
+		print(outfp.read())
+	outfp.close()	
 
 def export_client_json(dir_src, dir_dst_json):
 	if dir_dst_json[len(dir_dst_json) - 1] != '\\':
@@ -505,12 +533,14 @@ def main():
 	dir_src=config_parse.get("config","excel_dir")
 	dir_dst_client_lua = config_parse.get("config","client_export_lua_dir")
 	dir_dst_client_csharp = config_parse.get("config","client_export_csharp_dir")
+	dir_dst_client_csharp_manager = config_parse.get("config","client_export_csharp_manager_dir")
 	dir_dst_client_json = config_parse.get("config","client_export_json_dir")
 	dir_dst_server = config_parse.get("config","server_export_dir")
 	export_config = config_parse.get("config","excel_export_config")
 	get_export_excel_list(dir_src+"//"+export_config)
 	export_client_lua(dir_src,dir_dst_client_lua)
 	export_client_csharp(dir_src, dir_dst_client_csharp)
+	export_client_csharp_manager(dir_src, dir_dst_client_csharp_manager)
 	export_client_json(dir_src, dir_dst_client_json)
 	export_server_csv(dir_src,dir_dst_server)
 
