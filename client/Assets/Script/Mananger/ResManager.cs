@@ -37,7 +37,7 @@ public class ResManager : Singleton<ResManager>
             string assetName = ResPath.GetAssetPath(relativePath, resType);
             string abName = ResPath.GetAssetBunldePath(relativePath, resType, BuildJson);
             AddReloader(resName, abName);
-            return AssetBundleManager.Instance.LoadAssetBundleUObject(resName, abName, assetName);
+            return AssetBundleManager.Instance.LoadAssetBundleUObject(abName, assetName);
         }
     }
 
@@ -54,7 +54,7 @@ public class ResManager : Singleton<ResManager>
             string assetName = ResPath.GetAssetPath(relativePath, resType);
             string abName = ResPath.GetAssetBunldePath(relativePath, resType, BuildJson);
             AddReloader(resName, abName);
-            AssetBundleManager.Instance.LoadAssetBundleUObjectAsync(resName, abName, assetName, resType, sharpFunc, luaFunc);
+            AssetBundleManager.Instance.LoadAssetBundleUObjectAsync(abName, assetName, resType, sharpFunc, luaFunc);
         }
     }
    

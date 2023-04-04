@@ -28,12 +28,12 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
     {
         if (AppConst.IsABMode)
         {
-            assetBundleManifest = LoadAssetBundleUObject("Common", ResConst.AssetBundleManifest, ResType.AssetBundleManifest.ToString()) as AssetBundleManifest;
+            assetBundleManifest = ResManager.Instance.OnLoadAsset("Common", ResConst.AssetBundleManifest, ResType.AssetBundleManifest) as AssetBundleManifest;
         }
     }
 
     #region 同步加载
-    public UObject LoadAssetBundleUObject(string resName, string abName, string assetName)
+    public UObject LoadAssetBundleUObject(string abName, string assetName)
     {
         AssetBundleInfo bundle = GetLoadedAssetBundle(abName);
         if (bundle == null)
@@ -140,7 +140,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         assetBundleLoading.Remove(path);
     }
 
-    public void LoadAssetBundleUObjectAsync(string resName, string abName, string assetName, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
+    public void LoadAssetBundleUObjectAsync(string abName, string assetName, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
         LoadUObjectAsyncRequest request = new LoadUObjectAsyncRequest();
         request.assetNames = assetName;
