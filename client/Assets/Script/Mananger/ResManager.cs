@@ -87,6 +87,7 @@ public class ResManager : Singleton<ResManager>
         {
             AssetBundleManager.Instance.UnloadAssetBundle(abNames[i], true);
         }
+        ResLoaders.Remove(resLoaderName);
     }
     #endregion
 

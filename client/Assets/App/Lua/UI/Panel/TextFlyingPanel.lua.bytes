@@ -6,7 +6,6 @@ TextFlyingPanel.isTween = false
 function TextFlyingPanel:OnOpen()
 	self.view.transform:GetComponent("Canvas").sortingOrder = Enum.UILayout.TextFlying
 	-- self:Fly(self.args[1])
-
 	if self.TextFlyingList == nil then
         self.TextFlyingList = LuaList:New()
     end
@@ -35,6 +34,10 @@ end
 
 --播放飘字动画 播放完成删除对应的gameObject
 function TextFlyingPanel:Fly(text)
+	if self.TextFlyingList == nil then
+        self.TextFlyingList = LuaList:New()
+    end
+	Function:ShowTable(self.TextFlyingList)
 	LuaList:PushBack(self.TextFlyingList, text)
 	-- Function:ShowTable(self.TextFlyingList)
 	-- self.view.txt_TextMesh.text = text

@@ -5,6 +5,7 @@ using System.IO;
 using System;
 using UObject = UnityEngine.Object;
 using XLua;
+using static UnityEngine.Networking.UnityWebRequest;
 
 class UnloadAssetBundleRequest
 {
@@ -95,10 +96,10 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
 
     #region 异步加载
 
-    IEnumerator OnLoadAssetBundleAsync(string abName)
+    IEnumerator OnLoadAssetBundleAsync(string abName, bool isDep)
     {
         string path = ResPath.GetAssetBundleFilePath(abName);
-        if (assetBundleLoading.ContainsKey(path))
+        if (assetBundleLoading.ContainsKey(path) && isDep)
         {
             assetBundleLoading[path]++;
             yield break;
@@ -109,18 +110,20 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         string[] dep = assetBundleManifest.GetAllDependencies(abName);
         if (dep.Length > 0)
         {
-            dependencies.Add(abName, dep);
+            if (!dependencies.ContainsKey(abName))
+                dependencies.Add(abName, dep);
             for (int i = 0; i < dep.Length; i++)
             {
                 string depName = dep[i];
                 AssetBundleInfo bundleInfo = null;
                 if (loadedAssetBundles.TryGetValue(depName, out bundleInfo))
                 {
-                    bundleInfo.referencedCount++;
+                    if(isDep)
+                        bundleInfo.referencedCount++;
                 }
                 else
                 {
-                    yield return StartCoroutine(OnLoadAssetBundleAsync(depName));
+                    yield return StartCoroutine(OnLoadAssetBundleAsync(depName, true));
                 }
             }
         }
@@ -130,8 +133,8 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         AssetBundle assetObj = request.assetBundle;
         if (assetObj != null)
         {
-            //var RefCount = assetBundleLoading[path];
-            var bundleInfo = new AssetBundleInfo(assetObj, 1);
+            var refCount = assetBundleLoading[path];
+            var bundleInfo = new AssetBundleInfo(assetObj, refCount);
             loadedAssetBundles.Add(abName, bundleInfo);
         }
         assetBundleLoading.Remove(path);
@@ -143,12 +146,10 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         request.assetNames = assetName;
         request.sharpFunc = sharpFunc;
         request.luaFunc = luaFunc;
-        request.isFrist = false;
         List<LoadUObjectAsyncRequest> requests = null;
         if (!uobjectAsyncList.TryGetValue(abName, out requests))
         {
             requests = new List<LoadUObjectAsyncRequest>();
-            request.isFrist = true;
             requests.Add(request);
             uobjectAsyncList.Add(abName, requests);
             StartCoroutine(OnLoadAssetAsync(abName, resType));
@@ -165,7 +166,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         AssetBundleInfo bundleInfo = GetLoadedAssetBundle(abName);
         if (bundleInfo == null)
         {
-            yield return StartCoroutine(OnLoadAssetBundleAsync(abName));
+            yield return StartCoroutine(OnLoadAssetBundleAsync(abName, false));
             bundleInfo = GetLoadedAssetBundle(abName);
             if (bundleInfo == null)
             {
@@ -206,9 +207,9 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
                 requests[i].luaFunc.Dispose();
                 requests[i].luaFunc = null;
             }
-            //if (!requests[i].isFrist)
-            bundleInfo.referencedCount++;
+            
         }
+        bundleInfo.referencedCount = requests.Count - 1;
         uobjectAsyncList.Remove(abName);        
     }
     #endregion
@@ -316,5 +317,4 @@ public class LoadUObjectAsyncRequest
     public Action<UObject> sharpFunc;
     public LuaFunction luaFunc;
     public Type assetType;
-    public bool isFrist;
 }
