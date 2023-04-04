@@ -3,13 +3,14 @@ UIBase.view = {}
 UIBase.gameObject = nil
 UIBase.args = nil
 UIBase.name = nil
+UIBase.UUID = nil
 
 function UIBase:Open(transform, args)
 	self.args = args
     self.gameObject = transform.gameObject
 	self.name = self.gameObject.name
-    -- self:InitBinder()
 	self.view = UIMgr:AutoBind(transform)
+    self.UUID = Function:UUID()
     Function:RegisterLuaMessage(self)
     Function:RegisterNetMessage(self)
     Function:RegisterCSharpMessage(self)
@@ -71,6 +72,7 @@ function UIBase:Close()
     Function:RemoveCSharpMessage(self)
     Function:UnRequire("UI/"..self.name)
     CSDefine.Object.DestroyImmediate(self.gameObject)
+    ResMgr:PageUnloadAssetAsync(self)
 end
 
 return UIBase

@@ -19,12 +19,12 @@ function ResMgr:SceneLoadAssetAsync(relativePath, resType, func)
     CSDefine.ResManager:LoadAssetAsync(SceneMgr.name, relativePath, resType, nil, func)
 end
 
-function ResMgr:PageLoadAssetAsync(panelName, relativePath, resType, func)
-    CSDefine.ResManager:LoadAssetAsync(panelName, relativePath, resType, nil, func)
+function ResMgr:PageLoadAssetAsync(table, relativePath, resType, func)
+    CSDefine.ResManager:LoadAssetAsync(table.UUID, relativePath, resType, nil, func)
 end
 
-function ResMgr:PageUnloadAsset(panelName)
-    CSDefine.ResManager:UnLoadAssetBundle(panelName)
+function ResMgr:PageUnloadAssetAsync(table)
+    CSDefine.ResManager:UnLoadAssetBundle(table.UUID)
 end
 
 return ResMgr
