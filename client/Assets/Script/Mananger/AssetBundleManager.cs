@@ -220,7 +220,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
     /// </summary>
     public void UnloadAssetBundle(string abName, bool isThorough = false)
     {
-        //string abName = ResPath.GetAssetBunldeName(relativePath, resType);
+        uobjectAsyncList.Remove(abName);
         UnloadAssetBundleInternal(abName, isThorough);
         UnloadDependencies(abName, isThorough);
         Debug.Log(loadedAssetBundles.Count + " assetbundle(s) in memory after unloading " + abName);
