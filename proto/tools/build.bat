@@ -21,7 +21,7 @@ XCOPY /y ..\proto\*.proto .\
 ::XCOPY /y ..\proto\cs\*.proto .\
 FOR /F "delims==" %%i IN ('dir /b *.proto') DO (
 	@echo %%i
-	"protoc.exe" --csharp_out=.\cs %%i
+	".\protogen\protogen.exe" --csharp_out=.\cs %%i
 )
 
 
@@ -29,6 +29,7 @@ FOR /F "delims==" %%i IN ('dir /b *.proto') DO (
 ::set LuaPath=D:\MyFrameWork\xluaFrameWork\client\Assets\App\Lua\Protobuf
 XCOPY /y .\lua\*.pc.bytes .\..\..\client\Assets\App\Protobuf
 XCOPY /y .\lua\*.lua.bytes .\..\..\client\Assets\App\Lua\3rd\lua-protobuf\
+XCOPY /y .\cs\*.cs .\..\..\client\Assets\Script\Net\Protobuf
 
 del/F /S /Q *.proto
 del/F /S /Q .\cs\*.cs
