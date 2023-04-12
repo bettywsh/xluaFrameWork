@@ -1,81 +1,70 @@
-local UpdatePanelCtrl = LuaClass:Class("LoadingPanelCtrl")
-UpdatePanelCtrl.time = 0
+local UpdatePanelCtrl = LuaClass:Class("LoadingPanelCtrl", UIBase)
+
 UpdatePanelCtrl.currentValue = 0
 
-function UpdatePanelCtrl:Awake(transform, args)
-	local updatePanelView = require("UI/View/UpdatePanelView")	
-	self.view = updatePanelView:Awake(transform)
-	self.currentValue = 0
-	-- self:DownLoadFiles()
-	self.args = args
-	self:RegisterEvent()
-	RegisterLuaMessage(self)
+function UpdatePanelCtrl:OnOpen()
+
 end
 
 function UpdatePanelCtrl:DownLoadFiles()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_StartDownLoad")
-	self.view.progressValue.fillAmount = 0
+	self.view.img_cur.fillAmount = 0
 	CSDefine.UpdateManager:DownLoadFiles()
 end
 
 function UpdatePanelCtrl:InitCopyFile()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_CopyFile")
-	self.view.progressValue.fillAmount = 0
+	self.view.img_cur.fillAmount = 0
 end
 
 function UpdatePanelCtrl:RefreshShowInfoText()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_ReadyHotUpdate")
-	self.view.progressValue.fillAmount = 0
+	self.view.img_cur.fillAmount = 0
 end
 
 function UpdatePanelCtrl:InitRefreshShowInfoText()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_CheckUpdateVersion")
-	self.view.progressValue.fillAmount = 0
+	self.view.img_cur.fillAmount = 0
 end
 
 function UpdatePanelCtrl:SuccessRefreshShowInfoText()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_UpdateSuccess")
-	self.view.progressValue.fillAmount = 0
+	self.view.img_cur.fillAmount = 0
 end
 
-function UpdatePanelCtrl:RegisterEvent()
-	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateDownLoadUpdate, function(value)
-		if value[0] ~= "Infinity kb/s" and (Time.time - self.time) > 1 then
-			self.time = Time.time
-			self.view.txt_Content.text = string.format(TextMgr:GetText("UpdatePanel_DownLoadProgress"), value[0])
-		end
+function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateDownLoadUpdate(value)
+	if value[0] ~= "Infinity kb/s" and (Time.time - self.time) > 1 then
+		self.time = Time.time
+		self.view.txt_Content.text = string.format(TextMgr:GetText("UpdatePanel_DownLoadProgress"), value[0])
+	end
 
-		if self.currentValue < value[1] then
-			self.view.progressValue.fillAmount = value[1]
-			self.currentValue = value[1]
-		end
-	end)
+	if self.currentValue < value[1] then
+		self.view.img_cur.fillAmount = value[1]
+		self.currentValue = value[1]
+	end
+end
 
-	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateDownLoadComplete, function()
-		self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_DownLoadComplete")
-		self.view.progressValue.fillAmount = 1
-		if self.args[0] ~= nil then
-			self.args[0]()
-		end
-		UnityEngine.GameObject.Find("Bootstrap"):GetComponent("Bootstrap"):StartGame()
-	end)
+function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateDownLoadComplete()
+	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_DownLoadComplete")
+	self.view.img_cur.fillAmount = 1
+	if self.args[0] ~= nil then
+		self.args[0]()
+	end
+	UnityEngine.GameObject.Find("Bootstrap"):GetComponent("Bootstrap"):StartGame()
+end
 
-	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateFristProgress, function(value)
-		self.view.progressValue.fillAmount = (value[0] + 1) / value[1]
-	end)
+function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateFristProgress(value)
+	self.view.img_cur.fillAmount = (value[0] + 1) / value[1]
+end
 
-	MessageMgr:RegisterCSharpMessage(MessageConst.MsgUpdateDownLoadError, function()
-		UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_DownLoadError"), function()
-			CSDefine.UpdateManager:DownLoadFiles()
-		end)
+function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateDownLoadError()
+	UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_DownLoadError"), function()
+		CSDefine.UpdateManager:DownLoadFiles()
 	end)
 end
 
-function UpdatePanelCtrl:Destroy()
-	MessageMgr:RemoveCSharpMessage(MessageConst.MsgUpdateDownLoadUpdate)
-	MessageMgr:RemoveCSharpMessage(MessageConst.MsgUpdateDownLoadComplete)
-	UIManager.Instance:HideBaseUI(self.view.gameObject)
-	UnRegisterLuaMessage(self)
+function UpdatePanelCtrl:OnClose()
+	
 end
 
 return UpdatePanelCtrl
