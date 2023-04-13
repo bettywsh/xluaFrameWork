@@ -208,9 +208,5 @@ public class NetManager : MonoSingleton<NetManager>
         }
     }
 
-    public void OnApplicationQuit()
-    {
-        //发送通知给lua层(可能链接的是不同的链接)
-        MessageManager.Instance.EventNotify("OnApplicationQuit");
-    }
+
 }

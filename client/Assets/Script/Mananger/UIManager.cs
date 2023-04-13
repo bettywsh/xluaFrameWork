@@ -30,6 +30,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         // var seq = DG.Tweening.DOTween.Sequence();
         // seq.IsPlaying(true)
+        
     }
 
     public LuaTable GetBaseUI(string prefabName)
@@ -86,7 +87,7 @@ public class UIManager : MonoSingleton<UIManager>
         GameObject go;
         if (!uiList.TryGetValue(prefabName, out go))
         {
-            ResManager.Instance.LoadAssetAsync(prefabName, prefabName, ResType.Prefab, (UObject ugo)=> {
+            ResManager.Instance.LoadAssetAsync(prefabName, prefabName + ".Prefab", typeof(GameObject), (UObject ugo)=> {
                 go = ugo as GameObject;
                 uiList.Add(prefabName, go);
                 if (cb != null)

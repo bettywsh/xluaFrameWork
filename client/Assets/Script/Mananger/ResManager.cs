@@ -21,40 +21,40 @@ public class ResManager : Singleton<ResManager>
     Dictionary<string, BuildJson> BuildJson = new Dictionary<string, BuildJson>();
     public override void Init()
     {
-        TextAsset text = OnLoadAsset("Common", ResConst.BuildJson, ResType.Json) as TextAsset;
+        TextAsset text = OnLoadAsset("Common", ResConst.BuildJson + ".json", typeof(TextAsset)) as TextAsset;
         BuildJson = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(text.text);
     }
 
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
-    public UObject OnLoadAsset(string resName, string relativePath, ResType resType)
+    public UObject OnLoadAsset(string resName, string relativePath, Type type)
     {
         if (!AppConst.IsABMode)
         {
-            return ResLocalManager.Instance.LoadLocalUObject(relativePath, resType);
+            return ResLocalManager.Instance.LoadLocalUObject(relativePath, type);
         }
         else
         {
-            string assetName = ResPath.GetAssetPath(relativePath, resType);
-            string abName = ResPath.GetAssetBunldePath(relativePath, resType, BuildJson);
+            string assetName = ResPath.GetAssetPath(relativePath);
+            string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
             AddReloader(resName, abName);
             return AssetBundleManager.Instance.LoadAssetBundleUObject(abName, assetName);
         }
     }
 
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
-    public void LoadAssetAsync(string resName, string relativePath, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
+    public void LoadAssetAsync(string resName, string relativePath, Type type, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
 
         if (!AppConst.IsABMode)
         {
-            ResLocalManager.Instance.LoadLocalUObjectAsync(relativePath, resType, sharpFunc, luaFunc);
+            ResLocalManager.Instance.LoadLocalUObjectAsync(relativePath, type, sharpFunc, luaFunc);
         }
         else
         {
-            string assetName = ResPath.GetAssetPath(relativePath, resType);
-            string abName = ResPath.GetAssetBunldePath(relativePath, resType, BuildJson);
+            string assetName = ResPath.GetAssetPath(relativePath);
+            string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
             AddReloader(resName, abName);
-            AssetBundleManager.Instance.LoadAssetBundleUObjectAsync(abName, assetName, resType, sharpFunc, luaFunc);
+            AssetBundleManager.Instance.LoadAssetBundleUObjectAsync(abName, assetName, type, sharpFunc, luaFunc);
         }
     }
    
@@ -95,7 +95,7 @@ public class ResManager : Singleton<ResManager>
     {
         if (AppConst.IsABMode)
         {
-            string abName = ResPath.GetAssetBunldePath(relativePath, resType, BuildJson);
+            string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
             AssetBundleManager.Instance.UnloadAssetBundle(abName, true);
         }
     }

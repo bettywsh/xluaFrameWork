@@ -39,53 +39,39 @@ public static class ResPack
         get { return Application.dataPath.Replace("Assets", "OldUpdata"); }
     }
 
-    [MenuItem("Builds/Build IOS", false, 1)]
+    [MenuItem("Builds/BuildActiveTarget", false, 1)]
+    public static void BuildActiveTarget()
+    {        
+        BuildLuaByBuildTarget(EditorUserBuildSettings.activeBuildTarget);
+    }
+
     public static void BuildIOS()
     {
         BuildLuaByBuildTarget(BuildTarget.iOS);
     }
 
-    [MenuItem("Builds/Build Android", false, 2)]
     public static void BuildAndroid()
     {
         BuildLuaByBuildTarget(BuildTarget.Android);
     }
 
-    [MenuItem("Builds/Build Pc", false, 3)]
-    public static void BuildPc()
-    {
-        BuildLuaByBuildTarget(BuildTarget.StandaloneWindows64);
-    }
-
-    [MenuItem("Builds/Build IOS Update ", false, 4)]
-    public static void BuildUpdateIOS()
-    {
-        BuildLuaByBuildHotUpdateTarget(BuildTarget.iOS);
-    }
-
-    [MenuItem("Builds/Build Android Update ", false, 5)]
-    public static void BuildUpdateAndroid()
-    {
-        BuildLuaByBuildHotUpdateTarget(BuildTarget.Android);
-    }
-
-    private static void BuildLuaByBuildHotUpdateTarget(BuildTarget target)
-    {
-        BuildLuaByBuildTarget(target);
+    //private static void BuildLuaByBuildHotUpdateTarget(BuildTarget target)
+    //{
+    //    BuildLuaByBuildTarget(target);
 
 
-        //copy文件到固定的SVN目录下
-        if (target == BuildTarget.iOS)
-        {
-            PackFile.CopySourceDirTotargetDir(ResPack.AppNewAssetBuildPath, ResPack.IOSHotUpdateBuildPath);
-        }
+    //    //copy文件到固定的SVN目录下
+    //    if (target == BuildTarget.iOS)
+    //    {
+    //        PackFile.CopySourceDirTotargetDir(ResPack.AppNewAssetBuildPath, ResPack.IOSHotUpdateBuildPath);
+    //    }
 
-        //copy文件到固定的SVN目录下
-        if (target == BuildTarget.Android)
-        {
-            PackFile.CopySourceDirTotargetDir(ResPack.AppNewAssetBuildPath, ResPack.AndroidHotUpdateBuildPath);
-        }
-    }
+    //    //copy文件到固定的SVN目录下
+    //    if (target == BuildTarget.Android)
+    //    {
+    //        PackFile.CopySourceDirTotargetDir(ResPack.AppNewAssetBuildPath, ResPack.AndroidHotUpdateBuildPath);
+    //    }
+    //}
 
     /// <summary>
     /// 该方法只会生成对应的AB文件放到UPDATRE文件夹下
@@ -105,15 +91,15 @@ public static class ResPack
         {
             if (item.Value.BuildType == BuildType.OneAB)
             {
-                CreateSingleBuild(item.Value.FolderName, item.Value.ResType, builds);
+                CreateSingleBuild(item.Value.FolderName, builds);
             }
             else if (item.Value.BuildType == BuildType.EveryFileAB)
             {
-                CreateMultiFileBuilds(item.Value.FolderName, item.Value.ResType, builds);
+                CreateMultiFileBuilds(item.Value.FolderName, builds);
             }
             else if (item.Value.BuildType == BuildType.EveryFolderAB)
             {
-                CreateMultiFolderBuilds(item.Value.FolderName, item.Value.ResType, builds);
+                CreateMultiFolderBuilds(item.Value.FolderName, builds);
             }
         }
 
@@ -137,9 +123,8 @@ public static class ResPack
         AssetDatabase.Refresh();
     }
 
-    private static void CreateSingleBuild(string folderName, ResType restype, List<AssetBundleBuild> builds)
+    private static void CreateSingleBuild(string folderName, List<AssetBundleBuild> builds)
     {
-        string extName = ResPath.GetExtName(restype);
         string dir = Path.Combine(ResPath.AppFullPath, folderName);
         string[] files = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
         List<string> fileList = new List<string>();
@@ -156,15 +141,12 @@ public static class ResPack
         builds.Add(build);
     }
 
-    private static void CreateMultiFileBuilds(string folderName, ResType restype, List<AssetBundleBuild> builds)
+    private static void CreateMultiFileBuilds(string folderName, List<AssetBundleBuild> builds)
     {
-        string extName = ResPath.GetExtName(restype);
         string dir = Path.Combine(ResPath.AppFullPath, folderName);
         if (!Directory.Exists(dir))
             return;
-        if (extName == "")
-            extName = ".*";
-        string[] files = Directory.GetFiles(dir, "*" + extName, SearchOption.AllDirectories);
+        string[] files = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
         for (int i = 0; i < files.Length; i++)
         {
             if (Path.GetExtension(files[i]).ToLower() == ".meta")
@@ -178,24 +160,21 @@ public static class ResPack
 
             string[] paths = new string[1] { assetPath };
             AssetBundleBuild build = new AssetBundleBuild();
-            build.assetBundleName = ResPath.GetMultiFileAssetBunldeName(path, restype);
+            build.assetBundleName = ResPath.GetMultiFileAssetBunldeName(path);
             build.assetNames = paths;
             builds.Add(build);
         }
     }
-    private static void CreateMultiFolderBuilds(string folderName, ResType restype, List<AssetBundleBuild> builds)
+    private static void CreateMultiFolderBuilds(string folderName, List<AssetBundleBuild> builds)
     {
-        string extName = ResPath.GetExtName(restype);
         string dir = Path.Combine(ResPath.AppFullPath, folderName);
         if (!Directory.Exists(dir))
             return;
-        if (extName == "")
-            extName = ".*";
         string[] folders = Directory.GetDirectories(dir);
         foreach (string folder in folders)
         {
             string childfolder = folder.Substring(folder.LastIndexOf("\\") + 1, folder.Length - folder.LastIndexOf("\\") - 1);
-            string[] files = Directory.GetFiles(folder, "*" + extName, SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories);
             List<string> fileList = new List<string>();
             for (int i = 0; i < files.Length; i++)
             {

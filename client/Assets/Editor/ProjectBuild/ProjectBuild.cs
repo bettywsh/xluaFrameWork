@@ -24,7 +24,8 @@ public class ProjectBuild
         }
         platform = args[args.Length - 1].ToString();
     }
-    [MenuItem("Builds/Build APK", false, 4)]
+
+
     static void BuildAndroid()
     {
 

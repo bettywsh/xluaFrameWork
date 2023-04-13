@@ -1,4 +1,5 @@
-﻿using LuaFramework;
+﻿using com.bochsler.protocol;
+using LuaFramework;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -50,10 +51,13 @@ public class ProtobufPacker : IMessagePacker
         if (packetId > 10000)
         {
             //lua
+            MessageManager.Instance.EventNotify(MessageConst.MsgNetData, packetId, packetArray);
         }
         else
-        { 
+        {
             //c#
+            SCMessageEnum scMsg = (SCMessageEnum)packetId;
+            MessageManager.Instance.EventNotify(MessageConst.MsgNetMsg + scMsg.ToString(), packetId, packetArray);
         }
         return null;
 	}

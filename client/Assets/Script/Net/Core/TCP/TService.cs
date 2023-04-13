@@ -48,6 +48,8 @@ public sealed class TService : AService
 
 	public override void Update()
 	{
+		if (channel == null)
+			return;
 		if (channel.IsSending)
 		{
 			return;

@@ -1,7 +1,7 @@
 local CSDefine = {
     ResManager = CS.ResManager.Instance,
     UIManager = CS.UIManager.Instance,
-    NetManager = CS.NetManager.Instance,
+    NetworkManager = CS.NetworkManager.Instance,
     UpdateManager = CS.UpdateManager.Instance,
     LoadSceneManager = CS.LoadSceneManager,
     ResType = CS.ResType,
@@ -17,7 +17,7 @@ local CSDefine = {
     Renderer = CS.UnityEngine.Renderer,
     Debug = CS.UnityEngine.Debug,
     
-    Sprite = CS.UnityEngine.U2D.Sprite,
+    Sprite = CS.UnityEngine.Sprite,
     Image = CS.UnityEngine.UI.Image,
     Button = CS.UnityEngine.UI.Button,
     Toggle = CS.UnityEngine.UI.Toggle,

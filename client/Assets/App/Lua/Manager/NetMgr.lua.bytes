@@ -61,7 +61,7 @@ function NetMgr:SendPing()
     self.pingnum = 0
     -- 发送ping包
     MessageMgr:RegisterNetMessage("GCRetPing", function(scmd)
-        self:OnNetCmd_GCRetPing(scmd)
+        self.pingnum = 0
     end)
 end
 
@@ -69,7 +69,7 @@ end
 function NetMgr:RegisterProtoFile()
     local protodefs = require("3rd/lua-protobuf/ProtoFlies")
     for k, v in ipairs(protodefs) do
-        ResMgr:GloabLoadAssetAsync("Protobuf/"..v .. ".pc", CSDefine.ResType.Bytes, function(obj)
+        ResMgr:GloabLoadAssetAsync("Protobuf/"..v .. ".pc.bytes", typeof(CSDefine.TextAsset), function(obj)
             local file, x = self.PB.load(obj.bytes)
             if not file then
                 print("加载失败".. obj.bytes .. x)
@@ -88,8 +88,7 @@ function NetMgr:SendCmd(cmdName, cmd)
     local data2 = assert(self.PB.decode(cmdFullName, bytes))
     Function:Log(cmdFullName..require"3rd/lua-protobuf/serpent".block(data2))
     local cmdid = self.PB.enum(GameDefine.ProtobufPackage.."CSMessageEnum", cmdName)
-    local serverName = GameDefine.Connect_Login
-    CSDefine.NetManager:Send(serverName, tonumber(cmdid), bytes)
+    CSDefine.NetworkManager:Send(tonumber(cmdid), bytes)
 end
 
 function NetMgr:GetPbIDFromCmdName(cmdName)
@@ -98,12 +97,12 @@ function NetMgr:GetPbIDFromCmdName(cmdName)
     return cmdName
 end
 
-function NetMgr:ConnectTo(targetName, ip, port)
-    CSDefine.NetManager:ConnectTo(targetName, ip, port)
+function NetMgr:ConnectTo(ip, port)
+    CSDefine.NetworkManager:Connect(ip..":"..port)
 end
 
-function NetMgr:DisConnectAll()
-    CSDefine.NetManager:DisConnectAll()
+function NetMgr:DisConnect()
+    CSDefine.NetworkManager:DisConnect()
 end
 
 function NetMgr:Update()
@@ -115,7 +114,7 @@ function NetMgr:Update()
     end
     if self.hasSendPing and self.pingnum >= 2 then
         self.pingnum = 0
-        self:DisConnectAll()        
+        self:DisConnect()
         self.disConnect = true
     end
     if self.disConnect then

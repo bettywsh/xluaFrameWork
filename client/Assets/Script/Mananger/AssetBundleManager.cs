@@ -28,7 +28,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
     {
         if (AppConst.IsABMode)
         {
-            assetBundleManifest = ResManager.Instance.OnLoadAsset("Common", ResConst.AssetBundleManifest, ResType.AssetBundleManifest) as AssetBundleManifest;
+            assetBundleManifest = ResManager.Instance.OnLoadAsset("Common", ResConst.AssetBundleManifest, typeof(AssetBundleManifest)) as AssetBundleManifest;
         }
     }
 
@@ -140,7 +140,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         assetBundleLoading.Remove(path);
     }
 
-    public void LoadAssetBundleUObjectAsync(string abName, string assetName, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
+    public void LoadAssetBundleUObjectAsync(string abName, string assetName, Type type, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
         LoadUObjectAsyncRequest request = new LoadUObjectAsyncRequest();
         request.assetNames = assetName;
@@ -152,7 +152,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
             requests = new List<LoadUObjectAsyncRequest>();
             requests.Add(request);
             uobjectAsyncList.Add(abName, requests);
-            StartCoroutine(OnLoadAssetAsync(abName, resType));
+            StartCoroutine(OnLoadAssetAsync(abName, type));
         }
         else
         {
@@ -160,7 +160,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         }
     }
 
-    IEnumerator OnLoadAssetAsync(string abName, ResType resType)
+    IEnumerator OnLoadAssetAsync(string abName, Type type)
     {
 
         AssetBundleInfo bundleInfo = GetLoadedAssetBundle(abName);
@@ -191,7 +191,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
             AssetBundle ab = bundleInfo.assetBundle;
             if (!ab.isStreamedSceneAssetBundle)
             {
-                var request = ab.LoadAssetAsync(assetNames, ResPath.GetResTypeToType(resType));
+                var request = ab.LoadAssetAsync(assetNames, type);
                 yield return request;
                 result = request.asset;
             }

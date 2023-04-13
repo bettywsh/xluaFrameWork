@@ -5,56 +5,37 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using UnityEngine;
+using XLua;
 
-
+[LuaCallCSharp]
 public class NetworkManager : MonoSingleton<NetworkManager>
 {
 	public AService Service { get; private set; }
 	public Session Session { get; private set; }
-		
-	public IMessagePacker MessagePacker { get; set; }
-	public IMessageDispatcher MessageDispatcher { get; set; }
 
-	public Action<int> OnConnect{ get; set; }
-	public Action<int> OnError{ get; set; }
-	public Action<byte[]> ReceiveBytesHandle{ get; set; }
-				
-		
+	public IMessagePacker MessagePacker = new ProtobufPacker();
+	public Action<int> OnConnect { get; set; }
+	public Action<int> OnError { get; set; }
+
+	//clinet
 	public override void Init()
 	{
-		SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
-	}
-		
-	//clinet
-	public void Init(NetworkProtocol protocol, int packetSize = Packet.PacketSizeLength4)
-	{
-		switch (protocol)
+        switch (AppConst.NetProtocol)
 		{
 			case NetworkProtocol.KCP:
 				this.Service = new KService() { };
 				break;
 			case NetworkProtocol.TCP:
-				this.Service = new TService(packetSize) { };
+				this.Service = new TService(Packet.PacketSizeLength4) { };
 				break;
 			case NetworkProtocol.WebSocket:
 				this.Service = new WService() { };
 				break;
 		}
-	}
+		SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
 
-	/// <summary>
-	/// 创建一个新Session
-	/// </summary>
-	public void Connect(IPEndPoint ipEndPoint)
-	{
-		AChannel channel = this.Service.ConnectChannel(ipEndPoint);
-		Session = new Session(channel);
-		Session.Start();
-	}
+    }
 
-	/// <summary>
-	/// 创建一个新Session
-	/// </summary>
 	public void Connect(string address)
 	{
 		AChannel channel = this.Service.ConnectChannel(address);
@@ -85,6 +66,11 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 	{
 		MessagePacker.DeserializeFrom(stream, packetLength);
 
+    }
+
+	public void DisConnect()
+	{
+        Service.Dispose();
     }
 
 

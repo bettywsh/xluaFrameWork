@@ -1,10 +1,10 @@
 return {
 	["Dialog_Ok"] = {
-		Key = "Dialog_Ok",
+		ID = "Dialog_Ok",
 		Value = "确定",
 	},
 	["Dialog_Cancel"] = {
-		Key = "Dialog_Cancel",
+		ID = "Dialog_Cancel",
 		Value = "取消",
 	},
 };

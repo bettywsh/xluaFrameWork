@@ -1,22 +1,22 @@
 return {
 	["bgm"] = {
-		Key = "bgm",
+		ID = "bgm",
 		FileName = "bgm.mp3",
 	},
 	["ring"] = {
-		Key = "ring",
+		ID = "ring",
 		FileName = "ball_ring.mp3",
 	},
 	["board"] = {
-		Key = "board",
+		ID = "board",
 		FileName = "ball_floor.mp3",
 	},
 	["net"] = {
-		Key = "net",
+		ID = "net",
 		FileName = "ball_net.mp3",
 	},
 	["win"] = {
-		Key = "win",
+		ID = "win",
 		FileName = "win.mp3",
 	},
 };

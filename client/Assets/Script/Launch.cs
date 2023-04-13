@@ -43,6 +43,7 @@ public class Launch : MonoBehaviour
         UpdateManager.Instance.OnDestroy();
         ResManager.Instance.Init();
         AssetBundleManager.Instance.Init();
+        NetworkManager.Instance.Init();
         LuaManager.Instance.DoFile("StartModule");
   
         //#if UNITY_EDITOR        

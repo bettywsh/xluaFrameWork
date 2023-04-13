@@ -85,7 +85,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void LoadAudioClipAsync(string moduleName, string name, System.Action<AudioClip> onCompleted)
     {
         //不在缓存中 则异步加载资源
-        ResManager.Instance.LoadAssetAsync(moduleName, name, ResType.AudioClip, (clip) => {
+        ResManager.Instance.LoadAssetAsync(moduleName, name, typeof(AudioClip), (clip) => {
             //异步加载完成回调
             onCompleted(clip as AudioClip);
         });

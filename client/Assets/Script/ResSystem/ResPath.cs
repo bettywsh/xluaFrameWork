@@ -91,24 +91,24 @@ public class ResPath
     /// <param name="root">起始路径</param>
     /// <param name="args">中间路径</param>
     /// <returns>合并后的合法路径</returns>
-    public static string CombinePath(string root, params string[] args)
-    {
-        string path = root.Replace('\\', '/');
-        if (path.EndsWith("/")) path = path.Remove(path.Length - 1);
+    //public static string CombinePath(string root, params string[] args)
+    //{
+    //    string path = root.Replace('\\', '/');
+    //    if (path.EndsWith("/")) path = path.Remove(path.Length - 1);
 
-        StringBuilder sb = new StringBuilder();
-        sb.Append(path);
-        for (int i = 0; i < args.Length; i++)
-        {
-            if (string.IsNullOrEmpty(args[i])) continue;
-            args[i] = args[i].Replace('\\', '/');
-            if (args[i].StartsWith("/")) sb.Append(args[i]);
-            else sb.Append("/").Append(args[i]);
-        }
-        path = sb.ToString();
-        if (path.EndsWith("/")) path = path.Remove(path.Length - 1);
-        return path;
-    }
+    //    StringBuilder sb = new StringBuilder();
+    //    sb.Append(path);
+    //    for (int i = 0; i < args.Length; i++)
+    //    {
+    //        if (string.IsNullOrEmpty(args[i])) continue;
+    //        args[i] = args[i].Replace('\\', '/');
+    //        if (args[i].StartsWith("/")) sb.Append(args[i]);
+    //        else sb.Append("/").Append(args[i]);
+    //    }
+    //    path = sb.ToString();
+    //    if (path.EndsWith("/")) path = path.Remove(path.Length - 1);
+    //    return path;
+    //}
 
     /// <summary>
     /// 获取App包内初始资源绝对路径
@@ -155,7 +155,7 @@ public class ResPath
         return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
     }
 
-    public static string GetMultiFileAssetBunldeName(string path, ResType resType)
+    public static string GetMultiFileAssetBunldeName(string path)
     {
         return path.ToLower() + ResConst.AssetBunldExtName;
     }
@@ -165,7 +165,7 @@ public class ResPath
         return Path.Combine(rootFolderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
     }
 
-    public static string GetAssetBunldePath(string path, ResType resType, Dictionary<string, BuildJson> BuildJson)
+    public static string GetAssetBunldePath(string path, Dictionary<string, BuildJson> BuildJson)
     {
         //不能用Path.Combine 因为这样出来的路径会变成\\ 而依赖文件是/导致文件路径不统一会被认为是不同资源
         string folderName = path.Substring(0, path.IndexOf("/"));
@@ -191,90 +191,9 @@ public class ResPath
         }
         
     }
-    public static string GetAssetPath(string path, ResType resType)
+    public static string GetAssetPath(string path)
     {
-        string extName = GetExtName(resType);
-        return Path.Combine(ResPath.AppRelativePath, path) + extName;
+        return Path.Combine(ResPath.AppRelativePath, path);
     }
 
-    public static string GetExtName(ResType resType)
-    {
-        string extName = "";
-        switch (resType)
-        {
-            case ResType.Prefab:
-                extName = ResConst.PrefabExtName;
-                break;
-            case ResType.Sprite:
-                extName = ResConst.TextureExtName;
-                break;
-            case ResType.AudioClip:
-                break;
-            case ResType.Lua:
-                extName = ResConst.LuaExtName;
-                break;
-            case ResType.Bytes:
-                extName = ResConst.BytesExtName;
-                break;
-            case ResType.Txt:
-                extName = ResConst.TxtExtName;
-                break;
-            case ResType.Scene:
-                extName = ResConst.SceneExtName;
-                break;
-            case ResType.Font:
-                extName = ResConst.FontExtName;
-                break;
-            case ResType.Asset:
-                extName = ResConst.AssetExtName;
-                break;
-            case ResType.Material:
-                extName = ResConst.MaterialExtName;
-                break;
-            case ResType.Atlas:
-                extName = ResConst.AtlasExtName;
-                break;
-            case ResType.Json:
-                extName = ResConst.JsonExtName;
-                break;
-        }
-        return extName;
-    }
-
-    public static Type GetResTypeToType(ResType resType)
-    {
-        Type t = null;
-        switch (resType)
-        {
-            case ResType.Prefab:
-                t = typeof(GameObject);
-                break;
-            case ResType.Atlas:
-            case ResType.Sprite:
-                t = typeof(Sprite);
-                break;
-            case ResType.AudioClip:
-                t = typeof(AudioClip);
-                break;
-            case ResType.Json:
-            case ResType.Bytes:
-            case ResType.Txt:
-            case ResType.Lua:
-                t = typeof(TextAsset);
-                break;
-            case ResType.Scene:
-                t = typeof(Scene);
-                break;
-            case ResType.Font:
-                t = typeof(Font);
-                break;
-            //case ResType.Asset:
-            //    t = typeof(Asset);
-            //    break;
-            case ResType.Material:
-                t = typeof(Material);
-                break;
-        }
-        return t;
-    }
 }

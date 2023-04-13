@@ -20,7 +20,7 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     {
         loadPro = 0;
         AsyncOp = null;
-        ResManager.Instance.LoadAssetAsync(name, "Scene/" + name, ResType.Scene, (objt) =>
+        ResManager.Instance.LoadAssetAsync(name, "Scene/" + name + ".scene", typeof(Scene), (objt) =>
         {
             AsyncOp = null;
             //ResManager.Instance.Dispose();

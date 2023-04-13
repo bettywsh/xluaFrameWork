@@ -40,5 +40,9 @@ public class AppConst
     /// </summary>
     public static string GameVersion = "1.0.0";
 
+    /// <summary>
+    /// 网络类型
+    /// </summary>
+    public static NetworkProtocol NetProtocol = NetworkProtocol.TCP;
 
 }

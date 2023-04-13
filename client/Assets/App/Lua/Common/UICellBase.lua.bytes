@@ -2,7 +2,7 @@ local UICellBase = {}
 UICellBase.view = {}
 UICellBase.gameObject = nil
 UICellBase.name = nil
-UICellBase.UUID = nil
+UICellBase.UUID = Function:UUID()
 
 function UICellBase:ctor()
     -- body
@@ -12,7 +12,6 @@ function UICellBase:Open(transform)
     self.gameObject = transform.gameObject
 	self.name = self.gameObject.name
 	self.view = UIMgr:AutoBind(transform)
-    self.UUID = Function:UUID()
     -- RegisterLuaMessage(self)
     -- RegisterNetCmd(self)
     -- RegisterButtonOnClick(self)

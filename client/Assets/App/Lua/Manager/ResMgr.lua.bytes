@@ -3,24 +3,24 @@ local ResMgr = {}
 -- function ResMgr:init()
 -- end
 
-function ResMgr:OnLoadAsset(resName, relativePath, resType)
-    return CSDefine.ResManager:OnLoadAsset(resName, relativePath, resType)
+function ResMgr:OnLoadAsset(resName, relativePath, type)
+    return CSDefine.ResManager:OnLoadAsset(resName, relativePath, type)
 end
 
-function ResMgr:LoadAssetAsync(resName, relativePath, resType, func)
-    CSDefine.ResManager:LoadAssetAsync(resName, relativePath, resType, nil, func)
+function ResMgr:LoadAssetAsync(resName, relativePath, type, func)
+    CSDefine.ResManager:LoadAssetAsync(resName, relativePath, type, nil, func)
 end
 
-function ResMgr:GloabLoadAssetAsync(relativePath, resType, func)
-    CSDefine.ResManager:LoadAssetAsync("Common", relativePath, resType, nil, func)
+function ResMgr:GloabLoadAssetAsync(relativePath, type, func)
+    CSDefine.ResManager:LoadAssetAsync("Common", relativePath, type, nil, func)
 end
 
-function ResMgr:SceneLoadAssetAsync(relativePath, resType, func)
-    CSDefine.ResManager:LoadAssetAsync(SceneMgr.name, relativePath, resType, nil, func)
+function ResMgr:SceneLoadAssetAsync(relativePath, type, func)
+    CSDefine.ResManager:LoadAssetAsync(SceneMgr.name, relativePath, type, nil, func)
 end
 
-function ResMgr:PageLoadAssetAsync(table, relativePath, resType, func)
-    CSDefine.ResManager:LoadAssetAsync(table.UUID, relativePath, resType, nil, func)
+function ResMgr:PageLoadAssetAsync(table, relativePath, type, func)
+    self:LoadAssetAsync(table.UUID, relativePath, type, func)
 end
 
 function ResMgr:PageUnloadAssetAsync(table)

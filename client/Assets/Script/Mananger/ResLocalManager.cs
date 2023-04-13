@@ -9,11 +9,11 @@ using UnityEditor;
 public class ResLocalManager : MonoSingleton<ResLocalManager>
 {
     // Start is called before the first frame update
-    public void LoadLocalUObjectAsync(string relativePath, ResType resType, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
+    public void LoadLocalUObjectAsync(string relativePath, Type type, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
-        string assetName = ResPath.GetAssetPath(relativePath, resType);
+        string assetName = ResPath.GetAssetPath(relativePath);
 #if UNITY_EDITOR
-        var obj = AssetDatabase.LoadAssetAtPath(assetName, ResPath.GetResTypeToType(resType));
+        var obj = AssetDatabase.LoadAssetAtPath(assetName, type);
         if (sharpFunc != null)
         {
             sharpFunc(obj);
@@ -28,11 +28,11 @@ public class ResLocalManager : MonoSingleton<ResLocalManager>
 #endif
     }
 
-    public UObject LoadLocalUObject(string relativePath, ResType resType)
+    public UObject LoadLocalUObject(string relativePath, Type type)
     {
-        string assetName = ResPath.GetAssetPath(relativePath, resType);
+        string assetName = ResPath.GetAssetPath(relativePath);
 #if UNITY_EDITOR
-        var obj = AssetDatabase.LoadAssetAtPath(assetName, ResPath.GetResTypeToType(resType));
+        var obj = AssetDatabase.LoadAssetAtPath(assetName, type);
         return obj;
 #else
         return null;

@@ -1,6 +1,6 @@
 return {
 	["Chinese"] = {
-		Language = "Chinese",
+		ID = "Chinese",
 		LanguageTable = "ChineseText",
 	},
 };

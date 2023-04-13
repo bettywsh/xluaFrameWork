@@ -1,46 +1,46 @@
 return {
 	["InitCameraPosition"] = {
-		Key = "InitCameraPosition",
+		ID = "InitCameraPosition",
 		Value = "-22.4,45.1,94.4",
 	},
 	["InitCameraRatotion"] = {
-		Key = "InitCameraRatotion",
+		ID = "InitCameraRatotion",
 		Value = "36.435,171.686,-2.541",
 	},
 	["MaxCameraRatotion"] = {
-		Key = "MaxCameraRatotion",
+		ID = "MaxCameraRatotion",
 		Value = "30",
 	},
 	["StableCameraPosition"] = {
-		Key = "StableCameraPosition",
+		ID = "StableCameraPosition",
 		Value = "-50,5,3",
 	},
 	["StableCameraRatotion"] = {
-		Key = "StableCameraRatotion",
+		ID = "StableCameraRatotion",
 		Value = "10,180,0",
 	},
 	["FoodStuff1"] = {
-		Key = "FoodStuff1",
+		ID = "FoodStuff1",
 		Value = 0.25000000,
 	},
 	["FoodStuff2"] = {
-		Key = "FoodStuff2",
+		ID = "FoodStuff2",
 		Value = 0.33333333,
 	},
 	["FoodStuff3"] = {
-		Key = "FoodStuff3",
+		ID = "FoodStuff3",
 		Value = 0.50000000,
 	},
 	["FoodStuff4"] = {
-		Key = "FoodStuff4",
+		ID = "FoodStuff4",
 		Value = 0.58333333,
 	},
 	["FoodStuff5"] = {
-		Key = "FoodStuff5",
+		ID = "FoodStuff5",
 		Value = 0.83333333,
 	},
 	["FoodStuff6"] = {
-		Key = "FoodStuff6",
+		ID = "FoodStuff6",
 		Value = 0.91666667,
 	},
 };
