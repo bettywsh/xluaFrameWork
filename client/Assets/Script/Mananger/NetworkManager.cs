@@ -74,10 +74,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
     }
 
 
-    public void OnDestroy()
-	{
-        Session.Dispose();
-    }
+
 
 	
 }

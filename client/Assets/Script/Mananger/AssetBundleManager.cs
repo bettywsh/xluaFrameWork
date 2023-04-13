@@ -27,13 +27,13 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
     public override void Init()
     {
         if (AppConst.IsABMode)
-        {
+        { 
             assetBundleManifest = ResManager.Instance.OnLoadAsset("Common", ResConst.AssetBundleManifest, typeof(AssetBundleManifest)) as AssetBundleManifest;
         }
     }
 
     #region 同步加载
-    public UObject LoadAssetBundleUObject(string abName, string assetName)
+    public UObject LoadAssetBundleUObject(string abName, string assetName, Type type)
     {
         AssetBundleInfo bundle = GetLoadedAssetBundle(abName);
         if (bundle == null)
@@ -48,7 +48,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         }
 
         AssetBundle ab = bundle.assetBundle;
-        var request = ab.LoadAsset(assetName);
+        var request = ab.LoadAsset(assetName, type);
         return request;
     }
 

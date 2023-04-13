@@ -167,6 +167,11 @@ public class ResPath
 
     public static string GetAssetBunldePath(string path, Dictionary<string, BuildJson> BuildJson)
     {
+        if (path.IndexOf("/") < 0)
+        {
+            return path;
+        }
+        path = path.Replace(Path.GetExtension(path), "");
         //不能用Path.Combine 因为这样出来的路径会变成\\ 而依赖文件是/导致文件路径不统一会被认为是不同资源
         string folderName = path.Substring(0, path.IndexOf("/"));
         if (BuildJson.Count == 0)
@@ -193,6 +198,10 @@ public class ResPath
     }
     public static string GetAssetPath(string path)
     {
+        if (path == ResConst.AssetBundleManifest)
+        {
+            return "AssetBundleManifest";
+        }
         return Path.Combine(ResPath.AppRelativePath, path);
     }
 

@@ -37,7 +37,7 @@ public class ResManager : Singleton<ResManager>
             string assetName = ResPath.GetAssetPath(relativePath);
             string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
             AddReloader(resName, abName);
-            return AssetBundleManager.Instance.LoadAssetBundleUObject(abName, assetName);
+            return AssetBundleManager.Instance.LoadAssetBundleUObject(abName, assetName, type);
         }
     }
 
