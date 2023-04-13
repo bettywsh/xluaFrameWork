@@ -34,6 +34,7 @@ public class Launch : MonoBehaviour
         AssetBundleManager.Instance.Init();
         ResManager.Instance.Init();
         LuaManager.Instance.Init();
+        AtlasManager.Instance.Init();
         LuaManager.Instance.DoFile("UpdateModule");
     }
 
@@ -42,10 +43,10 @@ public class Launch : MonoBehaviour
         DownLoadManager.Instance.OnDestroy();
         UpdateManager.Instance.OnDestroy();
         ResManager.Instance.Init();
-        AssetBundleManager.Instance.Init();
+        //AssetBundleManager.Instance.Init();
         NetworkManager.Instance.Init();
         LuaManager.Instance.DoFile("StartModule");
-  
+
         //#if UNITY_EDITOR        
         //        EditorApplication.playModeStateChanged += OnUnityPlayModeChanged;
         //#endif

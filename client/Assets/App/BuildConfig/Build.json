@@ -4,13 +4,13 @@
 //3 文件夹下的文件夹打成一个AB(未实现)
 //ResType
 {
-	"BuildConfig":{ "FolderName":"BuildConfig", "ResType":14, "BuildType":1 },
-	"Lua":{ "FolderName":"Lua", "ResType":5, "BuildType":1 },
-	"Protobuf":{ "FolderName":"Protobuf", "ResType":5, "BuildType":1 },
-	"Prefab":{ "FolderName":"Prefab", "ResType":2, "BuildType":2 },
-	"Atlas":{ "FolderName":"Atlas", "ResType":10, "BuildType":2 },
-	"Scene":{ "FolderName":"Scene", "ResType":8, "BuildType":2 },
-	"AudioClip":{ "FolderName":"AudioClip", "ResType":1, "BuildType":2 },
-	"Font":{ "FolderName":"Font", "ResType":11, "BuildType":2 },
-	"Texture":{ "FolderName":"Texture", "ResType":3, "BuildType":3 }
+	"BuildConfig":{ "FolderName":"BuildConfig", "BuildType":1 },
+	"Lua":{ "FolderName":"Lua", "BuildType":1 },
+	"Protobuf":{ "FolderName":"Protobuf", "BuildType":1 },
+	"Prefab":{ "FolderName":"Prefab", "BuildType":2 },
+	"Atlas":{ "FolderName":"Atlas", "BuildType":2 },
+	"Scene":{ "FolderName":"Scene", "BuildType":2 },
+	"AudioClip":{ "FolderName":"AudioClip", "BuildType":2 },
+	"Font":{ "FolderName":"Font", "BuildType":2 },
+	"Texture":{ "FolderName":"Texture", "BuildType":3 }
 }

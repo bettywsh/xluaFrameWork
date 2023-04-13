@@ -12,6 +12,5 @@ public enum BuildType
 public class BuildJson 
 {
     public string FolderName;
-    public ResType ResType;
     public BuildType BuildType;
 }

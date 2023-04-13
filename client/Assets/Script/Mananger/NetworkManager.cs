@@ -72,9 +72,5 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 	{
         Service.Dispose();
     }
-
-
-
-
 	
 }

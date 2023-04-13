@@ -35,7 +35,8 @@ public class ResPath
                         _SourceFolder = Application.dataPath + @"/Raw";
                         break;
                     case RuntimePlatform.Android:
-                        _SourceFolder = Application.dataPath + @"!assets";
+                        _SourceFolder = Application.streamingAssetsPath + "/";
+                        //_SourceFolder = Application.dataPath + @"!assets";
                         break;
                     default:
                         if (!AppConst.IsABMode)
@@ -85,32 +86,6 @@ public class ResPath
     }
 
     /// <summary>
-    /// 合并路径，任意参数中存在 '\' 字符都会被替换为 '/' 字符。
-    /// 如果路径为目录，字符串结尾必定不包含 '/' 字符。
-    /// </summary>
-    /// <param name="root">起始路径</param>
-    /// <param name="args">中间路径</param>
-    /// <returns>合并后的合法路径</returns>
-    //public static string CombinePath(string root, params string[] args)
-    //{
-    //    string path = root.Replace('\\', '/');
-    //    if (path.EndsWith("/")) path = path.Remove(path.Length - 1);
-
-    //    StringBuilder sb = new StringBuilder();
-    //    sb.Append(path);
-    //    for (int i = 0; i < args.Length; i++)
-    //    {
-    //        if (string.IsNullOrEmpty(args[i])) continue;
-    //        args[i] = args[i].Replace('\\', '/');
-    //        if (args[i].StartsWith("/")) sb.Append(args[i]);
-    //        else sb.Append("/").Append(args[i]);
-    //    }
-    //    path = sb.ToString();
-    //    if (path.EndsWith("/")) path = path.Remove(path.Length - 1);
-    //    return path;
-    //}
-
-    /// <summary>
     /// 获取App包内初始资源绝对路径
     /// </summary>
     /// <param name="fileNameWithExtension"></param>
@@ -118,7 +93,6 @@ public class ResPath
     public static string GetStreamingAssetsFilePath(string fileNameWithExtension)
     {
         return Path.Combine(SourceFolder, fileNameWithExtension);
-        //return CombinePath(SourceFolder, fileNameWithExtension);
     }
 
     /// <summary>
@@ -129,7 +103,6 @@ public class ResPath
     public static string GetPersistentFilePath(string fileNameWithExtension)
     {
         return Path.Combine(DataFolder, fileNameWithExtension);
-        //return CombinePath(DataFolder, fileNameWithExtension);
     }
     public static bool CheckPersistentFileExsits(string filePath)
     {
