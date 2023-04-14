@@ -86,8 +86,8 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         var assetObj = AssetBundle.LoadFromFile(path);
         if (assetObj != null)
         {
-            var RefCount = assetBundleLoading[path];
-            var bundleInfo = new AssetBundleInfo(assetObj, RefCount);
+            //var RefCount = assetBundleLoading[path];
+            var bundleInfo = new AssetBundleInfo(assetObj, 0);
             loadedAssetBundles.Add(abName, bundleInfo);
         }
     }
@@ -118,8 +118,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
                 AssetBundleInfo bundleInfo = null;
                 if (loadedAssetBundles.TryGetValue(depName, out bundleInfo))
                 {
-                    if(isDep)
-                        bundleInfo.referencedCount++;
+                    bundleInfo.referencedCount++;
                 }
                 else
                 {
@@ -209,7 +208,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
             }
             
         }
-        bundleInfo.referencedCount = requests.Count - 1;
+        bundleInfo.referencedCount = requests.Count;
         uobjectAsyncList.Remove(abName);        
     }
     #endregion
@@ -223,7 +222,6 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         uobjectAsyncList.Remove(abName);
         UnloadAssetBundleInternal(abName, isThorough);
         UnloadDependencies(abName, isThorough);
-        Debug.Log(loadedAssetBundles.Count + " assetbundle(s) in memory after unloading " + abName);
     }
 
 
