@@ -38,6 +38,7 @@ local CSDefine = {
     SpriteAtlas = CS.SpriteAtlas,
     TextAsset = CS.UnityEngine.TextAsset,
     SpriteAtlas = CS.UnityEngine.U2D.SpriteAtlas,
+    TMP_FontAsset = CS.TMPro.TMP_FontAsset
     
 }
 return CSDefine

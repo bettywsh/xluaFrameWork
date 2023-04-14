@@ -80,10 +80,10 @@ end)
 UIMgr:Open("SplashPanel")
 
 --依赖资源加载
---ResManager.Instance:LoadAssetAsync("SourceHanSansCN-Normal SDF", nil)
+ResMgr:LoadAssetAsync("Common", "Font/SourceHanSansCN-Normal SDF.asset", typeof(CSDefine.TMP_FontAsset))
 
 --依赖资源加载
---ResManager.Instance:LoadAssetAsync("SourceHanSerifCN-Bold SDF", nil)
+ResMgr:LoadAssetAsync("Common", "Font/SourceHanSerifCN-Bold SDF.asset", typeof(CSDefine.TMP_FontAsset))
 
 --依赖资源加载
 --ResManager.Instance:LoadAtlasAsync("CommonPanel", nil)
