@@ -21,12 +21,12 @@ public class ResManager : Singleton<ResManager>
     Dictionary<string, BuildJson> BuildJson = new Dictionary<string, BuildJson>();
     public override void Init()
     {
-        TextAsset text = OnLoadAsset("Common", ResConst.BuildJson + ".json", typeof(TextAsset)) as TextAsset;
+        TextAsset text = LoadAsset("Common", ResConst.BuildJson + ".json", typeof(TextAsset)) as TextAsset;
         BuildJson = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(text.text);
     }
 
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
-    public UObject OnLoadAsset(string resName, string relativePath, Type type)
+    public UObject LoadAsset(string resName, string relativePath, Type type)
     {
         if (!AppConst.IsABMode)
         {
@@ -44,7 +44,6 @@ public class ResManager : Singleton<ResManager>
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
     public void LoadAssetAsync(string resName, string relativePath, Type type, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
-
         if (!AppConst.IsABMode)
         {
             ResLocalManager.Instance.LoadLocalUObjectAsync(relativePath, type, sharpFunc, luaFunc);

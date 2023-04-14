@@ -6,13 +6,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using System.Resources;
+using System.Linq;
 
 public class Launch : MonoBehaviour
 {
     private string FirstRunApp = "FirstRunApp3";
     void Awake()
     {
-        //Debug.unityLogger.logEnabled = AppConst.DebugLog;
+        Debug.unityLogger.logEnabled = AppConst.DebugLog;
 
         DontDestroyOnLoad(gameObject);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -46,7 +47,6 @@ public class Launch : MonoBehaviour
         //AssetBundleManager.Instance.Init();
         NetworkManager.Instance.Init();
         LuaManager.Instance.DoFile("StartModule");
-
         //#if UNITY_EDITOR        
         //        EditorApplication.playModeStateChanged += OnUnityPlayModeChanged;
         //#endif
@@ -79,6 +79,8 @@ public class Launch : MonoBehaviour
         files = Directory.GetFiles(Application.persistentDataPath, "*.*", SearchOption.AllDirectories);
         for (int i = 0; i < files.Length; i++)
         {
+            if (files[i].Contains("\\Player.log"))
+                continue;
             File.Delete(files[i]);
         }
         dirs = Directory.GetDirectories(Application.persistentDataPath);

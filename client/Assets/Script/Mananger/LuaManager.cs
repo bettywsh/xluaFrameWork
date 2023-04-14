@@ -19,7 +19,7 @@ public class LuaManager : MonoSingleton<LuaManager>
 
     public byte[] MyLoader(ref string filename)
     {
-        TextAsset ta = ResManager.Instance.OnLoadAsset("Common", "Lua/" + filename + ".lua.bytes", typeof(TextAsset)) as TextAsset;
+        TextAsset ta = ResManager.Instance.LoadAsset("Common", "Lua/" + filename + ".lua.bytes", typeof(TextAsset)) as TextAsset;
         return System.Text.Encoding.UTF8.GetBytes(ta.text);
     }
 

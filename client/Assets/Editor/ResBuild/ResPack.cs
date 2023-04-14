@@ -41,7 +41,7 @@ public static class ResPack
 
     [MenuItem("Builds/BuildActiveTarget", false, 1)]
     public static void BuildActiveTarget()
-    {        
+    {
         BuildLuaByBuildTarget(EditorUserBuildSettings.activeBuildTarget);
     }
 
@@ -50,6 +50,7 @@ public static class ResPack
         BuildLuaByBuildTarget(BuildTarget.iOS);
     }
 
+    [MenuItem("Builds/BuildAndroid", false, 2)]
     public static void BuildAndroid()
     {
         BuildLuaByBuildTarget(BuildTarget.Android);
@@ -80,7 +81,7 @@ public static class ResPack
 
     private static void BuildLuaByBuildTarget(BuildTarget target)
     {
-        string root = ResPath.AppFullPath;
+        //string root = ResPath.AppFullPath;
         //List<string> modules = PackFile.EachModuleList(root);  
 
         List<AssetBundleBuild> builds = new List<AssetBundleBuild>();

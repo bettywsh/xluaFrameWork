@@ -13,7 +13,7 @@ public class NetManager : MonoSingleton<NetManager>
     Queue sEvents = new Queue();
     NetworkInfo _netWorkInfo = new NetworkInfo();
 
-    public void Init() {
+    public override void Init() {
     }
 
 

@@ -28,7 +28,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
     {
         if (AppConst.IsABMode)
         { 
-            assetBundleManifest = ResManager.Instance.OnLoadAsset("Common", ResConst.AssetBundleManifest, typeof(AssetBundleManifest)) as AssetBundleManifest;
+            assetBundleManifest = ResManager.Instance.LoadAsset("Common", ResConst.AssetBundleManifest, typeof(AssetBundleManifest)) as AssetBundleManifest;
         }
     }
 
@@ -293,6 +293,11 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
         dependencies.Remove(abName);
     }
     #endregion
+
+    private void OnDestroy()
+    {
+        assetBundleManifest = null;
+    }
 }
 
 
