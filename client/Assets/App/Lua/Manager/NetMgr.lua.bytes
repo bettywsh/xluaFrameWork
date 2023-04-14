@@ -22,13 +22,13 @@ end
 
 function NetMgr:RegisterCSharpMessage()
     -- 服务器连接失去连接
-    MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgLostConnect, function(data)
+    MessageMgr:RegisterCSharpMessage(CSDefine.MessageConst.MsgLostConnect, function(data)
         if self.hasSendPing then
             self.disConnect = true
         end
     end)
     -- 服务器连接连接失败
-    MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgDisconnected, function(data)
+    MessageMgr:RegisterCSharpMessage(CSDefine.MessageConst.MsgDisconnected, function(data)
         if self.hasSendPing then
             self.disConnect = true
         end
@@ -81,7 +81,7 @@ end
 -- new 表示为一个新的连接 此处区分了login服务器和game服务器
 function NetMgr:SendCmd(cmdName, cmd)
     if self.NetLog and cmdName ~= "CGAskPing" then
-        showTable(cmd, "==>>Send:" .. cmdName, "lightblue")
+        Function:ShowTable(cmd, "==>>Send:" .. cmdName, "lightblue")
     end
     local cmdFullName = GameDefine.ProtobufPackage..cmdName
     local bytes = self.PB.encode(cmdFullName, cmd)
@@ -142,7 +142,7 @@ end
 
 
 function NetMgr:InitHandleMessage()
-    MessageMgr:RegisterCSharpMessage(CS.MessageConst.MsgNetData, function(datas)
+    MessageMgr:RegisterCSharpMessage(CSDefine.MessageConst.MsgNetData, function(datas)
         local packetId = datas[0]
         if datas[1] == nil then
             Function:Log("on socket lua:" .. packetId)

@@ -37,23 +37,3 @@ DataMgr:Init()
 math.randomseed(math.floor(os.clock()*1E11))
 
 SceneMgr:LoadScene("Login", false)
-
---卸载依赖
--- ResManager.Instance:UnLoadAssetBundle(ResType.Atlas, "CommonPanel")
--- ResManager.Instance:UnLoadAssetBundle(ResType.FontAsset, "SourceHanSansCN-Normal SDF")
--- ResManager.Instance:UnLoadAssetBundle(ResType.FontAsset, "SourceHanSerifCN-Bold SDF")
-
--- --依赖资源加载
--- ResManager.Instance:LoadFontAsync("SourceHanSansCN-Normal", nil)
-
--- --依赖资源加载
--- ResManager.Instance:LoadFontAsync("SourceHanSerifCN-Bold", nil)
-
--- --依赖资源加载
--- ResManager.Instance:LoadAssetAsync("SourceHanSansCN-Normal SDF", nil)
-
--- --依赖资源加载
--- ResManager.Instance:LoadAssetAsync("SourceHanSerifCN-Bold SDF", nil)
-
---依赖资源加载
--- ResManager.Instance:LoadAtlasAsync("CommonPanel", nil)

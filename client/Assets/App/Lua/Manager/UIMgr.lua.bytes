@@ -126,4 +126,9 @@ function UIMgr:CreateCell(args)
     return cell
 end
 
+function UIMgr:LoadAtlasSprite(atlasName, spriteName)
+    local sa = CSDefine.ResManager:LoadAsset(atlasName, "Atlas/" + atlasName + ".spriteatlas", typeof(CSDefine.SpriteAtlas))
+    return sa:GetSprite(spriteName)
+end
+
 return UIMgr

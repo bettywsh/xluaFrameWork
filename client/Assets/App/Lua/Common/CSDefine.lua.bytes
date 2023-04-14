@@ -16,6 +16,7 @@ local CSDefine = {
     GraphicRaycaster = CS.UnityEngine.UI.GraphicRaycaster,
     Renderer = CS.UnityEngine.Renderer,
     Debug = CS.UnityEngine.Debug,
+    MessageConst = CS.MessageConst,
     
     Sprite = CS.UnityEngine.Sprite,
     Image = CS.UnityEngine.UI.Image,
@@ -36,7 +37,7 @@ local CSDefine = {
     Material = CS.Material,
     SpriteAtlas = CS.SpriteAtlas,
     TextAsset = CS.UnityEngine.TextAsset,
-    
+    SpriteAtlas = CS.UnityEngine.U2D.SpriteAtlas,
     
 }
 return CSDefine

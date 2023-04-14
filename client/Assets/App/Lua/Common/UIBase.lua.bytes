@@ -17,54 +17,46 @@ function UIBase:Open(transform, args)
     Function:RegisterButtonOnClick(self)
 end
 
-function UIBase:LoadSpriteAsync(spriteName, cb)
-    return ResManager.Instance:LoadSpriteAsync(spriteName, cb)
-end
+-- function UIBase:SetClickCallback(go, me, callback)
+--     go.onClick:AddListener(function(go)
+--         callback(me)
+--     end)
+-- end
 
-function UIBase:LoadAtlasSprite(atlasName, spriteName)
-    return self.view.transform:GetComponent("LuaClass"):GetSprite(atlasName, spriteName);
-end
+-- function UIBase:SetClickUpCallback(go, callback)
+--     local listener = EventTriggerListener.Get(go)
+--     listener.onUp = callback
+-- end
 
-function UIBase:SetClickCallback(go, me, callback)
-    go.onClick:AddListener(function(go)
-        callback(me)
-    end)
-end
+-- function UIBase:SetClickDownCallback(go, callback)
+--     local listener = EventTriggerListener.Get(go)
+--     listener.onDown = callback
+-- end
 
-function UIBase:SetClickUpCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onUp = callback
-end
+-- function UIBase:SetClickEnterCallback(go, callback)
+--     local listener = EventTriggerListener.Get(go)
+--     listener.onEnter = callback
+-- end
 
-function UIBase:SetClickDownCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onDown = callback
-end
+-- function UIBase:SetClickExitCallback(go, callback)
+--     local listener = EventTriggerListener.Get(go)
+--     listener.onExit = callback
+-- end
 
-function UIBase:SetClickEnterCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onEnter = callback
-end
+-- function UIBase:SetBeginDragCallback(go, callback)
+--     local listener = EventTriggerListener.Get(go)
+--     listener.onBeginDrag = callback
+-- end
 
-function UIBase:SetClickExitCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onExit = callback
-end
+-- function UIBase:SetDragCallback(go, callback)
+--     local listener = EventTriggerListener.Get(go)
+--     listener.onDrag = callback
+-- end
 
-function UIBase:SetBeginDragCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onBeginDrag = callback
-end
-
-function UIBase:SetDragCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onDrag = callback
-end
-
-function UIBase:SetEndDragCallback(go, callback)
-    local listener = EventTriggerListener.Get(go)
-    listener.onEndDrag = callback
-end
+-- function UIBase:SetEndDragCallback(go, callback)
+--     local listener = EventTriggerListener.Get(go)
+--     listener.onEndDrag = callback
+-- end
 
 function UIBase:Close()
     Function:RemoveLuaMessage(self)
