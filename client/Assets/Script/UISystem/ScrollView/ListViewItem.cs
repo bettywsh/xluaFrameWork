@@ -42,7 +42,13 @@ namespace UnityEngine.UI
             luaTable.Get("OnClickCallBack", out lf);
             lf.Call();
         }
+        public void OnDestroy()
+        {
+            LuaFunction lf;
+            luaTable.Get("Close", out lf);
+            lf.Call(luaTable);
+            luaTable.Dispose();
+            luaTable = null;
+        }
     }
-
-    
 }

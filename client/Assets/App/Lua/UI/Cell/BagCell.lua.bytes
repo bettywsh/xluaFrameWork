@@ -5,7 +5,7 @@ function BagCell:OnOpen(idx)
     idx = idx + 1
     local bag = ConfigMgr:GetConfigById("Horse", idx)
     self.view.txt_Title.text = bag.Name
-    ResMgr:PageLoadAssetAsync(self, "Texture/item/".. bag.Icon .. ".png", typeof(CSDefine.Sprite), function(sprite)
+    ResMgr:PageLoadAssetAsync("BagPanel", "Texture/item/".. bag.Icon .. ".png", typeof(CSDefine.Sprite), function(sprite)
         self.view.img_Icon.sprite = sprite
     end)
 end

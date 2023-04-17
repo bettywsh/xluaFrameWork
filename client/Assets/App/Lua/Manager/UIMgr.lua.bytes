@@ -20,9 +20,9 @@ function UIMgr:Open(prefabName, ...)
     local args = {...}
     if self.ctrls[prefabName] == nil then
         local ctrlURL = string.format("UI/Panel/%s", prefabName)
-        local ctrl = require(ctrlURL)
+        local ctrl = require(ctrlURL).new()
         self.ctrls[prefabName] = ctrl
-        ResMgr:PageLoadAssetAsync(ctrl, string.format("Prefab/UI/Panel/%s.prefab", prefabName), typeof(CSDefine.GameObject), function(ugo)
+        ResMgr:PageLoadAssetAsync(prefabName, string.format("Prefab/UI/Panel/%s.prefab", prefabName), typeof(CSDefine.GameObject), function(ugo)
             local go = CSDefine.Object.Instantiate(ugo)
             go.name = prefabName
             go.transform:SetParent(self.baseCanvas, false)
@@ -70,8 +70,8 @@ end
 function UIMgr:Close(prefabName)
     self.ctrls[prefabName]:OnClose()
     self.ctrls[prefabName]:Close()
-    self.ctrls[prefabName] = nil
     CSDefine.ResManager:UnLoadAssetBundle(prefabName)
+    self.ctrls[prefabName] = nil
 end
 
 function UIMgr:CloseAll()

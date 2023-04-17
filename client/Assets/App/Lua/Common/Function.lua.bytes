@@ -9,7 +9,7 @@ end
 
 -- 注册CSharp消息回调函数
 function Function:RegisterCSharpMessage(cls)
-    for k, v in pairs(cls) do
+    for k, v in pairs(cls.class) do
         local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnCSharpMessage' then
             MessageMgr:RegisterCSharpMessage(strArr[2], function(scmd)
@@ -21,7 +21,7 @@ end
 
 -- 删除对象中注册的CSharp消息
 function Function:RemoveCSharpMessage(cls)
-    for k, v in pairs(cls) do
+    for k, v in pairs(cls.class) do
         local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnNetMessage' then
             MessageMgr:RemoveCSharpMessage(strArr[2])
@@ -31,7 +31,7 @@ end
 
 -- 注册网络消息回调函数
 function Function:RegisterNetMessage(cls)
-    for k, v in pairs(cls) do
+    for k, v in pairs(cls.class) do
         local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnNetMessage' then
             MessageMgr:RegisterNetMessage(strArr[2], function(scmd)
@@ -43,7 +43,7 @@ end
 
 -- 删除对象中注册的网络协议
 function Function:RemoveNetMessage(cls)
-    for k, v in pairs(cls) do
+    for k, v in pairs(cls.class) do
         local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnNetMessage' then
             MessageMgr:RemoveNetMessage(strArr[2])
@@ -52,7 +52,7 @@ function Function:RemoveNetMessage(cls)
 end
 
 function Function:RegisterLuaMessage(cls)
-    for k, v in pairs(cls) do
+    for k, v in pairs(cls.class) do
         local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnLuaMessage' then
             MessageMgr:RegisterLuaMessage(string.gsub(string.sub(k, 13, #k), '_', '.'), cls, v)
@@ -61,7 +61,7 @@ function Function:RegisterLuaMessage(cls)
 end
 
 function Function:RemoveLuaMessage(cls)
-    for k, v in pairs(cls) do
+    for k, v in pairs(cls.class) do
         local strArr = self:Split(k, '_')
         if strArr and #strArr == 2 and strArr[1] == 'OnLuaMessage' then
             MessageMgr:RemoveLuaMessage(string.gsub(string.sub(k, 13, #k), '_', '.'), cls, v)
@@ -70,7 +70,7 @@ function Function:RemoveLuaMessage(cls)
 end
 
 function Function:RegisterButtonOnClick(cls)
-    for k, v in pairs(cls) do
+    for k, v in pairs(cls.class) do
         if string.sub(k, 1, 8) == 'OnClick_'  then
             local go = cls.view[string.sub(k, 9, #k)]
             if go then

@@ -19,8 +19,8 @@ function ResMgr:SceneLoadAssetAsync(relativePath, type, func)
     CSDefine.ResManager:LoadAssetAsync(SceneMgr.name, relativePath, type, nil, func)
 end
 
-function ResMgr:PageLoadAssetAsync(table, relativePath, type, func)
-    self:LoadAssetAsync(table.UUID, relativePath, type, func)
+function ResMgr:PageLoadAssetAsync(panelName, relativePath, type, func)
+    self:LoadAssetAsync(panelName, relativePath, type, func)
 end
 
 function ResMgr:PageUnloadAssetAsync(table)
