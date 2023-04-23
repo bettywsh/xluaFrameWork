@@ -20,6 +20,7 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     {
         loadPro = 0;
         AsyncOp = null;
+        Application.backgroundLoadingPriority = ThreadPriority.High;
         ResManager.Instance.LoadAssetAsync(name, "Scene/" + name + ".scene", typeof(Scene), (objt) =>
         {
             AsyncOp = null;
@@ -40,6 +41,7 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
         AsyncOp = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
         AsyncOp.allowSceneActivation = false;
         AsyncOp.completed += (AsyncOperation ao) => {
+            Application.backgroundLoadingPriority = ThreadPriority.Low;
             AsyncOp.allowSceneActivation = true;       
             GC();
             LuaManager.Instance.CallFunction("SceneMgr", "SceneFinish");
