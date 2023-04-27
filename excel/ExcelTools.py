@@ -472,7 +472,7 @@ def export_client_json(dir_src, dir_dst_json):
 				write_json(t, n, dir_dst_json + pathInfo.split('.')[0] + ".json", withfunc = True)
 				print("Client Json: SUCCESS ")
 
-def export_server_csv(dir_src, dir_dst):
+def export_server_json(dir_src, dir_dst):
 	if dir_dst[len(dir_dst) - 1] != '\\':
 		dir_dst = dir_dst + "\\"
 	# 创建dst_src的目录树
@@ -491,15 +491,16 @@ def export_server_csv(dir_src, dir_dst):
 				continue
 		'''
 			
-		if os.path.isfile(name_temp) and not name.startswith("_") and name.endswith("xlsx") and not '$' in name :
+		if os.path.isfile(name_temp) and not name.startswith("_") and not '$' in name :
 			print("Start : " + name_temp)
 			t, n = gen_table(name_temp)
 			if EXPORT_SERVER:
 				if name.startswith('c_') or name.startswith('C_'):
 					continue
 				pathInfo =  os.path.basename(name_temp)
-				outfile = dir_dst + pathInfo.split('.')[0] + ".csv"
-				transferServer(name_temp,outfile)
+				# outfile = dir_dst + pathInfo.split('.')[0] + ".csv"
+				# transferServer(name_temp,outfile)
+				write_json(t, n, dir_dst + pathInfo.split('.')[0] + ".json", withfunc = True)
 				print("SERVER : SUCCESS ")
 			
 
@@ -542,7 +543,7 @@ def main():
 	export_client_csharp(dir_src, dir_dst_client_csharp)
 	export_client_csharp_manager(dir_src, dir_dst_client_csharp_manager)
 	export_client_json(dir_src, dir_dst_client_json)
-	export_server_csv(dir_src,dir_dst_server)
+	export_server_json(dir_src,dir_dst_server)
 
 if __name__=="__main__":
 	main()
