@@ -118,4 +118,20 @@ public class PackFile
             throw new Exception("md5file() fail, error:" + ex.Message);
         }
     }
+
+    /// <summary>
+    /// 创建文件夹
+    /// </summary>
+    public static bool CreateDirectory(string directory)
+    {
+        if (Directory.Exists(directory) == false)
+        {
+            Directory.CreateDirectory(directory);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
