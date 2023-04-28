@@ -17,4 +17,8 @@ varprefab脚本会拿到#开头的引用，界面加载后会根据组件缩写�
 # 事件
 ui的事件系统会自动注册和删除， 只要写个方法前缀带事件特殊标记就能找到对应事件
 
-# 暂时写到这
+# 网络
+使用et7.2网络库，支持tcp websorket kcp 
+
+# protobuf
+使用lua-protobuf解析protobuf给lua, c#使用protobuf-net解析protobuf
