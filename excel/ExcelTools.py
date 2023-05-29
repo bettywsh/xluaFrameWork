@@ -340,7 +340,7 @@ def write_csharp(luaT, luaN ,outfile = '-', withfunc = True):
 			if type(v) is int:
 				fields.write("\tpublic int "+ k +";\n")
 			elif type(v) is float: 
-				fiefieldsld.write("\tpublic float "+ k +";\n")
+				fields.write("\tpublic float "+ k +";\n")
 			elif type(v) is bool:
 				 fields.write("\tpublic bool "+ k +";\n")
 			elif type(v) is str:
