@@ -1,6 +1,6 @@
-local SplashPanel = LuaClass:Class("SplashPanel", UIBase)
+local SplashIconPanel = LuaClass:Class("SplashIconPanel", UIBase)
 
-function SplashPanel:OnOpen()
+function SplashIconPanel:OnOpen()
 	self.view.cng_BG.alpha = 0
 	local seq = CSDefine.DOTween.Sequence()
 	seq:Append(self.view.cng_BG:DOFade(1, 1))
@@ -13,8 +13,8 @@ function SplashPanel:OnOpen()
 	-- UIMgr:CloseSelf(self)
 end
 
-function SplashPanel:OnClose()
+function SplashIconPanel:OnClose()
 	CSDefine.UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
 end
 
-return SplashPanel
+return SplashIconPanel

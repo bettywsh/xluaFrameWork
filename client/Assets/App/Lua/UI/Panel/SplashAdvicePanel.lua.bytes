@@ -1,0 +1,23 @@
+local SplashAdvicePanel = LuaClass:Class("SplashAdvicePanel", UIBase)
+
+--打开UI
+function SplashAdvicePanel:OnOpen()
+	self.view.cng_Content.alpha = 0
+	local seq = CSDefine.DOTween.Sequence()
+	seq:Append(self.view.cng_Content:DOFade(1, 1))
+	seq:AppendInterval(1)
+	seq:Append(self.view.cng_Content:DOFade(0, 1))
+	--动画完成回调
+	seq:AppendCallback(function()
+        UIMgr:Open("SplashIconPanel")
+		UIMgr:CloseSelf(self)
+	end)
+end
+
+
+--关闭UI
+function SplashAdvicePanel:OnClose()
+
+end
+
+return SplashAdvicePanel

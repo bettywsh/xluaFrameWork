@@ -77,7 +77,7 @@ MessageMgr:RegisterCSharpMessage(CSDefine.MessageConst.MsgUpdateLostConnect, fun
     end,nil,2)
 end)
 
-UIMgr:Open("SplashPanel")
+UIMgr:Open("SplashAdvicePanel")
 
 --依赖资源加载
 ResMgr:LoadAssetAsync("Common", "Font/SourceHanSansCN-Normal SDF.asset", typeof(CSDefine.TMP_FontAsset))
