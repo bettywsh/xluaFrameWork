@@ -1,9 +1,5 @@
-﻿using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
-using System;
-using UnityEngine.SceneManagement;
-using UnityEngine.U2D;
 using System.Collections.Generic;
 
 public class ResPath

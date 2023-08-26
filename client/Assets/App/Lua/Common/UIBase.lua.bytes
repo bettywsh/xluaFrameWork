@@ -68,7 +68,7 @@ function UIBase:Close()
     Function:RemoveCSharpMessage(self)
     Function:UnRequire("UI/"..self.name)
     CSDefine.Object.DestroyImmediate(self.gameObject)
-    ResMgr:PageUnloadAssetAsync(self)
+    ResMgr:PageUnloadAssetAsync(self.name)
 end
 
 return UIBase

@@ -6,10 +6,6 @@ SceneMgr.loading = false
 SceneMgr.oldName = ""
 SceneMgr.scene = nil
 
-function SceneMgr:init()
-	-- MessageMgr:RegisterLuaMessage(GameDefine.BuildInfoChange, self.BuildChangeInfo())
-end
-
 function SceneMgr:LoadScene(sceneName, loading, cb)
 	self.name = sceneName
 	if self.scene ~= nil then
@@ -25,6 +21,7 @@ function SceneMgr:LoadScene(sceneName, loading, cb)
 	-- 	CSDefine.ResManager:UnLoadAssetBundle(CSDefine.ResType.Scene, self.oldName)
 	-- end
 	CSDefine.LoadSceneManager.Instance:LoadScene(sceneName, function()
+		ResMgr:SceneUnloadAssetAsync(sceneName)
 		self.scene = require("Scene/"..sceneName.."Scene")
 		self.scene:LoadScene()
 		self.oldName = sceneName

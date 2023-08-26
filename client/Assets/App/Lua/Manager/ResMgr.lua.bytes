@@ -3,28 +3,42 @@ local ResMgr = {}
 -- function ResMgr:init()
 -- end
 
-function ResMgr:OnLoadAsset(resName, relativePath, type)
-    return CSDefine.ResManager:OnLoadAsset(resName, relativePath, type)
+-- function ResMgr:OnLoadAsset(resName, relativePath, type)
+--     return CSDefine.ResManager:OnLoadAsset(resName, relativePath, type)
+-- end
+
+-- function ResMgr:LoadAssetAsync(resName, relativePath, type, func)
+--     CSDefine.ResManager:LoadAssetAsync(resName, relativePath, type, nil, func)
+-- end
+
+-- 加载图集里的图片
+function ResMgr:AltasLoadAssetAsync(altasName, iconName)
+    CSDefine.ResManager:LoadAssetAsync(altasName, iconName, type, nil, func)
 end
 
-function ResMgr:LoadAssetAsync(resName, relativePath, type, func)
-    CSDefine.ResManager:LoadAssetAsync(resName, relativePath, type, nil, func)
-end
-
+-- 全局资源加载
 function ResMgr:GloabLoadAssetAsync(relativePath, type, func)
     CSDefine.ResManager:LoadAssetAsync("Common", relativePath, type, nil, func)
 end
 
+-- 场景级别资源加载
 function ResMgr:SceneLoadAssetAsync(relativePath, type, func)
     CSDefine.ResManager:LoadAssetAsync(SceneMgr.name, relativePath, type, nil, func)
 end
 
+-- 界面级别资源加载
 function ResMgr:PageLoadAssetAsync(panelName, relativePath, type, func)
-    self:LoadAssetAsync(panelName, relativePath, type, func)
+    CSDefine.ResManager:LoadAssetAsync(panelName, relativePath, type, func)
 end
 
-function ResMgr:PageUnloadAssetAsync(table)
-    CSDefine.ResManager:UnLoadAssetBundle(table.UUID)
+-- 场景级别资源卸载
+function ResMgr:SceneUnloadAssetAsync(sceneName)
+    CSDefine.ResManager:UnLoadAssetBundle(sceneName)
+end
+
+-- 界面级别资源卸载
+function ResMgr:PageUnloadAssetAsync(panelName)
+    CSDefine.ResManager:UnLoadAssetBundle(panelName)
 end
 
 return ResMgr

@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SplashPanel
+  m_Name: DialogPanel
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -56,7 +56,7 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: 0b597173ecd0dca4d908d5106fb5b2fe, type: 3}
+    - {fileID: 102900000, guid: 5f465f8cbb73c8d4d99715b526585e60, type: 3}
     bindAsDefault: 0
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -64,5 +64,5 @@ SpriteAtlas:
   m_PackedSprites: []
   m_PackedSpriteNamesToIndex: []
   m_RenderDataMap: {}
-  m_Tag: SplashPanel
+  m_Tag: DialogPanel
   m_IsVariant: 0

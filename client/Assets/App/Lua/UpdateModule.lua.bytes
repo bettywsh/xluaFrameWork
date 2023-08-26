@@ -8,16 +8,14 @@ MessageMgr = require("Manager/MessageMgr")
 ResMgr = require("Manager/ResMgr")
 UIMgr = require("Manager/UIMgr")
 UIBase = require("Common/UIBase")
-UIMgr:init()
+UIMgr:Init()
 
 SoundMgr = require("Manager/SoundMgr")
 ConfigMgr = require("Manager/ConfigMgr")
-SceneMgr = require("Manager/SceneMgr")
 
 --初始化多语言
 TextMgr = require("Manager/TextMgr")
 TextMgr:Init()
-SceneMgr:init()
 
 local function StartModule()
 	MessageMgr:RemoveCSharpMessage(CSDefine.MessageConst.MsgUpdateNo)
@@ -31,7 +29,6 @@ local function StartModule()
 	Function:UnRequire("Common/UIBase")
 	Function:UnRequire("Manager/SoundMgr")
 	Function:UnRequire("Manager/TextMgr")
-	Function:UnRequire("Manager/SceneMgr")
 	Function:UnRequire("Manager/ConfigMgr")
 	Function:UnRequire("Common/CSDefine")
 	Function:UnRequire("Common/ResMgr")
@@ -70,6 +67,7 @@ MessageMgr:RegisterCSharpMessage(CSDefine.MessageConst.MsgUpdateSmallVersion, fu
 		Application.Quit()
 	end, 3);
 end)
+
 --服务器连接失败
 MessageMgr:RegisterCSharpMessage(CSDefine.MessageConst.MsgUpdateLostConnect, function()
 	UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_ServerFail"),function()
@@ -80,10 +78,10 @@ end)
 UIMgr:Open("SplashAdvicePanel")
 
 --依赖资源加载
-ResMgr:LoadAssetAsync("Common", "Font/SourceHanSansCN-Normal SDF.asset", typeof(CSDefine.TMP_FontAsset))
+ResMgr:GloabLoadAssetAsync("Font/SourceHanSansCN-Normal SDF.asset", typeof(CSDefine.TMP_FontAsset))
 
 --依赖资源加载
-ResMgr:LoadAssetAsync("Common", "Font/SourceHanSerifCN-Bold SDF.asset", typeof(CSDefine.TMP_FontAsset))
+ResMgr:GloabLoadAssetAsync("Font/SourceHanSerifCN-Bold SDF.asset", typeof(CSDefine.TMP_FontAsset))
 
 --依赖资源加载
 --ResManager.Instance:LoadAtlasAsync("CommonPanel", nil)

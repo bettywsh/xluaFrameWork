@@ -189,7 +189,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             clientVersion = version.Split('.');
         }
 
-        AppConst.GameVersion = sVersion;
+        //AppConst.GameVersion = sVersion;
 
         if (int.Parse(serverVersion[0]) > int.Parse(clientVersion[0]))
         {
@@ -496,7 +496,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         MessageManager.Instance.EventNotify(MessageConst.MsgUpdateDownLoadComplete);
         File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
         //更新完毕后重新
-        AppConst.GameVersion = sVersion;
+        //AppConst.GameVersion = sVersion;
     }
 
     /// <summary>

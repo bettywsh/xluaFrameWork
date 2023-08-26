@@ -16,6 +16,7 @@ public class Launch : MonoBehaviour
         Debug.unityLogger.logEnabled = AppConst.DebugLog;
 
         DontDestroyOnLoad(gameObject);
+        QualitySettings.vSyncCount = 2;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = AppConst.GameFrameRate;        
 
@@ -35,6 +36,7 @@ public class Launch : MonoBehaviour
         AssetBundleManager.Instance.Init();
         ResManager.Instance.Init();
         LuaManager.Instance.Init();
+
         AtlasManager.Instance.Init();
         LuaManager.Instance.DoFile("UpdateModule");
     }

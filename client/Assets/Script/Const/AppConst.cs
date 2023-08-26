@@ -8,7 +8,12 @@ public class AppConst
     /// 是否是打包模式
     /// </summary>
     /// 
+#if UNITY_EDITOR
     public const bool IsABMode = false;
+#else
+    public const bool IsABMode = true;
+#endif
+
 
     /// <summary>
     /// 热更新模式
@@ -35,10 +40,6 @@ public class AppConst
     /// </summary>
     public const int ChannelID = 10001;
 
-    /// <summary>
-    /// 游戏版本好
-    /// </summary>
-    public static string GameVersion = "1.0.0";
 
     /// <summary>
     /// 网络类型

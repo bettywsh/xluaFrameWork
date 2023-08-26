@@ -1,7 +1,7 @@
 //BuildType
 //1 文件夹打成一个Ab  
-//2	文件夹每个文件打成一个AB
-//3 文件夹下的文件夹打成一个AB(未实现)
+//2	文件夹下每个文件打成一个AB
+//3 文件夹下的每个文件夹打成一个AB
 //ResType
 {
 	"BuildConfig":{ "FolderName":"BuildConfig", "BuildType":1 },

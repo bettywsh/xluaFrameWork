@@ -14,7 +14,7 @@ NetMgr.disConnect = false
 NetMgr.pingnum = 0
 
 -- 初始化PB
-function NetMgr:init()
+function NetMgr:Init()
     self:RegisterProtoFile()
     self:InitHandleMessage()
     self:RegisterCSharpMessage()

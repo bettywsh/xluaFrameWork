@@ -1,22 +1,22 @@
-local LuaList = {}
+local LuaStack = {}
 
-function LuaList:New()
+function LuaStack:New()
     return {first = 1, last = 0}
 end
 
-function LuaList:PushFront(list, value)
+function LuaStack:PushFront(list, value)
     local first = list.first - 1
     list.first = first
     list[first] = value
 end
 
-function LuaList:PushBack(list, value)
+function LuaStack:PushBack(list, value)
     local last = list.last + 1
     list.last = last
     list[last] = value
 end
 
-function LuaList:PopFront(list)
+function LuaStack:PopFront(list)
     local first = list.first
     if first > list.last then
         -- Function:Error("List is empty")
@@ -28,7 +28,7 @@ function LuaList:PopFront(list)
     return value
 end
 
-function LuaList:PopBack(list)
+function LuaStack:PopBack(list)
     local last = list.last
     if list.first > last then
         -- Function:Error("List is empty")
@@ -40,4 +40,4 @@ function LuaList:PopBack(list)
     return value
 end
 
-return LuaList
+return LuaStack

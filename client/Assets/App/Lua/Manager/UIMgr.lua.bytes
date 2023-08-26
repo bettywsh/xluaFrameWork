@@ -1,16 +1,23 @@
 local UIMgr = {}
 
-
-UIMgr.UILayer = {
-    SystemBox = 105
-}
-
 UIMgr.ctrls = {}
 UIMgr.canvasRoot = nil
 UIMgr.uiCamera = nil
 UIMgr.baseCanvas = nil
+UIMgr.AutoBindDict = {
+    ["obj"] = function(go) return go end,
+    ["tsf"] = function(go) return go.transform end,
+    ["img"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Image)), go.name) end,
+    ["txt"] = function(go) return assert(go:GetComponent(typeof(CSDefine.TextMeshProUGUI)), go.name) end,
+    ["btn"] = function(go) return assert(go:GetComponent(typeof(CSDefine.ButtonExt)), go.name) end,
+    ["tgl"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Toggle)), go.name) end,
+    ["sld"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Slider)), go.name) end,
+    ["ipt"] = function(go) return assert(go:GetComponent(typeof(CSDefine.TMP_InputField)), go.name) end,
+    ["cng"] = function(go) return assert(go:GetComponent(typeof(CSDefine.CanvasGroup)), go.name) end,
+    ["lsv"] = function(go) return assert(go:GetComponent(typeof(CSDefine.ListView)), go.name) end
+}
 
-function UIMgr:init()
+function UIMgr:Init()
     self.canvasRoot = CSDefine.GameObject.Find("Canvas")
     self.uiCamera = CSDefine.GameObject.Find("Canvas/UICamera").transform:GetComponent("Camera")
     self.baseCanvas = CSDefine.GameObject.Find("Canvas/UICanvas/BaseCanvas").transform
@@ -64,13 +71,12 @@ function UIMgr:Get(prefabName)
 end
 
 function UIMgr:CloseSelf(me)
-    self:Close(me.__cname)
+    self:Close(me.name)
 end
 
 function UIMgr:Close(prefabName)
     self.ctrls[prefabName]:OnClose()
     self.ctrls[prefabName]:Close()
-    CSDefine.ResManager:UnLoadAssetBundle(prefabName)
     self.ctrls[prefabName] = nil
 end
 
@@ -79,19 +85,6 @@ function UIMgr:CloseAll()
         self:Close(key)
     end
 end
-
-UIMgr.AutoBindDict = {
-    ["obj"] = function(go) return go end,
-    ["tsf"] = function(go) return go.transform end,
-    ["img"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Image)), go.name) end,
-    ["txt"] = function(go) return assert(go:GetComponent(typeof(CSDefine.TextMeshProUGUI)), go.name) end,
-    ["btn"] = function(go) return assert(go:GetComponent(typeof(CSDefine.ButtonExt)), go.name) end,
-    ["tgl"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Toggle)), go.name) end,
-    ["sld"] = function(go) return assert(go:GetComponent(typeof(CSDefine.Slider)), go.name) end,
-    ["ipt"] = function(go) return assert(go:GetComponent(typeof(CSDefine.TMP_InputField)), go.name) end,
-    ["cng"] = function(go) return assert(go:GetComponent(typeof(CSDefine.CanvasGroup)), go.name) end,
-    ["lsv"] = function(go) return assert(go:GetComponent(typeof(CSDefine.ListView)), go.name) end
-}
 
 function UIMgr:AutoBind(transform)
     local view = {}

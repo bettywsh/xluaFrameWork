@@ -141,7 +141,7 @@ function Function:Split(input, delimiter)
     return arr
 end
 
-function Function:Shallow_clone(org)
+function Function:ShallowClone(org)
     if type(org) == "table" then
         local copy = {}
         for i, v in pairs(org) do
@@ -153,13 +153,13 @@ function Function:Shallow_clone(org)
     end
 end
 
-function Function:Deep_clone(org)
+function Function:DeepClone(org)
     if type(org) == "table" then
         local copy = {}
         for i, v in next, org, nil do
-            copy[self:Deep_clone(i)] = self:Deep_clone(v)
+            copy[self:DeepClone(i)] = self:DeepClone(v)
         end
-        setmetatable(copy, self:Deep_clone(getmetatable(org)))
+        setmetatable(copy, self:DeepClone(getmetatable(org)))
         return copy
     else
         return org

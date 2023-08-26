@@ -11,9 +11,9 @@ SpriteAtlas:
     serializedVersion: 2
     textureSettings:
       serializedVersion: 2
-      anisoLevel: 1
-      compressionQuality: 50
-      maxTextureSize: 2048
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
       textureCompression: 0
       filterMode: 1
       generateMipMaps: 0
@@ -25,36 +25,24 @@ SpriteAtlas:
       m_BuildTarget: Android
       m_MaxTextureSize: 1024
       m_ResizeAlgorithm: 0
-      m_TextureFormat: 65
+      m_TextureFormat: 47
       m_TextureCompression: 1
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 1
-      m_AndroidETC2FallbackOverride: 0
+      m_AndroidETC2FallbackOverride: 1
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     - serializedVersion: 3
       m_BuildTarget: iPhone
       m_MaxTextureSize: 1024
       m_ResizeAlgorithm: 0
-      m_TextureFormat: 48
+      m_TextureFormat: 50
       m_TextureCompression: 1
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 1
-      m_AndroidETC2FallbackOverride: 0
-      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
-    - serializedVersion: 3
-      m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 1024
-      m_ResizeAlgorithm: 0
-      m_TextureFormat: -1
-      m_TextureCompression: 1
-      m_CompressionQuality: 50
-      m_CrunchedCompression: 0
-      m_AllowsAlphaSplitting: 0
-      m_Overridden: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -73,10 +61,8 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites:
-  - {fileID: 21300000, guid: 345f672cc7ca74e44aaa458c37e77ac0, type: 3}
-  m_PackedSpriteNamesToIndex:
-  - lananniu
+  m_PackedSprites: []
+  m_PackedSpriteNamesToIndex: []
   m_RenderDataMap: {}
   m_Tag: LoginPanel
   m_IsVariant: 0

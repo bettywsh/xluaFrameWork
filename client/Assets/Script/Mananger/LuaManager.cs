@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using XLua;
 
@@ -11,8 +12,8 @@ public class LuaManager : MonoSingleton<LuaManager>
     {
         luaenv = new LuaEnv();
         luaenv.AddLoader(MyLoader);
-        //luaenv.AddBuildin("lpeg", XLua.LuaDLL.Lua.LoadLpeg);
-        //luaenv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
+        luaenv.AddBuildin("lpeg", XLua.LuaDLL.Lua.LoadLpeg);
+        luaenv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
         luaenv.AddBuildin("ffi", XLua.LuaDLL.Lua.LoadFFI);
         luaenv.AddBuildin("pb", XLua.LuaDLL.Lua.LoadLuaProfobuf);
     }
@@ -20,7 +21,7 @@ public class LuaManager : MonoSingleton<LuaManager>
     public byte[] MyLoader(ref string filename)
     {
         TextAsset ta = ResManager.Instance.LoadAsset("Common", "Lua/" + filename + ".lua.bytes", typeof(TextAsset)) as TextAsset;
-        return System.Text.Encoding.UTF8.GetBytes(ta.text);
+        return ta.bytes;
     }
 
     public void DoString(string str)

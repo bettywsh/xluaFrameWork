@@ -31,7 +31,7 @@ public class ProjectBuild
 
         //UpdateSVN();
 
-        ResPack.BuildAndroid();
+        //ResPack.BuildAndroid();
         //VersionFile.CreateVersion();
         Build(BuildTargetGroup.Android, BuildTarget.Android);
     }
@@ -62,7 +62,7 @@ public class ProjectBuild
     static void BuildIos()
     {
         ResPack.BuildIOS();
-        VersionFile.CreateVersion();
+        //VersionFile.CreateVersion();
         Build(BuildTargetGroup.iOS, BuildTarget.iOS);
     }
 

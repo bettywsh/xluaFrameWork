@@ -53,7 +53,6 @@ public class PackFile
             Debug.LogError(ex);
         }
         ResPack.ClearProgress();
-        Debug.Log("File copy complete!!! Target:" + targetDir);
     }
 
     public static void CopySourceDirTotargetDir(string sourceDir, string targetDir, string targetExt)
@@ -81,7 +80,6 @@ public class PackFile
             Debug.LogError(ex);
         }
         ResPack.ClearProgress();
-        Debug.Log("File copy complete!!! Target:" + targetDir);
     }
 
 
@@ -90,7 +88,6 @@ public class PackFile
         if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true);
         AssetDatabase.Refresh();
         Directory.CreateDirectory(targetDir);
-        Debug.Log("Clear Completed!!!Folder：" + targetDir);
     }
 
     /// <summary>
@@ -101,7 +98,7 @@ public class PackFile
         try
         {
             FileStream fs = new FileStream(file, FileMode.Open);
-            MD5 md5 = new MD5CryptoServiceProvider();
+            System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
             byte[] retVal = md5.ComputeHash(fs);
             fs.Close();
 
@@ -110,7 +107,6 @@ public class PackFile
             {
                 sb.Append(retVal[i].ToString("x2"));
             }
-
             return sb.ToString();
         }
         catch (Exception ex)

@@ -1,38 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Text;
-using System.IO;
+﻿using System.IO;
 using UnityEditor;
+using LitJson;
 
-public static class VersionFile
+public class TaskVersion : ITask
 {
     //[MenuItem("Builds/New Version", false, 4)]
-    public static void CreateVersion()
+    public void Run(PackSetting packSetting)
     {
-        StringBuilder sb = new StringBuilder();
-        sb.Append("{");
-        sb.Append("\"version\":\"1.0.5\",");
-        sb.Append("\"url\":\"https://www.sojson.com/simple_json.html\",");
-        sb.Append("\"channel\":[");
-        sb.Append("{");
-        sb.Append("\"channelID\":10001,");
-        sb.Append("\"channelName\":\"豌豆荚\",");
-        sb.Append("\"URL\":\"http://down.fasthorse.world/\"");
-        sb.Append("},");
-        sb.Append("{");
-        sb.Append("\"channelID\":10002,");
-        sb.Append("\"channelName\":\"豌豆荚\",");
-        sb.Append("\"URL\":\"www.baiducom\"");
-        sb.Append("}");
-        sb.Append("]");
-        sb.Append("}");
+        string version = File.ReadAllText(ResPath.AppFullPath + "/" + ResConst.VerFile);
 
-        File.WriteAllText(ResPack.AppNewAssetBuildPath + "/" + ResConst.VerFile, sb.ToString(), new System.Text.UTF8Encoding(false));
+        JsonData jd = JsonMapper.ToObject(version);
+        if (packSetting.IsHotfix)
+        {
+            jd["ResVersion"] = int.Parse(jd["ResVersion"].ToString()) + 1;
+        }
+        else
+        {
+            jd["ResVersion"] = 1;
+            string[] gameVers = jd["GameVersion"].ToString().Split(".");
+            gameVers[2] = (int.Parse(gameVers[2]) + 1).ToString();
+        }
 
-        PackFile.CopySourceDirTotargetDir(ResPack.AppNewAssetBuildPath, ResPack.AppOldAssetBuildPath);
-
-        PackFile.CopySourceDirTotargetDir(ResPack.AppNewAssetBuildPath, Application.streamingAssetsPath);
+        File.WriteAllText(ResPath.AppFullPath + "/" + ResConst.VerFile, JsonMapper.ToJson(jd), new System.Text.UTF8Encoding(false));
+        File.WriteAllText(ResPack.BuildPath + "/" + ResConst.VerFile, JsonMapper.ToJson(jd), new System.Text.UTF8Encoding(false));
         AssetDatabase.Refresh();
     }
 

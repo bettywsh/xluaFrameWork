@@ -38,7 +38,7 @@ function LuaClass:Class(classname, super)
     else
         -- inherited from Lua Object
         if super then
-            cls = Function:Deep_clone(super)
+            cls = Function:DeepClone(super)
             cls.super = super
         else
             cls = {ctor = function() end}
