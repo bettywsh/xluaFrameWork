@@ -1,0 +1,7 @@
+local PlayerData = {}
+
+function PlayerData:Ctor()
+    Function:Error("构成")
+end
+
+return PlayerData

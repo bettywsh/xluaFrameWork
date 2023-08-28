@@ -7,7 +7,7 @@ function TextFlyingPanel:OnOpen()
 	self.view.transform:GetComponent("Canvas").sortingOrder = Enum.UILayout.TextFlying
 	-- self:Fly(self.args[1])
 	if self.TextFlyingList == nil then
-        self.TextFlyingList = LuaList:New()
+        self.TextFlyingList = LuaStack:New()
     end
 	GameUpdate:AddUpdate(self, self.OnUpdate)
 end
@@ -15,7 +15,7 @@ end
 function TextFlyingPanel:OnUpdate()
 	if self.TextFlyingList.last >= self.TextFlyingList.first and not self.isTween then
 		self.isTween = true
-		local text = LuaList:PopFront(self.TextFlyingList)
+		local text = LuaStack:PopFront(self.TextFlyingList)
 		self.view.txt_TextMesh.text = text
 		local run = Function:AddChildren(self.view.obj_Content, self.view.img_Bg.gameObject)
 		run.gameObject:SetActive(true)
@@ -35,10 +35,10 @@ end
 --播放飘字动画 播放完成删除对应的gameObject
 function TextFlyingPanel:Fly(text)
 	if self.TextFlyingList == nil then
-        self.TextFlyingList = LuaList:New()
+        self.TextFlyingList = LuaStack:New()
     end
 	Function:ShowTable(self.TextFlyingList)
-	LuaList:PushBack(self.TextFlyingList, text)
+	LuaStack:PushBack(self.TextFlyingList, text)
 	-- Function:ShowTable(self.TextFlyingList)
 	-- self.view.txt_TextMesh.text = text
 	-- local run = Function:AddChildren(self.view.obj_Content, self.view.img_Bg.gameObject)

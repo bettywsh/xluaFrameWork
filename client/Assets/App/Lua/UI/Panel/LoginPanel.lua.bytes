@@ -4,7 +4,6 @@ function LoginPanel:OnOpen()
     -- GameUpdate.AddUpdate(self,self.OnUpdate)
 end
 
-
 function LoginPanel:OnClick_btn_Click()
 	-- SceneMgr:LoadScene("Main", false)
 	NetMgr:ConnectTo(GameDefine.ServerAddress.LoginSvrIp, GameDefine.ServerAddress.LoginSvrPort)

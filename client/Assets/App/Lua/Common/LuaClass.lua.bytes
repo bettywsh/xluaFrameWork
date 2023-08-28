@@ -22,16 +22,16 @@ function LuaClass:Class(classname, super)
             cls.__create = super
         end
 
-        cls.ctor    = function() end
+        cls.Ctor    = function() end
         cls.__cname = classname
         cls.__ctype = 1
 
-        function cls.new(...)
+        function cls.New(...)
             local instance = cls.__create(...)
             -- copy fields from class to native object
             for k,v in pairs(cls) do instance[k] = v end
             instance.class = cls
-            instance:ctor(...)
+            instance:Ctor(...)
             return instance
         end
 
@@ -41,17 +41,17 @@ function LuaClass:Class(classname, super)
             cls = Function:DeepClone(super)
             cls.super = super
         else
-            cls = {ctor = function() end}
+            cls = {Ctor = function() end}
         end
 
         cls.__cname = classname
         cls.__ctype = 2 -- lua
         cls.__index = cls
 
-        function cls.new(...)
+        function cls.New(...)
             local instance = setmetatable({}, cls)
             instance.class = cls
-            instance:ctor(...)
+            instance:Ctor(...)
             return instance
         end
     end

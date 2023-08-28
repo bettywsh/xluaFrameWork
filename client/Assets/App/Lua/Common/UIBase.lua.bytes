@@ -3,10 +3,8 @@ UIBase.view = {}
 UIBase.gameObject = nil
 UIBase.args = nil
 UIBase.name = nil
-UIBase.UUID = nil
 
-function UIBase:ctor()
-    self.UUID = Function:UUID()
+function UIBase:Ctor()
 end
 
 function UIBase:Open(transform, args)

@@ -27,7 +27,7 @@ function UIMgr:Open(prefabName, ...)
     local args = {...}
     if self.ctrls[prefabName] == nil then
         local ctrlURL = string.format("UI/Panel/%s", prefabName)
-        local ctrl = require(ctrlURL).new()
+        local ctrl = require(ctrlURL).New()
         self.ctrls[prefabName] = ctrl
         ResMgr:PageLoadAssetAsync(prefabName, string.format("Prefab/UI/Panel/%s.prefab", prefabName), typeof(CSDefine.GameObject), function(ugo)
             local go = CSDefine.Object.Instantiate(ugo)
@@ -113,7 +113,7 @@ function UIMgr:AutoBind(transform)
 end
 
 function UIMgr:CreateCell(args)
-    local cell = require(args[0]).new()
+    local cell = require(args[0]).New()
     cell:Open(args[1])
     cell:OnOpen(args[2])
     return cell

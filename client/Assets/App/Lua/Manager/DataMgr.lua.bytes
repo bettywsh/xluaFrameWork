@@ -1,7 +1,8 @@
 local DataMgr = {}
 
-function DataMgr.Init()
+function DataMgr:Init()
     -- 初始化数据
+    self.Player = LuaClass:Class(require("Data/PlayerData")).New()
     -- PlayerModel = require("Model/PlayerModel")
     -- PropModel = require("Model/PropModel")
     -- TaskModel = require("Model/TaskModel")
