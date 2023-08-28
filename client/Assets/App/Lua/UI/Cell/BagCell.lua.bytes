@@ -1,19 +1,48 @@
 local BagCell = LuaClass:Class("BagCell", UICellBase)
 
+BagCell.selectIdx = 0
 --打开UI
 function BagCell:OnOpen(idx)
-    idx = idx + 1
-    local bag = ConfigMgr:GetConfigById("Horse", idx)
-    self.view.txt_Title.text = bag.Name
-    ResMgr:PageLoadAssetAsync("BagPanel", "Texture/item/".. bag.Icon .. ".png", typeof(CSDefine.Sprite), function(sprite)
-        self.view.img_Icon.sprite = sprite
-    end)
+    
 end
 
+function BagCell:ItemRender(bagPanel, idx)
+    self.listView = bagPanel.view.lsv_ListView
+    self.idx = idx + 1
+    local bag = ConfigMgr:GetConfigById("Horse", self.idx)
+    self.view.txt_Title.text = bag.Name
+    
+    ResMgr:PageLoadAssetAsync(bagPanel.name, "Texture/item/".. bag.Icon .. ".png", typeof(CSDefine.Sprite), function(sprite)
+        self.view.img_Icon.sprite = sprite
+    end)
+
+    if self.idx == self.selectIdx then
+        self:Selected()
+    else
+        self:UnSelected()
+    end
+end
+
+function BagCell:OnClick_btn_Click()
+    local items = self.listView:GetItems()
+    for i = 0, items.Length - 1 do
+        items[i]:UnSelected()
+    end
+    self:Selected()
+end
+
+function BagCell:Selected()
+    self.selectIdx = self.idx
+    self.view.img_Bg.gameObject:SetActive(true)
+end
+
+function BagCell:UnSelected()
+    self.view.img_Bg.gameObject:SetActive(false)
+end
 
 --关闭UI
 function BagCell:OnClose()
-    -- ResMgr:
+    
 end
 
 return BagCell

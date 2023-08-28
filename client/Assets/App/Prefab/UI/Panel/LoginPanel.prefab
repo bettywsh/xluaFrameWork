@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 2840704615021609968}
   - component: {fileID: 8731349785190303172}
   m_Layer: 5
-  m_Name: '#btn_click'
+  m_Name: '#btn_Click'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,7 +838,7 @@ MonoBehaviour:
   varData:
   - objName: transform
     objValue: {fileID: 6999070902554014756}
-  - objName: btn_click
+  - objName: btn_Click
     objValue: {fileID: 3661262990835579472}
   - objName: ipt_account
     objValue: {fileID: 7489802822410729559}

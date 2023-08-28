@@ -12,9 +12,9 @@ function UICellBase:Open(transform)
     self.gameObject = transform.gameObject
 	self.name = self.gameObject.name
 	self.view = UIMgr:AutoBind(transform)
-    -- RegisterLuaMessage(self)
-    -- RegisterNetCmd(self)
-    -- RegisterButtonOnClick(self)
+    -- Function:RegisterLuaMessage(self)
+    -- Function:RegisterNetCmd(self)
+    Function:RegisterButtonOnClick(self)
 end
 
 function UICellBase:Close()

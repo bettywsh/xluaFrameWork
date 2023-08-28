@@ -3,7 +3,12 @@ local BagPanel = LuaClass:Class("BagPanel", UIBase)
 --打开UI
 function BagPanel:OnOpen()
     local bags = ConfigMgr:GetConfig("Horse")
+    self.view.lsv_ListView:SetOnItemRender(self, self.OnItemRender)
     self.view.lsv_ListView.TotalCount = #bags
+end
+
+function BagPanel:OnItemRender(index, widget)
+    widget:ItemRender(self, index)
 end
 
 function BagPanel:OnClick_btn_Mask()

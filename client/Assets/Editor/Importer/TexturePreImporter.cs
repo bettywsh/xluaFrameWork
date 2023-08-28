@@ -4,7 +4,7 @@ public static class TexturePreImporter
 {
     public static void ProcTexture(string assetPath, ref TextureImporter importer)
     {
-        if (assetPath.StartsWith("Assets/Res/Picture"))
+        if (assetPath.StartsWith("Assets/Res/UI"))
         {
             importer.spriteImportMode = SpriteImportMode.Single;
             importer.textureType = TextureImporterType.Sprite;

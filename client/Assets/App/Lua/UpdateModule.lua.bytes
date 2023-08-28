@@ -75,7 +75,12 @@ MessageMgr:RegisterCSharpMessage(CSDefine.MessageConst.MsgUpdateLostConnect, fun
     end,nil,2)
 end)
 
-UIMgr:Open("SplashAdvicePanel")
+if GameDefine.ServerAddress.Type == 1 then
+	CSDefine.UpdateManager:CheckVersion(GameDefine.ServerAddress.SvrResIp)
+else
+	UIMgr:Open("SplashAdvicePanel")
+end
+
 
 --依赖资源加载
 ResMgr:GloabLoadAssetAsync("Font/SourceHanSansCN-Normal SDF.asset", typeof(CSDefine.TMP_FontAsset))
