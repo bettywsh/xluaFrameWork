@@ -5,8 +5,8 @@ function LoginPanel:OnOpen()
 end
 
 function LoginPanel:OnClick_btn_Click()
-	-- SceneMgr:LoadScene("Main", false)
-	NetMgr:ConnectTo(GameDefine.ServerAddress.LoginSvrIp, GameDefine.ServerAddress.LoginSvrPort)
+	SceneMgr:LoadScene("Main", false)
+	-- NetMgr:ConnectTo(GameDefine.ServerAddress.LoginSvrIp, GameDefine.ServerAddress.LoginSvrPort)
 end
 
 function LoginPanel:OnCSharpMessage_OnConnected(msg)

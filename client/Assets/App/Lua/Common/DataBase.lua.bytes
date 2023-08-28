@@ -1,0 +1,6 @@
+local DataBase = {}
+
+function DataBase:Ctor()
+end
+
+return DataBase

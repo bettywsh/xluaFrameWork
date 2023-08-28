@@ -37,7 +37,7 @@ function TextFlyingPanel:Fly(text)
 	if self.TextFlyingList == nil then
         self.TextFlyingList = LuaStack:New()
     end
-	Function:ShowTable(self.TextFlyingList)
+	-- Function:ShowTable(self.TextFlyingList)
 	LuaStack:PushBack(self.TextFlyingList, text)
 	-- Function:ShowTable(self.TextFlyingList)
 	-- self.view.txt_TextMesh.text = text
