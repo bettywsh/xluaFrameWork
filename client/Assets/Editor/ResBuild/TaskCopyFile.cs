@@ -9,7 +9,7 @@ public class TaskCopyFile : ITask
     {
         if (!packSetting.IsHotfix)
         {
-            PackFile.CopySourceDirTotargetDir(ResPack.BuildPath, Application.streamingAssetsPath);
+            PackFile.CopySourceDirTotargetDir(ResPack.BuildCreatePath.Replace("/app",""), Application.streamingAssetsPath);
             AssetDatabase.Refresh();
         }
     }

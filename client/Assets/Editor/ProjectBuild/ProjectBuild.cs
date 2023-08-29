@@ -61,7 +61,7 @@ public class ProjectBuild
 
     static void BuildIos()
     {
-        ResPack.BuildIOS();
+        //ResPack.BuildIOS();
         //VersionFile.CreateVersion();
         Build(BuildTargetGroup.iOS, BuildTarget.iOS);
     }

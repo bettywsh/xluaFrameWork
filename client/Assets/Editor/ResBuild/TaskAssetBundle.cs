@@ -9,7 +9,7 @@ public class TaskAssetBundle : ITask
     public void Run(PackSetting packSetting)
     {
         List<AssetBundleBuild> builds = new List<AssetBundleBuild>();
-        string buildPath = Path.Combine(ResPath.AppRelativePath, ResConst.BuildJson) + ResConst.JsonExtName;
+        string buildPath = Path.Combine(ResPath.AppRelativePath, ResConst.BuildFolderName) + "/" + ResConst.BuildFile;
         string buildJson = AssetDatabase.LoadAssetAtPath<TextAsset>(buildPath).text;
         Dictionary<string, BuildJson> json = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(buildJson);
         foreach (var item in json)
@@ -28,14 +28,26 @@ public class TaskAssetBundle : ITask
             }
         }
 
-
-        AssetDatabase.Refresh();
-        if (Directory.Exists(ResPack.BuildPath)) Directory.Delete(ResPack.BuildPath, true);
-        AssetDatabase.Refresh();
-        Directory.CreateDirectory(ResPack.BuildPath);
-        AssetDatabase.Refresh();
-        BuildPipeline.BuildAssetBundles(ResPack.BuildPath, builds.ToArray(), BuildAssetBundleOptions.None, packSetting.Target);
-        AssetDatabase.Refresh();
+        if (packSetting.IsHotfix)
+        {
+            AssetDatabase.Refresh();
+            if (Directory.Exists(ResPack.BuildHotfixPath)) Directory.Delete(ResPack.BuildHotfixPath, true);
+            AssetDatabase.Refresh();
+            Directory.CreateDirectory(ResPack.BuildHotfixPath);
+            AssetDatabase.Refresh();
+            BuildPipeline.BuildAssetBundles(ResPack.BuildHotfixPath, builds.ToArray(), BuildAssetBundleOptions.None, packSetting.Target);
+            AssetDatabase.Refresh();
+        }
+        else
+        {
+            AssetDatabase.Refresh();
+            if (Directory.Exists(ResPack.BuildCreatePath)) Directory.Delete(ResPack.BuildCreatePath, true);
+            AssetDatabase.Refresh();
+            Directory.CreateDirectory(ResPack.BuildCreatePath);
+            AssetDatabase.Refresh();
+            BuildPipeline.BuildAssetBundles(ResPack.BuildCreatePath, builds.ToArray(), BuildAssetBundleOptions.None, packSetting.Target);
+            AssetDatabase.Refresh();
+        }
 
     }
 

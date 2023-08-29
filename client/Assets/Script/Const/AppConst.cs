@@ -9,7 +9,7 @@ public class AppConst
     /// </summary>
     /// 
 #if UNITY_EDITOR
-    public const bool IsABMode = false;
+    public const bool IsABMode = true;
 #else
     public const bool IsABMode = true;
 #endif

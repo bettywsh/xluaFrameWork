@@ -14,41 +14,34 @@ public static class ResPack
     /// 打包输出目录
     /// </summary>
     /// 
-    public static string BuildPath
+    public static string BuildHotfixPath
     {
-        get { return Application.dataPath.Replace("Assets", "AndroidRes/Android"); }
+        get { return Application.dataPath.Replace("Assets", "ResHotfix/Android/") + ResConst.RootFolderName.ToLower(); }
     }
 
 
     /// <summary>
     /// 旧资源目录
     /// </summary>
-    public static string AppOldAssetBuildPath
+    public static string BuildCreatePath
     {
-        get { return Application.dataPath.Replace("Assets", "OldUpdata"); }
+        get { return Application.dataPath.Replace("Assets", "ResCreate/Android/") + ResConst.RootFolderName.ToLower(); }
     }
 
-    public static void BuildIOS()
-    {
-        PackSetting packSetting = new PackSetting();
-        packSetting.Target = BuildTarget.iOS;
-        Build(packSetting);
-    }
-
-    [MenuItem("Builds/Android/Create", false, 1)]
+    [MenuItem("Builds/Create", false, 1)]
     public static void BuildAndroidCreate()
     {
         PackSetting packSetting = new PackSetting();
-        packSetting.Target = BuildTarget.Android;
+        packSetting.Target = EditorUserBuildSettings.activeBuildTarget;
         packSetting.IsHotfix = false;
         Build(packSetting);
     }
 
-    [MenuItem("Builds/Android/Hotfix", false, 2)]
+    [MenuItem("Builds/Hotfix", false, 2)]
     public static void BuildAndroidHotfix()
     {
         PackSetting packSetting = new PackSetting();
-        packSetting.Target = BuildTarget.Android;
+        packSetting.Target = EditorUserBuildSettings.activeBuildTarget;
         packSetting.IsHotfix = true;
         Build(packSetting);
     }

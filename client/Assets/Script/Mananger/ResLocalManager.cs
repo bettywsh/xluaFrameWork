@@ -11,7 +11,7 @@ public class ResLocalManager : MonoSingleton<ResLocalManager>
     // Start is called before the first frame update
     public void LoadLocalUObjectAsync(string relativePath, Type type, Action<UObject> sharpFunc = null, LuaFunction luaFunc = null)
     {
-        string assetName = ResPath.GetAssetPath(relativePath);
+        string assetName = ResPath.GetAssetPath(relativePath, type);
 #if UNITY_EDITOR
         var obj = AssetDatabase.LoadAssetAtPath(assetName, type);
         if (sharpFunc != null)
@@ -30,7 +30,7 @@ public class ResLocalManager : MonoSingleton<ResLocalManager>
 
     public UObject LoadLocalUObject(string relativePath, Type type)
     {
-        string assetName = ResPath.GetAssetPath(relativePath);
+        string assetName = ResPath.GetAssetPath(relativePath, type);
 #if UNITY_EDITOR
         var obj = AssetDatabase.LoadAssetAtPath(assetName, type);
         return obj;

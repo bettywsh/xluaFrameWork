@@ -10,7 +10,7 @@ using System.Linq;
 
 public class Launch : MonoBehaviour
 {
-    private string FirstRunApp = "FirstRunApp3";
+    //private string Version = "Version";
     void Awake()
     {
         Debug.unityLogger.logEnabled = AppConst.DebugLog;
@@ -20,10 +20,10 @@ public class Launch : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = AppConst.GameFrameRate;        
 
-        if (PlayerPrefs.GetInt(FirstRunApp) == 0)
-        {
-            DeletePersistentDataPath();
-        }
+        //if (PlayerPrefs.GetString(Version, "") == PlayerSettings.bundleVersion)
+        //{
+        //    DeletePersistentDataPath();
+        //}
 
 
         StartUpdate();
@@ -43,7 +43,6 @@ public class Launch : MonoBehaviour
 
     public void StartGame()
     {
-        DownLoadManager.Instance.OnDestroy();
         UpdateManager.Instance.OnDestroy();
         ResManager.Instance.Init();
         //AssetBundleManager.Instance.Init();
@@ -74,23 +73,6 @@ public class Launch : MonoBehaviour
         }
     }
 
-    void DeletePersistentDataPath()
-    {
-        string[] files = null;
-        string[] dirs = null;
-        files = Directory.GetFiles(Application.persistentDataPath, "*.*", SearchOption.AllDirectories);
-        for (int i = 0; i < files.Length; i++)
-        {
-            if (files[i].Contains("\\Player.log"))
-                continue;
-            File.Delete(files[i]);
-        }
-        dirs = Directory.GetDirectories(Application.persistentDataPath);
-        for (int i = 0; i < dirs.Length; i++)
-        {
-            Directory.Delete(dirs[i], true);
-        }
-        PlayerPrefs.SetInt(FirstRunApp, 1);
-    }
+   
 
 }

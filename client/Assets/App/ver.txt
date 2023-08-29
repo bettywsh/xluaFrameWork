@@ -1,1 +1,1 @@
-{"GameVersion":"1.0.0","ResVersion":2}
+{"GameVersion":"1.0.0","ResVersion":1,"AndroidUrl":"www.baidu.com","IosUrl":"www.baidu.com"}

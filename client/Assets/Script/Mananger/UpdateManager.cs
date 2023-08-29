@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEditor;
 
 [LuaCallCSharp]
 public class UpdateManager : MonoSingleton<UpdateManager>
@@ -21,11 +22,16 @@ public class UpdateManager : MonoSingleton<UpdateManager>
     private string sJsonStr = "";
     private bool isError = false;
     private double downloadSizeCount;
-    private string FirstRun = "FirstRun3";
+    private string Version = "Version";
+    List<DownLoadFile> needUpdate = new List<DownLoadFile>();
     public void CheckVersion(string ip)
     {
         if (!AppConst.UpdateModel)
         {
+            if (AppConst.IsABMode)
+            {
+                DeletePersistentDataPath();
+            }
             MessageManager.Instance.EventNotify(MessageConst.MsgUpdateNo);
             return;
         }
@@ -34,7 +40,6 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             ResIpAddress = ip;
             //if (PlayerPrefs.GetInt(FirstRun) == 0)
             //{
-            //    MessageManager.Instance.EventNotify(MessageConst.MsgUpdateFristCopy);
             //    StartCoroutine(ExtractStreamingAssetsPath());
             //}
             //else
@@ -46,14 +51,29 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         }
     }
 
-    public string GetAllNeedDownloadSize()
+    void DeletePersistentDataPath()
     {
-        return HumanReadableFilesize(allDownLoadSize);
+        string[] files = null;
+        string[] dirs = null;
+        files = Directory.GetFiles(Application.persistentDataPath, "*.*", SearchOption.AllDirectories);
+        for (int i = 0; i < files.Length; i++)
+        {
+            if (files[i].Contains("\\Player.log"))
+                continue;
+            File.Delete(files[i]);
+        }
+        dirs = Directory.GetDirectories(Application.persistentDataPath);
+        for (int i = 0; i < dirs.Length; i++)
+        {
+            Directory.Delete(dirs[i], true);
+        }
+        //PlayerPrefs.SetInt("Version", PlayerSettings.bundleVersion);
     }
 
 
     IEnumerator ExtractStreamingAssetsPath()
     {
+        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateFristCopy);
         string infile = string.Format("{0}/{1}", Application.streamingAssetsPath, ResConst.VerFile);
         string outfile = string.Format("{0}/{1}", Application.persistentDataPath, ResConst.VerFile);
         if (Application.platform == RuntimePlatform.Android)
@@ -117,7 +137,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             }
             yield return new WaitForEndOfFrame();
         }
-        PlayerPrefs.SetInt(FirstRun, 1);
+        //PlayerPrefs.SetInt(FirstRun, 1);
 
         //启动版本检测
         StartCoroutine(OnCheckVersion());
@@ -139,7 +159,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
     IEnumerator OnCheckVersion()
     {
         MessageManager.Instance.EventNotify(MessageConst.MsgUpdateYes);
-        string[] serverVersion = new string[3];
+        string[] serverVersion = new string[4];
         string serverHttpFile = GetFilePath(ResConst.VerFile);
         JsonData jsonDataInfoServer;
         JsonData jsonDataInfoClient;
@@ -154,53 +174,54 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         {
             sJsonStr = webRequest.downloadHandler.text;
             jsonDataInfoServer = JsonMapper.ToObject(sJsonStr);
-            string version = (string)jsonDataInfoServer["version"];
-
-            serverVersion = version.Split('.');
-            sVersion = version;
+            string sversion = (string)jsonDataInfoServer["GameVersion"];
+            string[] sversions = sversion.Split('.');
+            serverVersion[0] = sversions[0];
+            serverVersion[1] = sversions[1];
+            serverVersion[2] = sversions[2];
+            serverVersion[3] = (string)jsonDataInfoServer["ResVersion"];
+            //sVersion = version;
 
         }
-        string[] clientVersion = new string[3];
-        string path = string.Format("{0}/{1}", Application.persistentDataPath, ResConst.VerFile);
+       
+        string[] clientVersion = new string[4];
+        LocalText localText = new LocalText();
+        LocalFile(ResConst.VerFile, localText);
+        jsonDataInfoClient = JsonMapper.ToObject(localText.text);
+        string cversion = (string)jsonDataInfoClient["GameVersion"];
+        string[] cversions = cversion.Split('.');
+        clientVersion[0] = cversions[0];
+        clientVersion[1] = cversions[1];
+        clientVersion[2] = cversions[2];
+        clientVersion[3] = (string)jsonDataInfoClient["ResVersion"];
 
-        if (File.Exists(path) && !string.IsNullOrWhiteSpace(File.ReadAllText(path)))
-        {
-            string fileContent = File.ReadAllText(path,System.Text.Encoding.UTF8);
-            jsonDataInfoClient = JsonMapper.ToObject(fileContent);
-            string version = (string)jsonDataInfoClient["version"];
-            clientVersion = version.Split('.');
+        //可写文件夹版本太低， 可能覆盖安装了
+        if (int.Parse(serverVersion[2]) > int.Parse(clientVersion[2]))
+        {            
+            DeletePersistentDataPath();
+            localText = new LocalText();
+            LocalFile(ResConst.VerFile, localText);
+            jsonDataInfoClient = JsonMapper.ToObject(localText.text);
+            cversion = (string)jsonDataInfoClient["GameVersion"];
+            cversions = cversion.Split('.');
+            clientVersion[0] = cversions[0];
+            clientVersion[1] = cversions[1];
+            clientVersion[2] = cversions[2];
+            clientVersion[3] = (string)jsonDataInfoClient["ResVersion"];
         }
-        else
-        {
-
-#if UNITY_ANDROID
-        path = string.Format("{0}/{1}", Application.streamingAssetsPath, ResConst.VerFile);
-#endif
-
-#if UNITY_IOS
-        path = string.Format("file://{0}/{1}", Application.streamingAssetsPath, ResConst.VerFile);
-#endif
-            UnityWebRequest uwr = UnityWebRequest.Get(path);
-            yield return uwr.SendWebRequest();
-
-            jsonDataInfoClient = JsonMapper.ToObject(uwr.downloadHandler.text);
-
-            string version = (string)jsonDataInfoClient["version"];
-            clientVersion = version.Split('.');
-        }
-
+        ResManager.Instance.UnLoadAssetBundle("Version");
         //AppConst.GameVersion = sVersion;
 
-        if (int.Parse(serverVersion[0]) > int.Parse(clientVersion[0]))
+        if (int.Parse(serverVersion[2]) > int.Parse(clientVersion[2]))
         {
             //大版本更新
             MessageManager.Instance.EventNotify(MessageConst.MsgUpdateBigVersion, GetDownloadURLFromJSON(jsonDataInfoServer));
             yield break;
         }
-        else if (int.Parse(serverVersion[1]) > int.Parse(clientVersion[1]) || int.Parse(serverVersion[2]) > int.Parse(clientVersion[2]))
+        else if (int.Parse(serverVersion[3]) > int.Parse(clientVersion[3]))
         {
             //小版本更新
-            StartCoroutine(CancelTotalDownload());
+            StartCoroutine(TotalDownloadSize());
 }
         else
         {
@@ -212,25 +233,16 @@ public class UpdateManager : MonoSingleton<UpdateManager>
     //通过JSON的解析获取到下载的URL内容
     public string GetDownloadURLFromJSON(JsonData jsonDataInfo)
     {
-        JsonData jsonData = jsonDataInfo["channel"];
-
-        for (int index = 0; index < jsonData.Count; index++)
-        {
-            int channelID = (int)jsonData[index]["channelID"];
-
-
-            if(channelID == AppConst.ChannelID)
-            {
-                return (string)jsonData[index]["URL"];
-            }
-        }
-
-        return (string)jsonDataInfo["url"]; ;
+#if UNITY_ANDROID
+        return (string)jsonDataInfo["AndroidUrl"];
+#elif UNITY_IOS
+        return (string)jsonDataInfo["IosUrl"];
+#endif
 
     }
 
     //计算所需要下载的时间
-    IEnumerator CancelTotalDownload()
+    IEnumerator TotalDownloadSize()
     {
         string serverFile = "";
         string serverHttpFile = GetFilePath(ResConst.CheckFile);
@@ -239,34 +251,15 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         yield return webRequest.SendWebRequest();
         if (webRequest.isHttpError || webRequest.isNetworkError)
         {
+            MessageManager.Instance.EventNotify(MessageConst.MsgUpdateLostConnect);
             yield break;
         }
         else
         {
             serverFile = webRequest.downloadHandler.text;
         }
-        string clientFile = "";
-        string path = string.Format("{0}/{1}", Application.persistentDataPath, ResConst.CheckFile);
-        if (File.Exists(path))
-        {
-            clientFile = File.ReadAllText(path);
-        }
-        else
-        {
-
-
-#if UNITY_ANDROID
-        path = string.Format("{0}/{1}", Application.streamingAssetsPath, ResConst.CheckFile);
-#endif
-
-#if UNITY_IOS
-        path = string.Format("file://{0}/{1}", Application.streamingAssetsPath, ResConst.CheckFile);
-#endif
-
-            UnityWebRequest uwr = UnityWebRequest.Get(path);
-            yield return uwr.SendWebRequest();
-            clientFile = uwr.downloadHandler.text;
-        }
+        TextAsset ta = ResManager.Instance.LoadAsset("VersionFiles", ResConst.CheckFile, typeof(TextAsset)) as TextAsset;
+        string clientFile = ta.text;
 
         string[] serverFiles = serverFile.Split('\n');
         string[] clientFiles = clientFile.Split('\n');
@@ -289,8 +282,8 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             }
         }
 
-        double download = 0;
-
+        double downloadSize = 0;
+        needUpdate.Clear();
         foreach (KeyValuePair<string, string> keyValuePair in sFiles)
         {
             string[] sFile = keyValuePair.Value.ToString().Split('|');
@@ -299,20 +292,28 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             if (file == null)
             {
                 //新增
-                download += int.Parse(sFile[1]);
+                downloadSize += int.Parse(sFile[1]);
+                DownLoadFile dlf = new DownLoadFile();
+                dlf.file = sFile[0];
+                dlf.fileInfo = keyValuePair.Value;
+                needUpdate.Add(dlf);
             }
             else
             {
-                if (sFile[2] != cFiles[sFile[0]].Split('|')[2] || sFile[3] != cFiles[sFile[0]].Split('|')[3])
+                if (sFile[3] != cFiles[sFile[0]].Split('|')[3])
                 {
                     //修改
-                    download += int.Parse(sFile[1]);
+                    downloadSize += int.Parse(sFile[1]);
+                    DownLoadFile dlf = new DownLoadFile();
+                    dlf.file = sFile[0];
+                    dlf.fileInfo = keyValuePair.Value;
+                    needUpdate.Add(dlf);
                 }
                 
             }
         }
 
-        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateSmallVersion, HumanReadableFilesize(download));
+        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateSmallVersion, HumanReadableFilesize(downloadSize));
     }
 
 
@@ -343,24 +344,53 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
     IEnumerator OnCheckFiles()
     {
-        string serverFile = "";
-        string serverHttpFile = GetFilePath(ResConst.CheckFile);
+        yield break;
+        //if(needUpdate.Count <= 0)
+        //    writeClientFiles = writeClientFiles.Substring(0, writeClientFiles.Length - 2);
+        //StartCoroutine(OnDownLoad(needUpdate, writeClientFiles));
+    }
+    //IEnumerator OnDownLoad(List<DownLoadFile> needUpdate, string writecFiles)
+    //{
+        //string writeClientFiles = writecFiles;
+        //for (int i = 0; i < needUpdate.Count; i++)
+        //{
+        //    curDownLoadSize += int.Parse(needUpdate[i].fileInfo.Split('|')[1]);
+        //    string savePath = string.Format("{0}/{1}", Application.persistentDataPath, needUpdate[i].file);
+        //    string dir = savePath.Substring(0, savePath.LastIndexOf("/") + 1);
+        //    if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+        //    BeginDownload(GetFilePath(needUpdate[i].file), savePath);
+        //    while (!(IsDownOK(savePath)))
+        //    {
+        //        if (isError)
+        //        {
+        //            BeginDownload(GetFilePath(needUpdate[i].file), savePath);
+        //            isError = false;
+        //        }
+        //        yield return new WaitForEndOfFrame();
+        //    }
+        //    if (i == needUpdate.Count)
+        //    {
+        //        writeClientFiles += needUpdate[i].fileInfo;
+        //    }
+        //    else
+        //    { 
+        //        writeClientFiles += needUpdate[i].fileInfo + "\n";
+        //    }
+        //    File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.CheckFile), writeClientFiles);
+        //}
+        //isProgress = false;
+        //MessageManager.Instance.EventNotify(MessageConst.MsgUpdateDownLoadComplete);
+        //File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
+        //更新完毕后重新
+        //AppConst.GameVersion = sVersion;
+    //}
 
-        UnityWebRequest webRequest = UnityWebRequest.Get(serverHttpFile);
-        yield return webRequest.SendWebRequest();
-        if (webRequest.isHttpError || webRequest.isNetworkError)
-        {
-            yield break;
-        }
-        else
-        {
-            serverFile = webRequest.downloadHandler.text;
-        }
-        string clientFile = "";
-        string path = string.Format("{0}/{1}", Application.persistentDataPath, ResConst.CheckFile);
+    IEnumerator LocalFile(string file, LocalText retText)
+    {
+        string path = string.Format("{0}/{1}", Application.persistentDataPath, file);
         if (File.Exists(path))
         {
-            clientFile = File.ReadAllText(path);
+            retText.text = File.ReadAllText(path);
         }
         else
         {
@@ -376,183 +406,17 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
             UnityWebRequest uwr = UnityWebRequest.Get(path);
             yield return uwr.SendWebRequest();
-            clientFile = uwr.downloadHandler.text;
-        }
-
-        string[] serverFiles = serverFile.Split('\n');
-        string[] clientFiles = clientFile.Split('\n');
-        Dictionary<string, string> sFiles = new Dictionary<string, string>();
-        Dictionary<string, string> cFiles = new Dictionary<string, string>();
-        for (int i = 0; i < clientFiles.Length; i++)
-        {
-            if (clientFiles[i] != "")
-            {
-                string[] cFile = clientFiles[i].Split('|');
-                cFiles.Add(cFile[0], clientFiles[i]);
-            }
-        }
-        for (int i = 0; i < serverFiles.Length; i++)
-        {
-            if (serverFiles[i] != "")
-            {
-                string[] sFile = serverFiles[i].Split('|');
-                sFiles.Add(sFile[0], serverFiles[i]);
-            }
-        }
-        //string writeClientFiles = "";
-        foreach(KeyValuePair<string, string> keyValuePair in cFiles)
-        {
-            string cfile = keyValuePair.Value;
-            string[] cFile = cfile.Split('|');
-            string sfile = null;
-            sFiles.TryGetValue(cFile[0], out sfile);
-            if (sfile == null)
-            {
-
-
-#if UNITY_ANDROID
-         //删除
-                string filePathe = string.Format("{0}/{1}", Application.streamingAssetsPath, cFile[0]);
-                if (File.Exists(filePathe))
-                    File.Delete(filePathe);
-#endif
-
-#if UNITY_IOS
-                //删除
-                string filePathe = string.Format("file://{0}/{1}", Application.streamingAssetsPath, cFile[0]);
-                if (File.Exists(filePathe))
-                    File.Delete(filePathe);
-#endif
-            }
-        }
-
-        string writeClientFiles = "";
-        List<DownLoadFile> needUpdate = new List<DownLoadFile>();
-        foreach (KeyValuePair<string, string> keyValuePair in sFiles)
-        {
-            string[] sFile = keyValuePair.Value.ToString().Split('|');
-            string file = null;
-            cFiles.TryGetValue(sFile[0], out file);
-            if (file == null)
-            {
-                //新增
-                allDownLoadSize += int.Parse(sFile[1]);
-                DownLoadFile dlf = new DownLoadFile();
-                dlf.file = sFile[0];
-                dlf.fileInfo = keyValuePair.Value.ToString();
-                needUpdate.Add(dlf);
-            }
-            else
-            {
-                if (sFile[2] != cFiles[sFile[0]].Split('|')[2] || sFile[3] != cFiles[sFile[0]].Split('|')[3])
-                {
-                    //修改
-                    allDownLoadSize += int.Parse(sFile[1]);
-                    DownLoadFile dlf = new DownLoadFile();
-                    dlf.file = sFile[0];
-                    dlf.fileInfo = keyValuePair.Value;
-                    needUpdate.Add(dlf);
-                }
-                else
-                {
-                    writeClientFiles += keyValuePair.Value + "\n";
-                }
-            }
-        }
-        if(needUpdate.Count <= 0)
-            writeClientFiles = writeClientFiles.Substring(0, writeClientFiles.Length - 2);
-        StartCoroutine(OnDownLoad(needUpdate, writeClientFiles));
-    }
-    IEnumerator OnDownLoad(List<DownLoadFile> needUpdate, string writecFiles)
-    {
-        string writeClientFiles = writecFiles;
-        for (int i = 0; i < needUpdate.Count; i++)
-        {
-            curDownLoadSize += int.Parse(needUpdate[i].fileInfo.Split('|')[1]);
-            string savePath = string.Format("{0}/{1}", Application.persistentDataPath, needUpdate[i].file);
-            string dir = savePath.Substring(0, savePath.LastIndexOf("/") + 1);
-            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            BeginDownload(GetFilePath(needUpdate[i].file), savePath);
-            while (!(IsDownOK(savePath)))
-            {
-                if (isError)
-                {
-                    BeginDownload(GetFilePath(needUpdate[i].file), savePath);
-                    isError = false;
-                }
-                yield return new WaitForEndOfFrame();
-            }
-            if (i == needUpdate.Count)
-            {
-                writeClientFiles += needUpdate[i].fileInfo;
-            }
-            else
-            { 
-                writeClientFiles += needUpdate[i].fileInfo + "\n";
-            }
-            File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.CheckFile), writeClientFiles);
-        }
-        isProgress = false;
-        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateDownLoadComplete);
-        File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
-        //更新完毕后重新
-        //AppConst.GameVersion = sVersion;
-    }
-
-    /// <summary>
-    /// 是否下载完成
-    /// </summary>
-    bool IsDownOK(string file)
-    {
-        return downloadFiles.Contains(file);
-    }
-
-    /// <summary>
-    /// 线程下载
-    /// </summary>
-    void BeginDownload(string url, string file)
-    {     //线程下载
-        object[] param = new object[2] { url, file };
-
-        ThreadEvent ev = new ThreadEvent();
-        ev.Key = NotiConst.UPDATE_DOWNLOAD;
-        ev.evParams.AddRange(param);
-        DownLoadManager.Instance.AddEvent(ev, OnThreadCompleted);   //线程下载
-    }
-
-    /// <summary>
-    /// 线程完成
-    /// </summary>
-    /// <param name="data"></param>
-    void OnThreadCompleted(NotiData data)
-    {
-        if (data.evName == NotiConst.UPDATE_PROGRESS)
-        {
-            param1 = data.evParam1.ToString();
-            param2 = float.Parse(data.evParam2.ToString());
-            isProgress = true;
-        }
-        else if (data.evName == NotiConst.UPDATE_DOWNLOAD)
-        {
-            if (!IsDownOK(data.evParam1.ToString()))
-            {
-                isProgress = false;
-                downloadFiles.Add(data.evParam1.ToString());
-            }
-        }
-        else if (data.evName == NotiConst.UPDATE_ERROR)
-        {
-            isError = true;
-        }    
-    }
-
-    private void Update()
-    {
-        if (isProgress)
-        {
-            MessageManager.Instance.EventNotify(MessageConst.MsgUpdateDownLoadUpdate, param1, (curDownLoadSize + param2) / allDownLoadSize);
+            retText.text = uwr.downloadHandler.text;
         }
     }
+
+    //private void Update()
+    //{
+    //    if (isProgress)
+    //    {
+    //        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateDownLoadUpdate, param1, (curDownLoadSize + param2) / allDownLoadSize);
+    //    }
+    //}
 
 
     public void OnDestroy()
@@ -565,4 +429,9 @@ public class DownLoadFile
 {
     public string file;
     public string fileInfo;
+}
+
+public class LocalText
+{
+    public string text;
 }

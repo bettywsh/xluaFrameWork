@@ -13,7 +13,12 @@ public class ResConst
     /// <summary>
     /// 项目文件夹打包方式配置
     /// </summary>
-    public const string BuildJson = "BuildConfig/Build";
+    public const string BuildFolderName = "BuildConfig";
+
+    /// <summary>
+    /// 项目文件夹打包方式配置
+    /// </summary>
+    public const string BuildFile = "Build.json";
 
     /// <summary>
     /// Lua后缀
@@ -85,10 +90,6 @@ public class ResConst
     /// </summary>
     public const string CheckFile = "files.txt";
 
-    /// <summary>
-    /// 打包后Manifest文件名
-    /// </summary>
-    public const string AssetBundleManifest = "NewUpdata";
 
 }
 

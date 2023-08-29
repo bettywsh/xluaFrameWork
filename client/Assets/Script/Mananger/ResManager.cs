@@ -21,7 +21,7 @@ public class ResManager : Singleton<ResManager>
     Dictionary<string, BuildJson> BuildJson = new Dictionary<string, BuildJson>();
     public override void Init()
     {
-        TextAsset text = LoadAsset("Common", ResConst.BuildJson + ".json", typeof(TextAsset)) as TextAsset;
+        TextAsset text = LoadAsset("Common", ResConst.BuildFolderName + "/" + ResConst.BuildFile, typeof(TextAsset)) as TextAsset;
         BuildJson = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(text.text);
     }
 
@@ -34,9 +34,13 @@ public class ResManager : Singleton<ResManager>
         }
         else
         {
-            string assetName = ResPath.GetAssetPath(relativePath);
-            string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
-            AddReloader(resName, abName);
+            if (relativePath.Contains("protobuf"))
+            {
+                int a = 0;
+            }
+            string assetName = ResPath.GetAssetPath(relativePath, type);
+            string abName = ResPath.GetAssetBunldePath(relativePath, type, BuildJson);
+            AddResloader(resName, abName);
             return AssetBundleManager.Instance.LoadAssetBundleUObject(abName, assetName, type);
         }
     }
@@ -50,16 +54,20 @@ public class ResManager : Singleton<ResManager>
         }
         else
         {
-            string assetName = ResPath.GetAssetPath(relativePath);
-            string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
-            AddReloader(resName, abName);
+            if (relativePath.Contains("protobuf"))
+            {
+                int a = 0;
+            }
+            string assetName = ResPath.GetAssetPath(relativePath, type);
+            string abName = ResPath.GetAssetBunldePath(relativePath, type, BuildJson);
+            AddResloader(resName, abName);
             AssetBundleManager.Instance.LoadAssetBundleUObjectAsync(abName, assetName, type, sharpFunc, luaFunc);
         }
     }
-   
+
 
     #region 资源加载标识
-    public void AddReloader(string resName, string abName)
+    public void AddResloader(string resName, string abName)
     {
         if (resName == "Common") return;
         List<string> abNames = null;
@@ -77,6 +85,8 @@ public class ResManager : Singleton<ResManager>
 
     public void UnLoadAssetBundle(string resLoaderName)
     {
+        if (!AppConst.IsABMode)
+        { return; }
         List<string> abNames = null;
         if (!ResLoaders.TryGetValue(resLoaderName, out abNames))
         {
@@ -90,14 +100,14 @@ public class ResManager : Singleton<ResManager>
     }
     #endregion
 
-    public void UnLoadAssetBundle(string relativePath, ResType resType)
-    {
-        if (AppConst.IsABMode)
-        {
-            string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
-            AssetBundleManager.Instance.UnloadAssetBundle(abName, true);
-        }
-    }
+    //public void UnLoadAssetBundle(string relativePath, ResType resType)
+    //{
+    //    if (!AppConst.IsABMode)
+    //    { return; }
+    //    string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
+    //    AssetBundleManager.Instance.UnloadAssetBundle(abName, true);
+        
+    //}
 
     public override void Dispose()
     {

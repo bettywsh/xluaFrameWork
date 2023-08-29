@@ -1,38 +1,38 @@
-local UpdatePanelCtrl = LuaClass:Class("LoadingPanelCtrl", UIBase)
+local UpdatePanel = LuaClass:Class("LoadingPanel", UIBase)
 
-UpdatePanelCtrl.currentValue = 0
+UpdatePanel.currentValue = 0
 
-function UpdatePanelCtrl:OnOpen()
+function UpdatePanel:OnOpen()
 
 end
 
-function UpdatePanelCtrl:DownLoadFiles()
+function UpdatePanel:DownLoadFiles()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_StartDownLoad")
 	self.view.img_cur.fillAmount = 0
 	CSDefine.UpdateManager:DownLoadFiles()
 end
 
-function UpdatePanelCtrl:InitCopyFile()
+function UpdatePanel:InitCopyFile()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_CopyFile")
 	self.view.img_cur.fillAmount = 0
 end
 
-function UpdatePanelCtrl:RefreshShowInfoText()
+function UpdatePanel:RefreshShowInfoText()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_ReadyHotUpdate")
 	self.view.img_cur.fillAmount = 0
 end
 
-function UpdatePanelCtrl:InitRefreshShowInfoText()
+function UpdatePanel:InitRefreshShowInfoText()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_CheckUpdateVersion")
 	self.view.img_cur.fillAmount = 0
 end
 
-function UpdatePanelCtrl:SuccessRefreshShowInfoText()
+function UpdatePanel:SuccessRefreshShowInfoText()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_UpdateSuccess")
 	self.view.img_cur.fillAmount = 0
 end
 
-function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateDownLoadUpdate(value)
+function UpdatePanel:OnCSharpMessage_MsgUpdateDownLoadUpdate(value)
 	if value[0] ~= "Infinity kb/s" and (Time.time - self.time) > 1 then
 		self.time = Time.time
 		self.view.txt_Content.text = string.format(TextMgr:GetText("UpdatePanel_DownLoadProgress"), value[0])
@@ -44,27 +44,27 @@ function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateDownLoadUpdate(value)
 	end
 end
 
-function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateDownLoadComplete()
+function UpdatePanel:OnCSharpMessage_MsgUpdateDownLoadComplete()
 	self.view.txt_Content.text = TextMgr:GetText("UpdatePanel_DownLoadComplete")
 	self.view.img_cur.fillAmount = 1
 	if self.args[0] ~= nil then
 		self.args[0]()
 	end
-	UnityEngine.GameObject.Find("Bootstrap"):GetComponent("Bootstrap"):StartGame()
+	UnityEngine.GameObject.Find("Launch"):GetComponent("Launch"):StartGame()
 end
 
-function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateFristProgress(value)
+function UpdatePanel:OnCSharpMessage_MsgUpdateFristProgress(value)
 	self.view.img_cur.fillAmount = (value[0] + 1) / value[1]
 end
 
-function UpdatePanelCtrl:OnCSharpMessage_MsgUpdateDownLoadError()
+function UpdatePanel:OnCSharpMessage_MsgUpdateDownLoadError()
 	UIMgr:OpenMessageBox(TextMgr:GetText("UpdatePanel_DownLoadError"), function()
 		CSDefine.UpdateManager:DownLoadFiles()
 	end)
 end
 
-function UpdatePanelCtrl:OnClose()
+function UpdatePanel:OnClose()
 	
 end
 
-return UpdatePanelCtrl
+return UpdatePanel

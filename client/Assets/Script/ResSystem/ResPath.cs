@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
+using System;
 
 public class ResPath
 {
@@ -134,40 +135,40 @@ public class ResPath
         return Path.Combine(rootFolderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
     }
 
-    public static string GetAssetBunldePath(string path, Dictionary<string, BuildJson> BuildJson)
+    public static string GetAssetBunldePath(string path, Type type, Dictionary<string, BuildJson> BuildJson)
     {
-        if (path.IndexOf("/") < 0)
+        if (type == typeof(AssetBundleManifest))
         {
-            return path;
+            return ResConst.RootFolderName.ToLower() + "/" + path;
         }
         path = path.Replace(Path.GetExtension(path), "");
         //不能用Path.Combine 因为这样出来的路径会变成\\ 而依赖文件是/导致文件路径不统一会被认为是不同资源
         string folderName = path.Substring(0, path.IndexOf("/"));
         if (BuildJson.Count == 0)
         {
-            return (folderName.ToLower() + "/" + folderName.ToLower() + ResConst.AssetBunldExtName).ToLower();
+            return (ResConst.RootFolderName.ToLower() + "/" + folderName + "/" + ResConst.BuildFolderName + ResConst.AssetBunldExtName).ToLower();
         }
         BuildJson buildJson;
         BuildJson.TryGetValue(folderName, out buildJson);
         if (buildJson.BuildType == BuildType.OneAB)
         {
-            return (folderName.ToLower() + "/" + folderName.ToLower() + ResConst.AssetBunldExtName).ToLower();
+            return (ResConst.RootFolderName.ToLower() + "/" + folderName.ToLower() + "/" + folderName.ToLower() + ResConst.AssetBunldExtName).ToLower();
         }
         else if (buildJson.BuildType == BuildType.EveryFileAB)
         {
-            return (path + ResConst.AssetBunldExtName).ToLower();
+            return (ResConst.RootFolderName.ToLower() + "/" + path + ResConst.AssetBunldExtName).ToLower();
         }
         else
         {
             string[] folders =  path.Split('/');
             path = folders[0] + "/" + folders[1];
-            return (path + ResConst.AssetBunldExtName).ToLower();
+            return (ResConst.RootFolderName.ToLower() + "/" + path + ResConst.AssetBunldExtName).ToLower();
         }
         
     }
-    public static string GetAssetPath(string path)
+    public static string GetAssetPath(string path, Type type)
     {
-        if (path == ResConst.AssetBundleManifest)
+        if (type == typeof(AssetBundleManifest))
         {
             return "AssetBundleManifest";
         }
